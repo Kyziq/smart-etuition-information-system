@@ -1,4 +1,4 @@
 # Smart-E-Tuition-System
 <b>Made for</b><br>
-CSC264 - INTRODUCTION TO WEB AND MOBILE APPLICATION <br>
-ISP250 - INFORMATION SYSTEM DEVELOPMENT
+CSC264 - Introduction To Web And Mobile Application <br>
+ISP250 - Information System Development

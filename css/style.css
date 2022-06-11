@@ -165,6 +165,11 @@ section {
     flex: 1 1 42rem;
 }
 
+.home .content img {
+    width: 275;
+    float: right;
+}
+
 .home .content h3 {
     color: #302851;
     font-size: 6rem;
@@ -754,6 +759,20 @@ section {
 
 .footer .credit span {
     color: #fa1d86;
+}
+
+/* GIF Loader */
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background: #fbfbfb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
 }
 
 @media (max-width: 1200px) {

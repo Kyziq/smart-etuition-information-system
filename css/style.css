@@ -25,6 +25,7 @@ section {
 .btn {
     display: inline-block;
     margin-top: 1rem;
+    margin-right: 2rem;
     padding: 1rem 3rem;
     background: #e9edfb;
     color: #224bcf;

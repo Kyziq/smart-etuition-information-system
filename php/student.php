@@ -1,7 +1,7 @@
 <?php
 // Student Main Page
 session_start();
-if(isset($_SESSION['userName']) && $_SESSION['ulevel']==2) {
+if(isset($_SESSION['userName']) && $_SESSION['ulevel']==3) {
 
     //connect to db
     $con=mysqli_connect('localhost','root','','smartetuition') or die(mysqli_error($con));

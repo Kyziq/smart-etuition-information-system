@@ -8,32 +8,38 @@
     </head>
     <body>
         <form name="registerForm" method="post" action="register.php">
+            Username :
+            <input type="text" name="userUname" required />
+            <br />
+            Password :
+            <input type="password" name="userPassw" required />
+            <br />
+            Full name :
+            <input type="text" name="userName" placeholder="name" required />
+            <br />
+            Phone number :
             <input
                 type="text"
-                name="userUname"
-                placeholder="Username"
+                name="userPhone"
+                placeholder="0123456789"
                 required
             />
             <br />
+            Email:
             <input
-                type="password"
-                name="userPassw"
-                placeholder="Password"
+                type="text"
+                name="userEmail"
+                placeholder="email@gmail.com"
                 required
             />
-            <br />
-            <input type="text" name="userName" placeholder="Name" required />
-            <br />
-            <input type="text" name="userPhone" placeholder="Phone" required />
-            <br />
-            <input type="text" name="userEmail" placeholder="Email" required />
             <br />
 
+            Gender :
             <input type="radio" name="userGender" value="1" required /> Male
-            <br />
             <input type="radio" name="userGender" value="2" required /> Female
             <br />
 
+            Birthdate :
             <input
                 type="date"
                 name="userBirthdate"
@@ -41,6 +47,8 @@
                 required
             />
             <br />
+
+            Address:
             <input
                 type="text"
                 name="userAddress"

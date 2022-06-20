@@ -1,2 +1,11 @@
-* linguist-vendored
-*.js linguist-vendored=false
+#* linguist-vendored
+#*.js linguist-vendored=false
+#*.html linguist-vendored=false
+#*.css linguist-vendored=false
+#*.php linguist-vendored=false
+
+# Detect languages
+*.java linguist-detectable=true
+*.html linguist-detectable=true
+*.css linguist-detectable=true
+*.php linguist-detectable=true

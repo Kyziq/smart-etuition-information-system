@@ -34,6 +34,7 @@ if (isset($_POST['submit'])) {
     $r = mysqli_fetch_assoc($res);
     $_SESSION['uid'] = $r['id'];
     $_SESSION['ulevel'] = $r['level'];
+
     if ($r['level'] == 1) {
 
         //clear results and close the connection
@@ -42,12 +43,20 @@ if (isset($_POST['submit'])) {
         header("Location: admin.php");
     }
 
-    //user has successfully signed in
+    //tutor has successfully signed in
     if ($r['level'] == 2) {
         //clear results and close the connection
         mysqli_free_result($res);
         mysqli_close($con);
-        header("Location: user.php");
+        header("Location: tutor.php");
+    }
+
+    //student has successfully signed in
+    if ($r['level'] == 3) {
+        //clear results and close the connection
+        mysqli_free_result($res);
+        mysqli_close($con);
+        header("Location: student.php");
     }
 } else {
     header("Location: login.html");

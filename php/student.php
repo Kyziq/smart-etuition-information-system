@@ -1,0 +1,2 @@
+<?php
+// Student Main Page

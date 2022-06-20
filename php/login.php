@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
     // Check if user is admin - send to admin page
     if ($r['level'] == 1) {
 
-        //clear results and close the connection
+        // clear results and close the connection
         mysqli_free_result($res);
         mysqli_close($con);
         header("Location: admin.php");
@@ -36,7 +36,7 @@ if (isset($_POST['login'])) {
 
     // Check if user is tutor - send to admin page
     if ($r['level'] == 2) {
-        //clear results and close the connection
+        // Clear results and close the connection
         mysqli_free_result($res);
         mysqli_close($con);
         header("Location: tutor.php");
@@ -44,7 +44,7 @@ if (isset($_POST['login'])) {
 
     // Check if user is student - send to admin page
     if ($r['level'] == 3) {
-        //clear results and close the connection
+        // Clear results and close the connection
         mysqli_free_result($res);
         mysqli_close($con);
         header("Location: student.php");

@@ -3,17 +3,17 @@
 
 session_start();
 // Submit button name below
-if (isset($_POST['submit'])) {
+if (isset($_POST['login'])) {
 
     // Get all the posted items
-    $uname = $_POST['userUname'];
-    $pword = $_POST['userPassw'];
+    $userUname = $_POST['userUname'];
+    $userPassw = $_POST['userPassw'];
 
     // Connect to database
     $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
     // Construct and run query to check for correct credentials
-    $query = "select * from user where uname='$userUname' and pword='$userPassw'";
+    $query = "select * from user where userUname='$userUname' and userPassw='$userPassw'";
     $result = mysqli_query($con, $query);
     $rows = mysqli_num_rows($result);
     if ($rows != 1) {
@@ -21,20 +21,11 @@ if (isset($_POST['submit'])) {
         header("Location: login.html");
     }
 
-
-
-
-
-
-
-
-
-
-    //user is admin - send to admin page
     $r = mysqli_fetch_assoc($res);
     $_SESSION['uid'] = $r['id'];
     $_SESSION['ulevel'] = $r['level'];
 
+    // Check if user is admin - send to admin page
     if ($r['level'] == 1) {
 
         //clear results and close the connection
@@ -43,7 +34,7 @@ if (isset($_POST['submit'])) {
         header("Location: admin.php");
     }
 
-    //tutor has successfully signed in
+    // Check if user is tutor - send to admin page
     if ($r['level'] == 2) {
         //clear results and close the connection
         mysqli_free_result($res);
@@ -51,7 +42,7 @@ if (isset($_POST['submit'])) {
         header("Location: tutor.php");
     }
 
-    //student has successfully signed in
+    // Check if user is student - send to admin page
     if ($r['level'] == 3) {
         //clear results and close the connection
         mysqli_free_result($res);

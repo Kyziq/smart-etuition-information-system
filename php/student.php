@@ -18,8 +18,9 @@ if(isset($_SESSION['userName']) && $_SESSION['ulevel']==3) {
     echo "<br><h3>Address: ".$r['userAddress']."</h3>";
 
     //construct and run query to display timetable
-    $q="select * from class";
+    $q="select classSubject from class where user_id=".$_SESSION['uid']." ";
     $res=mysqli_query($con,$q);
+    $r=mysqli_fetch_assoc($res);
 
     echo "<table> <caption>Let Us Score! Tuition Timetable</caption>";
     echo "
@@ -30,23 +31,23 @@ if(isset($_SESSION['userName']) && $_SESSION['ulevel']==3) {
         </tr>
         <tr>
         	<td>8:00 a.m. - 9:00 a.m.</td>
-            <td colspan="2">Mathematics</td>
+            <td colspan="2">"if($r['classTime']=="8")echo "No class" else echo .$r['classSubject']; echo "</td>
         </tr>
         <tr>
             <td>9:00 a.m. - 10:00 a.m.</td>
-            <td colspan="2">Additional<br>Mathematics</td>
+            <td colspan="2">"if($r['classTime']=="9" && $r['classSubject']==NULL)echo "No class" else echo .$r['classSubject']; echo "</td>
         </tr>
         <tr>
             <td>1:00 p.m. - 2:00 p.m.</td>
-            <td colspan="2">Physics</td>
+            <td colspan="2">"if($r['classTime']=="1")echo "No class" else echo .$r['classSubject']; echo "</td>
         </tr>
         <tr>
             <td>2:00 p.m. - 3:00 p.m.</td>
-            <td colspan="2">Chemistry</td>
+            <td colspan="2">"if($r['classTime']=="2")echo "No class" else echo .$r['classSubject']; echo "</td>
         </tr>
         <tr>
             <td>3:00 p.m. - 4:00 p.m.</td>
-            <td colspan="2">Biology</td>
+            <td colspan="2">"if($r['classTime']==NULL)echo "No class" else echo .$r['classSubject']; echo "</td>
         </tr>";
     echo "</table>";
 

@@ -5,7 +5,8 @@
 #*.php linguist-vendored=false
 
 # Detect languages
-*.java linguist-detectable=true
-*.html linguist-detectable=true
+* linguist-generated=false
 *.css linguist-detectable=true
+*.js linguist-detectable=true
+*.html linguist-detectable=true
 *.php linguist-detectable=true

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Register page</title>
+    </head>
+    <body>
+        <form name="registerForm" method="post" action="register.php">
+            <input
+                type="text"
+                name="userUname"
+                placeholder="Username"
+                required
+            />
+            <br />
+            <input
+                type="password"
+                name="userPassw"
+                placeholder="Password"
+                required
+            />
+            <br />
+            <input type="text" name="userName" placeholder="Name" required />
+            <br />
+            <input type="text" name="userPhone" placeholder="Phone" required />
+            <br />
+            <input type="text" name="userEmail" placeholder="Email" required />
+            <br />
+
+            <input type="radio" name="userGender" value="1" required /> Male
+            <br />
+            <input type="radio" name="userGender" value="2" required /> Female
+            <br />
+
+            <input
+                type="date"
+                name="userBirthdate"
+                placeholder="Birthdate"
+                required
+            />
+            <br />
+            <input
+                type="text"
+                name="userAddress"
+                placeholder="Address"
+                required
+            />
+            <br />
+            <br />
+
+            <!-- Reset button -->
+            <input type="reset" />
+
+            <!-- Submit button -->
+            <input type="submit" name="register" value="Register" />
+        </form>
+
+        <!-- JS File -->
+        <script src="../js/script.js"></script>
+    </body>
+</html>

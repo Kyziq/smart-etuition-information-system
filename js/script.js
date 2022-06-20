@@ -21,3 +21,12 @@ document.querySelectorAll(".course-3 .box .video video").forEach((vid) => {
 document.querySelector("#close-vid").onclick = () => {
     mainVid.classList.remove("active");
 };
+
+window.onload = function () {
+    // Register Page
+    document.getElementsByName("register").onclick = function () {
+        // Input gender value, 1 == Male, 2 = Female
+        document.getElementsByName("userGender").value = this.value;
+        document.forms.registerForm.submit();
+    };
+};

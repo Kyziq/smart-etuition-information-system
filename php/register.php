@@ -1,7 +1,7 @@
 <?php
-// After click submit button
 
-if (isset($_POST['submit'])) {
+// After click register button
+if (isset($_POST['register'])) {
 
     // Get all the posted items
     $userUname = $_POST['userUname'];
@@ -13,19 +13,21 @@ if (isset($_POST['submit'])) {
     $userBirthdate = $_POST['userBirthdate'];
     $userAddress = $_POST['userAddress'];
 
-    // Connect to db
+    // Connect to database
     $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
-    //construct and run query to check if username is taken
+    // Construct and run query to check if username is taken
     $q = "select * from user where userName='$userName'";
     $result = mysqli_query($con, $q);
     $rows = mysqli_num_rows($result);
     if ($rows != 0) header("Location: register.html");
 
     //construct and run query to store new user
-    $q = "insert into user(userUname, userPassw, userName, userPhone, userEmail, userGender, userBirthdate, userAddress) values('$userUname','$userPassw','$userName','$userPhone','$userEmail','$userGender','$userBirthdate','$userAddress')";
+    $q = "insert into user(userUname, userPassw, userName, userPhone, userEmail, userGender, userBirthdate, userAddress) 
+        values ('$userUname','$userPassw','$userName','$userPhone','$userEmail','$userGender','$userBirthdate','$userAddress')";
+
     $result = mysqli_query($con, $q);
-    echo "<h1>New user created. Please <a href=login.html>Login</a></h1>";
+    echo "<h2>New user created. Please <a href=login.html>Login</a></h2>";
 
     // Clear results
     // mysqli_free_result($res);

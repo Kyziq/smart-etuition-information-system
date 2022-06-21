@@ -21,7 +21,7 @@ if (isset($_POST['login'])) {
         header("Location: login.html");
     }
 
-    $r = mysqli_fetch_assoc($res);
+    $r = mysqli_fetch_assoc($result);
     $_SESSION['uid'] = $r['id'];
     $_SESSION['ulevel'] = $r['level'];
 
@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
     if ($r['level'] == 1) {
 
         // clear results and close the connection
-        mysqli_free_result($res);
+        mysqli_free_result($result);
         mysqli_close($con);
         header("Location: admin.php");
     }
@@ -37,7 +37,7 @@ if (isset($_POST['login'])) {
     // Check if user is tutor - send to admin page
     if ($r['level'] == 2) {
         // Clear results and close the connection
-        mysqli_free_result($res);
+        mysqli_free_result($result);
         mysqli_close($con);
         header("Location: tutor.php");
     }
@@ -45,7 +45,7 @@ if (isset($_POST['login'])) {
     // Check if user is student - send to admin page
     if ($r['level'] == 3) {
         // Clear results and close the connection
-        mysqli_free_result($res);
+        mysqli_free_result($result);
         mysqli_close($con);
         header("Location: student.php");
     }

@@ -831,8 +831,8 @@ section {
 }
 /*# sourceMappingURL=style.css.map */
 
-/* Registration */
-body {
+/* Registration  */ 
+#register {
     min-height: 100vh;
     display: flex;
     align-items: center;

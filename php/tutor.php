@@ -30,23 +30,23 @@ if(isset($_SESSION['userName']) && $_SESSION['ulevel']==2) {
         </tr>
         <tr>
         	<td>8:00 a.m. - 9:00 a.m.</td>
-            <td colspan="2">Mathematics</td>
+            <td colspan='2'>Mathematics</td>
         </tr>
         <tr>
             <td>9:00 a.m. - 10:00 a.m.</td>
-            <td colspan="2">Additional<br>Mathematics</td>
+            <td colspan='2'>Additional<br>Mathematics</td>
         </tr>
         <tr>
             <td>1:00 p.m. - 2:00 p.m.</td>
-            <td colspan="2">Physics</td>
+            <td colspan='2'>Physics</td>
         </tr>
         <tr>
             <td>2:00 p.m. - 3:00 p.m.</td>
-            <td colspan="2">Chemistry</td>
+            <td colspan='2'>Chemistry</td>
         </tr>
         <tr>
             <td>3:00 p.m. - 4:00 p.m.</td>
-            <td colspan="2">Biology</td>
+            <td colspan='2'>Biology</td>
         </tr>";
     echo "</table>";
     
@@ -57,4 +57,3 @@ if(isset($_SESSION['userName']) && $_SESSION['ulevel']==2) {
 else {
     header("Location: login.html");
 }
-?>

@@ -1,6 +1,5 @@
 /* Google Fonts Import */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
 
 * {
     font-family: "Poppins", sans-serif;
@@ -30,16 +29,16 @@ section {
     margin-top: 1rem;
     margin-right: 2rem;
     padding: 1rem 3rem;
-    background: #e9edfb;
-    color: #224bcf;
     cursor: pointer;
     border-radius: 0.5rem;
     font-size: 1.7rem;
+
+    color: #fff;
+    background: #183765;
 }
 
 .btn:hover {
-    color: #fff;
-    background: #224bcf;
+    background: #ed2146;
 }
 
 .heading {
@@ -65,7 +64,7 @@ section {
 }
 
 .heading p a:hover {
-    color: #224bcf;
+    color: #183765;
 }
 
 .header {
@@ -85,7 +84,7 @@ section {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 0 9%;
-    background: #224bcf;
+    background: #183765;
 }
 
 .header .logo {
@@ -126,7 +125,7 @@ section {
     position: absolute;
     left: 0;
     width: 20rem;
-    background: #224bcf;
+    background: #183765;
     display: none;
 }
 
@@ -603,12 +602,12 @@ section {
 }
 
 .blog .box .content .icons a:hover {
-    color: #224bcf;
+    color: #183765;
 }
 
 .blog .box .content .icons a i {
     padding-right: 0.5rem;
-    color: #224bcf;
+    color: #183765;
 }
 
 .blog .box .content h3 {
@@ -645,7 +644,7 @@ section {
     width: 6.5rem;
     line-height: 6.5rem;
     font-size: 2.5rem;
-    color: #224bcf;
+    color: #183765;
     background: #e9edfb;
     border-radius: 50%;
     text-align: center;
@@ -800,7 +799,7 @@ section {
         top: 99%;
         left: 0;
         right: 0;
-        background: #224bcf;
+        background: #183765;
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     }
@@ -831,13 +830,25 @@ section {
 }
 /*# sourceMappingURL=style.css.map */
 
-/* Registration  */ 
+/* Registration  */
 #register {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #4070f4;
+    background: #183765;
+}
+
+.logoImage img {
+    position: fixed;
+    top: 5%;
+    left: 43%;
+    height: 25rem;
+    border-style: solid;
+    border-color: #183765;
+    border-width: 3px;
+    border-radius: 130px;
+    z-index: 1; /* Image to front */
 }
 .container {
     position: relative;
@@ -863,7 +874,7 @@ section {
     height: 3px;
     width: 27px;
     border-radius: 8px;
-    background-color: #4070f4;
+    background-color: #183765;
 }
 .container form {
     position: relative;
@@ -976,16 +987,16 @@ select {
     color: #fff;
     border-radius: 5px;
     margin: 25px 0;
-    background-color: #4070f4;
+    background-color: #183765;
     transition: all 0.3s linear;
     cursor: pointer;
 }
 .container form .btnText {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
 }
 form button:hover {
-    background-color: #265df2;
+    background-color: #192e59;
 }
 form button i {
     margin: 0 6px;
@@ -996,6 +1007,12 @@ form .buttons {
 }
 form .buttons button {
     margin-right: 14px;
+}
+
+.text {
+    position: relative;
+    font-size: 15px;
+    color: #333;
 }
 
 @media (max-width: 750px) {

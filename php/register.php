@@ -1,7 +1,6 @@
 <?php
 
-// After click register button
-if (isset($_POST['register'])) {
+if (isset($_POST['registerButton'])) {
 
     // Get all the posted items
     $userUname = $_POST['userUname'];
@@ -22,7 +21,7 @@ if (isset($_POST['register'])) {
     $rows = mysqli_num_rows($result);
     if ($rows != 0) header("Location: register.html");
 
-    //construct and run query to store new user
+    // Construct and run query to store new user
     $q = "insert into user(userUname, userPassw, userName, userPhone, userEmail, userGender, userBirthdate, userAddress) 
         values ('$userUname','$userPassw','$userName','$userPhone','$userEmail','$userGender','$userBirthdate','$userAddress')";
 

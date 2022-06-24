@@ -1,25 +1,25 @@
 <?php
 // Tutor Page
 session_start();
-if(isset($_SESSION['userName']) && $_SESSION['ulevel']==2) {
+if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2) {
 
-    //connect to db
-    $con=mysqli_connect('localhost','root','','smartetuition') or die(mysqli_error($con));
+    // Connect to db
+    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
-    //construct and run query to list user details
-    $q="select userUname from user where id=".$_SESSION['userID'];
-    $res=mysqli_query($con,$q);
-    $r=mysqli_fetch_assoc($res);
-    echo "<br><h2>Welcome ".$r['userUname']."</h2>";
-    echo "<br><h3>Phone Number: ".$r['userPhone']."</h3>";
-    echo "<br><h3>Email: ".$r['userEmail']."</h3>";
-    echo "<br><h3>Gender: ".$r['userGender']."</h3>";
-    echo "<br><h3>Birthdate: ".$r['userBirthdate']."</h3>";
-    echo "<br><h3>Address: ".$r['userAddress']."</h3>";
+    // Construct and run query to list user details
+    $q = "select userUname from user where userID=" . $_SESSION['userID'];
+    $res = mysqli_query($con, $q);
+    $r = mysqli_fetch_assoc($res);
+    echo "<br><h2>Welcome " . $r['userUname'] . "</h2>";
+    echo "<br><h3>Phone Number: " . $r['userPhone'] . "</h3>";
+    echo "<br><h3>Email: " . $r['userEmail'] . "</h3>";
+    echo "<br><h3>Gender: " . $r['userGender'] . "</h3>";
+    echo "<br><h3>Birthdate: " . $r['userBirthdate'] . "</h3>";
+    echo "<br><h3>Address: " . $r['userAddress'] . "</h3>";
 
     //construct and run query to display timetable
-    $q="select * from class";
-    $res=mysqli_query($con,$q);
+    $q = "select * from class";
+    $res = mysqli_query($con, $q);
 
     echo "<table> <caption>Let Us Score! Tuition Timetable</caption>";
     echo "
@@ -49,11 +49,10 @@ if(isset($_SESSION['userName']) && $_SESSION['ulevel']==2) {
             <td colspan='2'>Biology</td>
         </tr>";
     echo "</table>";
-    
+
     //clear results and close the connection
     mysqli_free_result($res);
     mysqli_close($con);
-}
-else {
+} else {
     header("Location: login.html");
 }

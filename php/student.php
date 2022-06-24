@@ -34,10 +34,11 @@
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
         // Construct and run query to list user details
-        $q = "select userUname, userPhone, userEmail, userGender, userBirthdate, userAddress from user where userID=" . $_SESSION['userID'];
+        $q = "select userUname, userName, userPhone, userEmail, userGender, userBirthdate, userAddress from user where userID=" . $_SESSION['userID'];
         $result = mysqli_query($con, $q);
         $r = mysqli_fetch_assoc($result);
         echo "<br><h2>Welcome " . $r['userUname'] . "</h2>";
+        echo "<br><h3>Name: " . $r['userName'] . "</h3>";
         echo "<br><h3>Phone Number: " . $r['userPhone'] . "</h3>";
         echo "<br><h3>Email: " . $r['userEmail'] . "</h3>";
         echo "<br><h3>Gender: " . $r['userGender'] . "</h3>";
@@ -46,11 +47,11 @@
 
         // Construct and run query to display timetable
 
-        $q = "SELECT userID, userUname, classSubject, classLink, classDay, classTime, classFee, totalStudent FROM user u, class c, register r WHERE u.userID=r.stuID AND r.classID=c.classID AND userID=" . $_SESSION['userID'] . " ";
+        $q = "SELECT userID, userName, userUname, classSubject, classLink, classDay, classTime, classFee, totalStudent FROM user u, class c, register r WHERE u.userID=r.stuID AND r.classID=c.classID AND userID=" . $_SESSION['userID'] . " ";
         $result = mysqli_query($con, $q);
         $r = mysqli_fetch_assoc($result);
 
-        echo "<table id='timetable'> <caption>" . $r['userUname'] . "'s Tuition Timetable</caption>"; // Table title
+        echo "<table id='timetable'> <caption>" . $r['userName'] . "'s Tuition Timetable</caption>"; // Table title
         echo "
         <tr>
             <th>Time</th>

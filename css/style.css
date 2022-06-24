@@ -778,59 +778,9 @@ section {
     width: 100%;
 }
 
-@media (max-width: 1200px) {
-    html {
-        font-size: 55%;
-    }
-    section {
-        padding: 3rem 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    #menu-btn {
-        display: inline-block;
-    }
-    .header {
-        padding: 2rem;
-    }
-    .header .navbar {
-        position: absolute;
-        top: 99%;
-        left: 0;
-        right: 0;
-        background: #183765;
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-    }
-    .header .navbar.active {
-        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-    .header .navbar ul li {
-        width: 100%;
-    }
-    .header .navbar ul li ul {
-        width: 100%;
-        position: relative;
-    }
-    .about .content h3 {
-        font-size: 3rem;
-    }
-    .main-video video {
-        width: 95%;
-        border-width: 0.2rem;
-    }
-}
-
-@media (max-width: 450px) {
-    html {
-        font-size: 50%;
-    }
-}
 /*# sourceMappingURL=style.css.map */
 
-/* Registration  */
+/* Registration, Login */
 #register {
     min-height: 100vh;
     display: flex;
@@ -842,14 +792,15 @@ section {
 .logoImage img {
     position: fixed;
     top: 5%;
-    left: 43%;
-    height: 25rem;
+    left: 44%;
+    height: 24rem;
     border-style: solid;
     border-color: #183765;
     border-width: 3px;
     border-radius: 130px;
     z-index: 1; /* Image to front */
 }
+
 .container {
     position: relative;
     max-width: 900px;
@@ -1015,6 +966,17 @@ form .buttons button {
     color: #333;
 }
 
+/* Responsive Design */
+@media (max-width: 450px) {
+    html {
+        font-size: 50%;
+    }
+}
+@media (max-width: 550px) {
+    form .fields .input-field {
+        width: 100%;
+    }
+}
 @media (max-width: 750px) {
     .container form {
         overflow-y: scroll;
@@ -1025,10 +987,60 @@ form .buttons button {
     form .fields .input-field {
         width: calc(100% / 2 - 15px);
     }
+    .logoImage img {
+        display: none;
+    }
 }
-
-@media (max-width: 550px) {
-    form .fields .input-field {
+@media (max-width: 768px) {
+    #menu-btn {
+        display: inline-block;
+    }
+    .header {
+        padding: 2rem;
+    }
+    .header .navbar {
+        position: absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background: #183765;
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+    .header .navbar.active {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .header .navbar ul li {
         width: 100%;
+    }
+    .header .navbar ul li ul {
+        width: 100%;
+        position: relative;
+    }
+    .about .content h3 {
+        font-size: 3rem;
+    }
+    .main-video video {
+        width: 95%;
+        border-width: 0.2rem;
+    }
+}
+@media (max-width: 900px) {
+    .logoImage img {
+        top: 5%;
+        left: 40%;
+        height: 20rem;
+    }
+}
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+    section {
+        padding: 3rem 2rem;
+    }
+    .logoImage img {
+        display: none;
     }
 }

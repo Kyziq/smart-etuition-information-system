@@ -37,17 +37,17 @@
         $q = "select userUname, userName, userPhone, userEmail, userGender, userBirthdate, userAddress from user where userID=" . $_SESSION['userID'];
         $result = mysqli_query($con, $q);
         $r = mysqli_fetch_assoc($result);
-        echo "<br><h2>Welcome " . $r['userUname'] . "</h2>";
-        echo "<br><h3>Name: " . $r['userName'] . "</h3>";
-        echo "<br><h3>Phone Number: " . $r['userPhone'] . "</h3>";
-        echo "<br><h3>Email: " . $r['userEmail'] . "</h3>";
-        echo "<br><h3>Gender: " . $r['userGender'] . "</h3>";
-        echo "<br><h3>Birthdate: " . $r['userBirthdate'] . "</h3>";
-        echo "<br><h3>Address: " . $r['userAddress'] . "</h3>";
+        echo "<br><h2>Welcome " . $r['userUname'] . "</h2><a href=logout.php>Logout</a>";
+        echo "<h3>Name: " . $r['userName'] . "</h3>";
+        echo "<h3>Phone Number: " . $r['userPhone'] . "</h3>";
+        echo "<h3>Email: " . $r['userEmail'] . "</h3>";
+        echo "<h3>Gender: " . $r['userGender'] . "</h3>";
+        echo "<h3>Birthdate: " . $r['userBirthdate'] . "</h3>";
+        echo "<h3>Address: " . $r['userAddress'] . "</h3>";
 
         // Construct and run query to display timetable
 
-        $q = "SELECT userID, userName, userUname, classSubject, classLink, classDay, classTime, classFee, totalStudent FROM user u, class c, register r WHERE u.userID=r.stuID AND r.classID=c.classID AND userID=" . $_SESSION['userID'] . " ";
+        $q = "SELECT userID, userName, userUname, classSubject, classLink, classDay, classTime, classFee, totalStudent FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID";
         $result = mysqli_query($con, $q);
         $r = mysqli_fetch_assoc($result);
 
@@ -157,6 +157,7 @@
     } else {
         header("Location: login.html");
     }
+    echo "<a href=add_feedback.php><h3>Submit feedback</h3></a>";
     ?>
 </body>
 

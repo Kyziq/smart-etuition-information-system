@@ -3,7 +3,7 @@
 
 session_start();
 // Submit button name below
-if (isset($_POST['login'])) {
+if (isset($_POST['loginButton'])) {
 
     // Get all the posted items
     $userUname = $_POST['userUname'];
@@ -22,11 +22,11 @@ if (isset($_POST['login'])) {
     }
 
     $r = mysqli_fetch_assoc($result);
-    $_SESSION['uid'] = $r['id'];
-    $_SESSION['ulevel'] = $r['level'];
+    $_SESSION['userID'] = $r['userID'];
+    $_SESSION['userLevel'] = $r['userLevel'];
 
     // Check if user is admin - send to admin page
-    if ($r['level'] == 1) {
+    if ($r['userLevel'] == 1) {
 
         // clear results and close the connection
         mysqli_free_result($result);
@@ -34,21 +34,21 @@ if (isset($_POST['login'])) {
         header("Location: admin.php");
     }
 
-    // Check if user is tutor - send to admin page
-    if ($r['level'] == 2) {
+    // Check if user is tutor - send to tutor page
+    else if ($r['userLevel'] == 2) {
         // Clear results and close the connection
         mysqli_free_result($result);
         mysqli_close($con);
         header("Location: tutor.php");
     }
 
-    // Check if user is student - send to admin page
-    if ($r['level'] == 3) {
+    // Check if user is student - send to student page
+    else if ($r['userLevel'] == 3) {
         // Clear results and close the connection
         mysqli_free_result($result);
         mysqli_close($con);
         header("Location: student.php");
+    } else {
+        header("Location: login.html");
     }
-} else {
-    header("Location: login.html");
 }

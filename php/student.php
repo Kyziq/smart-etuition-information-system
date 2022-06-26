@@ -41,114 +41,126 @@
         echo "<h3>Name: " . $r['userName'] . "</h3>";
         echo "<h3>Phone Number: " . $r['userPhone'] . "</h3>";
         echo "<h3>Email: " . $r['userEmail'] . "</h3>";
-        echo "<h3>Gender: " . $r['userGender'] . "</h3>";
+
+        if ($r['userGender'] == 1) // 1 == Male, 2 == Female
+            $gender = "Male";
+        else if ($r['userGender'] == 2)
+            $gender = "Female";
+        echo "<h3>Gender: " . $gender . "</h3>";
+
         echo "<h3>Birthdate: " . $r['userBirthdate'] . "</h3>";
         echo "<h3>Address: " . $r['userAddress'] . "</h3>";
 
         // Construct and run query to display timetable
 
-        $q = "SELECT userID, userName, userUname, classSubject, classLink, classDay, classTime, classFee, totalStudent FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID";
+        $q = "SELECT userID, userName, userUname, classSubject, classDay, classTime FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID";
         $result = mysqli_query($con, $q);
-        $r = mysqli_fetch_assoc($result);
 
         echo "<table id='timetable'> <caption>" . $r['userName'] . "'s Tuition Timetable</caption>"; // Table title
-        echo "
-        <tr>
-            <th>Time</th>
-            <th>Saturday</th>
-            <th>Sunday</th>
-        </tr>
 
-        
-        <tr>
-        <td>8:00 a.m. - 9:00 a.m.</td>
-            <td colspan='1'>";
-        if ($r['classTime'] == "08:00:00" && $r['classDay'] == "Saturday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
 
         echo "
+            <tr>
+                <th>Time</th>
+                <th>Subject</th>
+                <th>Day</th>
+            </tr>";
+        while ($r = mysqli_fetch_assoc($result)) {
+            echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
+        }
+        /*
+        while ($r = mysqli_fetch_assoc($result)) {
+            echo "         
+            <tr>
+            <td>8:00 a.m. - 9:00 a.m.</td>
             <td colspan='1'>";
-        if ($r['classTime'] == "08:00:00" && $r['classDay'] == "Sunday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
-        echo "</td>
-        </tr>
 
-
-        <tr>
+            if ($r['classTime'] == "08:00:00" && $r['classDay'] == "Saturday") {
+                echo $r['classSubject'];
+            } else
+                echo "No class";
+            echo "</td>";
+            echo "<td>";
+            if ($r['classTime'] == "08:00:00" && $r['classDay'] == "Sunday") {
+                echo $r['classSubject'];
+            } else {
+                echo "No class";
+            }
+            echo "</td>
+            </tr>
+    
+    
+            <tr>
             <td>9:00 a.m. - 10:00 a.m.</td>
-            <td colspan='1'>";
-        if ($r['classTime'] == "09:00:00" && $r['classDay'] == "Saturday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
-
-        echo "
-            <td colspan='1'>";
-        if ($r['classTime'] == "09:00:00" && $r['classDay'] == "Sunday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
-        echo "</td>
-        </tr>
-
-        
-        <tr>
+                <td colspan='1'>";
+            if ($r['classTime'] == "09:00:00" && $r['classDay'] == "Saturday") {
+                echo $r['classSubject'];
+            } else
+                echo "No class";
+            echo "</td>";
+            echo "<td>";
+            if ($r['classTime'] == "09:00:00" && $r['classDay'] == "Sunday") {
+                echo $r['classSubject'];
+            } else {
+                echo "No class";
+            }
+            echo "</td>
+            </tr>
+    
+            
+            <tr>
             <td>1:00 p.m. - 2:00 p.m.</td>
-            <td colspan='1'>";
-        if ($r['classTime'] == "13:00:00" && $r['classDay'] == "Saturday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
-
-        echo "
-            <td colspan='1'>";
-        if ($r['classTime'] == "13:00:00" && $r['classDay'] == "Sunday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
-        echo "</td>
-        </tr>
-
-
-        <tr>
+                <td colspan='1'>";
+            if ($r['classTime'] == "13:00:00" && $r['classDay'] == "Saturday") {
+                echo $r['classSubject'];
+            } else
+                echo "No class";
+            echo "</td>";
+            echo "<td>";
+            if ($r['classTime'] == "13:00:00" && $r['classDay'] == "Sunday") {
+                echo $r['classSubject'];
+            } else {
+                echo "No class";
+            }
+            echo "</td>
+            </tr>
+    
+    
+            <tr>
             <td>2:00 p.m. - 3:00 p.m.</td>
-            <td colspan='1'>";
-        if ($r['classTime'] == "14:00:00" && $r['classDay'] == "Saturday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
-
-        echo "
-            <td colspan='1'>";
-        if ($r['classTime'] == "14:00:00" && $r['classDay'] == "Sunday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
-        echo "</td>
-        </tr>
-
-
-        <tr>
+                <td colspan='1'>";
+            if ($r['classTime'] == "14:00:00" && $r['classDay'] == "Saturday") {
+                echo $r['classSubject'];
+            } else
+                echo "No class";
+            echo "</td>";
+            echo "<td>";
+            if ($r['classTime'] == "14:00:00" && $r['classDay'] == "Sunday") {
+                echo $r['classSubject'];
+            } else {
+                echo "No class";
+            }
+            echo "</td>
+            </tr>
+    
+    
+            <tr>
             <td>3:00 p.m. - 4:00 p.m.</td>
-            <td colspan='1'>";
-        if ($r['classTime'] == "15:00:00" && $r['classDay'] == "Saturday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
-
-        echo "
-            <td colspan='1'>";
-        if ($r['classTime'] == "15:00:00" && $r['classDay'] == "Sunday" && $r['classSubject'] != NULL) {
-            echo $r['classSubject'];
-        } else
-            echo "No class";
-        echo "</td>
-        </tr>";
-
+                <td colspan='1'>";
+            if ($r['classTime'] == "15:00:00" && $r['classDay'] == "Saturday") {
+                echo $r['classSubject'];
+            } else
+                echo "No class";
+            echo "</td>";
+            echo "<td>";
+            if ($r['classTime'] == "15:00:00" && $r['classDay'] == "Sunday") {
+                echo $r['classSubject'];
+            } else {
+                echo "No class";
+            }
+            echo "</td>
+            </tr>";
+        }*/
         echo "</table>";
 
         //clear results and close the connection

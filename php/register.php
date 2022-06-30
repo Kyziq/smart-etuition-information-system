@@ -31,7 +31,7 @@ if (isset($_POST['registerButton'])) {
     echo
     "
     <script>
-        alert('New user created.');
+        alert('Registration successful.');
         window.location.href='login.html';
     </script>
     ";

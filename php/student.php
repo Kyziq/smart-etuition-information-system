@@ -208,7 +208,7 @@
         //clear results and close the connection
         mysqli_free_result($result);
     } else {
-        header("Location: login.html");
+        header("Location: login.php");
     }
 
     // Construct and run query to check for existing subject registration

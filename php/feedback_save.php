@@ -29,5 +29,5 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
         header("Location: student.php");
     }
 } else {
-    header("Location: login.html");
+    header("Location: login.php");
 }

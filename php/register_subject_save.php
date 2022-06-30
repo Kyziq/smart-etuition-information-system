@@ -71,7 +71,7 @@
             header("Location: student.php");
         }
     } else {
-        header("Location: login.html");
+        header("Location: login.php");
     }
     ?>
 </body>

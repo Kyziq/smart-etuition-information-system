@@ -32,7 +32,7 @@ if (isset($_POST['registerButton'])) {
     "
     <script>
         alert('Registration successful.');
-        window.location.href='login.html';
+        window.location.href='login.php';
     </script>
     ";
 

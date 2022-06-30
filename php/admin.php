@@ -7,20 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <style>
-        #timetable,
-        #timetable th,
-        #timetable td {
-            border: 1.5px solid black;
-            border-collapse: collapse;
-        }
-
-        #timetable th {
-            background-color: lightblue;
-        }
-
-        #timetable td {
-            text-align: center;
-        }
     </style>
 </head>
 
@@ -53,7 +39,7 @@
 
         mysqli_free_result($result);
     } else {
-        header("Location: login.html");
+        header("Location: login.php");
     }
 
     echo "<a href=feedback_add.php><h3>Verify Subject Registration</h3></a>";

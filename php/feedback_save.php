@@ -2,15 +2,15 @@
 session_start();
 if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
     if (isset($_POST['submitFbButton'])) {
-        //get all the posted items
+        // Get all the posted items
         $fbTitle = $_POST['fbTitle'];
         $fbComment = $_POST['fbComment'];
         $userID = $_SESSION['userID'];
 
-        // Connect to db
+        // Connect to database 
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
-        //construct and run query to store new van  
+        // Construct and run query to store new feedback
         $q = "INSERT INTO feedback(fbTitle, fbComment, adminID, stuID) VALUES ('$fbTitle','$fbComment', NULL, '$userID')";
         $res = mysqli_query($con, $q);
 
@@ -23,7 +23,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
         ";
 
         // Clear results and close the connection
-        // mysqli_free_result($res);
+        mysqli_free_result($res);
         mysqli_close($con);
     } else {
         header("Location: student.php");

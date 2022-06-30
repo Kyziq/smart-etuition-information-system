@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subject Registration Saving </title>
+    <title>Subject Registration Saving</title>
 </head>
 
 <body>
@@ -16,13 +16,32 @@
         // Check if submit button is clicked
         if (isset($_POST['subjectButton'])) {
             // Must choose at least one subject
-            if (!empty($_GET["Mathematics"]) || !empty($_GET["AddMaths"]) || !empty($_GET["Physics"]) || !empty($_GET["Chemistry"]) || !empty($_GET["Biology"])) {
-                // Upload image
+            if ((!empty($_POST["Mathematics"])) || (!empty($_POST["AddMaths"])) || (!empty($_POST["Physics"])) || (!empty($_POST["Chemistry"])) || (!empty($_POST["Biology"]))) {
+                // Connect to database
+                $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+
+                // Query
+                $query = "SELECT * FROM user, class WHERE userID=" . $_SESSION['userID'];
+                $res = mysqli_query($con, $query);
+                $r = mysqli_fetch_assoc($res);
+
+                $stuID = $r['userID'];
+                $stuUname = $r['userUname'];
+                $registerApproval = 3; // 1- approved 2- declined  3- pending
+                date_default_timezone_set('Asia/Singapore');
+                $date = date('d-m-y');
+
+                // Upload image (where file name is username-date.extension)
+                $extension  = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
                 $target_dir = "../user/paymentProof/";
-                $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                $file_name = $stuUname . "-" . $date . "." . $extension;
+                $target_file = $target_dir . $file_name;
+                $source = $_FILES["fileToUpload"]["tmp_name"];
+
                 $uploadOk = 1;
-                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                $check = getImageSize($_FILES["fileToUpload"]["tmp_name"]);
+                $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION)); // file type to lowercase
+                $check = getImageSize($source);
+
                 if ($check !== false) {
                     echo "File is an image - " . $check["mime"] . ".";
                     $uploadOk = 1;
@@ -51,7 +70,7 @@
                     echo "Sorry, your file was not uploaded.";
                     // if everything is ok, try to upload file
                 } else {
-                    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                    if (move_uploaded_file($source, $target_file)) {
                         echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
                     } else {
                         echo "Sorry, there was an error uploading your file.";
@@ -70,15 +89,6 @@
                     $chemistry = $_POST['Chemistry'];
                 if (isset($_POST['Biology']))
                     $biology = $_POST['Biology'];
-
-                // Connect to database
-                $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
-
-                $query = "SELECT * FROM user, class WHERE userID=" . $_SESSION['userID'];
-                $result = mysqli_query($con, $query);
-                $r = mysqli_fetch_assoc($result);
-                $stuID = $r['userID'];
-                $registerApproval = 3; // 1- approved 2- declined  3- pending
 
                 // Insert into database for each subject
                 if (isset($_POST['Mathematics'])) {
@@ -112,7 +122,7 @@
                 ";
 
                 // Clear results and close the connection
-                // mysqli_free_result($res);
+                mysqli_free_result($res);
                 mysqli_close($con);
             } else {
                 header("Location: register_subject.php");

@@ -223,7 +223,8 @@
             mysqli_free_result($result);
         }
     }
-    echo "<a href=feedback_add.php><h3>Submit Feedback</h3></a>";
+    echo "<a href=feedback.php><h3>Submit Feedback</h3></a>";
+
     mysqli_close($con);
     ?>
 </body>

@@ -73,7 +73,7 @@
                     <td> <input type="radio" name="Biology" value="10"> </td>
                 </tr>
             </table>
-            Payment Proof (Name the file as "YourName_Date"): 
+            Payment Proof: 
             <input type="file" name="fileToUpload" id="fileToUpload" required>
             <br><br>
             <button type="submit" name="subjectButton" value="Submit">Submit</button>

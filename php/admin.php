@@ -21,8 +21,8 @@
 
         // Construct and run query to list admin details
         $q = "select userUname, userName, userPhone, userEmail, userGender, userBirthdate, userAddress from user where userID=" . $_SESSION['userID'];
-        $result = mysqli_query($con, $q);
-        $r = mysqli_fetch_assoc($result);
+        $res = mysqli_query($con, $q);
+        $r = mysqli_fetch_assoc($res);
         echo "<br><h2>Welcome admin " . $r['userUname'] . "</h2><a href=logout.php>Logout</a>";
         echo "<h3>Name: " . $r['userName'] . "</h3>";
         echo "<h3>Phone Number: " . $r['userPhone'] . "</h3>";
@@ -37,13 +37,15 @@
         echo "<h3>Birthdate: " . $r['userBirthdate'] . "</h3>";
         echo "<h3>Address: " . $r['userAddress'] . "</h3>";
 
-        mysqli_free_result($result);
+        echo "<a href=verify_subject.php><h3>Verify Subject Registration</h3></a>";
+        echo "<a href=feedback.php><h3>View Feedback</h3></a>";
+
+        // Clear results and close the connection
+        mysqli_free_result($res);
+        mysqli_close($con);
     } else {
         header("Location: login.php");
     }
-
-    echo "<a href=verify_subject.php><h3>Verify Subject Registration</h3></a>";
-    mysqli_close($con);
     ?>
 </body>
 

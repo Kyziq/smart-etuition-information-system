@@ -20,6 +20,8 @@
         $result = mysqli_query($con, $q);
         $r = mysqli_fetch_assoc($result);
 
+        echo "<br><h2>Welcome to Subject Registration Page, " . $r['userName'] . "</h2><a href=student.php>Go back to student dashboard</a><br><br>";
+
         echo '<form method="post" action="feedback_save.php">';
         echo "<br>Name: " . $r['userName']; // Table title
         date_default_timezone_set('Asia/Singapore');

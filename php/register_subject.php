@@ -32,14 +32,14 @@
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
         // Construct and run query to list user details
-        $q = "SELECT userUname FROM user WHERE userID=" . $_SESSION['userID'];
+        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
         $result = mysqli_query($con, $q);
         $r = mysqli_fetch_assoc($result);
-        echo "<br><h2>Welcome to Subject Registration Page, " . $r['userUname'] . "</h2><a href=student.php>Go back to student dashboard</a><br><br>";
+        echo "<br><h2>Welcome to Subject Registration Page, " . $r['userName'] . "</h2><a href=student.php>Go back to student dashboard</a><br><br>";
 
         echo '
         <p>Select the course(s) from the list below for your SPM journey in Let Us Score. You may either take only one, some, or include them all. It would cost RM50 for each individual class.</p>
-        <form id="subjectForm" method="post"  action="register_subject_save.php">
+        <form id="subjectForm" method="post"  action="register_subject_save.php" enctype="multipart/form-data">
             <table id="table1" style="width:30%;">
             <caption>Let Us Score! Tuition Timetable</caption>
                 <tr>
@@ -73,8 +73,11 @@
                     <td> <input type="radio" name="Biology" value="10"> </td>
                 </tr>
             </table>
-        <button type="submit" name="subjectButton" value="Submit">Submit</button>
-        <button type="reset">Reset</button>
+            Payment Proof (Name the file as "YourName_Date"): 
+            <input type="file" name="fileToUpload" id="fileToUpload" required>
+            <br><br>
+            <button type="submit" name="subjectButton" value="Submit">Submit</button>
+            <button type="reset">Reset</button>
         </form>
         ';
     }

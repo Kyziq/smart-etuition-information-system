@@ -42,7 +42,7 @@
         header("Location: login.php");
     }
 
-    echo "<a href=feedback_add.php><h3>Verify Subject Registration</h3></a>";
+    echo "<a href=verify_subject.php><h3>Verify Subject Registration</h3></a>";
     mysqli_close($con);
     ?>
 </body>

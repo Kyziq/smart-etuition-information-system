@@ -5,20 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subject Verification</title>
+    <title>Verification Page</title>
     <!-- Image beside title -->
     <link rel="icon" href="../images/icon.ico" />
     <!-- Font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <style>
         /* Style the Image Used to Trigger the Modal */
-        #myImg {
+        /* Style the Image Used to Trigger the Modal */
+        .img-thumbnail {
             border-radius: 5px;
             cursor: pointer;
             transition: 0.3s;
         }
 
-        #myImg:hover {
+        .img-thumbnail:hover {
             opacity: 0.7;
         }
 
@@ -115,14 +116,17 @@
     session_start();
     if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
 
+        // Connect to database
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+
+        // Construct and run query to display username
         $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
         $res = mysqli_query($con, $q);
         $r = mysqli_fetch_assoc($res);
-        echo "<br><h2>Welcome to Feedback Page, admin " . $r['userName'] . "</h2><a href=admin.php>Go back to admin dashboard</a><br><br>";
+        echo "<br><h2>Welcome to Students' Registration Verificiation Page, admin " . $r['userName'] . "</h2><a href=admin.php>Go back to admin dashboard</a><br><br>";
 
         // Construct and run query to list all pending subjects registration
-        $q = "SELECT * FROM user u, register r, class c WHERE u.userID=r.stuID AND r.classID=c.classID AND registerApproval=3";
+        $q = "SELECT * FROM user u, register r, class c WHERE u.userID=r.stuID AND r.classID=c.classID AND registerApproval=3 ORDER BY r.stuID ASC";
         $res = mysqli_query($con, $q);
 
         // Pending
@@ -154,8 +158,8 @@
                         <td>" . $r['registerDate'] . "</td>
                         <td> 
                             <!-- Trigger the Modal -->
-                            <img id='myImg' src='$image' alt='Proof of Payment' style='width:100%;max-width:100px'>
-
+                            <img id='myImg' src='$image' class='img-thumbnail' alt='Proof of Payment' style='width:100%;max-width:100px; max-height:100px;'>
+            
                             <!-- The Modal -->
                             <div id='myModal' class='modal'>
                                 <!-- The Close Button -->
@@ -188,17 +192,20 @@
     }
     ?>
     <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+        // Get the modal (picture popup)
+        var modal = document.getElementById('myModal');
 
-        // Get the image and insert it inside the modal - use its "alt" text as a caption
-        var img = document.getElementById("myImg");
+        // Get the images and bind an onclick event on each to insert it inside the modal
+        // use its "alt" text as a caption
+        var images = document.querySelectorAll(".img-thumbnail");
         var modalImg = document.getElementById("img01");
         var captionText = document.getElementById("caption");
-        img.onclick = function() {
-            modal.style.display = "block";
-            modalImg.src = this.src;
-            captionText.innerHTML = this.alt;
+        for (let i = 0; i < images.length; i++) {
+            images[i].onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
         }
 
         // Get the <span> element that closes the modal

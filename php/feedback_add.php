@@ -25,7 +25,7 @@
         echo '<form method="post" action="feedback_save.php">';
         echo "<br>Name: " . $r['userName']; // Table title
         date_default_timezone_set('Asia/Singapore');
-        $date = date('d-m-y h:i:s');
+        $date = date('d-m-y h:i:s A');
         echo "<br>Date: " . $date;
         echo '<br>Title: <input type="text" placeholder="Enter your title" name="fbTitle"';
         echo '<br><br>Comment: <br><textarea placeholder="Enter your comment" rows="8" cols="80" name="fbComment"></textarea>';

@@ -45,7 +45,7 @@
                         if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
                             echo
                             '
-                            <p style="color: #ed2146"><b>Wrong Password!</b></p>
+                            <p style="color: #ed2146; font-size: 15px;"><b>Wrong Password!</b></p>
                             ';
                         }
                         ?>

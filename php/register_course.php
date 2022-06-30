@@ -37,10 +37,10 @@
         $r = mysqli_fetch_assoc($result);
         echo "<br><h2>Welcome to Course Registration Page, " . $r['userUname'] . "</h2><a href=student.php>Go back to student dashboard</a><br><br>";
 
-        echo "
+        echo '
         <p>Choose your desired classes below. For each class/subject would cost RM50</p>
-        <form id='courseForm' method='post'>
-            <table id='table1' style width=30%>
+        <form id="courseForm" method="post"  action="save_register_course.php">
+            <table id="table1" style="width:30%;">
             <caption>Let Us Score! Tuition Timetable</caption>
                 <tr>
                     <th>Time</th>
@@ -49,33 +49,33 @@
                 </tr>
                 <tr>
                     <td>8:00 a.m. - 9:00 a.m. (Mathematics)</td>
-                    <td> <input type='radio' name='Mathematics' id='MathsSaturday'> </td>
-                    <td> <input type='radio' name='Mathematics' id='MathsSunday'> </td>
+                    <td> <input type="radio" name="Mathematics" value="1"> </td>
+                    <td> <input type="radio" name="Mathematics" value="2"> </td>
                 </tr>
                 <tr>
                     <td>9:00 a.m. - 10:00 a.m. (Additional Mathematics)</td>
-                    <td> <input type='radio' name='AddMaths' id='AddMathsSaturday'> </td>
-                    <td> <input type='radio' name='AddMaths' id='AddMathsSunday'> </td>
+                    <td> <input type="radio" name="AddMaths" value="3"> </td>
+                    <td> <input type="radio" name="AddMaths" value="4"> </td>
                 </tr>
                 <tr>
                     <td>1:00 p.m. - 2:00 p.m. (Physics)</td>
-                    <td> <input type='radio' name='Physics' id='PhysicsSaturday'> </td>
-                    <td> <input type='radio' name='Physics' id='PhysicsSunday'> </td>
+                    <td> <input type="radio" name="Physics" value="5"> </td>
+                    <td> <input type="radio" name="Physics" value="6"> </td>
                 </tr>
                 <tr>
                     <td>2:00 p.m. - 3:00 p.m. (Chemistry)</td>
-                    <td> <input type='radio' name='Chemistry' id='ChemistrySaturday'> </td>
-                    <td> <input type='radio' name='Chemistry' id='ChemistrySunday'> </td>
+                    <td> <input type="radio" name="Chemistry" value="7"> </td>
+                    <td> <input type="radio" name="Chemistry" value="8"> </td>
                 </tr>
                 <tr>
                     <td>3:00 p.m. - 4:00 p.m. (Biology)</td>
-                    <td> <input type='radio' name='Biology' id='BiologySaturday'> </td>
-                    <td> <input type='radio' name='Biology' id='BiologySunday'> </td>
+                    <td> <input type="radio" name="Biology" value="9"> </td>
+                    <td> <input type="radio" name="Biology" value="10"> </td>
                 </tr>
             </table>
-            <button type='submit'>Submit</button>
+        <button type="submit" name="courseButton" value="Submit">Submit</button>
         </form>
-        ";
+        ';
     }
     ?>
 </body>

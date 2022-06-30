@@ -20,7 +20,7 @@
         $result = mysqli_query($con, $q);
         $r = mysqli_fetch_assoc($result);
 
-        echo '<form method="post" action="save_feedback.php">';
+        echo '<form method="post" action="feedback_save.php">';
         echo "<br>Name: " . $r['userName']; // Table title
         date_default_timezone_set('Asia/Singapore');
         $date = date('d-m-y h:i:s');

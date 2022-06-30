@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Subject Registration Saved</title>
 </head>
 
 <body>
     <?php
     session_start();
     if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
-        if (isset($_POST['courseButton'])) {
+        if (isset($_POST['subjectButton'])) {
             // Get all the posted items
             if (isset($_POST['Mathematics']))
                 $maths = $_POST['Mathematics'];
@@ -25,8 +25,7 @@
             if (isset($_POST['Biology']))
                 $biology = $_POST['Biology'];
 
-
-            // Connect to db
+            // Connect to database
             $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
             $query = "SELECT * FROM user, class WHERE userID=" . $_SESSION['userID'];
@@ -35,14 +34,6 @@
             $stuID = $r['userID'];
             $registerApproval = 3; // 1- approved 2- declined  3- pending
 
-            /*
-            //construct and run query to store course registration
-            $result = mysqli_query($con, $q);
-
-            while ($r = mysqli_fetch_assoc($result)) {
-                $q = "INSERT INTO feedback(fbTitle, fbComment, adminID, stuID) VALUES ('$fbTitle','$fbComment', NULL, '$userID')";
-            }
-            */
             if (isset($_POST['Mathematics'])) {
                 $q = "INSERT INTO register(classID, stuID, registerApproval) VALUES ('$maths', '$stuID', '$registerApproval')";
                 mysqli_query($con, $q);

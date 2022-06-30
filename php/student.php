@@ -218,12 +218,12 @@
 
     if ($result) {
         if ($num <= 0) {
-            // Will display course registration option if student does not register yet
-            echo "<a href=register_course.php><h3>Course Registration</h3></a>";
+            // Will display subject registration option if student does not register yet
+            echo "<a href=register_subject.php><h3>Subject Registration</h3></a>";
             mysqli_free_result($result);
         }
     }
-    echo "<a href=add_feedback.php><h3>Submit Feedback</h3></a>";
+    echo "<a href=feedback_add.php><h3>Submit Feedback</h3></a>";
     mysqli_close($con);
     ?>
 </body>

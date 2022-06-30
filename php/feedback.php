@@ -36,8 +36,8 @@
         //construct and run query to list user's feedbacks
         $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
         $res = mysqli_query($con, $q);
-        echo "<br><h3>My Feedback:</h3>\n";
-        echo "<table border=1>\n";
+        echo "<br><h3>My Feedback:</h3>";
+        echo "<table border='1' style='text-align:center;'>";
         echo    "<tr>
                     <th>ID</th>
                     <th>Title</th>
@@ -64,16 +64,33 @@
         // Construct and run query to list all students' feedbacks
         $q = "SELECT * FROM feedback";
         $res = mysqli_query($con, $q);
-        echo "<br><h3>Students' Feedback:</h3>\n";
-        echo "<table border=1>\n";
+        echo "<br><h3>Students' Feedback(s):</h3>";
+        echo "<table border='1' style='text-align:center;'>";
         echo    "<tr>
                     <th>ID</th>
                     <th>Title</th>
                     <th>Comment</th>
                     <th>Feedback Date</th>
+                    <th>Action</th>
                 </tr>\n";
         while ($r = mysqli_fetch_assoc($res)) {
-            echo "<tr><td>" . $r['fbID'] . "</td><td>" . $r['fbTitle'] . "</td><td>" . $r['fbComment'] . "</td><td>" . $r['fbDate'] . "</td></tr>\n";
+            echo
+            "
+            <tr>
+                <td>" . $r['fbID'] . "</td>
+                <td>" . $r['fbTitle'] . "</td>
+                <td>" . $r['fbComment'] . "</td>
+                <td>" . $r['fbDate'] . "</td>
+                <td>
+                    <a href='#'>
+                    <img
+                        src='../images/icons/trash-can-solid.svg'
+                        height='25px'
+                    />
+                    </a>
+                </td>
+            </tr>
+            ";
         }
         echo "</table>";
 

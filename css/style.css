@@ -169,7 +169,7 @@ section {
 }
 
 .home .content img {
-    width: 250;
+    width: 35%;
     float: right;
 }
 
@@ -895,9 +895,9 @@ form .fields .input-fieldLong {
     margin: 4px 0;
 }
 
-.input-field,
+.input-field label,
 .input-fieldLong label {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     color: #2e2e2e;
 }

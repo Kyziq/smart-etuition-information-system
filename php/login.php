@@ -1,54 +1,76 @@
-<?php
-// After click login button 
+<!DOCTYPE html>
+<html lang="en">
 
-session_start();
-// Submit button name below
-if (isset($_POST['loginButton'])) {
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart E-Tuition Login</title>
+</head>
 
-    // Get all the posted items
-    $userUname = $_POST['userUname'];
-    $userPassw = $_POST['userPassw'];
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
 
-    // Connect to database
-    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Smart E-Tuition Register</title>
+        <!-- CSS -->
+        <link rel="stylesheet" href="../css/style.css" />
+        <!-- Iconscout CSS -->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    </head>
 
-    // Construct and run query to check for correct credentials
-    $query = "select * from user where userUname='$userUname' and userPassw='$userPassw'";
-    $result = mysqli_query($con, $query);
-    $rows = mysqli_num_rows($result);
-    if ($rows != 1) {
-        mysqli_close($con);
-        header("Location: login.html");
-    }
+    <body id="register">
+        <div class="logoImage">
+            <a href="../home.html">
+                <img src="../images/logocircle.png" alt="Logo Let Us Score!" />
+            </a>
+        </div>
+        <div class="container">
+            <header>Login Page</header>
+            <form name="loginForm" method="post" action="login_success.php">
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Username</label>
+                        <input type="text" placeholder="Enter your username" name="userUname" required />
+                    </div>
+                    <div class="input-field">
+                        <label>Password</label>
+                        <input type="password" placeholder="Enter your password" name="userPassw" required />
+                        <?php
+                        // Check for wrong password
+                        if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
+                            echo
+                            '
+                            <p style="color: #ed2146"><b>Wrong Password!</b></p>
+                            ';
+                        }
+                        ?>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button type="submit" name="loginButton" value="Submit">
+                        <span class="btnText"> Login </span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </form>
+            <span class="text">Not a member?
+                <a href="register.html">Register Now</a>
+            </span>
+        </div>
 
-    $r = mysqli_fetch_assoc($result);
-    $_SESSION['userID'] = $r['userID'];
-    $_SESSION['userLevel'] = $r['userLevel'];
+        <script src="../js/script.js"></script>
+    </body>
 
-    // Check if user is admin - send to admin page
-    if ($r['userLevel'] == 1) {
+    </html>
 
-        // clear results and close the connection
-        mysqli_free_result($result);
-        mysqli_close($con);
-        header("Location: admin.php");
-    }
+    <?php
 
-    // Check if user is tutor - send to tutor page
-    else if ($r['userLevel'] == 2) {
-        // Clear results and close the connection
-        mysqli_free_result($result);
-        mysqli_close($con);
-        header("Location: tutor.php");
-    }
+    ?>
+</body>
 
-    // Check if user is student - send to student page
-    else if ($r['userLevel'] == 3) {
-        // Clear results and close the connection
-        mysqli_free_result($result);
-        mysqli_close($con);
-        header("Location: student.php");
-    } else {
-        header("Location: login.html");
-    }
-}
+</html>

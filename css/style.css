@@ -805,7 +805,7 @@ section {
 .logoImage img {
     position: fixed;
     top: 5%;
-    left: 44%;
+    left: 43%;
     height: 24rem;
     border-style: solid;
     border-color: #183765;
@@ -950,7 +950,7 @@ select {
     outline: none;
     color: #fff;
     border-radius: 5px;
-    margin: 25px 0;
+    margin: 50px 0;
     background-color: #183765;
     transition: all 0.3s linear;
     cursor: pointer;
@@ -984,10 +984,18 @@ form .buttons button {
     html {
         font-size: 50%;
     }
+    .logoImage img {
+        display: none;
+    }
 }
 @media (max-width: 550px) {
     form .fields .input-field {
         width: 100%;
+    }
+    .logoImage img {
+        top: 5%;
+        left: 40%;
+        height: 36rem;
     }
 }
 @media (max-width: 750px) {
@@ -1041,9 +1049,7 @@ form .buttons button {
 }
 @media (max-width: 900px) {
     .logoImage img {
-        top: 5%;
-        left: 40%;
-        height: 20rem;
+        display: none;
     }
 }
 @media (max-width: 1200px) {
@@ -1055,5 +1061,12 @@ form .buttons button {
     }
     .logoImage img {
         display: none;
+    }
+}
+@media (max-height: 900px) {
+    .logoImage img {
+        top: 2%;
+        left: 45%;
+        height: 18rem;
     }
 }

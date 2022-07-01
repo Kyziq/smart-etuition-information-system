@@ -207,7 +207,7 @@
             </tr>";
 
         echo "</table>";
-        //clear results and close the connection
+        // Clear results and close the connection
         mysqli_free_result($result);
     } else {
         header("Location: login.php");

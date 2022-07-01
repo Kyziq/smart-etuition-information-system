@@ -37,6 +37,7 @@
         echo "<h3>Birthdate: " . $r['userBirthdate'] . "</h3>";
         echo "<h3>Address: " . $r['userAddress'] . "</h3>";
 
+        echo "<a href=manage_class.php><h3>Manage Class</h3></a>";
         echo "<a href=verify_subject.php><h3>Verify Subject Registration</h3></a>";
         echo "<a href=feedback.php><h3>View Feedback</h3></a>";
 

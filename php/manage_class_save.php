@@ -4,8 +4,19 @@ session_start();
 if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
     // Check if save is clicked
     if (isset($_POST['saveClassButton'])) {
+        // Get all the posted items
+        $classID = $_POST['classID'];
+        $subject = $_POST['subject'];
+        $link = $_POST['link'];
+        $day = $_POST['day'];
+        $time = $_POST['time'];
+        $fee = $_POST['fee'];
         // Connect to database
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+
+        // Construct and run query to update class database
+        $q = "UPDATE class SET classSubject='$subject', classLink='$link', classDay='$day', classTime='$time', classFee='$fee' WHERE classID=$classID";
+        $res = mysqli_query($con, $q);
 
         // Success popup
         echo
@@ -19,5 +30,6 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         // Clear results and close the connection
         mysqli_free_result($res);
         mysqli_close($con);
-    }
+    } else
+        header("Location: manage_class.php");
 }

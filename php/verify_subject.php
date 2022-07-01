@@ -131,7 +131,6 @@
 
         // Pending
         echo    "<br><h3>Students' Registration Table (Pending):</h3>";
-        echo    "<form method='post' action='verify_subject_action.php'>";
         echo    "<table border='1' style='text-align:center;'>";
         echo    "<tr>
                     <th>Subject</th>
@@ -141,19 +140,21 @@
                     <th>Registration Status</th>
                     <th>Action</th>
                 </tr>";
-        while ($r = mysqli_fetch_assoc($res)) {
-            // Register text for 1-3 (from database)
-            if ($r['registerApproval'] == 1)
-                $registerText = "Accepted";
-            else if ($r['registerApproval'] == 2)
-                $registerText = "Declined";
-            else if ($r['registerApproval'] == 3)
-                $registerText = "Pending";
+        if (mysqli_num_rows($res) > 0) {
+            while ($r = mysqli_fetch_assoc($res)) {
+                // Register text for 1-3 (from database)
+                if ($r['registerApproval'] == 1)
+                    $registerText = "Accepted";
+                else if ($r['registerApproval'] == 2)
+                    $registerText = "Declined";
+                else if ($r['registerApproval'] == 3)
+                    $registerText = "Pending";
 
-            $image = $r['proofPayment'];
+                $image = $r['proofPayment'];
 
-            // Output all registration in a table
-            echo    "<tr>
+                // Output all registration in a table
+                echo    "<form method='post' action='verify_subject_action.php'>";
+                echo    "<tr>
                         <input type='hidden' name='classID' value=" . $r['classID'] . ">
                         <input type='hidden' name='stuID' value=" . $r['stuID'] . ">
                         <td>" . $r['classSubject'] . "</td>
@@ -184,9 +185,11 @@
                             <button type='submit' name='updateButton'>Update</button>
                         </td>
                     </tr>";
+                echo "</form>";
+            }
         }
         echo "</table>";
-        echo "</form>";
+
 
         // Clear results and close the connection
         mysqli_free_result($res);

@@ -3,7 +3,6 @@
 session_start();
 if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
     if (isset($_POST['updateButton'])) {
-
         // Get all the posted items
         $classID = $_POST['classID'];
         $stuID = $_POST['stuID'];
@@ -12,6 +11,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
 
         // Connect to database 
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+        echo $classID, $stuID, $regApproval, $adminID;
 
         // Construct and run query to update register database
         $q = "UPDATE register SET registerApproval=$regApproval, adminID=$adminID WHERE stuID=$stuID AND classID=$classID";

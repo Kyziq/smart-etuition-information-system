@@ -1072,6 +1072,11 @@ form .buttons button {
         display: none;
     }
 }
+@media (max-height: 700px) {
+    .logoImage img {
+        display: none;
+    }
+}
 @media (max-height: 900px) {
     .logoImage img {
         top: 2%;

@@ -54,5 +54,5 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2) {
     mysqli_free_result($res);
     mysqli_close($con);
 } else {
-    header("Location: login.html");
+    header("Location: login.php");
 }

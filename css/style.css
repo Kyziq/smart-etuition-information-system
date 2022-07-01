@@ -168,11 +168,20 @@ section {
     flex: 1 1 42rem;
 }
 
-.home .content img {
-    width: 250;
+.home .content .image img {
+    width: 35%;
     float: right;
+    animation: float 3s linear infinite;
 }
-
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0rem);
+    }
+    50% {
+        transform: translateY(3rem);
+    }
+}
 .home .content h3 {
     color: #302851;
     font-size: 6rem;
@@ -805,7 +814,7 @@ section {
 .logoImage img {
     position: fixed;
     top: 5%;
-    left: 44%;
+    left: 43%;
     height: 24rem;
     border-style: solid;
     border-color: #183765;
@@ -895,9 +904,9 @@ form .fields .input-fieldLong {
     margin: 4px 0;
 }
 
-.input-field,
+.input-field label,
 .input-fieldLong label {
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     color: #2e2e2e;
 }
@@ -950,7 +959,7 @@ select {
     outline: none;
     color: #fff;
     border-radius: 5px;
-    margin: 25px 0;
+    margin: 50px 0;
     background-color: #183765;
     transition: all 0.3s linear;
     cursor: pointer;
@@ -984,10 +993,18 @@ form .buttons button {
     html {
         font-size: 50%;
     }
+    .logoImage img {
+        display: none;
+    }
 }
 @media (max-width: 550px) {
     form .fields .input-field {
         width: 100%;
+    }
+    .logoImage img {
+        top: 5%;
+        left: 40%;
+        height: 36rem;
     }
 }
 @media (max-width: 750px) {
@@ -1041,9 +1058,7 @@ form .buttons button {
 }
 @media (max-width: 900px) {
     .logoImage img {
-        top: 5%;
-        left: 40%;
-        height: 20rem;
+        display: none;
     }
 }
 @media (max-width: 1200px) {
@@ -1055,5 +1070,12 @@ form .buttons button {
     }
     .logoImage img {
         display: none;
+    }
+}
+@media (max-height: 900px) {
+    .logoImage img {
+        top: 2%;
+        left: 45%;
+        height: 18rem;
     }
 }

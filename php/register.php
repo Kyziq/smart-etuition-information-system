@@ -26,7 +26,15 @@ if (isset($_POST['registerButton'])) {
         values ('$userUname','$userPassw','$userName','$userPhone','$userEmail','$userGender','$userBirthdate','$userAddress')";
 
     $result = mysqli_query($con, $q);
-    echo "<h2>New user created. Please <a href=login.html>Login</a></h2>";
+
+    // Success popup
+    echo
+    "
+    <script>
+        alert('Registration successful.');
+        window.location.href='login.php';
+    </script>
+    ";
 
     // Clear results
     // mysqli_free_result($res);

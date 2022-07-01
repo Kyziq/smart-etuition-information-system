@@ -52,13 +52,9 @@
         echo "<h3>Address: " . $r['userAddress'] . "</h3>";
 
         // Construct and run query to display timetable
-
-        $q = "SELECT userID, userName, userUname, classSubject, classDay, classTime FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID";
+        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
         $result = mysqli_query($con, $q);
-
         echo "<table id='timetable'> <caption>" . $r['userName'] . "'s Tuition Timetable</caption>"; // Table title
-
-
         echo "
             <tr>
                 <th>Time</th>
@@ -70,6 +66,8 @@
             echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
         }*/
 
+        $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
+        $result = mysqli_query($con, $q);
         echo "          
             <tr>
             <td>8:00 a.m. - 9:00 a.m.</td>
@@ -211,12 +209,25 @@
         echo "</table>";
         //clear results and close the connection
         mysqli_free_result($result);
-        mysqli_close($con);
     } else {
-        header("Location: login.html");
+        header("Location: login.php");
     }
 
-    echo "<a href=add_feedback.php><h3>Submit feedback</h3></a>";
+    // Construct and run query to check for existing subject registration
+    $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
+    $result = mysqli_query($con, $q);
+    $num = mysqli_num_rows($result);
+
+    if ($result) {
+        if ($num <= 0) {
+            // Will display subject registration option if student does not register yet
+            echo "<a href=register_subject.php><h3>Subject Registration</h3></a>";
+            mysqli_free_result($result);
+        }
+    }
+    echo "<a href=feedback.php><h3>Submit Feedback</h3></a>";
+
+    mysqli_close($con);
     ?>
 </body>
 

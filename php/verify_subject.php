@@ -130,16 +130,17 @@
         $res = mysqli_query($con, $q);
 
         // Pending
-        echo "<br><h3>Students' Registration:</h3>\n";
-        echo "<table border='1' style='text-align:center;'>";
+        echo    "<br><h3>Students' Registration Table (Pending):</h3>";
+        echo    "<form method='post' action='verify_subject_action.php'>";
+        echo    "<table border='1' style='text-align:center;'>";
         echo    "<tr>
-                <th>Subject</th>
-                <th>Student Name</th>
-                <th>Registration Date</th>
-                <th>Proof of Payment</th>
-                <th>Registration Status</th>
-                <th>Action</th>
-            </tr>";
+                    <th>Subject</th>
+                    <th>Student Name</th>
+                    <th>Registration Date</th>
+                    <th>Proof of Payment</th>
+                    <th>Registration Status</th>
+                    <th>Action</th>
+                </tr>";
         while ($r = mysqli_fetch_assoc($res)) {
             // Register text for 1-3 (from database)
             if ($r['registerApproval'] == 1)
@@ -153,6 +154,8 @@
 
             // Output all registration in a table
             echo    "<tr>
+                        <input type='hidden' name='classID' value=" . $r['classID'] . ">
+                        <input type='hidden' name='stuID' value=" . $r['stuID'] . ">
                         <td>" . $r['classSubject'] . "</td>
                         <td>" . $r['userName'] . "</td>
                         <td>" . $r['registerDate'] . "</td>
@@ -174,17 +177,16 @@
                         </td>
                         <td>" . $registerText . " </td>
                         <td>
-                            <select>
-                                <option>Pending</option>
-                                <option>Approve</option>
-                                <option>Decline</option>
+                            <select name='action' required>
+                                <option value='1'>Approve</option>
+                                <option value='2'>Decline</option>
                             </select>
-                            <button>Update</button>
+                            <button type='submit' name='updateButton'>Update</button>
                         </td>
                     </tr>";
         }
         echo "</table>";
-
+        echo "</form>";
 
         // Clear results and close the connection
         mysqli_free_result($res);

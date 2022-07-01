@@ -52,7 +52,7 @@
         echo "<h3>Address: " . $r['userAddress'] . "</h3>";
 
         // Construct and run query to display timetable
-        $q = "SELECT userID, userName, userUname, classSubject, classDay, classTime FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID";
+        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
         $result = mysqli_query($con, $q);
         echo "<table id='timetable'> <caption>" . $r['userName'] . "'s Tuition Timetable</caption>"; // Table title
         echo "
@@ -66,6 +66,8 @@
             echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
         }*/
 
+        $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
+        $result = mysqli_query($con, $q);
         echo "          
             <tr>
             <td>8:00 a.m. - 9:00 a.m.</td>

@@ -43,34 +43,111 @@
             <table id="table1" style="width:30%;">
             <caption>Let Us Score! Tuition Timetable</caption>
                 <tr>
+                    <th>Subject</th>
                     <th>Time</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
+                    <th>Saturday | Slots</th>
+                    <th>Sunday | Slots</th>
                 </tr>
                 <tr>
-                    <td>8:00 a.m. - 9:00 a.m. (Mathematics)</td>
-                    <td> <input type="radio" name="Mathematics" value="1"> </td>
-                    <td> <input type="radio" name="Mathematics" value="2"> </td>
+                    <td>Mathematics</td>
+                    <td>8:00 a.m. - 9:00 a.m.</td>
+                    <td> 
+                        <input type="radio" name="Mathematics" value="1"> |
+                        ';
+        $q = "SELECT totalStudent FROM class WHERE classID='1'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
+                    <td> <input type="radio" name="Mathematics" value="2"> |
+                    ';
+        $q = "SELECT totalStudent FROM class WHERE classID='2'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
                 </tr>
                 <tr>
-                    <td>9:00 a.m. - 10:00 a.m. (Additional Mathematics)</td>
-                    <td> <input type="radio" name="AddMaths" value="3"> </td>
-                    <td> <input type="radio" name="AddMaths" value="4"> </td>
+                    <td>Additional Mathematics</td>
+                    <td>9:00 a.m. - 10:00 a.m.</td>
+                    <td> <input type="radio" name="AddMaths" value="3">  |
+                    ';
+        $q = "SELECT totalStudent FROM class WHERE classID='3'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
+                    <td> <input type="radio" name="AddMaths" value="4">  |
+                    ';
+        $q = "SELECT totalStudent FROM class WHERE classID='4'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
                 </tr>
                 <tr>
-                    <td>1:00 p.m. - 2:00 p.m. (Physics)</td>
-                    <td> <input type="radio" name="Physics" value="5"> </td>
-                    <td> <input type="radio" name="Physics" value="6"> </td>
+                    <td>Physics</td>
+                    <td>1:00 p.m. - 2:00 p.m.</td>
+                    <td> <input type="radio" name="Physics" value="5">  |
+                    ';
+        $q = "SELECT totalStudent FROM class WHERE classID='5'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
+                    <td> <input type="radio" name="Physics" value="6"> |
+                    ';
+        $q = "SELECT totalStudent FROM class WHERE classID='6'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
                 </tr>
                 <tr>
-                    <td>2:00 p.m. - 3:00 p.m. (Chemistry)</td>
-                    <td> <input type="radio" name="Chemistry" value="7"> </td>
-                    <td> <input type="radio" name="Chemistry" value="8"> </td>
+                    <td>Chemistry</td>
+                    <td>2:00 p.m. - 3:00 p.m.</td>
+                    <td> <input type="radio" name="Chemistry" value="7">  |
+                    ';
+        $q = "SELECT totalStudent FROM class WHERE classID='7'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
+                    <td> <input type="radio" name="Chemistry" value="8">  |
+                    ';
+        $q = "SELECT totalStudent FROM class WHERE classID='8'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
                 </tr>
                 <tr>
-                    <td>3:00 p.m. - 4:00 p.m. (Biology)</td>
-                    <td> <input type="radio" name="Biology" value="9"> </td>
-                    <td> <input type="radio" name="Biology" value="10"> </td>
+                    <td>Biology</td>
+                    <td>3:00 p.m. - 4:00 p.m.</td>
+                    <td> <input type="radio" name="Biology" value="9">  |
+                    ';
+        $q = "SELECT totalStudent FROM class WHERE classID='9'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
+                    <td> <input type="radio" name="Biology" value="10">  |
+                    ';
+        $q = "SELECT totalStudent FROM class WHERE classID='10'";
+        $result = mysqli_query($con, $q);
+        $row = mysqli_fetch_assoc($result);
+        echo implode(",", $row);
+        echo '/10
+                    </td>
                 </tr>
             </table>
             Payment Proof: 

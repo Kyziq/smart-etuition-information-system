@@ -168,11 +168,20 @@ section {
     flex: 1 1 42rem;
 }
 
-.home .content img {
+.home .content .image img {
     width: 35%;
     float: right;
+    animation: float 3s linear infinite;
 }
-
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0rem);
+    }
+    50% {
+        transform: translateY(3rem);
+    }
+}
 .home .content h3 {
     color: #302851;
     font-size: 6rem;

@@ -24,7 +24,7 @@ body {
 
 .container {
   position: relative;
-  width: 100%;
+  width: 100vh;
 }
 
 /* =============== Navigation ================ */
@@ -404,7 +404,116 @@ body {
 .recentCustomers table tr:hover td h4 span {
   color: var(--white);
 }
+/*======================= Class Details ============================ */
+.class-details {
+  position: center;
+  width: 100vh; 
+  padding: 20px;
+  display: flexbox;
+  flex-grow: 2;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+}
 
+.class-details .class {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.class-details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.class-details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.class-details table thead td {
+  font-weight: 600;
+}
+.class-details .class table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.class-details .class table tr:last-child {
+  border-bottom: none;
+}
+.class-details .class table tbody tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.class-details .class table tr td {
+  padding: 10px;
+}
+.class-details .class table tr td:last-child {
+  text-align: end;
+}
+.class-details .class table tr td:nth-child(2) {
+  text-align: end;
+}
+.class-details .class table tr td:nth-child(3) {
+  text-align: center;
+}
+/*======================= Payment Details ============================ */
+.payment-details {
+  position: relative;
+  width: 150%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+  
+}
+.payment-details .payment-proof {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.payment-details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.payment-details .payment-forms{
+ position: relative;
+ display:flexbox;
+}
+.payment-forms .file-upload {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
 /* ====================== Responsive Design ========================== */
 @media (max-width: 991px) {
   .navigation {

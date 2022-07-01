@@ -28,7 +28,7 @@
         date_default_timezone_set('Asia/Singapore');
         $date = date('d-m-y h:i:s A');
         echo "<br>Date: " . $date;
-        echo '<br>Title: <input type="text" placeholder="Enter your title" name="fbTitle"';
+        echo '<br>Title: <input type="text" placeholder="Enter your title" name="fbTitle" size="76"';
         echo '<br><br>Comment: <br><textarea placeholder="Enter your comment" rows="8" cols="80" name="fbComment"></textarea>';
         echo '<br><input type="submit" name="submitFbButton" value="Submit"> <button type="reset">Reset</button>';
         echo "</form>";
@@ -76,20 +76,22 @@
         while ($r = mysqli_fetch_assoc($res)) {
             echo
             "
-            <tr>
-                <td>" . $r['fbID'] . "</td>
-                <td>" . $r['fbTitle'] . "</td>
-                <td>" . $r['fbComment'] . "</td>
-                <td>" . $r['fbDate'] . "</td>
-                <td>
-                    <a href='#'>
-                    <img
-                        src='../images/icons/trash-can-solid.svg'
-                        height='25px'
-                    />
-                    </a>
-                </td>
-            </tr>
+                
+                <tr>
+                <form method='post' action='feedback_delete.php'>
+                    <input type='hidden' name='fbID' value=" . $r['fbID'] . ">
+                    <td>" . $r['fbID'] . "</td>
+                    <td>" . $r['fbTitle'] . "</td>
+                    <td>" . $r['fbComment'] . "</td>
+                    <td>" . $r['fbDate'] . "</td>";
+            echo    "<td>
+                        <button type='submit' name='deleteFbButton'>
+                            <img src='../images/icons/trash-can-solid.svg' height='25px' />
+                        </button>
+                    </td>
+                </form>
+                </tr>
+                
             ";
         }
         echo "</table>";

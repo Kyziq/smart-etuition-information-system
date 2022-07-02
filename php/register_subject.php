@@ -132,7 +132,7 @@
                         <div class="cardHeader">
                             <h2>
                                 <?php
-                                $q = "select userName from user where userID=" . $_SESSION['userID'];
+                                $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
                                 $res = mysqli_query($con, $q);
                                 $r = mysqli_fetch_assoc($res);
                                 echo $r['userName'];

@@ -35,7 +35,7 @@
         // Connect to database
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
-        /*while ($r = mysqli_fetch_assoc($result)) {
+        /*while ($r = mysqli_fetch_assoc($res)) {
             echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
         }*/
     }
@@ -75,10 +75,10 @@
                     <?php
                     // Construct and run query to check for existing subject registration
                     $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
-                    $result = mysqli_query($con, $q);
-                    $num = mysqli_num_rows($result);
+                    $res = mysqli_query($con, $q);
+                    $num = mysqli_num_rows($res);
 
-                    if ($result) {
+                    if ($res) {
                         if ($num <= 0) {
                             // Will display subject registration option if student does not register yet
                     ?>
@@ -89,7 +89,7 @@
                                 <span class="title">Register Subject(s)</span>
                             </a>
                         <?php
-                            //mysqli_free_result($result);
+                            //mysqli_free_result($res);
                         }
                         ?>
                 </li>
@@ -158,8 +158,8 @@
                         <div class="cardName">
                             <?php
                             $q = "select userName from user where userID=" . $_SESSION['userID'];
-                            $result = mysqli_query($con, $q);
-                            $r = mysqli_fetch_assoc($result);
+                            $res = mysqli_query($con, $q);
+                            $r = mysqli_fetch_assoc($res);
                             echo "<i>" . $r['userName'] . "</i>";
                             ?>
                         </div>
@@ -205,7 +205,6 @@
                         <div class="numbers">Contact Us</div>
                         <div class="cardName">
                             <i>
-                                Via ‎
                                 <a href="mailto:smartetuition@gmail.com">
                                     <ion-icon name="mail-outline"></ion-icon> <b><u>E-mail</u></b>
                                 </a>‎
@@ -230,15 +229,15 @@
                     <div class="cardHeader">
                         <h2><?php
                             $q = "select userName from user where userID=" . $_SESSION['userID'];
-                            $result = mysqli_query($con, $q);
-                            $r = mysqli_fetch_assoc($result);
+                            $res = mysqli_query($con, $q);
+                            $r = mysqli_fetch_assoc($res);
                             echo $r['userName'];
                             ?> 's Tuition Timetable</h2>
                     </div>
                     <?php
                         // Construct and run query to display timetable
                         $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
-                        $result = mysqli_query($con, $q);
+                        $res = mysqli_query($con, $q);
                     ?>
                     <table>
                         <thead>
@@ -253,12 +252,12 @@
                             <tr>
                                 <td>8:00 a.m. - 9:00 a.m.</td>
                                 <td>
-                                    <?php $r = mysqli_fetch_assoc($result);
+                                    <?php $r = mysqli_fetch_assoc($res);
                                     if ($r === NULL) { ?>
                                         <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
                                         echo "</td>";
-                                        echo "<td>"; 
+                                        echo "<td>";
                                         ?>
                                         <span class="status return">No Class</span>
                                         <?php
@@ -267,59 +266,59 @@
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
+                                        <?php
+                                            $r = mysqli_fetch_assoc($res);
                                         } else { ?>
                                             <span class="status return">No Class</span> <?php
-                                        }
-                                        echo "</td>";
-                                        echo "<td>"; 
-                                        if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Sunday") { ?>
+                                                                                    }
+                                                                                    echo "</td>";
+                                                                                    echo "<td>";
+                                                                                    if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Sunday") { ?>
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
-                                        } else { ?>
+                                        <?php
+                                                                                        $r = mysqli_fetch_assoc($res);
+                                                                                    } else { ?>
                                             <span class="status return">No Class</span> <?php
-                                        }
-                                    }
-                                    echo "</td>"; ?>
+                                                                                    }
+                                                                                }
+                                                                                echo "</td>"; ?>
                             </tr>
 
                             <tr>
                                 <td>9:00 a.m. - 10:00 a.m.</td>
                                 <td>
                                     <?php
-                                    if ($r === NULL) {?>
+                                    if ($r === NULL) { ?>
                                         <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
                                         echo "</td>";
-                                        echo "<td>";?>
+                                        echo "<td>"; ?>
                                         <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
                                     } else {
-                                        if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Saturday") {?>
+                                        if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Saturday") { ?>
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
-                                        } else {?>
-                                        <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
+                                            $r = mysqli_fetch_assoc($res);
+                                        } else { ?>
+                                            <span class="status return">No Class</span>
+                                        <?php
                                         }
                                         echo "</td>";
                                         echo "<td>";
-                                        if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Sunday") {?>
+                                        if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Sunday") { ?>
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
-                                        } else {?>
-                                        <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
+                                            $r = mysqli_fetch_assoc($res);
+                                        } else { ?>
+                                            <span class="status return">No Class</span>
+                                    <?php
                                         }
                                     }
                                     echo "</td>
@@ -331,35 +330,35 @@
                                 <td>1:00 p.m. - 2:00 p.m.</td>
                                 <td>
                                     <?php
-                                    if ($r === NULL) {?>
+                                    if ($r === NULL) { ?>
                                         <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
                                         echo "</td>";
-                                        echo "<td>";?>
+                                        echo "<td>"; ?>
                                         <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
                                     } else {
-                                        if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Saturday") {?>
+                                        if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Saturday") { ?>
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
-                                        } else {?>
-                                        <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
+                                            $r = mysqli_fetch_assoc($res);
+                                        } else { ?>
+                                            <span class="status return">No Class</span>
+                                        <?php
                                         }
                                         echo "</td>";
                                         echo "<td>";
-                                        if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Sunday") {?>
+                                        if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Sunday") { ?>
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
-                                        } else {?>
-                                        <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
+                                            $r = mysqli_fetch_assoc($res);
+                                        } else { ?>
+                                            <span class="status return">No Class</span>
+                                    <?php
                                         }
                                     }
                                     echo "</td>
@@ -370,35 +369,35 @@
                                 <td>2:00 p.m. - 3:00 p.m.</td>
                                 <td>
                                     <?php
-                                    if ($r === NULL) {?>
+                                    if ($r === NULL) { ?>
                                         <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
                                         echo "</td>";
-                                        echo "<td>";?>
+                                        echo "<td>"; ?>
                                         <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
                                     } else {
-                                        if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Saturday") {?>
+                                        if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Saturday") { ?>
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
-                                        } else {?>
-                                        <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
+                                            $r = mysqli_fetch_assoc($res);
+                                        } else { ?>
+                                            <span class="status return">No Class</span>
+                                        <?php
                                         }
                                         echo "</td>";
                                         echo "<td>";
-                                        if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Sunday") {?>
+                                        if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Sunday") { ?>
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
-                                        } else {?>
-                                        <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
+                                            $r = mysqli_fetch_assoc($res);
+                                        } else { ?>
+                                            <span class="status return">No Class</span>
+                                    <?php
                                         }
                                     }
                                     echo "</td>
@@ -409,35 +408,35 @@
                                 <td>3:00 p.m. - 4:00 p.m.</td>
                                 <td>
                                     <?php
-                                    if ($r === NULL) {?>
+                                    if ($r === NULL) { ?>
                                         <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
                                         echo "</td>";
-                                        echo "<td>";?>
+                                        echo "<td>"; ?>
                                         <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
                                     } else {
-                                        if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Saturday") {?>
+                                        if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Saturday") { ?>
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
-                                        } else {?>
-                                        <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
+                                            $r = mysqli_fetch_assoc($res);
+                                        } else { ?>
+                                            <span class="status return">No Class</span>
+                                        <?php
                                         }
                                         echo "</td>";
                                         echo "<td>";
-                                        if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Sunday") {?>
+                                        if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Sunday") { ?>
                                             <span class="status delivered">
                                                 <?php echo $r['classSubject']; ?>
                                             </span>
-                                            <?php
-                                            $r = mysqli_fetch_assoc($result);
-                                        } else {?>
-                                        <span class="status return">No Class</span>
-                                        <?php 
+                                        <?php
+                                            $r = mysqli_fetch_assoc($res);
+                                        } else { ?>
+                                            <span class="status return">No Class</span>
+                                    <?php
                                         }
                                     }
                                     echo "</td>
@@ -445,7 +444,7 @@
                                     ?>
                         </tbody>
                     </table>
-                    <?php //mysqli_free_result($result);
+                    <?php //mysqli_free_result($res);
                     ?>
                 </div>
 
@@ -457,17 +456,15 @@
 
                     <table>
                         <tr>
-                            <td width="60px">
-                            </td>
                             <td>
                                 <h4>
                                     Name<br />
                                     <span>
                                         <?php
-                                            $q = "select userName from user where userID=" . $_SESSION['userID'];
-                                            $result = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($result);
-                                            echo $r['userName']; 
+                                        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
+                                        $res = mysqli_query($con, $q);
+                                        $r = mysqli_fetch_assoc($res);
+                                        echo $r['userName'];
                                         ?>
                                     </span>
                                 </h4>
@@ -475,17 +472,15 @@
                         </tr>
 
                         <tr>
-                            <td width="60px">
-                            </td>
                             <td>
                                 <h4>
                                     Phone<br />
                                     <span>
                                         <?php
-                                            $q = "select userPhone from user where userID=" . $_SESSION['userID'];
-                                            $result = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($result);
-                                            echo $r['userPhone']; 
+                                        $q = "SELECT userPhone FROM user WHERE userID=" . $_SESSION['userID'];
+                                        $res = mysqli_query($con, $q);
+                                        $r = mysqli_fetch_assoc($res);
+                                        echo $r['userPhone'];
                                         ?>
                                     </span>
                                 </h4>
@@ -493,17 +488,15 @@
                         </tr>
 
                         <tr>
-                            <td width="60px">
-                            </td>
                             <td>
                                 <h4>
                                     Email<br />
                                     <span>
                                         <?php
-                                            $q = "select userEmail from user where userID=" . $_SESSION['userID'];
-                                            $result = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($result);
-                                            echo $r['userEmail']; 
+                                        $q = "SELECT userEmail FROM user WHERE userID=" . $_SESSION['userID'];
+                                        $res = mysqli_query($con, $q);
+                                        $r = mysqli_fetch_assoc($res);
+                                        echo $r['userEmail'];
                                         ?>
                                     </span>
                                 </h4>
@@ -511,17 +504,15 @@
                         </tr>
 
                         <tr>
-                            <td width="60px">
-                            </td>
                             <td>
                                 <h4>
                                     Birthdate<br />
                                     <span>
                                         <?php
-                                            $q = "select userBirthdate from user where userID=" . $_SESSION['userID'];
-                                            $result = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($result);
-                                            echo $r['userBirthdate']; 
+                                        $q = "SELECT userBirthdate FROM user WHERE userID=" . $_SESSION['userID'];
+                                        $res = mysqli_query($con, $q);
+                                        $r = mysqli_fetch_assoc($res);
+                                        echo $r['userBirthdate'];
                                         ?>
                                     </span>
                                 </h4>
@@ -529,21 +520,19 @@
                         </tr>
 
                         <tr>
-                            <td width="60px">
-                            </td>
                             <td>
                                 <h4>
                                     Gender<br />
                                     <span>
                                         <?php
-                                            $q = "select userGender from user where userID=" . $_SESSION['userID'];
-                                            $result = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($result);
-                                            if ($r['userGender'] == 1) // 1 == Male, 2 == Female
-                                                $gender = "Male";
-                                            else if ($r['userGender'] == 2)
-                                                $gender = "Female";
-                                            echo $gender ;
+                                        $q = "SELECT userGender FROM user WHERE userID=" . $_SESSION['userID'];
+                                        $res = mysqli_query($con, $q);
+                                        $r = mysqli_fetch_assoc($res);
+                                        if ($r['userGender'] == 1) // 1 == Male, 2 == Female
+                                            $gender = "Male";
+                                        else if ($r['userGender'] == 2)
+                                            $gender = "Female";
+                                        echo $gender;
                                         ?>
                                     </span>
                                 </h4>
@@ -551,17 +540,15 @@
                         </tr>
 
                         <tr>
-                            <td width="60px">
-                            </td>
                             <td>
                                 <h4>
                                     Address<br />
                                     <span>
                                         <?php
-                                            $q = "select userAddress from user where userID=" . $_SESSION['userID'];
-                                            $result = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($result);
-                                            echo $r['userAddress']; 
+                                        $q = "SELECT userAddress FROM user WHERE userID=" . $_SESSION['userID'];
+                                        $res = mysqli_query($con, $q);
+                                        $r = mysqli_fetch_assoc($res);
+                                        echo $r['userAddress'];
                                         ?>
                                     </span>
                                 </h4>
@@ -583,7 +570,7 @@
 
 
                         mysqli_close($con);
-                        mysqli_free_result($result);
+                        mysqli_free_result($res);
                     } else {
                         header("Location: login.php");
                     }

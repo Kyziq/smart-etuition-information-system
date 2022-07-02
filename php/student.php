@@ -38,521 +38,493 @@
         /*while ($r = mysqli_fetch_assoc($result)) {
             echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
         }*/
-    } 
+    }
 
     ?>
     <!-- =============== Navigation ================ -->
-        <div class="container">
-            <div class="navigation">
-                <ul>
-                    <li>
-                        <a href="student.html">
-                            <span class="icon">
-                                <ion-icon name="logo-apple"></ion-icon>
-                            </span>
-                            <span class="title">Let Us Score</span>
-                        </a>
-                    </li>
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="student.php">
+                        <span class="icon">
+                            <img src="../images/logocircle.png" alt="Logo Let Us Score!" id="logoLUS" />
+                        </span>
+                        <!-- <span class="title">Let Us Score</span> -->
+                    </a>
+                </li>
+                <li>
+                    <a href="student.php">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
 
-                    <li>
-                        <a href="student.html">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </span>
-                            <span class="title">Dashboard</span>
-                        </a>
-                    </li>
+                <li>
+                    <a href="studentdetails.html">
+                        <span class="icon">
+                            <ion-icon name="options-outline"></ion-icon>
+                        </span>
+                        <span class="title">Update Details</span>
+                    </a>
+                </li>
 
-                    <li>
-                        <a href="studentdetails.html">
-                            <span class="icon">
-                                <ion-icon name="home-outline"></ion-icon>
-                            </span>
-                            <span class="title">User Details</span>
-                        </a>
-                    </li>
+                <li>
+                    <?php
+                    // Construct and run query to check for existing subject registration
+                    $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
+                    $result = mysqli_query($con, $q);
+                    $num = mysqli_num_rows($result);
 
-                    <li>
-                            <?php 
-                            // Construct and run query to check for existing subject registration
-                            $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
-                            $result = mysqli_query($con, $q);
-                            $num = mysqli_num_rows($result);
+                    if ($result) {
+                        if ($num <= 0) {
+                            // Will display subject registration option if student does not register yet
+                    ?>
+                            <a href=register_subject.php>
+                                <span class="icon">
+                                    <ion-icon name="person-add-outline"></ion-icon>
+                                </span>
+                                <span class="title">Register Subject(s)</span>
+                            </a>
+                        <?php
+                            mysqli_free_result($result);
+                        }
+                        ?>
+                </li>
 
-                            if ($result) {
-                                if ($num <= 0) {
-                                // Will display subject registration option if student does not register yet
-                                ?>
-                                    <a href=register_subject.php>
-                                        <span class="icon">
-                                            <ion-icon name="people-outline"></ion-icon>
-                                        </span>
-                                        <span class="title">Register Subject</span>
-                                    </a>
-                                    <?php 
-                                mysqli_free_result($result);
-                                }
-                            ?>
-                    </li>
+                <li>
+                    <a href="classdetails.html">
+                        <span class="icon">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </span>
+                        <span class="title">Class Details</span>
+                    </a>
+                </li>
 
-                    <li>
-                        <a href="classdetails.html">
-                            <span class="icon">
-                                <ion-icon name="chatbubble-outline"></ion-icon>
-                            </span>
-                            <span class="title">Class Details</span>
-                        </a>
-                    </li>
+                <li>
+                    <a href=feedback.php>
+                        <span class="icon">
+                            <ion-icon name="help-outline"></ion-icon>
+                        </span>
+                        <span class="title">Feedback</span>
+                    </a>
+                </li>
 
-                    <li>
-                        <a href=feedback.php>
-                            <span class="icon">
-                                <ion-icon name="help-outline"></ion-icon>
-                            </span>
-                            <span class="title">Feedback</span>
-                        </a>
-                    </li>
+                <li>
+                    <a href=logout.php>
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-                    <li>
-                        <a href=logout.php>
-                            <span class="icon">
-                                <ion-icon name="log-out-outline"></ion-icon>
-                            </span>
-                            <span class="title">Sign Out</span>
-                        </a>
-                    </li>
-                </ul>
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+                <!-- 
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here" />
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+                
+                <div class="user">
+                    <img src="../images/icons/user-solid.svg" alt="" />
+                </div>
+                -->
             </div>
 
-            <!-- ========================= Main ==================== -->
-            <div class="main">
-                <div class="topbar">
-                    <div class="toggle">
-                        <ion-icon name="menu-outline"></ion-icon>
-                    </div>
-
-                    <div class="search">
-                        <label>
-                            <input type="text" placeholder="Search here" />
-                            <ion-icon name="search-outline"></ion-icon>
-                        </label>
-                    </div>
-
-                    <div class="user">
-                        <img src="assets/imgs/customer01.jpg" alt="" />
-                    </div>
-                </div>
-
-                <!-- ======================= Cards ================== -->
-                <div class="cardBox">
-                    <div class="card">
-                        <div>
-                            <div class="numbers">Welcome</div>
-                            <div class="cardName">
-                                <?php 
-                                    $q = "select userName from user where userID=" . $_SESSION['userID'];
-                                    $result = mysqli_query($con, $q);
-                                    $r = mysqli_fetch_assoc($result);
-                                    echo "<h3>" . $r['userName'] . "</h3>"; 
-                                ?>
-                            </div>
-                        </div>
-
-                        <div class="iconBx">
-                            <ion-icon name="eye-outline"></ion-icon>
+            <!-- ======================= Cards ================== -->
+            <div class="cardBox">
+                <div class="card">
+                    <div>
+                        <div class="numbers">Welcome</div>
+                        <div class="cardName">
+                            <?php
+                            $q = "select userName from user where userID=" . $_SESSION['userID'];
+                            $result = mysqli_query($con, $q);
+                            $r = mysqli_fetch_assoc($result);
+                            echo "<i>" . $r['userName'] . "</i>";
+                            ?>
                         </div>
                     </div>
-
-                    <div class="card">
-                        <div>
-                            <div class="numbers">80</div>
-                            <div class="cardName">
-                                
-                            </div>
-                        </div>
-
-                        <div class="iconBx">
-                            <ion-icon name="cart-outline"></ion-icon>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div>
-                            <div class="numbers">284</div>
-                            <div class="cardName">Comments</div>
-                        </div>
-
-                        <div class="iconBx">
-                            <ion-icon name="chatbubbles-outline"></ion-icon>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div>
-                            <div class="numbers">$7,842</div>
-                            <div class="cardName">Earning</div>
-                        </div>
-
-                        <div class="iconBx">
-                            <ion-icon name="cash-outline"></ion-icon>
-                        </div>
+                    <div class="iconBx">
+                        <ion-icon name="people-outline"></ion-icon>
                     </div>
                 </div>
 
-                <!-- ================ Order Details List ================= -->
-                <div class="details">
-                    <div class="recentOrders">
-                        <div class="cardHeader">
-                            <h2><?php
-                                    $q = "select userName from user where userID=" . $_SESSION['userID'];
-                                    $result = mysqli_query($con, $q);
-                                    $r = mysqli_fetch_assoc($result);
-                                    echo $r['userName'];
-                                ?> 's Tuition Timetable</h2>
+                <div class="card">
+                    <div>
+                        <div class="numbers">1</div>
+                        <div class="cardName">
+                            <i>Class Taken</i>
+
                         </div>
-                        <?php 
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="book-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">Approved</div>
+                        <div class="cardName"><i>Verification Status</i></div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="finger-print-outline"></ion-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">Contact Us</div>
+                        <div class="cardName">
+                            <i>
+                                Via ‎
+                                <a href="https://www.w3schools.com">
+                                    <ion-icon name="mail-outline"></ion-icon> E-mail
+                                </a>‎
+                                <a href="https://www.w3schools.com">
+                                    <ion-icon name="logo-whatsapp"></ion-icon> Whatsapp
+                                </a>
+                            </i>
+                        </div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================ Order Details List ================= -->
+            <div class="details">
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2><?php
+                            $q = "select userName from user where userID=" . $_SESSION['userID'];
+                            $result = mysqli_query($con, $q);
+                            $r = mysqli_fetch_assoc($result);
+                            echo $r['userName'];
+                            ?> 's Tuition Timetable</h2>
+                    </div>
+                    <?php
                         // Construct and run query to display timetable
                         $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
                         $result = mysqli_query($con, $q);
-                        ?>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>Time</td>
-                                    <td>Saturday</td>
-                                    <td>Sunday</td>
-                                </tr>
-                            </thead>
+                    ?>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Time</td>
+                                <td>Saturday</td>
+                                <td>Sunday</td>
+                            </tr>
+                        </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>8:00 a.m. - 9:00 a.m.</td>
-                                    <td>
-                                        <?php $r = mysqli_fetch_assoc($result);
-                                        if ($r === NULL) {
-                                            echo "No class";
-                                            echo "</td>";
-                                            echo "<td>";
-                                            echo "No class";
-                                        } 
-                                        else {
-                                            if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Saturday") {
-                                                echo $r['classSubject'];
-                                                $r = mysqli_fetch_assoc($result);
-                                            } 
-                                            else {
-                                                echo "No class";
-                                            }   
-                                            echo "</td>";
-                                            echo "<td>";
-                                            if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Sunday") {
-                                                echo $r['classSubject'];
-                                                $r = mysqli_fetch_assoc($result);
-                                            } 
-                                            else {
-                                                echo "No class";
-                                            }
-                                        }
-                                        echo "</td>"; ?>
-                                </tr>
-
-                                <tr>
-                                    <td>9:00 a.m. - 10:00 a.m.</td>
-                                    <td>
-                                        <?php
-                                        if ($r === NULL) {
-                                            echo "No class";
-                                            echo "</td>";
-                                            echo "<td>";
-                                            echo "No class";
-                                        }
-                                        else {
-                                            if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Saturday") {
-                                                echo $r['classSubject'];
-                                                $r = mysqli_fetch_assoc($result);
-                                            }
-                                            else {
-                                                echo "No class";
-                                            }
-                                            echo "</td>";
-                                            echo "<td>";
-                                            if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Sunday") {
-                                                echo $r['classSubject'];
-                                                $r = mysqli_fetch_assoc($result);
-                                            } 
-                                            else {
-                                                echo "No class";
-                                            }
-                                        }
-                                        echo "</td>
-                                            </tr>"
-                                        ?>
-                                </tr>
-
-                                <tr>
-                                    <td>1:00 p.m. - 2:00 p.m.</td>
-                                    <td>
-                                        <?php 
-                                        if ($r === NULL) {
-                                            echo "No class";
-                                            echo "</td>";
-                                            echo "<td>";
-                                            echo "No class";
+                        <tbody>
+                            <tr>
+                                <td>8:00 a.m. - 9:00 a.m.</td>
+                                <td>
+                                    <?php $r = mysqli_fetch_assoc($result);
+                                    if ($r === NULL) {
+                                        echo "No class";
+                                        echo "</td>";
+                                        echo "<td>";
+                                        echo "No class";
+                                    } else {
+                                        if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Saturday") {
+                                            echo $r['classSubject'];
+                                            $r = mysqli_fetch_assoc($result);
                                         } else {
-                                            if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Saturday") {
-                                                echo $r['classSubject'];
-                                                $r = mysqli_fetch_assoc($result);
-                                            }
-                                            else {
-                                                echo "No class";
-                                            }
-                                            echo "</td>";
-                                            echo "<td>";
+                                            echo "No class";
+                                        }
+                                        echo "</td>";
+                                        echo "<td>";
+                                        if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Sunday") {
+                                            echo $r['classSubject'];
+                                            $r = mysqli_fetch_assoc($result);
+                                        } else {
+                                            echo "No class";
+                                        }
+                                    }
+                                    echo "</td>"; ?>
+                            </tr>
+
+                            <tr>
+                                <td>9:00 a.m. - 10:00 a.m.</td>
+                                <td>
+                                    <?php
+                                    if ($r === NULL) {
+                                        echo "No class";
+                                        echo "</td>";
+                                        echo "<td>";
+                                        echo "No class";
+                                    } else {
+                                        if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Saturday") {
+                                            echo $r['classSubject'];
+                                            $r = mysqli_fetch_assoc($result);
+                                        } else {
+                                            echo "No class";
+                                        }
+                                        echo "</td>";
+                                        echo "<td>";
+                                        if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Sunday") {
+                                            echo $r['classSubject'];
+                                            $r = mysqli_fetch_assoc($result);
+                                        } else {
+                                            echo "No class";
+                                        }
+                                    }
+                                    echo "</td>
+                                            </tr>"
+                                    ?>
+                            </tr>
+
+                            <tr>
+                                <td>1:00 p.m. - 2:00 p.m.</td>
+                                <td>
+                                    <?php
+                                    if ($r === NULL) {
+                                        echo "No class";
+                                        echo "</td>";
+                                        echo "<td>";
+                                        echo "No class";
+                                    } else {
+                                        if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Saturday") {
+                                            echo $r['classSubject'];
+                                            $r = mysqli_fetch_assoc($result);
+                                        } else {
+                                            echo "No class";
+                                        }
+                                        echo "</td>";
+                                        echo "<td>";
                                         if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Sunday") {
                                             echo $r['classSubject'];
                                             $r = mysqli_fetch_assoc($result);
-                                        }
-                                        else {
+                                        } else {
                                             echo "No class";
                                         }
+                                    }
+                                    echo "</td>
+                                        </tr>"
+                                    ?>
+
+                            <tr>
+                                <td>2:00 p.m. - 3:00 p.m.</td>
+                                <td>
+                                    <?php
+                                    if ($r === NULL) {
+                                        echo "No class";
+                                        echo "</td>";
+                                        echo "<td>";
+                                        echo "No class";
+                                    } else {
+                                        if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Saturday") {
+                                            echo $r['classSubject'];
+                                            $r = mysqli_fetch_assoc($result);
+                                        } else {
+                                            echo "No class";
                                         }
-                                        echo "</td>
-                                        </tr>" 
-                                        ?>
-
-                                <tr>
-                                    <td>2:00 p.m. - 3:00 p.m.</td>
-                                    <td>
-                                        <?php 
-                                        if ($r === NULL) {
-            echo "No class";
-            echo "</td>";
-            echo "<td>";
-            echo "No class";
-        } else {
-            if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Saturday") {
-                echo $r['classSubject'];
-                $r = mysqli_fetch_assoc($result);
-            } else {
-                echo "No class";
-            }
-            echo "</td>";
-            echo "<td>";
-            if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Sunday") {
-                echo $r['classSubject'];
-                $r = mysqli_fetch_assoc($result);
-            } else {
-                echo "No class";
-            }
-        }
-        echo "</td>
+                                        echo "</td>";
+                                        echo "<td>";
+                                        if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Sunday") {
+                                            echo $r['classSubject'];
+                                            $r = mysqli_fetch_assoc($result);
+                                        } else {
+                                            echo "No class";
+                                        }
+                                    }
+                                    echo "</td>
             </tr>";
-                                        ?>
+                                    ?>
 
-                                <tr>
-                                    <td>3:00 p.m. - 4:00 p.m.</td>
-                                    <td>
-                                        <?php 
-                                        if ($r === NULL) {
-            echo "No class";
-            echo "</td>";
-            echo "<td>";
-            echo "No class";
-        } else {
-            if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Saturday") {
-                echo $r['classSubject'];
-                $r = mysqli_fetch_assoc($result);
-            } else {
-                echo "No class";
-            }
-            echo "</td>";
-            echo "<td>";
-            if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Sunday") {
-                echo $r['classSubject'];
-                $r = mysqli_fetch_assoc($result);
-            } else {
-                echo "No class";
-            }
-        }
-        echo "</td>
+                            <tr>
+                                <td>3:00 p.m. - 4:00 p.m.</td>
+                                <td>
+                                    <?php
+                                    if ($r === NULL) {
+                                        echo "No class";
+                                        echo "</td>";
+                                        echo "<td>";
+                                        echo "No class";
+                                    } else {
+                                        if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Saturday") {
+                                            echo $r['classSubject'];
+                                            $r = mysqli_fetch_assoc($result);
+                                        } else {
+                                            echo "No class";
+                                        }
+                                        echo "</td>";
+                                        echo "<td>";
+                                        if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Sunday") {
+                                            echo $r['classSubject'];
+                                            $r = mysqli_fetch_assoc($result);
+                                        } else {
+                                            echo "No class";
+                                        }
+                                    }
+                                    echo "</td>
             </tr>";
-                                        ?>
-                            </tbody>
-                        </table>
-                        <?php mysqli_free_result($result);
-                        ?>
+                                    ?>
+                        </tbody>
+                    </table>
+                    <?php mysqli_free_result($result);
+                    ?>
+                </div>
+
+                <!-- ================= Student's Details ================ -->
+                <div class="recentCustomers">
+                    <div class="cardHeader">
+                        <h2>My Details</h2>
                     </div>
 
-                    <!-- ================= New Customers ================ -->
-                    <div class="recentCustomers">
-                        <div class="cardHeader">
-                            <h2>Recent Customers</h2>
-                        </div>
+                    <table>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx">
+                                    <img src="assets/imgs/customer02.jpg" alt="" />
+                                </div>
+                            </td>
+                            <td>
+                                <h4>
+                                    David <br />
+                                    <span>Italy</span>
+                                </h4>
+                            </td>
+                        </tr>
 
-                        <table>
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx">
-                                        <img
-                                            src="assets/imgs/customer02.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>
-                                        David <br />
-                                        <span>Italy</span>
-                                    </h4>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx">
+                                    <img src="assets/imgs/customer01.jpg" alt="" />
+                                </div>
+                            </td>
+                            <td>
+                                <h4>
+                                    Amit <br />
+                                    <span>India</span>
+                                </h4>
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx">
-                                        <img
-                                            src="assets/imgs/customer01.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>
-                                        Amit <br />
-                                        <span>India</span>
-                                    </h4>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx">
+                                    <img src="assets/imgs/customer02.jpg" alt="" />
+                                </div>
+                            </td>
+                            <td>
+                                <h4>
+                                    David <br />
+                                    <span>Italy</span>
+                                </h4>
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx">
-                                        <img
-                                            src="assets/imgs/customer02.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>
-                                        David <br />
-                                        <span>Italy</span>
-                                    </h4>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx">
+                                    <img src="assets/imgs/customer01.jpg" alt="" />
+                                </div>
+                            </td>
+                            <td>
+                                <h4>
+                                    Amit <br />
+                                    <span>India</span>
+                                </h4>
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx">
-                                        <img
-                                            src="assets/imgs/customer01.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>
-                                        Amit <br />
-                                        <span>India</span>
-                                    </h4>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx">
+                                    <img src="assets/imgs/customer02.jpg" alt="" />
+                                </div>
+                            </td>
+                            <td>
+                                <h4>
+                                    David <br />
+                                    <span>Italy</span>
+                                </h4>
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx">
-                                        <img
-                                            src="assets/imgs/customer02.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>
-                                        David <br />
-                                        <span>Italy</span>
-                                    </h4>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx">
+                                    <img src="assets/imgs/customer01.jpg" alt="" />
+                                </div>
+                            </td>
+                            <td>
+                                <h4>
+                                    Amit <br />
+                                    <span>India</span>
+                                </h4>
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx">
-                                        <img
-                                            src="assets/imgs/customer01.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>
-                                        Amit <br />
-                                        <span>India</span>
-                                    </h4>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx">
+                                    <img src="assets/imgs/customer01.jpg" alt="" />
+                                </div>
+                            </td>
+                            <td>
+                                <h4>
+                                    David <br />
+                                    <span>Italy</span>
+                                </h4>
+                            </td>
+                        </tr>
 
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx">
-                                        <img
-                                            src="assets/imgs/customer01.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>
-                                        David <br />
-                                        <span>Italy</span>
-                                    </h4>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td width="60px">
-                                    <div class="imgBx">
-                                        <img
-                                            src="assets/imgs/customer02.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4>
-                                        Amit <br />
-                                        <span>India</span>
-                                    </h4>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                        <tr>
+                            <td width="60px">
+                                <div class="imgBx">
+                                    <img src="assets/imgs/customer02.jpg" alt="" />
+                                </div>
+                            </td>
+                            <td>
+                                <h4>
+                                    Amit <br />
+                                    <span>India</span>
+                                </h4>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- =========== Scripts =========  -->
-        <script src="../js/dash.js"></script>
+    <!-- =========== Scripts =========  -->
+    <script src="../js/dash.js"></script>
 
-        <!-- ====== ionicons ======= -->
-        <script
-            type="module"
-            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-        ></script>
-        <script
-            nomodule
-            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-        ></script>
-        <?php
-            
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<?php
 
-            mysqli_close($con);
-            mysqli_free_result($result); 
-    } 
-    else {
-        header("Location: login.php");
-    }
-        ?>
+
+                        mysqli_close($con);
+                        mysqli_free_result($result);
+                    } else {
+                        header("Location: login.php");
+                    }
+?>
 </body>
 
 </html>

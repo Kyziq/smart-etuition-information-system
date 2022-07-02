@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Class Details</title>
+        <title>Payment</title>
         <!-- ======= Styles ====== -->
         <link rel="stylesheet" href="assets/css/style.css" />
     </head>
@@ -15,7 +15,7 @@
             <div class="navigation">
                 <ul>
                     <li>
-                        <a href="#">
+                        <a href="student.html">
                             <span class="icon">
                                 <ion-icon name="logo-apple"></ion-icon>
                             </span>
@@ -24,7 +24,7 @@
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="student.html">
                             <span class="icon">
                                 <ion-icon name="home-outline"></ion-icon>
                             </span>
@@ -33,14 +33,13 @@
                     </li>
 
                     <li>
-                        <a href="">
+                        <a href="registersub.html">
                             <span class="icon">
                                 <ion-icon name="people-outline"></ion-icon>
                             </span>
                             <span class="title">Register Subject</span>
                         </a>
                     </li>
-                   
 
                     <li>
                         <a href="#">
@@ -89,102 +88,58 @@
                         
                     </div>
                 </div>
-                
 
-                
+                <!-- ======================= Cards ================== -->
+                <div class="cardBox">
+                    
+                </div>
 
                 <!-- ================ Order Details List ================= -->
-                <div class="class-details">
-                    <div class="class">
+                <div class="payment-details">
+                    <div class="payment-proof">
                         <div class="cardHeader">
-                            <h2>Class Details</h2>
-                            <a href="#" class="btn">View All</a>
+                            <h2>Payment Proof</h2>
+                            
                         </div>
 
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Class Subject</td>
-                                    <td>Class Time</td>
-                                    <td>Class Day</td>
-                                    <td>Status</td>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                   
-                                </tr>
-
-                                <tr>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                  
-                                </tr>
-
-                                <tr>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    
-                                </tr>
-
-                                <tr>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    <td> </td>
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
+                        <form class="payment-forms">
+                            <div class="form-group">
+                              <label>File upload</label>
+                              <input type="file" name="img[]" class="file-upload">
+                              <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Payment Proof">
+                                <span class="input-group-append">
+                                  <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>Subject</label>
+                                <select class="js-example-basic-multiple w-100" multiple="multiple">
+                                  <option value="AL">Mathematics ( Saturday, 8:00 a.m. - 9:00 a.m.)</option>
+                                  <option value="AX">Mathematics ( Sunday, 8:00 a.m. - 9:00 a.m.)</option>
+                                  <option value="WY">Additional Mathematics ( Saturday, 8:00 a.m. - 9:00 a.m.)</option>
+                                  <option value="WN">Additional Mathematics ( Sunday, 8:00 a.m. - 9:00 a.m.)</option>
+        
+                                  <option value="AM">Physics ( Saturday, 8:00 a.m. - 9:00 a.m.)</option>
+                                  <option value="AN">Physics ( Saturday, 8:00 a.m. - 9:00 a.m.)</option>
+                                  <option value="CA">Chemistry ( Saturday, 8:00 a.m. - 9:00 a.m.)</option>
+                                  <option value="CX">Chemistry ( Sunday, 8:00 a.m. - 9:00 a.m.)</option>
+                                  <option value="RU">Biology ( Saturday, 8:00 a.m. - 9:00 a.m.)</option>
+                                  <option value="RX">Biology ( Sunday, 8:00 a.m. - 9:00 a.m.)</option>
+                                </select>
+                            </div>
+                               
+                              
+                            
+                            
+                            
+                            
+                          </form>
                     </div>
-                </div>
-            </div>
-        </div>
-          
 
-            
+                    <!-- ================= New Customers ================ -->
+                    
         <!-- =========== Scripts =========  -->
         <script src="assets/js/main.js"></script>
 

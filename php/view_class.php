@@ -140,7 +140,7 @@
 
                         <?php
                             // Construct and run query to check for existing class
-                            $q = "  SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone 
+                            $q = "  SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.classDay, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone 
                         FROM register r, user u, user tutor, class c 
                         WHERE c.classID=r.classID AND r.stuID=u.userID AND r.registerApproval='1' AND tutor.userLevel='2' AND tutor.userID=c.tutorID";
                             $res = mysqli_query($con, $q);
@@ -153,6 +153,7 @@
                                     <thead>
                                         <tr>
                                             <td>Class Subject</td>
+                                            <td>Class Day</td>
                                             <td>Class Time</td>
                                             <td>Class Link</td>
                                             <td>Total Student(s)</td>
@@ -168,7 +169,8 @@
                                             while ($r = mysqli_fetch_assoc($res)) {
                                             ?>
                                         <tr>
-                                            <td><?php echo $r["classSubject"] ?></td>
+                                            <td> <?php echo $r["classSubject"] ?></td>
+                                            <td> <?php echo $r["classDay"] ?></td>
                                             <td>
                                                 <?php
                                                 // Class Time Checker

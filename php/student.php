@@ -157,7 +157,7 @@
                         <div class="numbers">Welcome</div>
                         <div class="cardName">
                             <?php
-                            $q = "select userName from user where userID=" . $_SESSION['userID'];
+                            $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
                             $res = mysqli_query($con, $q);
                             $r = mysqli_fetch_assoc($res);
                             echo "<i>" . $r['userName'] . "</i>";
@@ -173,10 +173,22 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">1</div>
+                        <div class="numbers">
+                            <?php
+                            // Construct and run query to check for total classe
+                            $q = "SELECT count(c.classID) AS total FROM user u, register r,class c WHERE r.registerApproval=1 AND r.classID=c.classID AND u.userID=r.stuID AND u.userID=" . $_SESSION['userID'];
+                            $res = mysqli_query($con, $q);
+                            $data = mysqli_fetch_assoc($res);
+                            echo $data['total'];
+                            ?>
+                        </div>
                         <div class="cardName">
-                            <i>Class Taken</i>
-
+                            <?php
+                            if ($data['total'] <= 1)
+                                echo "Class taken";
+                            else if ($data['total'] > 1)
+                                echo "Classes taken";
+                            ?>
                         </div>
                     </div>
 

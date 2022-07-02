@@ -238,7 +238,8 @@ a:active {
 }
 
 .user {
-    position: relative;
+    position: absolute;
+    margin-left: 1500px;
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -310,7 +311,6 @@ a:active {
     grid-gap: 30px;
     /* margin-top: 10px; */
 }
-
 .details .recentOrders {
     position: relative;
     display: grid;
@@ -326,6 +326,32 @@ a:active {
     justify-content: space-between;
     align-items: flex-start;
 }
+
+.detailsReg {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+    /* margin-top: 10px; */
+}
+
+.detailsReg .recentOrders {
+    position: relative;
+    display: grid;
+    min-height: 600px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+}
+
+.detailsReg .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .cardHeader h2 {
     font-weight: 600;
     color: var(--blue);

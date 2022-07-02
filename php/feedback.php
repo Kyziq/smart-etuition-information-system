@@ -49,6 +49,8 @@
         }
         echo "</table>";
 
+        // Clear results and close the connection
+        mysqli_free_result($res);
         mysqli_close($con);
     }
     // Admin

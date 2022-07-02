@@ -95,7 +95,7 @@
                 </li>
 
                 <li>
-                    <a href="classdetails.html">
+                    <a href="view_class.php">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
                         </span>
@@ -132,7 +132,7 @@
                     </lord-icon>
                 </div>
 
-                <!-- 
+                <!--
                 <div class="search">
                     <label>
                         <input type="text" placeholder="Search here" />
@@ -140,9 +140,13 @@
                     </label>
                 </div>
                 
+
                 <div class="user">
                     <img src="../images/icons/user-solid.svg" alt="" />
                 </div>
+                <span style="color:#192e59">
+                    Student
+                </span>
                 -->
             </div>
 

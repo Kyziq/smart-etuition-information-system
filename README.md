@@ -15,7 +15,7 @@ The process that can be done by a student is to
 
 As for the tutor, there are three processes that can be done, which are: 
 <i>
-* Login,
+* Login
 * Managing personal data
 * Viewing class details
 </i>

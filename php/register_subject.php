@@ -141,7 +141,9 @@
                             </h2>
 
                         </div>
+                        <br><br>
                         <p>Select the course(s) from the list below for your SPM journey in Let Us Score. You may either take only one, some, or include them all. It would cost RM50 for each individual class.</p>
+                        <br>
                         <form id="subjectForm" method="post" action="register_subject_save.php" enctype="multipart/form-data">
                             <table>
                                 <thead>
@@ -376,13 +378,26 @@
                                 </tbody>
                             </table>
                             <br>
-                            <b>Payment Proof:</b> &nbsp;
-                            <input type="file" name="fileToUpload" id="fileToUpload" required>
+                            <b>Payment Proof:</b> <br><br>
+                            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/diyeocup.json" trigger="loop" delay="1000" colors="primary:#192e59" state="hover-1" style="width:50px;height:50px">
+                            </lord-icon>
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;<input type="file" name="fileToUpload" id="fileToUpload" required>
                             <br><br>
+
+                            <p>
+                                <b>File type:</b> .jpg, .jpeg, .png & .pdf only & max 5MB.
+                            </p>
+
+                            <br>
 
                             <button type="submit" class="btn" name="subjectButton" value="Submit">
                                 <span class="btnText"> Submit </span>
                             </button>
+
+                            &nbsp;&nbsp;&nbsp;
+
                             <button type="reset" class="btn">
                                 <span class="btnText"> Reset </span>
                             </button>

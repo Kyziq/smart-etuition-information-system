@@ -235,7 +235,7 @@
                             <i>
                                 <a href="mailto:smartetuition@gmail.com">
                                     <ion-icon name="mail-outline"></ion-icon> <b><u>E-mail</u></b>
-                                </a>‎
+                                </a>&nbsp;&nbsp;
                                 <a href="https://wa.link/cuxs3j" target=_blank">
                                     <ion-icon name="logo-whatsapp"></ion-icon> <b><u>WhatsApp</u></b>
                                 </a>

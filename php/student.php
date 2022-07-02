@@ -89,7 +89,7 @@
                                 <span class="title">Register Subject(s)</span>
                             </a>
                         <?php
-                            mysqli_free_result($result);
+                            //mysqli_free_result($result);
                         }
                         ?>
                 </li>
@@ -396,7 +396,7 @@
                                     ?>
                         </tbody>
                     </table>
-                    <?php mysqli_free_result($result);
+                    <?php //mysqli_free_result($result);
                     ?>
                 </div>
 

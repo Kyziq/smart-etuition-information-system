@@ -163,7 +163,22 @@
                                     ?>
                                 <tr>
                                     <td><?php echo $r["classSubject"] ?></td>
-                                    <td><?php echo $r["classTime"] ?></td>
+                                    <td>
+                                        <?php
+                                        // Class Time Checker
+                                        if ($r["classTime"] == "08:00:00")
+                                            $time = "8.00 a.m. - 9.00 a.m.";
+                                        else if ($r["classTime"] == "09:00:00")
+                                            $time = "9.00 a.m. - 10.00 a.m.";
+                                        else if ($r["classTime"] == "13:00:00")
+                                            $time = "1.00 p.m. - 2.00 p.m.";
+                                        else if ($r["classTime"] == "14:00:00")
+                                            $time = "2.00 p.m. - 3.00 p.m.";
+                                        else if ($r["classTime"] == "15:00:00")
+                                            $time = "3.00 p.m. - 4.00 p.m.";
+                                        echo $time
+                                        ?>
+                                    </td>
                                     <td>
                                         <a href="<?php echo $r["classLink"]; ?>" class="b">
                                             <?php echo $r["classLink"] ?>

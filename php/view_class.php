@@ -137,65 +137,75 @@
                             </h2>
 
                         </div>
+
                         <?php
-                            // Construct and run query to list user's classes
+                            // Construct and run query to check for existing class
+                            $q = "  SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone 
+                        FROM register r, user u, user tutor, class c 
+                        WHERE c.classID=r.classID AND r.stuID=u.userID AND r.registerApproval='1' AND tutor.userLevel='2' AND tutor.userID=c.tutorID";
+                            $res = mysqli_query($con, $q);
+                            $num = mysqli_num_rows($res);
+
+                            if ($res) {
+                                if ($num > 0) {
                         ?>
-                        <table style="width: 97%;">
-                            <thead>
-                                <tr>
-                                    <td>Class Subject</td>
-                                    <td>Class Time</td>
-                                    <td>Class Link</td>
-                                    <td>Total Student(s)</td>
-                                    <td>Tutor's Name</td>
-                                    <td>Tutor's Phone</td>
-                                    <td>Tutor's Email</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
+                                <table style="width: 97%;">
+                                    <thead>
+                                        <tr>
+                                            <td>Class Subject</td>
+                                            <td>Class Time</td>
+                                            <td>Class Link</td>
+                                            <td>Total Student(s)</td>
+                                            <td>Tutor's Name</td>
+                                            <td>Tutor's Phone</td>
+                                            <td>Tutor's Email</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <?php
+                                            // Construct and run query to list user's classes
+                                            while ($r = mysqli_fetch_assoc($res)) {
+                                            ?>
+                                        <tr>
+                                            <td><?php echo $r["classSubject"] ?></td>
+                                            <td>
+                                                <?php
+                                                // Class Time Checker
+                                                if ($r["classTime"] == "08:00:00")
+                                                    $time = "8.00 a.m. - 9.00 a.m.";
+                                                else if ($r["classTime"] == "09:00:00")
+                                                    $time = "9.00 a.m. - 10.00 a.m.";
+                                                else if ($r["classTime"] == "13:00:00")
+                                                    $time = "1.00 p.m. - 2.00 p.m.";
+                                                else if ($r["classTime"] == "14:00:00")
+                                                    $time = "2.00 p.m. - 3.00 p.m.";
+                                                else if ($r["classTime"] == "15:00:00")
+                                                    $time = "3.00 p.m. - 4.00 p.m.";
+                                                echo $time
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo $r["classLink"]; ?>" class="b">
+                                                    <?php echo $r["classLink"] ?>
+                                                </a>
+                                            </td>
+                                            <td> <?php echo $r["totalStudent"] ?></td>
+                                            <td> <?php echo $r["userName"] ?></td>
+                                            <td> <?php echo $r["userEmail"] ?></td>
+                                            <td> <?php echo $r["userPhone"] ?></td>
+                                        </tr>
+                                        </tr>
                                     <?php
-                                    $q = "  SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone 
-                                            FROM register r, user u, user tutor, class c 
-                                            WHERE c.classID=r.classID AND r.stuID=u.userID AND r.registerApproval='1' AND tutor.userLevel='2' AND tutor.userID=c.tutorID";
-                                    $result = mysqli_query($con, $q);
-                                    while ($r = mysqli_fetch_assoc($result)) {
+                                            }
                                     ?>
-                                <tr>
-                                    <td><?php echo $r["classSubject"] ?></td>
-                                    <td>
-                                        <?php
-                                        // Class Time Checker
-                                        if ($r["classTime"] == "08:00:00")
-                                            $time = "8.00 a.m. - 9.00 a.m.";
-                                        else if ($r["classTime"] == "09:00:00")
-                                            $time = "9.00 a.m. - 10.00 a.m.";
-                                        else if ($r["classTime"] == "13:00:00")
-                                            $time = "1.00 p.m. - 2.00 p.m.";
-                                        else if ($r["classTime"] == "14:00:00")
-                                            $time = "2.00 p.m. - 3.00 p.m.";
-                                        else if ($r["classTime"] == "15:00:00")
-                                            $time = "3.00 p.m. - 4.00 p.m.";
-                                        echo $time
-                                        ?>
-                                    </td>
-                                    <td>
-                                        <a href="<?php echo $r["classLink"]; ?>" class="b">
-                                            <?php echo $r["classLink"] ?>
-                                        </a>
-                                    </td>
-                                    <td> <?php echo $r["totalStudent"] ?></td>
-                                    <td> <?php echo $r["userName"] ?></td>
-                                    <td> <?php echo $r["userEmail"] ?></td>
-                                    <td> <?php echo $r["userPhone"] ?></td>
-                                </tr>
-                                </tr>
-                            <?php
-                                    }
-                            ?>
-                            </tr>
-                            </tbody>
-                        </table>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                        <?php
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

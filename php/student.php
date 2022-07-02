@@ -127,7 +127,9 @@
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
-                    <ion-icon name="menu-outline"></ion-icon>
+                    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                    <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
+                    </lord-icon>
                 </div>
 
                 <!-- 
@@ -159,7 +161,9 @@
                         </div>
                     </div>
                     <div class="iconBx">
-                        <ion-icon name="people-outline"></ion-icon>
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/becxqsdr.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:80px;height:80px">
+                        </lord-icon>
                     </div>
                 </div>
 
@@ -173,7 +177,9 @@
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="book-outline"></ion-icon>
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/stxtcyyo.json" trigger="loop" colors="primary:#192e59" state="loop" style="width:70px;height:70px">
+                        </lord-icon>
                     </div>
                 </div>
 
@@ -184,7 +190,9 @@
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="finger-print-outline"></ion-icon>
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/hjeefwhm.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:70px;height:70px">
+                        </lord-icon>
                     </div>
                 </div>
 
@@ -195,17 +203,19 @@
                             <i>
                                 Via ‎
                                 <a href="mailto:smartetuition@gmail.com">
-                                    <ion-icon name="mail-outline"></ion-icon> E-mail
+                                    <ion-icon name="mail-outline"></ion-icon> <b><u>E-mail</u></b>
                                 </a>‎
                                 <a href="https://wa.link/cuxs3j" target=_blank">
-                                    <ion-icon name="logo-whatsapp"></ion-icon> Whatsapp
+                                    <ion-icon name="logo-whatsapp"></ion-icon> <b><u>WhatsApp</u></b>
                                 </a>
                             </i>
                         </div>
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/cnyeuzxc.json" trigger="loop" delay="750" colors="primary:#192e59" state="morph-phone-signal-start" style="width:70px;height:70px">
+                        </lord-icon>
                     </div>
                 </div>
             </div>

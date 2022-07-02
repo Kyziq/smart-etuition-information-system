@@ -53,8 +53,10 @@
                 </div>
                 <div class="buttons">
                     <button type="submit" name="loginButton" value="Submit">
-                        <span class="btnText"> Login </span>
-                        <i class="uil uil-navigator"></i>
+                        <span class="btnText"> Login ‎ ‎ ‎</span>
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/iifryyua.json" trigger="loop" colors="primary:#ffffff" state="hover-3" style="width:32px;height:32px">
+                        </lord-icon>
                     </button>
                 </div>
             </form>

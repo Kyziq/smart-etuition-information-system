@@ -1,6 +1,35 @@
 # Smart E-Tuition Information System
 <b> Project requirements: </b> <br>
-<i>The Smart eTuition Information System, which was created for online class registration, has three users: student, tutor, and administrator. The process that can be done by a student is to register, login, make class registration, view class details, manage personal data, and give student feedback. As for the tutor, there are three processes that can be done, which are: login, managing personal data, and viewing class details. The third user, which is admin, has seven processes that can be done in the system, which are login, manage tutor data, manage student data, manage class verification, manage class details, and view reports on student feedback and student class registration.</i>
+
+The Smart E-Tuition Information System, which was created for online class registration, has three users: student, tutor, and administrator. 
+
+The process that can be done by a student is to 
+<i>
+* Register
+* Login
+* Make class registration
+* View class details
+* Manage personal data
+* Give student feedback
+</i>
+
+As for the tutor, there are three processes that can be done, which are: 
+<i>
+* Login,
+* Managing personal data
+* Viewing class details
+</i>
+
+The third user, which is admin, has seven processes that can be done in the system, which are 
+<i>
+* Login 
+* Manage tutor data
+* Manage student data
+* Manage class verification
+* Manage class details
+* View reports on student feedback
+* Student class registration
+</i>
 
 ## Made for
 CSC264 - Introduction To Web And Mobile Application <br>

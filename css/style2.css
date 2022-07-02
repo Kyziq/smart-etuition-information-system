@@ -98,7 +98,7 @@ a:active {
 }
 
 .navigation ul li:nth-child(1) {
-    margin-bottom: 80px;
+    margin-bottom: 100px;
     pointer-events: none;
 }
 

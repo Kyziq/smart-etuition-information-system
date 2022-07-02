@@ -969,7 +969,7 @@ select {
     font-weight: 400;
 }
 form button:hover {
-    background-color: #192e59;
+    background-color: #ed2146;
 }
 form button i {
     margin: 0 6px;

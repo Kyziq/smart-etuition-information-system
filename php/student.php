@@ -194,10 +194,10 @@
                         <div class="cardName">
                             <i>
                                 Via ‎
-                                <a href="https://www.w3schools.com">
+                                <a href="mailto:smartetuition@gmail.com">
                                     <ion-icon name="mail-outline"></ion-icon> E-mail
                                 </a>‎
-                                <a href="https://www.w3schools.com">
+                                <a href="https://wa.link/cuxs3j" target=_blank">
                                     <ion-icon name="logo-whatsapp"></ion-icon> Whatsapp
                                 </a>
                             </i>

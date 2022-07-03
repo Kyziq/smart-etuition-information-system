@@ -51,7 +51,7 @@
                     </li>
 
                     <li>
-                        <a href="studentdetails.html">
+                        <a href="student_details.php">
                             <span class="icon">
                                 <ion-icon name="options-outline"></ion-icon>
                             </span>
@@ -87,7 +87,7 @@
                     <li>
                         <a href="view_class.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">Class Details</span>
                         </a>
@@ -139,7 +139,7 @@
                     <li>
                         <a href="manage_user.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">User Data</span>
                         </a>
@@ -148,7 +148,7 @@
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">Class Details</span>
                         </a>
@@ -158,7 +158,7 @@
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
-                                <ion-icon name="person-add-outline"></ion-icon>
+                                <ion-icon name="checkmark-outline"></ion-icon>
                             </span>
                             <span class="title">Class Verification</span>
                         </a>
@@ -327,8 +327,8 @@
                                 <tr>
                                     <td style="width:100px;">ID</td>
                                     <td style="width:200px; text-align: justify;">Title</td>
-                                    <td style="width:900px; text-align: justify;">Comment</td>
-                                    <td style="width:200px; text-align: end;">Date Submitted</td>
+                                    <td style="width:600px; text-align: justify;">Comment</td>
+                                    <td style="width:150px; text-align: end;">Date Submitted</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -390,9 +390,16 @@
                                                             <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
                                                             <td style='text-align: end;'>" . $r['fbDate'] . "</td>
                                                             <td>
-                                                                <button type='submit' name='deleteFbButton'>
-                                                                    <img src='../images/icons/trash-can-solid.svg' height='25px' />
-                                                                </button>
+                                                                <button style='padding: 0; border: none; background: none;' type='submit' name='deleteFbButton'>
+                                                                <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
+                                                                <lord-icon
+                                                                    src='https://cdn.lordicon.com/dovoajyj.json'
+                                                                    trigger='loop'
+                                                                    colors='primary:#eac143'
+                                                                    delay='750'
+                                                                    style='width:40px;height:40px'>
+                                                                </lord-icon>
+                                                            </button>
                                                             </td>
                                                         </tr>";
                                             }

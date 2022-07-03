@@ -68,7 +68,7 @@ a:active {
     text-decoration: none;
 }
 /* Class Anchor */
-.b:visited {
+.b:link {
     color: var(--darkyellow);
     text-decoration: none;
 }

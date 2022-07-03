@@ -154,7 +154,7 @@
                     <li>
                         <a href="manage_user.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">User Data</span>
                         </a>
@@ -163,7 +163,7 @@
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">Class Details</span>
                         </a>
@@ -173,7 +173,7 @@
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
-                                <ion-icon name="person-add-outline"></ion-icon>
+                                <ion-icon name="checkmark-outline"></ion-icon>
                             </span>
                             <span class="title">Class Verification</span>
                         </a>
@@ -423,8 +423,15 @@
                                                                 <button type='submit' name='updateButton'>Update</button>
                                                             </td>
                                                             <td>
-                                                                <button type='submit' name='deleteVerifyButton'>
-                                                                    <img src='../images/icons/trash-can-solid.svg' height='25px' />
+                                                                <button style='padding: 0; border: none; background: none;' type='submit' name='deleteVerifyButton'>
+                                                                    <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
+                                                                    <lord-icon
+                                                                        src='https://cdn.lordicon.com/dovoajyj.json'
+                                                                        trigger='loop'
+                                                                        colors='primary:#eac143'
+                                                                        delay='750'
+                                                                        style='width:40px;height:40px'>
+                                                                    </lord-icon>
                                                                 </button>
                                                             </td>
                                                         </tr>";

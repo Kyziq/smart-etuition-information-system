@@ -54,7 +54,7 @@
                     <li>
                         <a href="manage_user.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">User Data</span>
                         </a>
@@ -63,7 +63,7 @@
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">Class Details</span>
                         </a>
@@ -73,7 +73,7 @@
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
-                                <ion-icon name="person-add-outline"></ion-icon>
+                                <ion-icon name="checkmark-outline"></ion-icon>
                             </span>
                             <span class="title">Class Verification</span>
                         </a>
@@ -200,11 +200,20 @@
                                         echo "
                                                     </td>
                                                     <td style='text-align: left;'><input type='text' name='userBirthdate' style='text-align:center;' size='5' value='" . $r['userBirthdate'] . "'></td>
-                                                    <td style='text-align: left;'><input type='text' name='userAddress' style='text-align:center;' size='60' value='" . $r['userAddress'] . "'></td>
+                                                    <td style='text-align: left;'>
+                                                        <textarea type='text' name='userAddress' style='text-align:center;' rows='2' cols='50'>" . $r['userAddress'] . "</textarea>
+                                                    </td>
                                                     <td style='text-align: end;'>
-                                                        <button type='submit' name='saveUserButton'>
-                                                            <img src='../images/icons/floppy-disk-solid.svg' height='25px' />
-                                                        </button>
+                                                    <button style='padding: 0; border: none; background: none;' type='submit' name='saveUserButton'>
+                                                        <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
+                                                        <lord-icon
+                                                            src='https://cdn.lordicon.com/hjeefwhm.json'
+                                                            trigger='loop'
+                                                            colors='primary:#eac143'
+                                                            delay='750'
+                                                            style='width:40px;height:40px'>
+                                                        </lord-icon>
+                                                    </button>
                                                     </td>
                                                 </tr>";
                                         echo "</form>";
@@ -253,7 +262,7 @@
                                     <?php
                                     while ($r = mysqli_fetch_assoc($res)) {
                                         // Output all classes in a table
-                                        echo    "<form method='POST' action='manage_class_save.php'>";
+                                        echo    "<form method='POST' action='manage_user_save.php'>";
                                         echo    "<tr>
                                                     <td style='text-align: left;'><input type='text' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly></td>
                                                     <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td>
@@ -264,25 +273,34 @@
 
                                         if ($r['userGender'] == 1) {
                                             echo "
-                                                        <select>
-                                                            <option selected>Male</option>
-                                                            <option>Female</option>
-                                                        </select>";
+                                                    <select name='userGender'>
+                                                        <option selected value='1'>Male</option>
+                                                        <option value='2'>Female</option>
+                                                    </select>";
                                         }
                                         if ($r['userGender'] == 2) {
                                             echo "
-                                                            <select>
-                                                                <option>Male</option>
-                                                                <option selected>Female</option>
-                                                            </select>";
+                                                    <select name='userGender'>
+                                                        <option value='1'>Male</option>
+                                                        <option selected value='2'>Female</option>
+                                                    </select>";
                                         }
                                         echo "
                                                     </td>
                                                     <td style='text-align: left;'><input type='text' name='userBirthdate' style='text-align:center;' size='5' value='" . $r['userBirthdate'] . "'></td>
-                                                    <td style='text-align: left;'><input type='text' name='userAddress' style='text-align:center;' size='60' value='" . $r['userAddress'] . "'></td>
+                                                    <td style='text-align: left;'>
+                                                        <textarea type='text' name='userAddress' style='text-align:center;' rows='2' cols='50'>" . $r['userAddress'] . "</textarea>
+                                                    </td>
                                                     <td style='text-align: end;'>
-                                                        <button type='submit' name='saveClassButton'>
-                                                            <img src='../images/icons/floppy-disk-solid.svg' height='25px' />
+                                                        <button style='padding: 0; border: none; background: none;' type='submit' name='saveUserButton'>
+                                                            <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
+                                                            <lord-icon
+                                                                src='https://cdn.lordicon.com/hjeefwhm.json'
+                                                                trigger='loop'
+                                                                delay='750'
+                                                                colors='primary:#eac143'
+                                                                style='width:40px;height:40px'>
+                                                            </lord-icon>
                                                         </button>
                                                     </td>
                                                 </tr>";

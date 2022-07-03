@@ -13,8 +13,8 @@
 
     <title>Admin Dashboard</title>
 
-    </script>
-
+    <!-- ChartJS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -55,7 +55,7 @@
                     <li>
                         <a href="manage_user.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">User Data</span>
                         </a>
@@ -64,7 +64,7 @@
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">Class Details</span>
                         </a>
@@ -74,7 +74,7 @@
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
-                                <ion-icon name="person-add-outline"></ion-icon>
+                                <ion-icon name="checkmark-outline"></ion-icon>
                             </span>
                             <span class="title">Class Verification</span>
                         </a>
@@ -153,7 +153,7 @@
                         </div>
                         <div class="iconBx">
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/becxqsdr.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:80px;height:80px">
+                            <lord-icon src="https://cdn.lordicon.com/nobciafz.json" trigger="loop" delay="750" colors="primary:#121331,secondary:#192e59" stroke="80" style="width:80px;height:80px">
                             </lord-icon>
                         </div>
                     </div>
@@ -240,252 +240,160 @@
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
-                            <h2><?php
-                                $q = "select userName from user where userID=" . $_SESSION['userID'];
-                                $res = mysqli_query($con, $q);
-                                $r = mysqli_fetch_assoc($res);
-                                echo $r['userName'];
-                                ?> 's Tuition Timetable</h2>
+                            <div>
+                                <canvas id="myChart" width="1000px;"></canvas>
+                            </div>
+                            <?php
+                            //Mathematics
+                            // Construct and run query to check if username is taken
+                            $q = "SELECT * FROM register WHERE (classID=1 OR classID=2) AND registerApproval=1";
+                            $result = mysqli_query($con, $q);
+                            $m1 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=1 OR classID=2) AND registerApproval=3";
+                            $result = mysqli_query($con, $q);
+                            $m2 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=1 OR classID=2) AND registerApproval=2";
+                            $result = mysqli_query($con, $q);
+                            $m3 = mysqli_num_rows($result);
+
+                            //Additional Mathematics
+                            $q = "SELECT * FROM register WHERE (classID=3 OR classID=4) AND registerApproval=1";
+                            $result = mysqli_query($con, $q);
+                            $am1 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=3 OR classID=4) AND registerApproval=3";
+                            $result = mysqli_query($con, $q);
+                            $am2 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=3 OR classID=4) AND registerApproval=2";
+                            $result = mysqli_query($con, $q);
+                            $am3 = mysqli_num_rows($result);
+
+                            //Physics
+                            $q = "SELECT * FROM register WHERE (classID=5 OR classID=6) AND registerApproval=1";
+                            $result = mysqli_query($con, $q);
+                            $p1 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=5 OR classID=6) AND registerApproval=3";
+                            $result = mysqli_query($con, $q);
+                            $p2 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=5 OR classID=6) AND registerApproval=2";
+                            $result = mysqli_query($con, $q);
+                            $p3 = mysqli_num_rows($result);
+
+                            //Chemistry
+                            $q = "SELECT * FROM register WHERE (classID=7 OR classID=8) AND registerApproval=1";
+                            $result = mysqli_query($con, $q);
+                            $c1 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=7 OR classID=8) AND registerApproval=3";
+                            $result = mysqli_query($con, $q);
+                            $c2 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=7 OR classID=8) AND registerApproval=2";
+                            $result = mysqli_query($con, $q);
+                            $c3 = mysqli_num_rows($result);
+
+                            //Biology
+                            $q = "SELECT * FROM register WHERE (classID=9 OR classID=10) AND registerApproval=1";
+                            $result = mysqli_query($con, $q);
+                            $b1 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=9 OR classID=10) AND registerApproval=3";
+                            $result = mysqli_query($con, $q);
+                            $b2 = mysqli_num_rows($result);
+
+                            $q = "SELECT * FROM register WHERE (classID=9 OR classID=10) AND registerApproval=2";
+                            $result = mysqli_query($con, $q);
+                            $b3 = mysqli_num_rows($result);
+                            ?>
+
+                            <script>
+                                var ctx = document.getElementById("myChart").getContext("2d");
+                                var myChart = new Chart(ctx, {
+                                    type: "bar",
+                                    data: {
+                                        labels: [
+                                            "Mathematics",
+                                            "Additional Mathematics",
+                                            "Physics",
+                                            "Chemistry",
+                                            "Biology",
+                                        ],
+                                        datasets: [{
+                                                data: [
+                                                    <?php
+                                                    echo $m1 . ',';
+                                                    echo $am1 . ',';
+                                                    echo $p1 . ',';
+                                                    echo $c1 . ',';
+                                                    echo $b1 . ',';
+                                                    ?>
+                                                ],
+                                                label: "Approved",
+                                                borderColor: "#000000",
+                                                backgroundColor: "#094074",
+                                                borderWidth: 1,
+                                            },
+                                            {
+                                                data: [
+                                                    <?php
+                                                    echo $m2 . ',';
+                                                    echo $am2 . ',';
+                                                    echo $p2 . ',';
+                                                    echo $c2 . ',';
+                                                    echo $b2 . ',';
+                                                    ?>
+                                                ],
+                                                label: "Pending",
+                                                borderColor: "#000000",
+                                                backgroundColor: "#3C6997",
+                                                borderWidth: 1,
+                                            },
+                                            {
+                                                data: [
+                                                    <?php
+                                                    echo $m3 . ',';
+                                                    echo $am3 . ',';
+                                                    echo $p3 . ',';
+                                                    echo $c3 . ',';
+                                                    echo $b3 . ',';
+                                                    ?>
+                                                ],
+                                                label: "Declined",
+                                                borderColor: "#000000",
+                                                backgroundColor: "#5ADBFF",
+                                                borderWidth: 1,
+                                            },
+                                        ],
+                                    },
+                                    options: {
+                                        plugins: {
+                                            title: {
+                                                display: true,
+                                                text: "Class Verification Status",
+                                                font: {
+                                                    size: 20,
+                                                },
+                                            },
+                                        },
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                        scales: {
+                                            x: {
+                                                stacked: true,
+                                            },
+                                            y: {
+                                                stacked: true,
+                                            },
+                                        },
+                                    },
+                                });
+                            </script>
                         </div>
-                        <?php
-                        // Construct and run query to display timetable
-                        $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
-                        $res = mysqli_query($con, $q);
-                        ?>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>Time</td>
-                                    <td>Saturday</td>
-                                    <td>Sunday</td>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <!-- Mathematics -->
-                                <tr>
-                                    <td>8:00 a.m. - 9:00 a.m.</td>
-                                    <td>
-                                        <?php
-                                        $r = mysqli_fetch_assoc($res);
-                                        if ($r === NULL) { ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                            echo "</td>";
-                                            echo "<td>";
-                                            ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                        } else {
-                                            if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Saturday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                            <?php
-                                            }
-                                            echo "</td>";
-                                            echo "<td>";
-                                            if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Sunday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                        <?php
-                                            }
-                                        } ?>
-                                    </td>
-                                </tr>
-
-                                <!-- Add. Mathematics -->
-                                <tr>
-                                    <td>9:00 a.m. - 10:00 a.m.</td>
-                                    <td>
-                                        <?php
-                                        if ($r === NULL) { ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                            echo "</td>";
-                                            echo "<td>";
-                                            ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                        } else {
-                                            if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Saturday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                            <?php
-                                            }
-                                            echo "</td>";
-                                            echo "<td>";
-                                            if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Sunday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                        <?php
-                                            }
-                                        } ?>
-                                    </td>
-                                </tr>
-
-                                <!-- Physics -->
-                                <tr>
-                                    <td>1:00 p.m. - 2:00 p.m.</td>
-                                    <td>
-                                        <?php
-                                        if ($r === NULL) { ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                            echo "</td>";
-                                            echo "<td>";
-                                            ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                        } else {
-                                            if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Saturday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                            <?php
-                                            }
-                                            echo "</td>";
-                                            echo "<td>";
-                                            if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Sunday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                        <?php
-                                            }
-                                        } ?>
-                                    </td>
-                                </tr>
-
-                                <!-- Chemistry -->
-                                <tr>
-                                    <td>2:00 p.m. - 3:00 p.m.</td>
-                                    <td>
-                                        <?php
-                                        if ($r === NULL) { ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                            echo "</td>";
-                                            echo "<td>";
-                                            ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                        } else {
-                                            if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Saturday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                            <?php
-                                            }
-                                            echo "</td>";
-                                            echo "<td>";
-                                            if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Sunday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                        <?php
-                                            }
-                                        } ?>
-                                    </td>
-                                </tr>
-
-                                <!-- Biology -->
-                                <tr>
-                                    <td>3:00 p.m. - 4:00 p.m.</td>
-                                    <td>
-                                        <?php
-                                        if ($r === NULL) { ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                            echo "</td>";
-                                            echo "<td>";
-                                            ?>
-                                            <span class="status return">No Class</span>
-                                            <?php
-                                        } else {
-                                            if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Saturday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                            <?php
-                                            }
-                                            echo "</td>";
-                                            echo "<td>";
-                                            if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Sunday") {
-                                            ?>
-                                                <span class="status delivered">
-                                                    <?php echo $r['classSubject']; ?>
-                                                </span>
-                                            <?php
-                                                $r = mysqli_fetch_assoc($res);
-                                            } else {
-                                            ?>
-                                                <span class="status return">No Class</span>
-                                        <?php
-                                            }
-                                        } ?>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <?php //mysqli_free_result($res);
-                        ?>
                     </div>
 
                     <!-- ================= Student's Details ================ -->
@@ -493,7 +401,6 @@
                         <div class="cardHeader">
                             <h2>My Details</h2>
                         </div>
-
                         <table>
                             <tr>
                                 <td>

@@ -54,7 +54,7 @@
                     <li>
                         <a href="manage_user.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">User Data</span>
                         </a>
@@ -63,7 +63,7 @@
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">Class Details</span>
                         </a>
@@ -73,7 +73,7 @@
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
-                                <ion-icon name="person-add-outline"></ion-icon>
+                                <ion-icon name="checkmark-outline"></ion-icon>
                             </span>
                             <span class="title">Class Verification</span>
                         </a>
@@ -180,9 +180,16 @@
                                                     <td style='text-align: center;'><input type='text' name='fee' style='text-align:center;' size='2' value='" . $r['classFee'] . "'></td>
                                                     <td style='text-align: center;'><input type='text' name='totalStu' style='text-align:center; color: var(--red);' size='1' value='" . $r['totalStudent'] . "'readonly></td>
                                                     <td style='text-align: center;'>
-                                                        <button type='submit' name='saveClassButton'>
-                                                            <img src='../images/icons/floppy-disk-solid.svg' height='25px' />
-                                                        </button>
+                                                    <button style='padding: 0; border: none; background: none;' type='submit' name='saveClassButton'>
+                                                    <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
+                                                    <lord-icon
+                                                        src='https://cdn.lordicon.com/hjeefwhm.json'
+                                                        trigger='loop'
+                                                        delay='750'
+                                                        colors='primary:#eac143'
+                                                        style='width:40px;height:40px'>
+                                                    </lord-icon>
+                                                </button>
                                                     </td>
                                                 </tr>";
                                         echo "</form>";

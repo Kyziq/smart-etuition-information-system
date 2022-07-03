@@ -51,7 +51,7 @@
                 </li>
 
                 <li>
-                    <a href="studentdetails.html">
+                    <a href="student_details.php">
                         <span class="icon">
                             <ion-icon name="options-outline"></ion-icon>
                         </span>
@@ -85,7 +85,7 @@
                 <li>
                     <a href="view_class.php">
                         <span class="icon">
-                            <ion-icon name="create-outline"></ion-icon>
+                            <ion-icon name="document-text-outline"></ion-icon>
                         </span>
                         <span class="title">Class Details</span>
                     </a>
@@ -158,7 +158,7 @@
                         <div class="numbers">Student</div>
                         <div class="cardName">
                             <?php
-                            $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
+                            $q = "SELECT userName, userGender FROM user WHERE userID=" . $_SESSION['userID'];
                             $res = mysqli_query($con, $q);
                             $r = mysqli_fetch_assoc($res);
                             echo "<i>" . $r['userName'] . "</i>";
@@ -166,9 +166,21 @@
                         </div>
                     </div>
                     <div class="iconBx">
-                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/becxqsdr.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:80px;height:80px">
-                        </lord-icon>
+                        <?php
+                        // Male Icon
+                        if ($r['userGender'] == 1) { ?>
+                            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/eszyyflr.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
+                            </lord-icon>
+                        <?php
+                            // Female Icon
+                        } else if ($r['userGender'] == 2) { ?>
+                            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/bwnhdkha.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
+                            </lord-icon>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
 

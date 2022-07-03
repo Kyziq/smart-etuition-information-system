@@ -45,7 +45,7 @@
                     </li>
 
                     <li>
-                        <a href="studentdetails.html">
+                        <a href="student_details.php">
                             <span class="icon">
                                 <ion-icon name="options-outline"></ion-icon>
                             </span>
@@ -79,7 +79,7 @@
                     <li>
                         <a href="view_class.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">Class Details</span>
                         </a>
@@ -206,7 +206,7 @@
                                                 ?>
                                             </td>
                                             <td>
-                                                <a href="<?php echo $r["classLink"]; ?>" class="b">
+                                                <a href="<?php echo $r["classLink"]; ?>" target='_blank' class="b">
                                                     <?php echo $r["classLink"] ?>
                                                 </a>
                                             </td>

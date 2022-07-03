@@ -16,7 +16,7 @@ if (isset($_POST['registerButton'])) {
     $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
     // Construct and run query to check if username is taken
-    $q = "select * from user where userName='$userName'";
+    $q = "SELECT * FROM user WHERE userName='$userName'";
     $result = mysqli_query($con, $q);
     $rows = mysqli_num_rows($result);
     if ($rows != 0) header("Location: register.html");

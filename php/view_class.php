@@ -167,7 +167,7 @@
                             if ($res) {
                                 if ($num > 0) {
                         ?>
-                                <table style="width: 97%;">
+                                <table style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <td>Class Subject</td>

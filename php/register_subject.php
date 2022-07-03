@@ -171,7 +171,7 @@
 
                         <br>
                         <form id="subjectForm" method="post" action="register_subject_save.php" enctype="multipart/form-data">
-                            <table>
+                            <table style="width: 100%;">
                                 <thead>
                                     <tr>
                                         <td style="width: 300px;">Subject</td>

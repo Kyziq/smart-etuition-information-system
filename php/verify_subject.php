@@ -257,7 +257,7 @@
                         if ($res) {
                             if ($num > 0) {
                         ?>
-                                <table style="width: 1500px;">
+                                <table style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <td style="text-align: left;">Subject</td>
@@ -348,7 +348,7 @@
                         if ($res) {
                             if ($num > 0) {
                         ?>
-                                <table style="width: 1500px;">
+                                <table style="width: 100%;">
                                     <thead>
                                         <tr>
                                             <td style="text-align: left;">Subject</td>

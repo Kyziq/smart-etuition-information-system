@@ -37,6 +37,10 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         $q = "UPDATE class SET totalStudent=$totalStu WHERE classID=$classID";
         mysqli_query($con, $q);
 
+        // Update who (admin) verify subject
+        $q = "UPDATE register SET adminID=" . $_SESSION['userID'] . " WHERE stuID=$stuID AND classID=$classID";
+        mysqli_query($con, $q);
+
         // Success popup
         /*echo
         "

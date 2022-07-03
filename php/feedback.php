@@ -5,104 +5,253 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Feedback</title>
+    <link rel="stylesheet" href="../css/style2.css">
+    <title>Feedback Page</title>
 </head>
 
 <body>
-
     <?php
     session_start();
-    // Student
-    if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
-        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
-        $result = mysqli_query($con, $q);
-        $r = mysqli_fetch_assoc($result);
 
-        echo "<br><h2>Welcome to Feedback Page, " . $r['userName'] . "</h2><a href=student.php>Go back to student dashboard</a><br><br>";
+    // Connect to database
+    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
-        echo '<form method="post" action="feedback_save.php">';
-        echo "<br>Name: " . $r['userName']; // Table title
-        date_default_timezone_set('Asia/Singapore');
-        $date = date('d-m-y h:i:s A');
-        echo "<br>Date: " . $date;
-        echo '<br>Title: <input type="text" placeholder="Enter your title" name="fbTitle" size="76"';
-        echo '<br><br>Comment: <br><textarea placeholder="Enter your comment" rows="8" cols="80" name="fbComment"></textarea>';
-        echo '<br><input type="submit" name="submitFbButton" value="Submit"> <button type="reset">Reset</button>';
-        echo "</form>";
-
-        //construct and run query to list user's feedbacks
-        $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
-        $res = mysqli_query($con, $q);
-        echo "<br><h3>My Feedback:</h3>";
-        echo "<table border='1' style='text-align:center;'>";
-        echo    "<tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Comment</th>
-                    <th>Feedback Date</th>
-                </tr>\n";
-        while ($r = mysqli_fetch_assoc($res)) {
-            echo "<tr><td>" . $r['fbID'] . "</td><td>" . $r['fbTitle'] . "</td><td>" . $r['fbComment'] . "</td><td>" . $r['fbDate'] . "</td></tr>\n";
-        }
-        echo "</table>";
-
-        // Clear results and close the connection
-        mysqli_free_result($res);
-        mysqli_close($con);
-    }
-    // Admin
-    else if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
-
-        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
-        $res = mysqli_query($con, $q);
-        $r = mysqli_fetch_assoc($res);
-        echo "<br><h2>Welcome to Feedback Page, admin " . $r['userName'] . "</h2><a href=admin.php>Go back to admin dashboard</a><br><br>";
-
-        // Construct and run query to list all students' feedbacks
-        $q = "SELECT * FROM feedback";
-        $res = mysqli_query($con, $q);
-        echo "<br><h3>Students' Feedback(s):</h3>";
-        echo "<table border='1' style='text-align:center;'>";
-        echo    "<tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Comment</th>
-                    <th>Feedback Date</th>
-                    <th>Action</th>
-                </tr>\n";
-        while ($r = mysqli_fetch_assoc($res)) {
-            echo
-            "
-                
-                <tr>
-                <form method='post' action='feedback_delete.php'>
-                    <input type='hidden' name='fbID' value=" . $r['fbID'] . ">
-                    <td>" . $r['fbID'] . "</td>
-                    <td>" . $r['fbTitle'] . "</td>
-                    <td>" . $r['fbComment'] . "</td>
-                    <td>" . $r['fbDate'] . "</td>";
-            echo    "<td>
-                        <button type='submit' name='deleteFbButton'>
-                            <img src='../images/icons/trash-can-solid.svg' height='25px' />
-                        </button>
-                    </td>
-                </form>
-                </tr>
-                
-            ";
-        }
-        echo "</table>";
-
-        // Clear results and close the connection
-        mysqli_free_result($res);
-        mysqli_close($con);
-    }
+    /*while ($r = mysqli_fetch_assoc($res)) {
+            echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
+        }*/
     ?>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="student.php">
+                        <span class="icon">
+                            <img src="../images/logocircle.png" alt="Logo Let Us Score!" id="logoLUS" />
+                        </span>
+                        <!-- <span class="title">Let Us Score</span> -->
+                    </a>
+                </li>
+                <li>
+                    <a href="student.php">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="studentdetails.html">
+                        <span class="icon">
+                            <ion-icon name="options-outline"></ion-icon>
+                        </span>
+                        <span class="title">Update Details</span>
+                    </a>
+                </li>
+
+                <li>
+                    <?php
+                    // Construct and run query to check for existing subject registration
+                    $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
+                    $res = mysqli_query($con, $q);
+                    $num = mysqli_num_rows($res);
+
+                    if ($res) {
+                        if ($num <= 0) {
+                            // Will display subject registration option if student does not register yet
+                    ?>
+                            <a href=register_subject.php>
+                                <span class="icon">
+                                    <ion-icon name="person-add-outline"></ion-icon>
+                                </span>
+                                <span class="title">Register Subject(s)</span>
+                            </a>
+                        <?php
+                            mysqli_free_result($res);
+                        }
+                        ?>
+                </li>
+
+                <li>
+                    <a href="view_class.php">
+                        <span class="icon">
+                            <ion-icon name="create-outline"></ion-icon>
+                        </span>
+                        <span class="title">Class Details</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href=feedback.php>
+                        <span class="icon">
+                            <ion-icon name="help-outline"></ion-icon>
+                        </span>
+                        <span class="title">Feedback</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href=logout.php>
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                    <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
+                    </lord-icon>
+                </div>
+
+                <!-- 
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here" />
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+                
+                <div class="user">
+                    <img src="../images/icons/user-solid.svg" alt="" />
+                </div>
+                -->
+            </div>
+            <!-- ================ Order Details List ================= -->
+            <?php
+                        // Student's
+                        if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
+            ?>
+                <div class="details" style="display: inline-block;">
+                    <div class="recentOrders">
+                        <!-- 1 -->
+                        <div class="cardHeader">
+                            <h2>Feedback System</h2>
+                        </div>
+                        <form method="post" action="feedback_save.php">
+                            <table>
+                                <?php
+                                $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
+                                $res = mysqli_query($con, $q);
+                                $r = mysqli_fetch_assoc($res);
+                                ?>
+
+                                <tr>
+                                    <td>Name:</td>
+                                    <td>
+                                        <?php
+                                        echo $r['userName'];
+                                        ?>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <?php
+                                    date_default_timezone_set('Asia/Singapore');
+                                    $date = date('d-m-y h:i:s A');
+                                    ?>
+                                    <td>Date:</td>
+                                    <td>
+                                        <?php
+                                        echo $date;
+                                        ?>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Title:</td>
+                                    <td>
+                                        <input type="text" height="1000px" placeholder="Enter your title" name="fbTitle" size="76" required>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Comment:</td>
+                                    <td>
+                                        <textarea placeholder="Enter your comment" rows="8" cols="80" name="fbComment" required></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button type="submit" class="btn" name="submitFbButton" value="Submit">
+                                <span class="btnText"> Submit </span>
+                            </button>
+
+                            &nbsp;&nbsp;&nbsp;
+
+                            <button type="reset" class="btn">
+                                <span class="btnText"> Reset </span>
+                            </button>
+                        </form>
+
+                        <br>
+                        <br>
+
+                        <!-- 2 -->
+                        <div class="cardHeader">
+                            <h2>
+                                My Feedbacks
+                            </h2>
+
+                        </div>
+                        <?php
+                            // Construct and run query to list user's feedbacks
+                            $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
+                            $res = mysqli_query($con, $q);
+                        ?>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>ID</td>
+                                    <td style="width: 150px">Title</td>
+                                    <td>Comment</td>
+                                    <td>Date Submitted</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                while ($r = mysqli_fetch_assoc($res)) {
+                                    echo    "<tr>
+                                                <td>" . $r['fbID'] . "</td>
+                                                <td>" . $r['fbTitle'] . "</td>
+                                                <td>" . $r['fbComment'] . "</td>
+                                                <td>" . $r['fbDate'] . "</td>
+                                            </tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            <?php
+                            // Admin's
+                        } else if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
+                        }
+            ?>
+        </div>
+    </div>
+    <!-- =========== Scripts =========  -->
+    <script src="../js/dash.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<?php
+
+                        // Clear results and close the connection
+                        mysqli_close($con);
+                        mysqli_free_result($res);
+                    } else {
+                        header("Location: feedback.php");
+                    }
+?>
 </body>
 
 </html>

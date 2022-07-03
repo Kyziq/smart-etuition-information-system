@@ -18,7 +18,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
         "
         <script>
             alert('New feedback saved!');
-            window.location.href='student.php';
+            window.location.href='feedback.php';
         </script>
         ";
 
@@ -26,7 +26,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
         mysqli_free_result($res);
         mysqli_close($con);
     } else {
-        header("Location: student.php");
+        header("Location: feedback.php");
     }
 } else {
     header("Location: login.php");

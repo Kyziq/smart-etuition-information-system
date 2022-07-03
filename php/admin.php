@@ -219,7 +219,7 @@
                                 echo $r['total'];
                                 ?>
                             </div>
-                            <div class="cardName"><i>Pending verification status</i></div>
+                            <div class="cardName"><i>Pending class verification</i></div>
                         </div>
 
                         <div class="iconBx">

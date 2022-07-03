@@ -174,7 +174,7 @@
                                         <td style="width: 300px;">Subject</td>
                                         <td style="width: 200px;">Time</td>
                                         <td style="width: 400px;">Saturday | Slots</td>
-                                        <td style="width: 150px;">Sunday | Slots</td>
+                                        <td style="width: 150px; text-align: center;">Sunday | Slots</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -201,7 +201,7 @@
                                             ?>
                                             /10
                                         </td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='2'";
@@ -245,7 +245,7 @@
                                             ?>
                                             /10
                                         </td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='4'";
@@ -289,7 +289,7 @@
                                             ?>
                                             /10
                                         </td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='6'";
@@ -333,7 +333,7 @@
                                             ?>
                                             /10
                                         </td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='8'";
@@ -377,7 +377,7 @@
                                             ?>
                                             /10
                                         </td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='10'";

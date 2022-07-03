@@ -133,7 +133,6 @@
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>
-
                 <!--
                 <div class="search">
                     <label>
@@ -265,10 +264,9 @@
                             ?> 's Tuition Timetable</h2>
                     </div>
                     <?php
-                        // Construct and run query to display 
-                        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
-                        $result = mysqli_query($con, $q);
-                        $r = mysqli_fetch_assoc($result);
+                        // Construct and run query to display timetable
+                        $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
+                        $res = mysqli_query($con, $q);
                     ?>
                     <table>
                         <thead>
@@ -278,7 +276,6 @@
                                 <td>Sunday</td>
                             </tr>
                         </thead>
-
                         <tbody>
                             <!-- Mathematics -->
                             <tr>
@@ -324,7 +321,6 @@
                                     } ?>
                                 </td>
                             </tr>
-
                             <!-- Add. Mathematics -->
                             <tr>
                                 <td>9:00 a.m. - 10:00 a.m.</td>
@@ -368,7 +364,6 @@
                                     } ?>
                                 </td>
                             </tr>
-
                             <!-- Physics -->
                             <tr>
                                 <td>1:00 p.m. - 2:00 p.m.</td>
@@ -412,7 +407,6 @@
                                     } ?>
                                 </td>
                             </tr>
-
                             <!-- Chemistry -->
                             <tr>
                                 <td>2:00 p.m. - 3:00 p.m.</td>
@@ -456,7 +450,6 @@
                                     } ?>
                                 </td>
                             </tr>
-
                             <!-- Biology -->
                             <tr>
                                 <td>3:00 p.m. - 4:00 p.m.</td>

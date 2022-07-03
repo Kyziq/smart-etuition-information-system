@@ -430,10 +430,6 @@
         </div>
 <?php
                         }
-
-                        // Clear results and close the connection
-                        mysqli_close($con);
-                        mysqli_free_result($res);
                     } else {
                         header("Location: login.php");
                     }
@@ -445,6 +441,11 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+<?php
+// Clear results and close the connection
+mysqli_free_result($res);
+mysqli_close($con);
+?>
 </body>
 
 </html>

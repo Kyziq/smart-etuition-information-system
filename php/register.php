@@ -36,10 +36,8 @@ if (isset($_POST['registerButton'])) {
     </script>
     ";
 
-    // Clear results
-    // mysqli_free_result($res);
-
-    // Close conection
+    // Clear results and close the connection
+    mysqli_free_result($res);
     mysqli_close($con);
 } else {
     header("Location: register.html");

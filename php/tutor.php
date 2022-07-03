@@ -50,7 +50,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2) {
         </tr>";
     echo "</table>";
 
-    //clear results and close the connection
+    // Clear results and close the connection
     mysqli_free_result($res);
     mysqli_close($con);
 } else {

@@ -132,6 +132,15 @@
                     </lord-icon>
                 </div>
 
+
+                <span>
+                    <script>
+                        setInterval(function() {
+                            document.getElementById('current-time').innerHTML = new Date().toTimeString();
+                        }, 1000);
+                    </script>
+                    <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
+                </span>
                 <!--
                 <div class="search">
                     <label>
@@ -154,7 +163,7 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">Welcome</div>
+                        <div class="numbers">Student</div>
                         <div class="cardName">
                             <?php
                             $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];

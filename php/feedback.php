@@ -198,15 +198,16 @@
                 </div>
 
                 <!-- Time update (every 1s) on top -->
+                <!-- 
                 <span>
                     <script>
                         setInterval(function() {
-                            document.getElementById('current-time').innerHTML = new Date().toTimeString();
-                        }, 1000);
+                            document.getElementById('current-time').innerHTML = new Date().toString();
+                        }, 1);
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>
-                <!-- 
+                
                 <div class="search">
                     <label>
                         <input type="text" placeholder="Search here" />
@@ -247,14 +248,24 @@
                                 </tr>
 
                                 <tr>
+                                    <!-- Time update (every 1s) on top -->
+                                    <span>
+                                        <script>
+                                            setInterval(function() {
+                                                document.getElementById('current-time2').innerHTML = new Date().toLocaleString();
+                                            }, 1);
+                                        </script>
+
+                                    </span>
                                     <?php
+
                                     date_default_timezone_set('Asia/Singapore');
                                     $date = date('d-m-y h:i:s A');
                                     ?>
                                     <td>Date:</td>
                                     <td>
                                         <?php
-                                        echo $date;
+                                        echo "<div style='font-family: 'Helvetica', sans-serif; font-size: 20px; font-weight: 500;' id='current-time2'></div>";
                                         ?>
                                     </td>
                                 </tr>

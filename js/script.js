@@ -31,8 +31,3 @@ window.onload = function () {
         document.forms.registerForm.submit();
     };
 };
-
-setInterval(function () {
-    document.getElementById("current-time").innerHTML =
-        new Date().toTimeString();
-}, 1000);

@@ -128,8 +128,8 @@
                 <span>
                     <script>
                         setInterval(function() {
-                            document.getElementById('current-time').innerHTML = new Date().toTimeString();
-                        }, 1000);
+                            document.getElementById('current-time').innerHTML = new Date().toString();
+                        }, 1);
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>

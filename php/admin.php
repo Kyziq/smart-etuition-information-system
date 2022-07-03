@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
+
+    <!-- Image beside title -->
+    <link rel="icon" href="../images/icon.ico" />
+
     <title>Admin Dashboard</title>
-    <style>
-    </style>
+
+    </script>
+
 </head>
 
 <body>
@@ -109,8 +115,8 @@
                     <span>
                         <script>
                             setInterval(function() {
-                                document.getElementById('current-time').innerHTML = new Date().toTimeString();
-                            }, 1000);
+                                document.getElementById('current-time').innerHTML = new Date().toString();
+                            }, 1);
                         </script>
                         <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                     </span>

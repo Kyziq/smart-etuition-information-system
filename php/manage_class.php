@@ -5,70 +5,210 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Class</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style2.css">
+
+    <!-- Image beside title -->
+    <link rel="icon" href="../images/icon.ico" />
+
+    <!-- Font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <title>Class Details</title>
 </head>
 
 <body>
     <?php
     session_start();
-    // Admin's
-    if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
-        // Construct and run query to display username
-        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
-        $res = mysqli_query($con, $q);
-        $r = mysqli_fetch_assoc($res);
-        echo "<br><h2>Welcome to Manage Class Page, admin " . $r['userName'] . "</h2><a href=admin.php>Go back to admin dashboard</a><br><br>";
+    // Connect to database
+    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
-        // Construct and run query to list all classes registration
-        $q = "SELECT * FROM class";
-        $res = mysqli_query($con, $q);
-
-        // Pending
-        echo    "<br><h3>Classes Table:</h3>";
-        echo    "<table border='1' style='text-align:center;'>";
-        echo    "<tr>
-                    <th>Class ID</th>
-                    <th>Class Subject</th>
-                    <th>Class Link</th>
-                    <th>Class Day</th>
-                    <th>Class Time</th>
-                    <th>Class Fee</th>
-                    <th>Total Student</th>
-                    <th>Action (Save)</th>
-                </tr>";
-
-        if (mysqli_num_rows($res) > 0) {
-            while ($r = mysqli_fetch_assoc($res)) {
-                // Output all classes in a table
-                echo    "<form method='POST' action='manage_class_save.php'>";
-                echo    "<tr>
-                            <td><input type='text' name='classID' style='text-align:center;' size='1' value='" . $r['classID'] . "'readonly></td>
-                            <td><input type='text' name='subject' style='text-align:center;' size='20' value='" . $r['classSubject'] . "'></td>
-                            <td><input type='text' name='link' style='text-align:center;' size='30' value='" . $r['classLink'] . "'></td>
-                            <td><input type='text' name='day' style='text-align:center;' size='10' value='" . $r['classDay'] . "'></td>
-                            <td><input type='text' name='time' style='text-align:center;' size='10' value='" . $r['classTime'] . "'></td>
-                            <td><input type='text' name='fee' style='text-align:center;' size='2' value='" . $r['classFee'] . "'></td>
-                            <td><input type='text' name='totalStu' style='text-align:center;' size='1' value='" . $r['totalStudent'] . "'readonly></td>";
-                echo        "<td>
-                                <button type='submit' name='saveClassButton'>
-                                    <img src='../images/icons/floppy-disk-solid.svg' height='25px' />
-                                </button>
-                            </td>
-                        </tr>";
-                echo "</form>";
-            }
-        }
-        echo "</table>";
-
-        // Clear results and close the connection
-        mysqli_free_result($res);
-        mysqli_close($con);
-    }
+    /*while ($r = mysqli_fetch_assoc($res)) {
+            echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
+        }*/
     ?>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <?php
+        //Admin's
+        if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) { ?>
+            <div class="navigation">
+                <ul>
+                    <li>
+                        <a href="admin.php">
+                            <span class="icon">
+                                <img src="../images/logocircle.png" alt="Logo Let Us Score!" id="logoLUS" />
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin.php">
+                            <span class="icon">
+                                <ion-icon name="home-outline"></ion-icon>
+                            </span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
 
+                    <li>
+                        <a href=".php">
+                            <span class="icon">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </span>
+                            <span class="title">User Data</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="manage_class.php">
+                            <span class="icon">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </span>
+                            <span class="title">Class Details</span>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="verify_subject.php">
+                            <span class="icon">
+                                <ion-icon name="person-add-outline"></ion-icon>
+                            </span>
+                            <span class="title">Class Verification</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href=feedback.php>
+                            <span class="icon">
+                                <ion-icon name="help-outline"></ion-icon>
+                            </span>
+                            <span class="title">Feedback</span>
+                        </a>
+                    </li>
+
+                    &nbsp;
+
+                    <li>
+                        <a href=logout.php>
+                            <span class="icon" style="color:#ed2146;">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                            <span class="title" style="color:#ed2146;">Sign Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        <?php
+        }
+        ?>
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                    <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
+                    </lord-icon>
+                </div>
+
+                <!-- Time update (every 1s) on top -->
+                <span>
+                    <script>
+                        setInterval(function() {
+                            document.getElementById('current-time').innerHTML = new Date().toString();
+                        }, 1);
+                    </script>
+                    <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
+                </span>
+
+                <!--
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here" />
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+                
+                <div class="user">
+                    <img src="../images/icons/user-solid.svg" alt="" />
+                </div>
+                -->
+            </div>
+            <!-- ================ Order Details List ================= -->
+            <div class="details" style="display: inline-block;">
+                <div class="recentOrders">
+                    <!-- 1st -->
+                    <div class="cardHeader">
+                        <h2>Classes Table:</h2>
+                    </div>
+                    <?php
+                    // Construct and run query to list all classes registration
+                    $q = "SELECT * FROM class";
+                    $res = mysqli_query($con, $q);
+
+                    // Construct and run query to check for existing class
+                    $num = mysqli_num_rows($res);
+                    if ($res) {
+                        if ($num > 0) {
+                    ?>
+                            <table style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <td style="text-align: left;">Class ID</td>
+                                        <td style="text-align: left;">Class Subject</td>
+                                        <td style="text-align: left;">Class Link</td>
+                                        <td style="text-align: left;">Class Day</td>
+                                        <td style="text-align: left;">Class Time</td>
+                                        <td style="text-align: left;">Class Fee</td>
+                                        <td style="text-align: left;">Total Student</td>
+                                        <td style="text-align: center;">Action (Save)</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($r = mysqli_fetch_assoc($res)) {
+                                        // Output all classes in a table
+                                        echo    "<form method='POST' action='manage_class_save.php'>";
+                                        echo    "<tr>
+                                                    <td><input type='text' name='classID' style='text-align:center;' size='1' value='" . $r['classID'] . "'readonly></td>
+                                                    <td style='text-align: left;'><input type='text' name='subject' style='text-align:center;' size='20' value='" . $r['classSubject'] . "'></td>
+                                                    <td style='text-align: left;'><input type='text' name='link' style='text-align:center;' size='30' value='" . $r['classLink'] . "'></td>
+                                                    <td><input type='text' name='day' style='text-align:center;' size='10' value='" . $r['classDay'] . "'></td>
+                                                    <td><input type='text' name='time' style='text-align:center;' size='10' value='" . $r['classTime'] . "'></td>
+                                                    <td style='text-align: center;'><input type='text' name='fee' style='text-align:center;' size='2' value='" . $r['classFee'] . "'></td>
+                                                    <td style='text-align: center;'><input type='text' name='totalStu' style='text-align:center;' size='1' value='" . $r['totalStudent'] . "'readonly></td>
+                                                    <td style='text-align: center;'>
+                                                        <button type='submit' name='saveClassButton'>
+                                                            <img src='../images/icons/floppy-disk-solid.svg' height='25px' />
+                                                        </button>
+                                                    </td>
+                                                </tr>";
+                                        echo "</form>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+
+            <!-- JS scripts -->
+            <script src="../js/dash.js"></script>
+            <script src="../js/script.js"></script>
+
+            <!-- ionicons -->
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+            <?php
+            // Clear results and close the connection
+            mysqli_close($con);
+            mysqli_free_result($res);
+            ?>
 </body>
 
 </html>

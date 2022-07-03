@@ -406,7 +406,6 @@
                             <button type="reset" class="btn">
                                 <span class="btnText"> Reset </span>
                             </button>
-                            </table>
                         </form>
                     </div>
                 </div>

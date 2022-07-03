@@ -28,86 +28,92 @@
     ?>
     <!-- =============== Navigation ================ -->
     <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="student.php">
-                        <span class="icon">
-                            <img src="../images/logocircle.png" alt="Logo Let Us Score!" id="logoLUS" />
-                        </span>
-                        <!-- <span class="title">Let Us Score</span> -->
-                    </a>
-                </li>
-                <li>
-                    <a href="student.php">
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
+        <?php
+        // Student's
+        if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
+        ?>
+            <div class="navigation">
+                <ul>
+                    <li>
+                        <a href="student.php">
+                            <span class="icon">
+                                <img src="../images/logocircle.png" alt="Logo Let Us Score!" id="logoLUS" />
+                            </span>
+                            <!-- <span class="title">Let Us Score</span> -->
+                        </a>
+                    </li>
+                    <li>
+                        <a href="student.php">
+                            <span class="icon">
+                                <ion-icon name="home-outline"></ion-icon>
+                            </span>
+                            <span class="title">Dashboard</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="studentdetails.html">
-                        <span class="icon">
-                            <ion-icon name="options-outline"></ion-icon>
-                        </span>
-                        <span class="title">Update Details</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="studentdetails.html">
+                            <span class="icon">
+                                <ion-icon name="options-outline"></ion-icon>
+                            </span>
+                            <span class="title">Update Details</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <?php
-                    // Construct and run query to check for existing subject registration
-                    $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
-                    $res = mysqli_query($con, $q);
-                    $num = mysqli_num_rows($res);
-
-                    if ($res) {
-                        if ($num <= 0) {
-                            // Will display subject registration option if student does not register yet
-                    ?>
-                            <a href=register_subject.php>
-                                <span class="icon">
-                                    <ion-icon name="person-add-outline"></ion-icon>
-                                </span>
-                                <span class="title">Register Subject(s)</span>
-                            </a>
+                    <li>
                         <?php
-                            mysqli_free_result($res);
-                        }
+                        // Construct and run query to check for existing subject registration
+                        $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
+                        $res = mysqli_query($con, $q);
+                        $num = mysqli_num_rows($res);
+
+                        if ($res) {
+                            if ($num <= 0) {
+                                // Will display subject registration option if student does not register yet
                         ?>
-                </li>
+                                <a href=register_subject.php>
+                                    <span class="icon">
+                                        <ion-icon name="person-add-outline"></ion-icon>
+                                    </span>
+                                    <span class="title">Register Subject(s)</span>
+                                </a>
+                            <?php
+                                mysqli_free_result($res);
+                            }
+                            ?>
+                    </li>
 
-                <li>
-                    <a href="view_class.php">
-                        <span class="icon">
-                            <ion-icon name="create-outline"></ion-icon>
-                        </span>
-                        <span class="title">Class Details</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="view_class.php">
+                            <span class="icon">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </span>
+                            <span class="title">Class Details</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href=feedback.php>
-                        <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
-                        </span>
-                        <span class="title">Feedback</span>
-                    </a>
-                </li>
+                    <li>
+                        <a href=feedback.php>
+                            <span class="icon">
+                                <ion-icon name="help-outline"></ion-icon>
+                            </span>
+                            <span class="title">Feedback</span>
+                        </a>
+                    </li>
 
-                <li>
-                    <a href=logout.php>
-                        <span class="icon">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                        <span class="title">Sign Out</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-
+                    <li>
+                        <a href=logout.php>
+                            <span class="icon">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                            <span class="title">Sign Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        <?php
+                        }
+        ?>
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
@@ -132,8 +138,8 @@
             </div>
             <!-- ================ Order Details List ================= -->
             <?php
-                        // Student's
-                        if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
+            // Student's
+            if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
             ?>
                 <div class="details" style="display: inline-block;">
                     <div class="recentOrders">
@@ -207,9 +213,9 @@
 
                         </div>
                         <?php
-                            // Construct and run query to list user's feedbacks
-                            $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
-                            $res = mysqli_query($con, $q);
+                        // Construct and run query to list user's feedbacks
+                        $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
+                        $res = mysqli_query($con, $q);
                         ?>
                         <table>
                             <thead>
@@ -236,20 +242,20 @@
                     </div>
                 </div>
             <?php
-                            // Admin's
-                        } else if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
-                        }
+                // Admin's
+            } else if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
+            }
             ?>
         </div>
     </div>
 <?php
 
-                        // Clear results and close the connection
-                        mysqli_close($con);
-                        mysqli_free_result($res);
-                    } else {
-                        header("Location: feedback.php");
-                    }
+            // Clear results and close the connection
+            mysqli_close($con);
+            mysqli_free_result($res);
+        } else {
+            header("Location: feedback.php");
+        }
 ?>
 <!-- JS scripts -->
 <script src="../js/dash.js"></script>

@@ -137,7 +137,7 @@
                     </li>
 
                     <li>
-                        <a href=".php">
+                        <a href="manage_user.php">
                             <span class="icon">
                                 <ion-icon name="create-outline"></ion-icon>
                             </span>
@@ -225,11 +225,12 @@
             // Student's
             if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) { ?>
                 <div class="details" style="display: inline-block;">
+                    <div class="cardHeader">
+                        <h2>Feedback System</h2>
+                    </div>
+                    <br>
                     <div class="recentOrders">
                         <!-- 1 -->
-                        <div class="cardHeader">
-                            <h2>Feedback System</h2>
-                        </div>
                         <div style="text-align: justify; max-width:830px; line-height: 30px;">
                             <br>
                             Feedback is important information that will be used to help make critical decisions and improve the Smart E-Tuition Information System.
@@ -352,11 +353,13 @@
                 $res = mysqli_query($con, $q);
             ?>
                 <div class="details" style="display: inline-block;">
+                    <div class="cardHeader">
+                        <h2>Feedback System</h2>
+                    </div>
+                    <br>
                     <div class="recentOrders">
                         <!-- 1 -->
-                        <div class="cardHeader">
-                            <h2>Feedback System</h2>
-                        </div>
+
 
                         <?php
                         // Construct and run query to check for existing class

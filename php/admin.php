@@ -53,7 +53,7 @@
                     </li>
 
                     <li>
-                        <a href=".php">
+                        <a href="manage_user.php">
                             <span class="icon">
                                 <ion-icon name="create-outline"></ion-icon>
                             </span>

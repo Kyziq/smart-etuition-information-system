@@ -152,7 +152,7 @@
                     </li>
 
                     <li>
-                        <a href=".php">
+                        <a href="manage_user.php">
                             <span class="icon">
                                 <ion-icon name="create-outline"></ion-icon>
                             </span>
@@ -240,23 +240,27 @@
             // Admin's
             if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) { ?>
                 <div class="details" style="display: inline-block;">
+                    <div class="cardHeader">
+                        <h2>Class Verification System</h2>
+                    </div>
+                    <br>
                     <div class="recentOrders">
                         <!-- 1st -->
-                        <div class="cardHeader">
-                            <h2>Class Verification System</h2>
-                        </div>
-                        <br><br>
-                        <h3> Students' Registration Table (Pending): </h3>
-                        <br>
                         <?php
                         // Construct and run query to list all pending subjects registration
                         $q = "SELECT * FROM user u, register r, class c WHERE u.userID=r.stuID AND r.classID=c.classID AND registerApproval=3 ORDER BY r.stuID ASC";
                         $res = mysqli_query($con, $q);
                         // Construct and run query to check for existing class
                         $num = mysqli_num_rows($res);
+                        ?>
+
+                        <?php
                         if ($res) {
                             if ($num > 0) {
                         ?>
+                                <br><br>
+                                <h3> Students' Registration Table (Pending): </h3>
+                                <br>
                                 <table style="width: 100%;">
                                     <thead>
                                         <tr>
@@ -331,23 +335,25 @@
                 <!-- 2nd -->
                 <div class="details" style="display: inline-block;">
                     <div class="recentOrders">
-                        <!--
-                        <div class="cardHeader">
-                            <h2>Class Verification System</h2>
-                        </div>
-                        -->
-                        <br><br>
-                        <h3> Students' Registration Table (Approved and Declined): </h3>
-                        <br>
                         <?php
                         // Construct and run query to list all pending subjects registration
                         $q = "SELECT * FROM user u, register r, class c WHERE u.userID=r.stuID AND r.classID=c.classID AND (registerApproval=1 OR registerApproval=2) ORDER BY r.stuID ASC";
                         $res = mysqli_query($con, $q);
                         // Construct and run query to check for existing class
                         $num = mysqli_num_rows($res);
+                        ?>
+                        <!--
+                        <div class="cardHeader">
+                            <h2>Class Verification System</h2>
+                        </div>
+                        -->
+                        <?php
                         if ($res) {
                             if ($num > 0) {
                         ?>
+                                <br><br>
+                                <h3> Students' Registration Table (Approved and Declined): </h3>
+                                <br>
                                 <table style="width: 100%;">
                                     <thead>
                                         <tr>
@@ -374,7 +380,7 @@
                                             $image = $r['proofPayment'];
 
                                             // Output all registration in a table
-                                            echo    "<form method='post' action='verify_subject_action.php'>";
+                                            echo    "<form id='secondTable' method='post' action='verify_subject_action.php'>";
                                             echo    "<tr>
                                                             <input type='hidden' name='classID' value=" . $r['classID'] . ">
                                                             <input type='hidden' name='stuID' value=" . $r['stuID'] . ">
@@ -401,14 +407,14 @@
                                                             <td>
                                                                 ";
                                             if ($r['registerApproval'] == 1) {
-                                                echo "<select id='action' name='action' required>
-                                                                    <option value hidden disabled selected>‎</option>
+                                                echo "<select id='action' name='action'>
+                                                                    <option value='0' hidden disabled selected>‎</option>
                                                                     <option value='2'>Decline</option>
                                                                     <option value='3'>Pending</option>
                                                                     </select>";
                                             } else if ($r['registerApproval'] == 2) {
-                                                echo "<select id='action' name='action' required>
-                                                                    <option value hidden disabled selected>‎</option>
+                                                echo "<select id='action' name='action'>
+                                                                    <option value='0' hidden disabled selected>‎</option>
                                                                     <option value='1'>Approve</option>
                                                                     <option value='3'>Pending</option>
                                                                     </select>";
@@ -417,15 +423,17 @@
                                                                 <button type='submit' name='updateButton'>Update</button>
                                                             </td>
                                                             <td>
-                                                                <button type='submit' name='deleteVerifyButton' onclick='deleteButton()'>
+                                                                <button type='submit' name='deleteVerifyButton'>
                                                                     <img src='../images/icons/trash-can-solid.svg' height='25px' />
                                                                 </button>
                                                             </td>
                                                         </tr>";
-                                            echo "</form>";
+                                            echo "</form>"
+                                        ?>
+                                        <?php
+
                                         }
                                         ?>
-
                                     </tbody>
                                 </table>
                         <?php
@@ -445,10 +453,6 @@
             <script src="../js/script.js"></script>
 
             <script>
-                // To change action to not disabled for delete button to work
-                function deleteButton() {
-                    document.getElementById("action").setAttribute("disabled", "");
-                }
                 // ------- Picture Popup
                 // Get the modal
                 var modal = document.getElementById('myModal');

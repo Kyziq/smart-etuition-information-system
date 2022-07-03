@@ -11,6 +11,10 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         $regApproval = $_POST['action'];
         $adminID = $_SESSION['userID'];
 
+        // Check if null action is updated
+        if ($regApproval == 0)
+            header("Location: verify_subject.php");
+
         // Connect to database 
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
         // echo $classID, $stuID, $regApproval, $adminID;

@@ -174,7 +174,7 @@
                                     <?php
                                     while ($r = mysqli_fetch_assoc($res)) {
                                         // Output all classes in a table
-                                        echo    "<form method='POST' action='manage_class_save.php'>";
+                                        echo    "<form method='POST' action='manage_user_save.php'>";
                                         echo    "<tr>
                                                     <td style='text-align: left;'><input type='text' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly></td>
                                                     <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td>
@@ -185,16 +185,16 @@
 
                                         if ($r['userGender'] == 1) {
                                             echo "
-                                                        <select>
-                                                            <option selected>Male</option>
-                                                            <option>Female</option>
+                                                        <select name='userGender'>
+                                                            <option selected value='1'>Male</option>
+                                                            <option value='2'>Female</option>
                                                         </select>";
                                         }
                                         if ($r['userGender'] == 2) {
                                             echo "
-                                                            <select>
-                                                                <option>Male</option>
-                                                                <option selected>Female</option>
+                                                            <select name='userGender'>
+                                                                <option value='1'>Male</option>
+                                                                <option selected value='2'>Female</option>
                                                             </select>";
                                         }
                                         echo "
@@ -202,7 +202,7 @@
                                                     <td style='text-align: left;'><input type='text' name='userBirthdate' style='text-align:center;' size='5' value='" . $r['userBirthdate'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='userAddress' style='text-align:center;' size='60' value='" . $r['userAddress'] . "'></td>
                                                     <td style='text-align: end;'>
-                                                        <button type='submit' name='saveClassButton'>
+                                                        <button type='submit' name='saveUserButton'>
                                                             <img src='../images/icons/floppy-disk-solid.svg' height='25px' />
                                                         </button>
                                                     </td>

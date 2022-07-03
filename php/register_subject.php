@@ -98,12 +98,14 @@
                         </a>
                     </li>
 
+                    &nbsp;
+
                     <li>
                         <a href=logout.php>
-                            <span class="icon">
+                            <span class="icon" style="color:#ed2146;">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </span>
-                            <span class="title">Sign Out</span>
+                            <span class="title" style="color:#ed2146;">Sign Out</span>
                         </a>
                     </li>
                 </ul>

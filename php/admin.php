@@ -83,12 +83,14 @@
                         </a>
                     </li>
 
+                    &nbsp;
+
                     <li>
                         <a href=logout.php>
-                            <span class="icon">
+                            <span class="icon" style="color:#ed2146;">
                                 <ion-icon name="log-out-outline"></ion-icon>
                             </span>
-                            <span class="title">Sign Out</span>
+                            <span class="title" style="color:#ed2146;">Sign Out</span>
                         </a>
                     </li>
                 </ul>
@@ -102,8 +104,33 @@
                         <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                         </lord-icon>
                     </div>
-                </div>
 
+                    <!-- Time update (every 1s) on top -->
+                    <span>
+                        <script>
+                            setInterval(function() {
+                                document.getElementById('current-time').innerHTML = new Date().toTimeString();
+                            }, 1000);
+                        </script>
+                        <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
+                    </span>
+                </div>
+                <!--
+                <div class="search">
+                    <label>
+                        <input type="text" placeholder="Search here" />
+                        <ion-icon name="search-outline"></ion-icon>
+                    </label>
+                </div>
+                
+
+                <div class="user">
+                    <img src="../images/icons/user-solid.svg" alt="" />
+                </div>
+                <span style="color:#192e59">
+                    Student
+                </span>
+                -->
                 <!-- ======================= Cards ================== -->
                 <div class="cardBox">
                     <div class="card">

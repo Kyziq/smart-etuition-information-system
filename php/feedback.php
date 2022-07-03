@@ -139,36 +139,26 @@
                             <span class="icon">
                                 <ion-icon name="create-outline"></ion-icon>
                             </span>
-                            <span class="title">Manage User Data</span>
+                            <span class="title">User Data</span>
                         </a>
                     </li>
-
-                    <li>
-                        <a href="verify_subject.php">
-                            <span class="icon">
-                                <ion-icon name="person-add-outline"></ion-icon>
-                            </span>
-                            <span class="title">Manage Class Verification</span>
-                        </a>
-                    </li>
-
-
 
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
                                 <ion-icon name="create-outline"></ion-icon>
                             </span>
-                            <span class="title">Manage Class Details</span>
+                            <span class="title">Class Details</span>
                         </a>
                     </li>
 
+
                     <li>
-                        <a href=.php>
+                        <a href="verify_subject.php">
                             <span class="icon">
-                                <ion-icon name="help-outline"></ion-icon>
+                                <ion-icon name="person-add-outline"></ion-icon>
                             </span>
-                            <span class="title">Manage Class Registration</span>
+                            <span class="title">Class Verification</span>
                         </a>
                     </li>
 
@@ -177,7 +167,7 @@
                             <span class="icon">
                                 <ion-icon name="help-outline"></ion-icon>
                             </span>
-                            <span class="title">Feedback Report</span>
+                            <span class="title">Feedback</span>
                         </a>
                     </li>
 

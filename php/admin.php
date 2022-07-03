@@ -51,36 +51,26 @@
                             <span class="icon">
                                 <ion-icon name="create-outline"></ion-icon>
                             </span>
-                            <span class="title">Manage User Data</span>
+                            <span class="title">User Data</span>
                         </a>
                     </li>
-
-                    <li>
-                        <a href="verify_subject.php">
-                            <span class="icon">
-                                <ion-icon name="person-add-outline"></ion-icon>
-                            </span>
-                            <span class="title">Manage Class Verification</span>
-                        </a>
-                    </li>
-
-
 
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
                                 <ion-icon name="create-outline"></ion-icon>
                             </span>
-                            <span class="title">Manage Class Details</span>
+                            <span class="title">Class Details</span>
                         </a>
                     </li>
 
+
                     <li>
-                        <a href=.php>
+                        <a href="verify_subject.php">
                             <span class="icon">
-                                <ion-icon name="help-outline"></ion-icon>
+                                <ion-icon name="person-add-outline"></ion-icon>
                             </span>
-                            <span class="title">Manage Class Registration</span>
+                            <span class="title">Class Verification</span>
                         </a>
                     </li>
 
@@ -89,7 +79,7 @@
                             <span class="icon">
                                 <ion-icon name="help-outline"></ion-icon>
                             </span>
-                            <span class="title">Feedback Report</span>
+                            <span class="title">Feedback</span>
                         </a>
                     </li>
 
@@ -186,7 +176,7 @@
 
                         <div class="iconBx">
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/aixyixpa.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:70px;height:70px">
+                            <lord-icon src="https://cdn.lordicon.com/pvbjsfif.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:75px;height:75px">
                             </lord-icon>
                         </div>
                     </div>
@@ -195,27 +185,19 @@
                         <div>
                             <div class="numbers">
                                 <?php
-                                // Construct and run query to check class registration status
-                                $q = "SELECT registerApproval FROM register r, user u WHERE r.stuID=" . $_SESSION['userID'] . " AND u.userID=" . $_SESSION['userID'];
+                                // Construct and run query to check for total classes
+                                $q = "SELECT count(r.classID) AS total FROM register r WHERE registerApproval=3";
                                 $res = mysqli_query($con, $q);
-                                if ($res != NULL)
-                                    $r = mysqli_fetch_assoc($res);
-                                if ($r != NULL and $r['registerApproval'] == 1)
-                                    echo "Approved";
-                                else if ($r != NULL and $r['registerApproval'] == 2)
-                                    echo "Declined";
-                                else if ($r != NULL and $r['registerApproval'] == 3)
-                                    echo "Pending";
-                                else
-                                    echo "Absent";
+                                $r = mysqli_fetch_assoc($res);
+                                echo $r['total'];
                                 ?>
                             </div>
-                            <div class="cardName"><i>Verification Status</i></div>
+                            <div class="cardName"><i>Pending verification status</i></div>
                         </div>
 
                         <div class="iconBx">
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/cnyeuzxc.json" trigger="loop" delay="750" colors="primary:#192e59" state="morph-phone-signal-start" style="width:70px;height:70px">
+                            <lord-icon src="https://cdn.lordicon.com/ndydpcaq.json" trigger="loop" colors="primary:#192e59" state="loop" style="width:75px;height:75px">
                             </lord-icon>
                         </div>
                     </div>

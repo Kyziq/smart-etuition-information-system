@@ -49,7 +49,7 @@
                     </li>
 
                     <li>
-                        <a href="studentdetails.html">
+                        <a href="student_details.php">
                             <span class="icon">
                                 <ion-icon name="options-outline"></ion-icon>
                             </span>

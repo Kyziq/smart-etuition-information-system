@@ -26,6 +26,8 @@
         /*while ($r = mysqli_fetch_assoc($res)) {
             echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
         }*/
+    } else {
+        header("Location: login.php");
     }
 
     ?>
@@ -34,7 +36,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="student.php">
+                    <a href="tutor.php">
                         <span class="icon">
                             <img src="../images/logocircle.png" alt="Logo Let Us Score!" id="logoLUS" />
                         </span>
@@ -42,7 +44,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="student.php">
+                    <a href="tutor.php">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -51,55 +53,22 @@
                 </li>
 
                 <li>
-                    <a href="studentdetails.html">
+                    <a href=".php">
                         <span class="icon">
-                            <ion-icon name="options-outline"></ion-icon>
+                            <ion-icon name="document-text-outline"></ion-icon>
                         </span>
-                        <span class="title">Update Details</span>
+                        <span class="title">User Data</span>
                     </a>
                 </li>
 
                 <li>
-                    <?php
-                    // Construct and run query to check for existing subject registration
-                    $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
-                    $res = mysqli_query($con, $q);
-                    $num = mysqli_num_rows($res);
-
-                    if ($res) {
-                        if ($num <= 0) {
-                            // Will display subject registration option if student does not register yet
-                    ?>
-                            <a href=register_subject.php>
-                                <span class="icon">
-                                    <ion-icon name="person-add-outline"></ion-icon>
-                                </span>
-                                <span class="title">Register Subject(s)</span>
-                            </a>
-                        <?php
-                            //mysqli_free_result($res);
-                        }
-                        ?>
-                </li>
-
-                <li>
-                    <a href="view_class.php">
+                    <a href=".php">
                         <span class="icon">
-                            <ion-icon name="create-outline"></ion-icon>
+                            <ion-icon name="document-text-outline"></ion-icon>
                         </span>
                         <span class="title">Class Details</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href=feedback.php>
-                        <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
-                        </span>
-                        <span class="title">Feedback</span>
-                    </a>
-                </li>
-
 
                 &nbsp;
 
@@ -155,10 +124,10 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">Student</div>
+                        <div class="numbers">Tutor</div>
                         <div class="cardName">
                             <?php
-                            $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
+                            $q = "SELECT userName, userGender FROM user WHERE userID=" . $_SESSION['userID'];
                             $res = mysqli_query($con, $q);
                             $r = mysqli_fetch_assoc($res);
                             echo "<i>" . $r['userName'] . "</i>";
@@ -166,9 +135,21 @@
                         </div>
                     </div>
                     <div class="iconBx">
-                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/becxqsdr.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:80px;height:80px">
-                        </lord-icon>
+                        <?php
+                        // Male Icon
+                        if ($r['userGender'] == 1) { ?>
+                            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/eszyyflr.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
+                            </lord-icon>
+                        <?php
+                            // Female Icon
+                        } else if ($r['userGender'] == 2) { ?>
+                            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/bwnhdkha.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
+                            </lord-icon>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
 
@@ -264,9 +245,9 @@
                             ?> 's Tuition Timetable</h2>
                     </div>
                     <?php
-                        // Construct and run query to display timetable
-                        $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
-                        $res = mysqli_query($con, $q);
+                    // Construct and run query to display timetable
+                    $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
+                    $res = mysqli_query($con, $q);
                     ?>
                     <table>
                         <thead>
@@ -610,23 +591,17 @@
             </div>
         </div>
     </div>
-<?php
-                    } else {
-                        header("Location: login.php");
-                    }
-
-?>
-<!-- JS scripts -->
-<script src="../js/dash.js"></script>
-<script src="../js/script.js"></script>
-<!-- ionicons -->
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<?php
-// Clear results and close the connection
-mysqli_free_result($res);
-mysqli_close($con);
-?>
+    <!-- JS scripts -->
+    <script src="../js/dash.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <?php
+    // Clear results and close the connection
+    mysqli_free_result($res);
+    mysqli_close($con);
+    ?>
 </body>
 
 </html>

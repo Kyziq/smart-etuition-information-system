@@ -379,16 +379,16 @@
                                         <?php
                                         while ($r = mysqli_fetch_assoc($res)) {
                                             echo    "<tr>
-                                                <td>" . $r['fbID'] . "</td>
-                                                <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
-                                                <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
-                                                <td style='text-align: end;'>" . $r['fbDate'] . "</td>
-                                                <td>
-                                                <button type='submit' name='deleteFbButton'>
-                                                    <img src='../images/icons/trash-can-solid.svg' height='25px' />
-                                                </button>
-                                                </td>
-                                            </tr>";
+                                                        <td>" . $r['fbID'] . "</td>
+                                                        <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
+                                                        <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
+                                                        <td style='text-align: end;'>" . $r['fbDate'] . "</td>
+                                                        <td>
+                                                            <button type='submit' name='deleteFbButton'>
+                                                                <img src='../images/icons/trash-can-solid.svg' height='25px' />
+                                                            </button>
+                                                        </td>
+                                                    </tr>";
                                         }
                                         ?>
                                     </tbody>

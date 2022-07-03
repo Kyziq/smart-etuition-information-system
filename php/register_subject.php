@@ -175,7 +175,7 @@
                                 <thead>
                                     <tr>
                                         <td style="width: 300px;">Subject</td>
-                                        <td style="width: 200px;">Time</td>
+                                        <td style="width: 300px;">Time</td>
                                         <td style="width: 400px;">Saturday | Slots</td>
                                         <td style="width: 150px; text-align: center;">Sunday | Slots</td>
                                     </tr>
@@ -202,7 +202,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                         <td style="text-align: center;">
                                             <?php
@@ -222,7 +222,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                     </tr>
                                     <tr>
@@ -246,7 +246,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                         <td style="text-align: center;">
                                             <?php
@@ -266,7 +266,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                     </tr>
                                     <tr>
@@ -290,7 +290,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                         <td style="text-align: center;">
                                             <?php
@@ -310,7 +310,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                     </tr>
                                     <tr>
@@ -334,7 +334,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                         <td style="text-align: center;">
                                             <?php
@@ -354,7 +354,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                     </tr>
                                     <tr>
@@ -378,7 +378,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                         <td style="text-align: center;">
                                             <?php
@@ -398,7 +398,7 @@
                                             }
                                             echo implode(",", $row);
                                             ?>
-                                            /10
+                                            / 10
                                         </td>
                                     </tr>
                                 </tbody>
@@ -413,7 +413,7 @@
                             <br><br>
 
                             <p>
-                                <b>File type:</b> .jpg, .jpeg, .png & .pdf only & max 5MB.
+                                The file type must be <b>.png, .jpg, .jpeg, or .pdf</b>, and the file size must not exceed <b>5MB</b>.
                             </p>
 
                             <br>

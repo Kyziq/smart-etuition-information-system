@@ -47,7 +47,7 @@
                 </li>
 
                 <li>
-                    <a href="view_class.php">
+                    <a href=".php">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
                         </span>
@@ -76,7 +76,7 @@
                 </li>
 
                 <li>
-                    <a href=feedback.php>
+                    <a href=.php>
                         <span class="icon">
                             <ion-icon name="help-outline"></ion-icon>
                         </span>
@@ -118,7 +118,7 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">Welcome</div>
+                        <div class="numbers">Admin</div>
                         <div class="cardName">
                             <?php
                             $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
@@ -140,7 +140,7 @@
                         <div class="numbers">
                             <?php
                             // Construct and run query to check for total classes
-                            $q = "SELECT count(c.classID) AS total FROM user u, register r,class c WHERE r.registerApproval=1 AND r.classID=c.classID AND u.userID=r.stuID AND u.userID=" . $_SESSION['userID'];
+                            $q = "SELECT count(u.userID) AS total FROM user u WHERE userLevel=3";
                             $res = mysqli_query($con, $q);
                             $r = mysqli_fetch_assoc($res);
                             echo $r['total'];
@@ -149,9 +149,9 @@
                         <div class="cardName">
                             <?php
                             if ($r['total'] <= 1)
-                                echo "Class taken";
+                                echo "Total student";
                             else if ($r['total'] > 1)
-                                echo "Classes taken";
+                                echo "Total students";
                             ?>
                         </div>
                     </div>
@@ -159,6 +159,34 @@
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/stxtcyyo.json" trigger="loop" colors="primary:#192e59" state="loop" style="width:70px;height:70px">
+                        </lord-icon>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="numbers">
+                            <?php
+                            // Construct and run query to check for total classes
+                            $q = "SELECT count(u.userID) AS total FROM user u WHERE userLevel=2";
+                            $res = mysqli_query($con, $q);
+                            $r = mysqli_fetch_assoc($res);
+                            echo $r['total'];
+                            ?>
+                        </div>
+                        <div class="cardName">
+                            <?php
+                            if ($r['total'] <= 1)
+                                echo "Total tutor";
+                            else if ($r['total'] > 1)
+                                echo "Total tutors";
+                            ?>
+                        </div>
+                    </div>
+
+                    <div class="iconBx">
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/aixyixpa.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:70px;height:70px">
                         </lord-icon>
                     </div>
                 </div>
@@ -183,28 +211,6 @@
                             ?>
                         </div>
                         <div class="cardName"><i>Verification Status</i></div>
-                    </div>
-
-                    <div class="iconBx">
-                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/aixyixpa.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:70px;height:70px">
-                        </lord-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="numbers">Contact Us</div>
-                        <div class="cardName">
-                            <i>
-                                <a href="mailto:smartetuition@gmail.com">
-                                    <ion-icon name="mail-outline"></ion-icon> <b><u>E-mail</u></b>
-                                </a>&nbsp;&nbsp;
-                                <a href="https://wa.link/cuxs3j" target=_blank">
-                                    <ion-icon name="logo-whatsapp"></ion-icon> <b><u>WhatsApp</u></b>
-                                </a>
-                            </i>
-                        </div>
                     </div>
 
                     <div class="iconBx">

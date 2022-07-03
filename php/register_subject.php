@@ -5,7 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
+
+    <!-- JS scripts -->
+    <script src="../js/dash.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- Image beside title -->
+    <link rel="icon" href="../images/icon.ico" />
+
     <title>Registration Page</title>
 </head>
 
@@ -104,14 +116,26 @@
                 </ul>
             </div>
 
-            <!-- ========================= Main ==================== -->
+            <!-- Main -->
             <div class="main">
                 <div class="topbar">
+                    <!-- Options menu toggle -->
                     <div class="toggle">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                         </lord-icon>
                     </div>
+
+                    <!-- Time update (every 1s) on top -->
+                    <span>
+                        <script>
+                            setInterval(function() {
+                                document.getElementById('current-time').innerHTML = new Date().toTimeString();
+                            }, 1000);
+                        </script>
+                        <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
+                    </span>
+
 
                     <!-- 
                 <div class="search">
@@ -411,23 +435,15 @@
                 </div>
             </div>
         </div>
-    <?php
-                        }
-    ?>
-    <!-- =========== Scripts =========  -->
-    <script src="../js/dash.js"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <?php
+                        }
 
-        // Clear results and close the connection
-        mysqli_close($con);
-        mysqli_free_result($res);
-    } else {
-        header("Location: login.php");
-    }
+                        // Clear results and close the connection
+                        mysqli_close($con);
+                        mysqli_free_result($res);
+                    } else {
+                        header("Location: login.php");
+                    }
 ?>
 </body>
 

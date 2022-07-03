@@ -5,8 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
-    <title>Feedback Page</title>
+
+    <!-- JS scripts -->
+    <script src="../js/dash.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- Image beside title -->
+    <link rel="icon" href="../images/icon.ico" />
+
+    <title>Feedback System</title>
 </head>
 
 <body>
@@ -237,12 +249,6 @@
             ?>
         </div>
     </div>
-    <!-- =========== Scripts =========  -->
-    <script src="../js/dash.js"></script>
-
-    <!-- ====== ionicons ======= -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <?php
 
                         // Clear results and close the connection

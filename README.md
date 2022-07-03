@@ -28,7 +28,6 @@ The third user, which is admin, has seven processes that can be done in the syst
 * Manage class verification
 * Manage class details
 * View reports on student feedback
-* Student class registration
 </i>
 
 ## Made for

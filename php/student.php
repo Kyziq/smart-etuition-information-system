@@ -263,9 +263,10 @@
                             ?> 's Tuition Timetable</h2>
                     </div>
                     <?php
-                        // Construct and run query to display timetable
-                        $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
-                        $res = mysqli_query($con, $q);
+                        // Construct and run query to display 
+                        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
+                        $result = mysqli_query($con, $q);
+                        $r = mysqli_fetch_assoc($result);
                     ?>
                     <table>
                         <thead>

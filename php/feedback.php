@@ -230,6 +230,15 @@
                         <div class="cardHeader">
                             <h2>Feedback System</h2>
                         </div>
+                        <div style="text-align: justify; max-width:830px; line-height: 30px;">
+                            <br>
+                            Feedback is important information that will be used to help make critical decisions and improve the Smart E-Tuition Information System.
+                            Let Us Score! are open to criticism and seek feedback, which provides us with numerous positive effects that save us a lot of time.
+                            Furthermore, effective feedback, both positive and negative, aids in the effective analysis of our system.
+                            Please keep in mind that your feedback is only to yourself.
+                            <br>
+                            <br>
+                        </div>
                         <form method="post" action="feedback_save.php">
                             <table>
                                 <?php
@@ -239,7 +248,7 @@
                                 ?>
 
                                 <tr>
-                                    <td>Name:</td>
+                                    <td><b>Name:</b></td>
                                     <td>
                                         <?php
                                         echo $r['userName'];
@@ -262,7 +271,7 @@
                                     date_default_timezone_set('Asia/Singapore');
                                     $date = date('d-m-y h:i:s A');
                                     ?>
-                                    <td>Date:</td>
+                                    <td><b>Date:</b></td>
                                     <td>
                                         <?php
                                         echo "<div style='font-family: 'Helvetica', sans-serif; font-size: 20px; font-weight: 500;' id='current-time2'></div>";
@@ -271,19 +280,20 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Title:</td>
+                                    <td><b>Title:</b></td>
                                     <td>
-                                        <input type="text" height="1000px" placeholder="Enter your title" name="fbTitle" size="76" required>
+                                        <input type="text" height="1000px" placeholder="Enter your title" name="fbTitle" size="96" required>
                                     </td>
                                 </tr>
 
                                 <tr>
-                                    <td>Comment:</td>
+                                    <td><b>Comment:</b></td>
                                     <td>
-                                        <textarea placeholder="Enter your comment" rows="8" cols="80" name="fbComment" required></textarea>
+                                        <textarea placeholder="Enter your comment" rows="8" cols="100" name="fbComment" required></textarea>
                                     </td>
                                 </tr>
                             </table>
+                            <br>
                             <button type="submit" class="btn" name="submitFbButton" value="Submit">
                                 <span class="btnText"> Submit </span>
                             </button>
@@ -347,6 +357,7 @@
                         <div class="cardHeader">
                             <h2>Feedback System</h2>
                         </div>
+
                         <?php
                         // Construct and run query to check for existing class
                         $res = mysqli_query($con, $q);

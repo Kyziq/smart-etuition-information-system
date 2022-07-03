@@ -157,14 +157,17 @@
                                 ?>
                                 's Subject Registration
                             </h2>
-
                         </div>
-                        <br><br>
-                        <p>Select the course(s) from the list below for your SPM journey in Let Us Score. You may either take only one, some, or include them all. It would cost <b>RM50</b> for each individual class.</p>
-                        <p><br><b>Transfer to:</b>
-                            <br>Let Us Score Sdn. Bhd.
-                            <br>7062122458 CIMB Bank
-                        </p>
+                        <div style="text-align: justify; line-height: 30px;">
+                            <br>
+                            Select the course(s) from the list below for your SPM journey in Let Us Score. You may either take only one, some, or include them all. It would cost <b>RM50</b> for each individual class.
+                            <br>
+                            <br>
+                            <p><b>Transfer to:</b>
+                                <br>Let Us Score Sdn. Bhd.
+                                <br>7062122458 CIMB Bank
+                            </p>
+                        </div>
 
                         <br>
                         <form id="subjectForm" method="post" action="register_subject_save.php" enctype="multipart/form-data">
@@ -400,7 +403,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <br>
+                            <br><br>
                             <b>Payment Proof:</b> <br><br>
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                             <lord-icon src="https://cdn.lordicon.com/diyeocup.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover-1" style="width:50px;height:50px">

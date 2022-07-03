@@ -320,7 +320,7 @@
                         $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
                         $res = mysqli_query($con, $q);
                         ?>
-                        <table style="width: 1500px;">
+                        <table style="width: 100%;">
                             <thead>
                                 <tr>
                                     <td style="width:100px;">ID</td>
@@ -365,34 +365,37 @@
                         if ($res) {
                             if ($num > 0) {
                         ?>
-                                <table style="width: 1500px;">
-                                    <thead>
-                                        <tr>
-                                            <td style="width:100px;">ID</td>
-                                            <td style="width:200px; text-align: justify;">Title</td>
-                                            <td style="width:900px; text-align: justify;">Comment</td>
-                                            <td style="width:200px; text-align: end;">Date Submitted</td>
-                                            <td style="width:100px;">Action</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        while ($r = mysqli_fetch_assoc($res)) {
-                                            echo    "<tr>
-                                                        <td>" . $r['fbID'] . "</td>
-                                                        <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
-                                                        <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
-                                                        <td style='text-align: end;'>" . $r['fbDate'] . "</td>
-                                                        <td>
-                                                            <button type='submit' name='deleteFbButton'>
-                                                                <img src='../images/icons/trash-can-solid.svg' height='25px' />
-                                                            </button>
-                                                        </td>
-                                                    </tr>";
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                <form method="post" action="feedback_delete.php">
+                                    <table style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <td style="width:100px; text-align: left;">ID</td>
+                                                <td style="width:200px; text-align: justify;">Title</td>
+                                                <td style="width:900px; text-align: justify;">Comment</td>
+                                                <td style="width:200px; text-align: end;">Date Submitted</td>
+                                                <td style="width:100px;">Action</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while ($r = mysqli_fetch_assoc($res)) {
+                                                echo    "<tr>
+                                                            <input type='hidden' name='fbID' value=" . $r['fbID'] . ">
+                                                            <td style='text-align: left;'>" . $r['fbID'] . "</td>
+                                                            <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
+                                                            <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
+                                                            <td style='text-align: end;'>" . $r['fbDate'] . "</td>
+                                                            <td>
+                                                                <button type='submit' name='deleteFbButton'>
+                                                                    <img src='../images/icons/trash-can-solid.svg' height='25px' />
+                                                                </button>
+                                                            </td>
+                                                        </tr>";
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </form>
                         <?php
                             }
                         }

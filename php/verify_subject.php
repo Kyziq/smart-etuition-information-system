@@ -380,7 +380,7 @@
                                             $image = $r['proofPayment'];
 
                                             // Output all registration in a table
-                                            echo    "<form id='secondTable' method='post' action='verify_subject_action.php'>";
+                                            echo    "<form method='post' action='verify_subject_action.php'>";
                                             echo    "<tr>
                                                             <input type='hidden' name='classID' value=" . $r['classID'] . ">
                                                             <input type='hidden' name='stuID' value=" . $r['stuID'] . ">

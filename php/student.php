@@ -51,7 +51,7 @@
                 </li>
 
                 <li>
-                    <a href="student_details.php">
+                    <a href="edit_details.php">
                         <span class="icon">
                             <ion-icon name="options-outline"></ion-icon>
                         </span>
@@ -83,7 +83,7 @@
                 </li>
 
                 <li>
-                    <a href="view_class.php">
+                    <a href="view_class_student.php">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -165,6 +165,7 @@
                             ?>
                         </div>
                     </div>
+                    &nbsp;&nbsp;
                     <div class="iconBx">
                         <?php
                         // Male Icon
@@ -204,7 +205,7 @@
                             ?>
                         </div>
                     </div>
-
+                    &nbsp;&nbsp;
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/stxtcyyo.json" trigger="loop" colors="primary:#192e59" state="loop" style="width:70px;height:70px">
@@ -233,7 +234,7 @@
                         </div>
                         <div class="cardName"><i>Verification Status</i></div>
                     </div>
-
+                    &nbsp;&nbsp;
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/aixyixpa.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:70px;height:70px">
@@ -243,22 +244,23 @@
 
                 <div class="card">
                     <div>
-                        <div class="numbers">Contact Us</div>
+                        <div class="numbers">Contact</div>
                         <div class="cardName">
                             <i>
                                 <a href="mailto:smartetuition@gmail.com">
                                     <ion-icon name="mail-outline"></ion-icon> <b><u>E-mail</u></b>
                                 </a>&nbsp;&nbsp;
+                                <br>
                                 <a href="https://wa.link/cuxs3j" target=_blank">
                                     <ion-icon name="logo-whatsapp"></ion-icon> <b><u>WhatsApp</u></b>
                                 </a>
                             </i>
                         </div>
                     </div>
-
+                    &nbsp;&nbsp;
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/cnyeuzxc.json" trigger="loop" delay="750" colors="primary:#192e59" state="morph-phone-signal-start" style="width:70px;height:70px">
+                        <lord-icon src="https://cdn.lordicon.com/uvextprq.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:70px;height:70px">
                         </lord-icon>
                     </div>
                 </div>

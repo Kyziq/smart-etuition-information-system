@@ -53,7 +53,7 @@
                 </li>
 
                 <li>
-                    <a href=".php">
+                    <a href="edit_details.php">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -62,7 +62,7 @@
                 </li>
 
                 <li>
-                    <a href=".php">
+                    <a href="view_class_tutor.php">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
@@ -165,18 +165,13 @@
                             ?>
                         </div>
                         <div class="cardName">
-                            <?php
-                            if ($r['total'] <= 1)
-                                echo "Class taken";
-                            else if ($r['total'] > 1)
-                                echo "Classes taken";
-                            ?>
+                            <i>My Students</i>
                         </div>
                     </div>
 
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/stxtcyyo.json" trigger="loop" colors="primary:#192e59" state="loop" style="width:70px;height:70px">
+                        <lord-icon src="https://cdn.lordicon.com/zpxybbhl.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="70" style="width:85px;height:85px">
                         </lord-icon>
                     </div>
                 </div>
@@ -185,51 +180,44 @@
                     <div>
                         <div class="numbers">
                             <?php
-                            // Construct and run query to check class registration status
-                            $q = "SELECT registerApproval FROM register r, user u WHERE r.stuID=" . $_SESSION['userID'] . " AND u.userID=" . $_SESSION['userID'];
+                            // Construct and run query to check for total classes
+                            $q = "SELECT count(c.classID) AS total FROM user u, register r,class c WHERE r.registerApproval=1 AND r.classID=c.classID AND u.userID=r.stuID AND u.userID=" . $_SESSION['userID'];
                             $res = mysqli_query($con, $q);
-                            if ($res != NULL)
-                                $r = mysqli_fetch_assoc($res);
-                            if ($r != NULL and $r['registerApproval'] == 1)
-                                echo "Approved";
-                            else if ($r != NULL and $r['registerApproval'] == 2)
-                                echo "Declined";
-                            else if ($r != NULL and $r['registerApproval'] == 3)
-                                echo "Pending";
-                            else
-                                echo "Absent";
+                            $r = mysqli_fetch_assoc($res);
+                            echo $r['total'];
                             ?>
                         </div>
-                        <div class="cardName"><i>Verification Status</i></div>
+                        <div class="cardName"><i>My Class</i></div>
                     </div>
 
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/aixyixpa.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:70px;height:70px">
+                        <lord-icon src="https://cdn.lordicon.com/osqwjgzg.json" trigger="loop" delay="750" colors="primary:#192e59" style="width:70px;height:70px">
                         </lord-icon>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
-                        <div class="numbers">Contact Us</div>
+                        <div class="numbers">Class Link</div>
                         <div class="cardName">
                             <i>
                                 <a href="mailto:smartetuition@gmail.com">
-                                    <ion-icon name="mail-outline"></ion-icon> <b><u>E-mail</u></b>
+                                    <ion-icon name="mail-outline"></ion-icon> <b><u>Saturday</u></b>
                                 </a>&nbsp;&nbsp;
                                 <a href="https://wa.link/cuxs3j" target=_blank">
-                                    <ion-icon name="logo-whatsapp"></ion-icon> <b><u>WhatsApp</u></b>
+                                    <ion-icon name="logo-whatsapp"></ion-icon> <b><u>Sunday</u></b>
                                 </a>
                             </i>
                         </div>
                     </div>
-
+                    <!--
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/cnyeuzxc.json" trigger="loop" delay="750" colors="primary:#192e59" state="morph-phone-signal-start" style="width:70px;height:70px">
                         </lord-icon>
                     </div>
+                    -->
                 </div>
             </div>
 

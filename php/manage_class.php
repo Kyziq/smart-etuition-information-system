@@ -156,12 +156,12 @@
                             <table style="width: 100%;">
                                 <thead>
                                     <tr>
-                                        <td style="text-align: left;">Class ID</td>
-                                        <td style="text-align: left;">Class Subject</td>
-                                        <td style="text-align: left;">Class Link</td>
-                                        <td style="text-align: left;">Class Day</td>
-                                        <td style="text-align: left;">Class Time</td>
-                                        <td style="text-align: left;">Class Fee</td>
+                                        <td style="text-align: left;">ID</td>
+                                        <td style="text-align: left;">Subject</td>
+                                        <td style="text-align: left;">Link</td>
+                                        <td style="text-align: left;">Day</td>
+                                        <td style="text-align: left;">Time</td>
+                                        <td style="text-align: left;">Fee</td>
                                         <td style="text-align: left;">Total Student</td>
                                         <td style="text-align: center;">Action (Save)</td>
                                     </tr>
@@ -181,15 +181,15 @@
                                                     <td style='text-align: center;'><input type='text' name='totalStu' style='text-align:center; color: var(--red);' size='1' value='" . $r['totalStudent'] . "'readonly></td>
                                                     <td style='text-align: center;'>
                                                     <button style='padding: 0; border: none; background: none;' type='submit' name='saveClassButton'>
-                                                    <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
-                                                    <lord-icon
-                                                        src='https://cdn.lordicon.com/hjeefwhm.json'
-                                                        trigger='loop'
-                                                        delay='750'
-                                                        colors='primary:#eac143'
-                                                        style='width:40px;height:40px'>
-                                                    </lord-icon>
-                                                </button>
+                                                        <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
+                                                        <lord-icon
+                                                            src='https://cdn.lordicon.com/hjeefwhm.json'
+                                                            trigger='loop'
+                                                            delay='750'
+                                                            colors='primary:#eac143'
+                                                            style='width:40px;height:40px'>
+                                                        </lord-icon>
+                                                    </button>
                                                     </td>
                                                 </tr>";
                                         echo "</form>";

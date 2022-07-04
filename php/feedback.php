@@ -51,7 +51,7 @@
                     </li>
 
                     <li>
-                        <a href="student_details.php">
+                        <a href="edit_details.php">
                             <span class="icon">
                                 <ion-icon name="options-outline"></ion-icon>
                             </span>
@@ -85,7 +85,7 @@
                     </li>
 
                     <li>
-                        <a href="view_class.php">
+                        <a href="view_class_student.php">
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>

@@ -159,14 +159,14 @@
                             <table style="width: 100%;">
                                 <thead>
                                     <tr>
-                                        <td style="text-align: center;">ID</td>
-                                        <td style="text-align: center;">Username</td>
-                                        <td style="text-align: center;">Full Name</td>
-                                        <td style="text-align: center;">Phone Number</td>
-                                        <td style="text-align: center;">Email</td>
-                                        <td style="text-align: center;">Gender</td>
-                                        <td style="text-align: center;">Birthdate</td>
-                                        <td style="text-align: center;">Address</td>
+                                        <!-- <td style="text-align: center;">ID</td> -->
+                                        <td style="text-align: left;">Username</td>
+                                        <td style="text-align: left;">Full Name</td>
+                                        <td style="text-align: left;">Phone Number</td>
+                                        <td style="text-align: left;">Email</td>
+                                        <td style="text-align: left;">Gender</td>
+                                        <td style="text-align: left;">Birthdate</td>
+                                        <td style="text-align: left;">Address</td>
                                         <td style="text-align: end;">Action (Save)</td>
                                     </tr>
                                 </thead>
@@ -176,7 +176,7 @@
                                         // Output all classes in a table
                                         echo    "<form method='POST' action='manage_user_save.php'>";
                                         echo    "<tr>
-                                                    <td style='text-align: left;'><input type='text' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly></td>
+                                                    <input type='hidden' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly>
                                                     <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='userName' style='text-align:center;' size='20' value='" . $r['userName'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
@@ -247,14 +247,14 @@
                             <table style="width: 100%;">
                                 <thead>
                                     <tr>
-                                        <td style="text-align: center;">ID</td>
-                                        <td style="text-align: center;">Username</td>
-                                        <td style="text-align: center;">Full Name</td>
-                                        <td style="text-align: center;">Phone Number</td>
-                                        <td style="text-align: center;">Email</td>
-                                        <td style="text-align: center;">Gender</td>
-                                        <td style="text-align: center;">Birthdate</td>
-                                        <td style="text-align: center;">Address</td>
+                                        <!-- <td style="text-align: center;">ID</td> -->
+                                        <td style="text-align: left;">Username</td>
+                                        <td style="text-align: left;">Full Name</td>
+                                        <td style="text-align: left;">Phone Number</td>
+                                        <td style="text-align: left;">Email</td>
+                                        <td style="text-align: left;">Gender</td>
+                                        <td style="text-align: left;">Birthdate</td>
+                                        <td style="text-align: left;">Address</td>
                                         <td style="text-align: end;">Action (Save)</td>
                                     </tr>
                                 </thead>
@@ -264,7 +264,7 @@
                                         // Output all classes in a table
                                         echo    "<form method='POST' action='manage_user_save.php'>";
                                         echo    "<tr>
-                                                    <td style='text-align: left;'><input type='text' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly></td>
+                                                    <input type='hidden' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly>
                                                     <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='userName' style='text-align:center;' size='20' value='" . $r['userName'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
@@ -273,17 +273,17 @@
 
                                         if ($r['userGender'] == 1) {
                                             echo "
-                                                    <select name='userGender'>
-                                                        <option selected value='1'>Male</option>
-                                                        <option value='2'>Female</option>
-                                                    </select>";
+                                                        <select name='userGender'>
+                                                            <option selected value='1'>Male</option>
+                                                            <option value='2'>Female</option>
+                                                        </select>";
                                         }
                                         if ($r['userGender'] == 2) {
                                             echo "
-                                                    <select name='userGender'>
-                                                        <option value='1'>Male</option>
-                                                        <option selected value='2'>Female</option>
-                                                    </select>";
+                                                            <select name='userGender'>
+                                                                <option value='1'>Male</option>
+                                                                <option selected value='2'>Female</option>
+                                                            </select>";
                                         }
                                         echo "
                                                     </td>
@@ -292,16 +292,16 @@
                                                         <textarea type='text' name='userAddress' style='text-align:center;' rows='2' cols='50'>" . $r['userAddress'] . "</textarea>
                                                     </td>
                                                     <td style='text-align: end;'>
-                                                        <button style='padding: 0; border: none; background: none;' type='submit' name='saveUserButton'>
-                                                            <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
-                                                            <lord-icon
-                                                                src='https://cdn.lordicon.com/hjeefwhm.json'
-                                                                trigger='loop'
-                                                                delay='750'
-                                                                colors='primary:#eac143'
-                                                                style='width:40px;height:40px'>
-                                                            </lord-icon>
-                                                        </button>
+                                                    <button style='padding: 0; border: none; background: none;' type='submit' name='saveUserButton'>
+                                                        <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
+                                                        <lord-icon
+                                                            src='https://cdn.lordicon.com/hjeefwhm.json'
+                                                            trigger='loop'
+                                                            colors='primary:#eac143'
+                                                            delay='750'
+                                                            style='width:40px;height:40px'>
+                                                        </lord-icon>
+                                                    </button>
                                                     </td>
                                                 </tr>";
                                         echo "</form>";

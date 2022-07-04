@@ -1,9 +1,9 @@
 <?php
 session_start();
-// Admin's
-if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
+// Student or Tutor
+if (isset($_SESSION['userID']) && ($_SESSION['userLevel'] == 2 || $_SESSION['userLevel'] == 3)) {
     // Check if save is clicked
-    if (isset($_POST['studentDetailsButton'])) {
+    if (isset($_POST['editDetailsButton'])) {
         // Get all the posted items
         $userID = $_POST['userID'];
         $userUname = $_POST['userUname'];
@@ -26,7 +26,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
         "
             <script>
                 alert('User saving successful!');
-                window.location.href='student_details.php';
+                window.location.href='edit_details.php';
             </script>
         ";
 
@@ -34,5 +34,5 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
         mysqli_free_result($res);
         mysqli_close($con);
     } else
-        header("Location: student_details.php");
+        header("Location: edit_details.php");
 }

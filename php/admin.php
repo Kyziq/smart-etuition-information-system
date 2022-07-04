@@ -113,6 +113,11 @@
 
                     <!-- Time update (every 1s) on top -->
                     <span>
+                        <div style="position: absolute; right: 500px; top: 5px;">
+                            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/drtetngs.json" trigger="loop-on-hover" colors="primary:#192e59" style="width:50px;height:50px">
+                            </lord-icon>
+                        </div>
                         <script>
                             setInterval(function() {
                                 document.getElementById('current-time').innerHTML = new Date().toString();
@@ -172,9 +177,9 @@
                             <div class="cardName">
                                 <?php
                                 if ($r['total'] <= 1)
-                                    echo "Total student";
+                                    echo "<i>Total student</i>";
                                 else if ($r['total'] > 1)
-                                    echo "Total students";
+                                    echo "<i>Total students</i>";
                                 ?>
                             </div>
                         </div>
@@ -200,9 +205,9 @@
                             <div class="cardName">
                                 <?php
                                 if ($r['total'] <= 1)
-                                    echo "Total tutor";
+                                    echo "<i>Total tutor</i>";
                                 else if ($r['total'] > 1)
-                                    echo "Total tutors";
+                                    echo "<i>Total tutors</i>";
                                 ?>
                             </div>
                         </div>
@@ -241,7 +246,7 @@
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <div>
-                                <canvas id="myChart" width="1000px;"></canvas>
+                                <canvas id="myChart" width="800;"></canvas>
                             </div>
                             <?php
                             //Mathematics

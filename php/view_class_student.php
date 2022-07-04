@@ -45,7 +45,7 @@
                     </li>
 
                     <li>
-                        <a href="student_details.php">
+                        <a href="edit_details.php">
                             <span class="icon">
                                 <ion-icon name="options-outline"></ion-icon>
                             </span>
@@ -77,7 +77,7 @@
                     </li>
 
                     <li>
-                        <a href="view_class.php">
+                        <a href="view_class_student.php">
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
@@ -170,14 +170,14 @@
                                 <table style="width: 100%;">
                                     <thead>
                                         <tr>
-                                            <td>Class Subject</td>
-                                            <td>Class Day</td>
-                                            <td>Class Time</td>
-                                            <td>Class Link</td>
+                                            <td>Subject</td>
+                                            <td>Day</td>
+                                            <td>Time</td>
+                                            <td>Link</td>
                                             <td>Total Student(s)</td>
                                             <td>Tutor's Name</td>
-                                            <td>Tutor's Phone</td>
-                                            <td>Tutor's Email</td>
+                                            <td style="text-align:left">Tutor's Email</td>
+                                            <td style="text-align:left">Tutor's Phone</td>
                                         </tr>
                                     </thead>
                                     <tbody>

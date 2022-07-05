@@ -18,7 +18,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2) {
         "
             <script>
                 alert('New class link saved succesfully!');
-                window.location.href='view_class_tutor.php';
+                window.location.href='tutor.php';
             </script>
         ";
 
@@ -26,7 +26,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2) {
         //mysqli_free_result($res);
         mysqli_close($con);
     } else {
-        header("Location: view_class_tutor.php");
+        header("Location: tutor.php");
     }
 } else {
     header("Location: login.php");

@@ -123,6 +123,11 @@
 
                     <!-- Time update (every 1s) on top -->
                     <span>
+                        <div style="position: absolute; right: 500px; top: 5px;">
+                            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/drtetngs.json" trigger="loop-on-hover" colors="primary:#192e59" style="width:50px;height:50px">
+                            </lord-icon>
+                        </div>
                         <script>
                             setInterval(function() {
                                 document.getElementById('current-time').innerHTML = new Date().toString();
@@ -171,20 +176,20 @@
 
                         <br>
                         <form id="subjectForm" method="post" action="register_subject_save.php" enctype="multipart/form-data">
-                            <table style="width: 100%;">
+                            <table style="width: 70%;">
                                 <thead>
                                     <tr>
                                         <td style="width: 300px;">Subject</td>
                                         <td style="width: 300px;">Time</td>
-                                        <td style="width: 400px;">Saturday | Slots</td>
-                                        <td style="width: 150px; text-align: center;">Sunday | Slots</td>
+                                        <td style="width: 300px; text-align: end;">Saturday | Slots</td>
+                                        <td style="width: 300px;">Sunday | Slots</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>Mathematics</td>
                                         <td>8:00 a.m. - 9:00 a.m.</td>
-                                        <td>
+                                        <td style="text-align: end;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='1'";
@@ -204,7 +209,7 @@
                                             ?>
                                             / 10
                                         </td>
-                                        <td style="text-align: center;">
+                                        <td>
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='2'";
@@ -228,7 +233,7 @@
                                     <tr>
                                         <td>Additional Mathematics</td>
                                         <td>9:00 a.m. - 10:00 a.m.</td>
-                                        <td>
+                                        <td style="text-align: end;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='3'";
@@ -248,7 +253,7 @@
                                             ?>
                                             / 10
                                         </td>
-                                        <td style="text-align: center;">
+                                        <td>
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='4'";
@@ -272,7 +277,7 @@
                                     <tr>
                                         <td>Physics</td>
                                         <td>1:00 p.m. - 2:00 p.m.</td>
-                                        <td>
+                                        <td style="text-align: end;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='5'";
@@ -292,7 +297,7 @@
                                             ?>
                                             / 10
                                         </td>
-                                        <td style="text-align: center;">
+                                        <td>
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='6'";
@@ -316,7 +321,7 @@
                                     <tr>
                                         <td>Chemistry</td>
                                         <td>2:00 p.m. - 3:00 p.m.</td>
-                                        <td>
+                                        <td style="text-align: end;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='7'";
@@ -336,7 +341,7 @@
                                             ?>
                                             / 10
                                         </td>
-                                        <td style="text-align: center;">
+                                        <td>
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='8'";
@@ -360,7 +365,7 @@
                                     <tr>
                                         <td>Biology</td>
                                         <td>3:00 p.m. - 4:00 p.m.</td>
-                                        <td>
+                                        <td style="text-align: end;">
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='9'";
@@ -380,7 +385,7 @@
                                             ?>
                                             / 10
                                         </td>
-                                        <td style="text-align: center;">
+                                        <td>
                                             <?php
                                             // Query for total student
                                             $q = "SELECT totalStudent FROM class WHERE classID='10'";

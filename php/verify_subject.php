@@ -156,7 +156,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">User Data</span>
+                            <span class="title">User Details</span>
                         </a>
                     </li>
 
@@ -214,6 +214,11 @@
 
                 <!-- Time update (every 1s) on top -->
                 <span>
+                    <div style="position: absolute; right: 500px; top: 5px;">
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/drtetngs.json" trigger="loop-on-hover" colors="primary:#192e59" style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
                     <script>
                         setInterval(function() {
                             document.getElementById('current-time').innerHTML = new Date().toString();

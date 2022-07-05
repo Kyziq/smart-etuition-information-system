@@ -145,7 +145,7 @@
                                     <span class="icon">
                                         <ion-icon name="document-text-outline"></ion-icon>
                                     </span>
-                                    <span class="title">User Data</span>
+                                    <span class="title">User Details</span>
                                 </a>
                             </li>
 
@@ -154,7 +154,7 @@
                                     <span class="icon">
                                         <ion-icon name="document-text-outline"></ion-icon>
                                     </span>
-                                    <span class="title">Class Details</span>
+                                    <span class="title">Student Details</span>
                                 </a>
                             </li>
 
@@ -182,8 +182,14 @@
                             </lord-icon>
                         </div>
 
+
                         <!-- Time update (every 1s) on top -->
                         <span>
+                            <div style="position: absolute; right: 500px; top: 5px;">
+                                <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                                <lord-icon src="https://cdn.lordicon.com/drtetngs.json" trigger="loop-on-hover" colors="primary:#192e59" style="width:50px;height:50px">
+                                </lord-icon>
+                            </div>
                             <script>
                                 setInterval(function() {
                                     document.getElementById('current-time').innerHTML = new Date().toString();
@@ -218,9 +224,9 @@
                             <div class="cardHeader">
                                 <h2>
                                     <?php
-                                    echo $r['userName'];
+                                    //echo $r['userName'];
                                     ?>
-                                    's Details:</h2>
+                                    My Details:</h2>
                             </div>
                             <form method='POST' action='edit_details_save.php'>
                                 <table style="width: 100%; height: 100%;">
@@ -234,7 +240,7 @@
                                         <tr>
                                             <td style="text-align: left; height:60px;">Username</td>
                                             <?php
-                                            echo "<td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='50' value='" . $r['userUname'] . "'></td>";
+                                            echo "<td style='text-align: left;'><input type='text' readonly name='userUname' style='text-align:center; color: red;' size='50' value='" . $r['userUname'] . "'></td>";
                                             ?>
                                         </tr>
                                         <tr>

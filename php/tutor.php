@@ -57,7 +57,7 @@
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
-                        <span class="title">User Data</span>
+                        <span class="title">User Details</span>
                     </a>
                 </li>
 
@@ -66,7 +66,7 @@
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
-                        <span class="title">Class Details</span>
+                        <span class="title">Student Details</span>
                     </a>
                 </li>
 
@@ -95,6 +95,11 @@
 
                 <!-- Time update (every 1s) on top -->
                 <span>
+                    <div style="position: absolute; right: 500px; top: 5px;">
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/drtetngs.json" trigger="loop-on-hover" colors="primary:#192e59" style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
                     <script>
                         setInterval(function() {
                             document.getElementById('current-time').innerHTML = new Date().toString();
@@ -102,6 +107,7 @@
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>
+
                 <!--
                 <div class="search">
                     <label>
@@ -139,13 +145,13 @@
                         // Male Icon
                         if ($r['userGender'] == 1) { ?>
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/eszyyflr.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
+                            <lord-icon src="https://cdn.lordicon.com/eszyyflr.json" trigger="loop" delay="200" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
                             </lord-icon>
                         <?php
                             // Female Icon
                         } else if ($r['userGender'] == 2) { ?>
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/bwnhdkha.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
+                            <lord-icon src="https://cdn.lordicon.com/bwnhdkha.json" trigger="loop" delay="200" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
                             </lord-icon>
                         <?php
                         }
@@ -158,7 +164,7 @@
                         <div class="numbers">
                             <?php
                             // Construct and run query to check for total classes
-                            $q = "SELECT count(c.classID) AS total FROM user u, register r,class c WHERE r.registerApproval=1 AND r.classID=c.classID AND u.userID=r.stuID AND u.userID=" . $_SESSION['userID'];
+                            $q = "SELECT sum(totalStudent) as total FROM class WHERE tutorID=" . $_SESSION['userID'];
                             $res = mysqli_query($con, $q);
                             $r = mysqli_fetch_assoc($res);
                             echo $r['total'];
@@ -166,6 +172,9 @@
                         </div>
                         <div class="cardName">
                             <i>My Students</i>
+                            <?php
+
+                            ?>
                         </div>
                     </div>
 
@@ -181,7 +190,7 @@
                         <div class="numbers">
                             <?php
                             // Construct and run query to check for total classes
-                            $q = "SELECT count(c.classID) AS total FROM user u, register r,class c WHERE r.registerApproval=1 AND r.classID=c.classID AND u.userID=r.stuID AND u.userID=" . $_SESSION['userID'];
+                            $q = "SELECT count(classID) AS total FROM class WHERE tutorID=" . $_SESSION['userID'];
                             $res = mysqli_query($con, $q);
                             $r = mysqli_fetch_assoc($res);
                             echo $r['total'];
@@ -203,21 +212,22 @@
                         <div class="cardName">
                             <i>
                                 <a href="mailto:smartetuition@gmail.com">
-                                    <ion-icon name="mail-outline"></ion-icon> <b><u>Saturday</u></b>
+                                    <ion-icon name="link-outline"></ion-icon><b><u>Saturday</u></b>
                                 </a>&nbsp;&nbsp;
+                                <br>
                                 <a href="https://wa.link/cuxs3j" target=_blank">
-                                    <ion-icon name="logo-whatsapp"></ion-icon> <b><u>Sunday</u></b>
+                                    <ion-icon name="link-outline"></ion-icon><b><u>Sunday</u></b>
                                 </a>
                             </i>
                         </div>
                     </div>
-                    <!--
+
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                        <lord-icon src="https://cdn.lordicon.com/cnyeuzxc.json" trigger="loop" delay="750" colors="primary:#192e59" state="morph-phone-signal-start" style="width:70px;height:70px">
+                        <lord-icon src="https://cdn.lordicon.com/wjwuvtno.json" trigger="loop" delay="1200" colors="primary:#192e59,secondary:#192e59" stroke="70" style="width:85px;height:85px">
                         </lord-icon>
                     </div>
-                    -->
+
                 </div>
             </div>
 
@@ -225,246 +235,77 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2><?php
-                            $q = "select userName from user where userID=" . $_SESSION['userID'];
-                            $res = mysqli_query($con, $q);
-                            $r = mysqli_fetch_assoc($res);
-                            echo $r['userName'];
-                            ?> 's Tuition Timetable</h2>
+                        <h2>My Classes</h2>
                     </div>
                     <?php
-                    // Construct and run query to display timetable
-                    $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
+                    // Construct and run query to check for existing class
+                    $q = "  SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.classDay, c.totalStudent 
+                            FROM user u, class c 
+                            WHERE c.tutorID=u.userID AND u.userID= " . $_SESSION['userID'];
                     $res = mysqli_query($con, $q);
-                    ?>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>Time</td>
-                                <td>Saturday</td>
-                                <td>Sunday</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Mathematics -->
-                            <tr>
-                                <td>8:00 a.m. - 9:00 a.m.</td>
-                                <td>
-                                    <?php
-                                    $r = mysqli_fetch_assoc($res);
-                                    if ($r === NULL) { ?>
-                                        <span class="status return">No Class</span>
+                    $num = mysqli_num_rows($res);
+
+                    if ($res) {
+                        if ($num > 0) { ?>
+                            <table style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <td>Subject</td>
+                                        <td>Day</td>
+                                        <td>Time</td>
+                                        <td>Link</td>
+                                        <td>Total Student</td>
+                                        <td>Action (Save)</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
                                         <?php
-                                        echo "</td>";
-                                        echo "<td>";
-                                        ?>
-                                        <span class="status return">No Class</span>
-                                        <?php
-                                    } else {
-                                        if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Saturday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                        <?php
+                                        // Construct and run query to list user's classes
+                                        while ($r = mysqli_fetch_assoc($res)) { ?>
+                                            <form method="post" action="view_class_tutor_save.php">
+                                    <tr>
+                                        <input type='hidden' name='classID' value='<?php echo $r['classID']  ?>'>
+                                        <td style="text-align: left;"> <?php echo $r["classSubject"] ?></td>
+                                        <td> <?php echo $r["classDay"] ?></td>
+                                        <td>
+                                            <?php
+                                            // Class Time Checker
+                                            if ($r["classTime"] == "08:00:00")
+                                                $time = "8.00 a.m. - 9.00 a.m.";
+                                            else if ($r["classTime"] == "09:00:00")
+                                                $time = "9.00 a.m. - 10.00 a.m.";
+                                            else if ($r["classTime"] == "13:00:00")
+                                                $time = "1.00 p.m. - 2.00 p.m.";
+                                            else if ($r["classTime"] == "14:00:00")
+                                                $time = "2.00 p.m. - 3.00 p.m.";
+                                            else if ($r["classTime"] == "15:00:00")
+                                                $time = "3.00 p.m. - 4.00 p.m.";
+                                            echo $time
+                                            ?>
+                                        </td>
+                                        <td style='text-align: left;'>
+                                            <input type='text' name='classLink' style='text-align:center;' size='30' value='<?php echo $r['classLink'] ?>'>
+                                        </td>
+                                        <td style="text-align: center;"> <?php echo $r["totalStudent"] ?></td>
+                                        <td style="text-align: center;">
+                                            <button style='padding: 0; border: none; background: none;' type='submit' name='saveClassButton'>
+                                                <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
+                                                <lord-icon src='https://cdn.lordicon.com/hjeefwhm.json' trigger='loop' delay='750' colors='primary:#eac143' style='width:40px;height:40px'>
+                                                </lord-icon>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </form>
+                                <?php
                                         }
-                                        echo "</td>";
-                                        echo "<td>";
-                                        if ($r != NULL && $r['classTime'] == "08:00:00" && $r['classDay'] == "Sunday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                    <?php
-                                        }
-                                    } ?>
-                                </td>
-                            </tr>
-                            <!-- Add. Mathematics -->
-                            <tr>
-                                <td>9:00 a.m. - 10:00 a.m.</td>
-                                <td>
-                                    <?php
-                                    if ($r === NULL) { ?>
-                                        <span class="status return">No Class</span>
-                                        <?php
-                                        echo "</td>";
-                                        echo "<td>";
-                                        ?>
-                                        <span class="status return">No Class</span>
-                                        <?php
-                                    } else {
-                                        if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Saturday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                        <?php
-                                        }
-                                        echo "</td>";
-                                        echo "<td>";
-                                        if ($r != NULL && $r['classTime'] == "09:00:00" && $r['classDay'] == "Sunday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                    <?php
-                                        }
-                                    } ?>
-                                </td>
-                            </tr>
-                            <!-- Physics -->
-                            <tr>
-                                <td>1:00 p.m. - 2:00 p.m.</td>
-                                <td>
-                                    <?php
-                                    if ($r === NULL) { ?>
-                                        <span class="status return">No Class</span>
-                                        <?php
-                                        echo "</td>";
-                                        echo "<td>";
-                                        ?>
-                                        <span class="status return">No Class</span>
-                                        <?php
-                                    } else {
-                                        if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Saturday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                        <?php
-                                        }
-                                        echo "</td>";
-                                        echo "<td>";
-                                        if ($r != NULL && $r['classTime'] == "13:00:00" && $r['classDay'] == "Sunday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                    <?php
-                                        }
-                                    } ?>
-                                </td>
-                            </tr>
-                            <!-- Chemistry -->
-                            <tr>
-                                <td>2:00 p.m. - 3:00 p.m.</td>
-                                <td>
-                                    <?php
-                                    if ($r === NULL) { ?>
-                                        <span class="status return">No Class</span>
-                                        <?php
-                                        echo "</td>";
-                                        echo "<td>";
-                                        ?>
-                                        <span class="status return">No Class</span>
-                                        <?php
-                                    } else {
-                                        if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Saturday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                        <?php
-                                        }
-                                        echo "</td>";
-                                        echo "<td>";
-                                        if ($r != NULL && $r['classTime'] == "14:00:00" && $r['classDay'] == "Sunday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                    <?php
-                                        }
-                                    } ?>
-                                </td>
-                            </tr>
-                            <!-- Biology -->
-                            <tr>
-                                <td>3:00 p.m. - 4:00 p.m.</td>
-                                <td>
-                                    <?php
-                                    if ($r === NULL) { ?>
-                                        <span class="status return">No Class</span>
-                                        <?php
-                                        echo "</td>";
-                                        echo "<td>";
-                                        ?>
-                                        <span class="status return">No Class</span>
-                                        <?php
-                                    } else {
-                                        if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Saturday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                        <?php
-                                        }
-                                        echo "</td>";
-                                        echo "<td>";
-                                        if ($r != NULL && $r['classTime'] == "15:00:00" && $r['classDay'] == "Sunday") {
-                                        ?>
-                                            <span class="status delivered">
-                                                <?php echo $r['classSubject']; ?>
-                                            </span>
-                                        <?php
-                                            $r = mysqli_fetch_assoc($res);
-                                        } else {
-                                        ?>
-                                            <span class="status return">No Class</span>
-                                    <?php
-                                        }
-                                    } ?>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <?php //mysqli_free_result($res);
+                                ?>
+                                </tr>
+                                </tbody>
+                            </table>
+                    <?php
+                        }
+                    }
                     ?>
                 </div>
 

@@ -13,7 +13,7 @@ if (isset($_POST['loginButton'])) {
     $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
     // Construct and run query to check for correct credentials
-    $query = "select * from user where userUname='$userUname' and userPassw='$userPassw'";
+    $query = "SELECT * FROM user WHERE userUname='$userUname' AND userPassw='$userPassw'";
     $res = mysqli_query($con, $query);
     $rows = mysqli_num_rows($res);
 

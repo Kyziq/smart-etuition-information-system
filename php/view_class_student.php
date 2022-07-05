@@ -119,6 +119,11 @@
 
                     <!-- Time update (every 1s) on top -->
                     <span>
+                        <div style="position: absolute; right: 500px; top: 5px;">
+                            <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                            <lord-icon src="https://cdn.lordicon.com/drtetngs.json" trigger="loop-on-hover" colors="primary:#192e59" style="width:50px;height:50px">
+                            </lord-icon>
+                        </div>
                         <script>
                             setInterval(function() {
                                 document.getElementById('current-time').innerHTML = new Date().toString();
@@ -143,26 +148,31 @@
                 <!-- ================ Order Details List ================= -->
                 <div class="details" style="display: inline-block;">
                     <div class="recentOrders">
+                        <?php
+                            // Construct and run query to check for existing class
+                            $q =    " SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.classDay, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone
+                                    FROM register r, user u, user tutor, class c
+                                    WHERE c.classID=r.classID AND r.stuID=u.userID AND r.registerApproval='1' AND tutor.userLevel='2' AND tutor.userID=c.tutorID";
+                            $res = mysqli_query($con, $q);
+                            $num = mysqli_num_rows($res);
+                        ?>
                         <div class="cardHeader">
                             <h2>
                                 <?php
-                                $q = "select userName from user where userID=" . $_SESSION['userID'];
+                                $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
                                 $res = mysqli_query($con, $q);
                                 $r = mysqli_fetch_assoc($res);
                                 echo $r['userName'];
-                                ?>
-                                's Classes
-                            </h2>
 
+                                if ($num > 0)
+                                    echo "'s Classes";
+                                else
+                                    echo "'s Class";
+                                ?>
+                            </h2>
                         </div>
 
                         <?php
-                            // Construct and run query to check for existing class
-                            $q = "  SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.classDay, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone 
-                        FROM register r, user u, user tutor, class c 
-                        WHERE c.classID=r.classID AND r.stuID=u.userID AND r.registerApproval='1' AND tutor.userLevel='2' AND tutor.userID=c.tutorID";
-                            $res = mysqli_query($con, $q);
-                            $num = mysqli_num_rows($res);
 
                             if ($res) {
                                 if ($num > 0) {
@@ -176,8 +186,8 @@
                                             <td>Link</td>
                                             <td>Total Student(s)</td>
                                             <td>Tutor's Name</td>
-                                            <td style="text-align:left">Tutor's Email</td>
-                                            <td style="text-align:left">Tutor's Phone</td>
+                                            <td>Tutor's Email</td>
+                                            <td>Tutor's Phone</td>
                                         </tr>
                                     </thead>
                                     <tbody>

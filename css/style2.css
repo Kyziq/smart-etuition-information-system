@@ -331,7 +331,7 @@ a:active {
     cursor: pointer;
 }
 .btn .btnText {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
 }
 form .btn:hover {
@@ -402,12 +402,13 @@ table {
 .details .recentOrders table tr td:last-child {
     text-align: end;
 }
+/*
 .details .recentOrders table tr td:nth-child(2) {
     text-align: end;
 }
 .details .recentOrders table tr td:nth-child(3) {
     text-align: center;
-}
+}*/
 .status.delivered {
     padding: 2px 4px;
     background: #8de02c;

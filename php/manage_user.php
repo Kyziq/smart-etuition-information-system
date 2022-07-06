@@ -56,7 +56,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">User Data</span>
+                            <span class="title">User Details</span>
                         </a>
                     </li>
 
@@ -112,8 +112,14 @@
                     </lord-icon>
                 </div>
 
+
                 <!-- Time update (every 1s) on top -->
                 <span>
+                    <div style="position: absolute; right: 500px; top: 5px;">
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/drtetngs.json" trigger="loop-on-hover" colors="primary:#192e59" style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
                     <script>
                         setInterval(function() {
                             document.getElementById('current-time').innerHTML = new Date().toString();
@@ -160,7 +166,7 @@
                                 <thead>
                                     <tr>
                                         <!-- <td style="text-align: center;">ID</td> -->
-                                        <td style="text-align: left;">Username</td>
+                                        <!-- <td style="text-align: left;">Username</td> -->
                                         <td style="text-align: left;">Full Name</td>
                                         <td style="text-align: left;">Phone Number</td>
                                         <td style="text-align: left;">Email</td>
@@ -177,7 +183,7 @@
                                         echo    "<form method='POST' action='manage_user_save.php'>";
                                         echo    "<tr>
                                                     <input type='hidden' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly>
-                                                    <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td>
+                                                    <!-- <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td> -->
                                                     <td style='text-align: left;'><input type='text' name='userName' style='text-align:center;' size='20' value='" . $r['userName'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='userEmail' style='text-align:center;' size='20' value='" . $r['userEmail'] . "'></td>
@@ -248,7 +254,7 @@
                                 <thead>
                                     <tr>
                                         <!-- <td style="text-align: center;">ID</td> -->
-                                        <td style="text-align: left;">Username</td>
+                                        <!-- <td style="text-align: left;">Username</td> -->
                                         <td style="text-align: left;">Full Name</td>
                                         <td style="text-align: left;">Phone Number</td>
                                         <td style="text-align: left;">Email</td>
@@ -265,7 +271,7 @@
                                         echo    "<form method='POST' action='manage_user_save.php'>";
                                         echo    "<tr>
                                                     <input type='hidden' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly>
-                                                    <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td>
+                                                    <!-- <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td> -->
                                                     <td style='text-align: left;'><input type='text' name='userName' style='text-align:center;' size='20' value='" . $r['userName'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='userEmail' style='text-align:center;' size='20' value='" . $r['userEmail'] . "'></td>

@@ -6,7 +6,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
     if (isset($_POST['saveUserButton'])) {
         // Get all the posted items
         $userID = $_POST['userID'];
-        $userUname = $_POST['userUname'];
+        //$userUname = $_POST['userUname'];
         $userName = $_POST['userName'];
         $userPhone = $_POST['userPhone'];
         $userEmail = $_POST['userEmail'];
@@ -18,7 +18,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
         // Construct and run query to update class database
-        $q = "UPDATE user SET userUname='$userUname', userName='$userName', userPhone='$userPhone', userEmail='$userEmail', userGender='$userGender', userBirthdate='$userBirthdate', userAddress='$userAddress' WHERE userID=$userID";
+        $q = "UPDATE user SET userName='$userName', userPhone='$userPhone', userEmail='$userEmail', userGender='$userGender', userBirthdate='$userBirthdate', userAddress='$userAddress' WHERE userID=$userID";
         $res = mysqli_query($con, $q);
 
         // Success popup

@@ -126,6 +126,11 @@
 
                 <!-- Time update (every 1s) on top -->
                 <span>
+                    <div style="position: absolute; right: 500px; top: 5px;">
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/drtetngs.json" trigger="loop-on-hover" colors="primary:#192e59" style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
                     <script>
                         setInterval(function() {
                             document.getElementById('current-time').innerHTML = new Date().toString();
@@ -133,6 +138,7 @@
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>
+
                 <!--
                 <div class="search">
                     <label>
@@ -270,12 +276,13 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2><?php
-                            $q = "select userName from user where userID=" . $_SESSION['userID'];
-                            $res = mysqli_query($con, $q);
-                            $r = mysqli_fetch_assoc($res);
-                            echo $r['userName'];
-                            ?> 's Tuition Timetable</h2>
+                        <?php
+                        /*$q = "select userName from user where userID=" . $_SESSION['userID'];
+                        $res = mysqli_query($con, $q);
+                        $r = mysqli_fetch_assoc($res);
+                        echo $r['userName'];*/
+                        echo "<h2>My Tuition Timetable</h2>";
+                        ?>
                     </div>
                     <?php
                         // Construct and run query to display timetable
@@ -286,15 +293,15 @@
                         <thead>
                             <tr>
                                 <td>Time</td>
-                                <td>Saturday</td>
-                                <td>Sunday</td>
+                                <td style="text-align: end;">Saturday</td>
+                                <td style="text-align: end;">Sunday</td>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- Mathematics -->
                             <tr>
                                 <td>8:00 a.m. - 9:00 a.m.</td>
-                                <td>
+                                <td style="text-align: end;">
                                     <?php
                                     $r = mysqli_fetch_assoc($res);
                                     if ($r === NULL) { ?>
@@ -338,7 +345,7 @@
                             <!-- Add. Mathematics -->
                             <tr>
                                 <td>9:00 a.m. - 10:00 a.m.</td>
-                                <td>
+                                <td style="text-align: end;">
                                     <?php
                                     if ($r === NULL) { ?>
                                         <span class="status return">No Class</span>
@@ -381,7 +388,7 @@
                             <!-- Physics -->
                             <tr>
                                 <td>1:00 p.m. - 2:00 p.m.</td>
-                                <td>
+                                <td style="text-align: end;">
                                     <?php
                                     if ($r === NULL) { ?>
                                         <span class="status return">No Class</span>
@@ -424,7 +431,7 @@
                             <!-- Chemistry -->
                             <tr>
                                 <td>2:00 p.m. - 3:00 p.m.</td>
-                                <td>
+                                <td style="text-align: end;">
                                     <?php
                                     if ($r === NULL) { ?>
                                         <span class="status return">No Class</span>
@@ -467,7 +474,7 @@
                             <!-- Biology -->
                             <tr>
                                 <td>3:00 p.m. - 4:00 p.m.</td>
-                                <td>
+                                <td style="text-align: end;">
                                     <?php
                                     if ($r === NULL) { ?>
                                         <span class="status return">No Class</span>

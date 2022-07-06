@@ -57,7 +57,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">User Data</span>
+                            <span class="title">User Details</span>
                         </a>
                     </li>
 
@@ -69,7 +69,6 @@
                             <span class="title">Class Details</span>
                         </a>
                     </li>
-
 
                     <li>
                         <a href="verify_subject.php">
@@ -246,10 +245,10 @@
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <div>
-                                <canvas id="myChart" width="800;"></canvas>
+                                <canvas id="myChart" width="840;"></canvas>
                             </div>
                             <?php
-                            //Mathematics
+                            // Mathematics
                             // Construct and run query to check if username is taken
                             $q = "SELECT * FROM register WHERE (classID=1 OR classID=2) AND registerApproval=1";
                             $result = mysqli_query($con, $q);
@@ -263,7 +262,7 @@
                             $result = mysqli_query($con, $q);
                             $m3 = mysqli_num_rows($result);
 
-                            //Additional Mathematics
+                            // Additional Mathematics
                             $q = "SELECT * FROM register WHERE (classID=3 OR classID=4) AND registerApproval=1";
                             $result = mysqli_query($con, $q);
                             $am1 = mysqli_num_rows($result);
@@ -276,7 +275,7 @@
                             $result = mysqli_query($con, $q);
                             $am3 = mysqli_num_rows($result);
 
-                            //Physics
+                            // Physics
                             $q = "SELECT * FROM register WHERE (classID=5 OR classID=6) AND registerApproval=1";
                             $result = mysqli_query($con, $q);
                             $p1 = mysqli_num_rows($result);
@@ -289,7 +288,7 @@
                             $result = mysqli_query($con, $q);
                             $p3 = mysqli_num_rows($result);
 
-                            //Chemistry
+                            // Chemistry
                             $q = "SELECT * FROM register WHERE (classID=7 OR classID=8) AND registerApproval=1";
                             $result = mysqli_query($con, $q);
                             $c1 = mysqli_num_rows($result);
@@ -302,7 +301,7 @@
                             $result = mysqli_query($con, $q);
                             $c3 = mysqli_num_rows($result);
 
-                            //Biology
+                            //  Biology
                             $q = "SELECT * FROM register WHERE (classID=9 OR classID=10) AND registerApproval=1";
                             $result = mysqli_query($con, $q);
                             $b1 = mysqli_num_rows($result);
@@ -329,6 +328,7 @@
                                             "Biology",
                                         ],
                                         datasets: [{
+                                                // Accepted
                                                 data: [
                                                     <?php
                                                     echo $m1 . ',';
@@ -344,6 +344,7 @@
                                                 borderWidth: 1,
                                             },
                                             {
+                                                // Pending
                                                 data: [
                                                     <?php
                                                     echo $m2 . ',';
@@ -355,10 +356,11 @@
                                                 ],
                                                 label: "Pending",
                                                 borderColor: "#000000",
-                                                backgroundColor: "#3C6997",
+                                                backgroundColor: "#1399c6",
                                                 borderWidth: 1,
                                             },
                                             {
+                                                // Declined
                                                 data: [
                                                     <?php
                                                     echo $m3 . ',';
@@ -379,7 +381,7 @@
                                         plugins: {
                                             title: {
                                                 display: true,
-                                                text: "Class Verification Status",
+                                                text: "Total Student in Each Subject",
                                                 font: {
                                                     size: 20,
                                                 },

@@ -166,7 +166,7 @@
                         </div>
                         <div class="iconBx">
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/nobciafz.json" trigger="loop" delay="750" colors="primary:#121331,secondary:#192e59" stroke="80" style="width:80px;height:80px">
+                            <lord-icon src="https://cdn.lordicon.com/nobciafz.json" trigger="loop" delay="600" colors="primary:#121331,secondary:#192e59" stroke="80" style="width:80px;height:80px">
                             </lord-icon>
                         </div>
                     </div>
@@ -390,7 +390,7 @@
                                         plugins: {
                                             title: {
                                                 display: true,
-                                                text: "Total Student in Each Subject",
+                                                text: "Total number of students enrolled in each subject",
                                                 font: {
                                                     size: 20,
                                                 },

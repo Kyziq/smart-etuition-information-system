@@ -260,7 +260,7 @@
 
                                 <tr>
                                     <td><b>Name:</b></td>
-                                    <td>
+                                    <td style="text-align: left;">
                                         <?php
                                         echo $r['userName'];
                                         ?>
@@ -283,7 +283,7 @@
                                     $date = date('d-m-y h:i:s A');
                                     ?>
                                     <td><b>Date:</b></td>
-                                    <td>
+                                    <td style="text-align: left;">
                                         <?php
                                         echo "<div style='font-family: 'Helvetica', sans-serif; font-size: 20px; font-weight: 500;' id='current-time2'></div>";
                                         ?>
@@ -292,7 +292,7 @@
 
                                 <tr>
                                     <td><b>Title:</b></td>
-                                    <td>
+                                    <td style="text-align: left;">
                                         <input type="text" height="1000px" placeholder="Enter your title" name="fbTitle" size="96" required>
                                     </td>
                                 </tr>

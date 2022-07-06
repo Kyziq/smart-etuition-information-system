@@ -137,11 +137,20 @@
                     </li>
 
                     <li>
-                        <a href="manage_user.php">
+                        <a href="manage_student.php">
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">User Details</span>
+                            <span class="title">Student Details</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="manage_tutor.php">
+                            <span class="icon">
+                                <ion-icon name="document-text-outline"></ion-icon>
+                            </span>
+                            <span class="title">Tutor Details</span>
                         </a>
                     </li>
 
@@ -251,7 +260,7 @@
 
                                 <tr>
                                     <td><b>Name:</b></td>
-                                    <td>
+                                    <td style="text-align: left;">
                                         <?php
                                         echo $r['userName'];
                                         ?>
@@ -274,7 +283,7 @@
                                     $date = date('d-m-y h:i:s A');
                                     ?>
                                     <td><b>Date:</b></td>
-                                    <td>
+                                    <td style="text-align: left;">
                                         <?php
                                         echo "<div style='font-family: 'Helvetica', sans-serif; font-size: 20px; font-weight: 500;' id='current-time2'></div>";
                                         ?>
@@ -283,7 +292,7 @@
 
                                 <tr>
                                     <td><b>Title:</b></td>
-                                    <td>
+                                    <td style="text-align: left;">
                                         <input type="text" height="1000px" placeholder="Enter your title" name="fbTitle" size="96" required>
                                     </td>
                                 </tr>
@@ -358,14 +367,10 @@
                 $res = mysqli_query($con, $q);
             ?>
                 <div class="details" style="display: inline-block;">
-                    <div class="cardHeader">
-                        <h2>Feedback System</h2>
-                    </div>
-                    <br>
                     <div class="recentOrders">
-                        <!-- 1 -->
-
-
+                        <div class="cardHeader">
+                            <h2>Feedback System</h2>
+                        </div>
                         <?php
                         // Construct and run query to check for existing class
                         $res = mysqli_query($con, $q);

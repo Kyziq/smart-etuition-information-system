@@ -64,7 +64,14 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         // Connect to database
         $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
-        // Construct and run query to update class database
+        // Construct and run query delete payment file
+        $q = "SELECT proofPayment FROM register WHERE classID='$classID' AND stuID='$stuID'";
+        $res = mysqli_query($con, $q);
+        $r = mysqli_fetch_assoc($res);
+        $file_pointer = $r['proofPayment'];
+        unlink($file_pointer);
+
+        // Construct and run query to delete register row
         $q = "DELETE FROM register WHERE classID='$classID' AND stuID='$stuID'";
         $res = mysqli_query($con, $q);
 

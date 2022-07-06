@@ -177,13 +177,13 @@
                         // Male Icon
                         if ($r['userGender'] == 1) { ?>
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/eszyyflr.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
+                            <lord-icon src="https://cdn.lordicon.com/eszyyflr.json" trigger="loop" delay="300" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
                             </lord-icon>
                         <?php
                             // Female Icon
                         } else if ($r['userGender'] == 2) { ?>
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
-                            <lord-icon src="https://cdn.lordicon.com/bwnhdkha.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
+                            <lord-icon src="https://cdn.lordicon.com/bwnhdkha.json" trigger="loop" delay="300" colors="primary:#192e59,secondary:#192e59" stroke="80" style="width:80px;height:80px">
                             </lord-icon>
                         <?php
                         }
@@ -235,7 +235,7 @@
                             else if ($r != NULL and $r['registerApproval'] == 3)
                                 echo "Pending";
                             else
-                                echo "Absent";
+                                echo "Invalid";
                             ?>
                         </div>
                         <div class="cardName"><i>Verification Status</i></div>

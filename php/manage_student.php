@@ -14,7 +14,7 @@
     <!-- Font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
-    <title>Class Details</title>
+    <title>User Details</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
     /*while ($r = mysqli_fetch_assoc($res)) {
-            echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
+            echo "<tr><td>" . $r['userEmail'] . "</td><td>" . $r['userUname'] . "</td><td>" . $r['userPhone'] . "</td></tr>";
         }*/
     ?>
     <!-- =============== Navigation ================ -->
@@ -150,16 +150,22 @@
                 </div>
                 -->
             </div>
-            <!-- ================ Order Details List ================= -->
+
+            <!-- Student Part -->
             <div class="details" style="display: inline-block;">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Classes Details:</h2>
+                        <h2>Student Details:</h2>
                     </div>
-                    <!-- 1st -->
+                    <br>
+                    <div class="search">
+                        <label>
+                            <input type="text" placeholder="Search by user details" />
+                        </label>
+                    </div>
                     <?php
                     // Construct and run query to list all classes registration
-                    $q = "SELECT * FROM class";
+                    $q = "SELECT * FROM user WHERE userLevel='3'";
                     $res = mysqli_query($con, $q);
 
                     // Construct and run query to check for existing class
@@ -170,37 +176,59 @@
                             <table style="width: 100%;">
                                 <thead>
                                     <tr>
-                                        <td>ID</td>
-                                        <td>Subject</td>
-                                        <td>Link</td>
-                                        <td>Day</td>
-                                        <td>Start Time</td>
-                                        <td>Fee</td>
-                                        <td style="text-align: center;">Total Student</td>
-                                        <td style="text-align: center;">Action (Save)</td>
+                                        <!-- <td style="text-align: center;">ID</td> -->
+                                        <!-- <td style="text-align: left;">Username</td> -->
+                                        <td>Full Name</td>
+                                        <td>Gender</td>
+                                        <td>Phone</td>
+                                        <td>Email</td>
+                                        <td>Birthdate</td>
+                                        <td style="text-align: center;">Address</td>
+                                        <td style="text-align: end;">Action (Save)</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     while ($r = mysqli_fetch_assoc($res)) {
                                         // Output all classes in a table
-                                        echo    "<form method='POST' action='manage_class_save.php'>";
+                                        echo    "<form method='POST' action='manage_user_save.php'>";
                                         echo    "<tr>
-                                                    <td><input type='text' name='classID' style='text-align:center;  color: var(--red);' size='1' value='" . $r['classID'] . "'readonly></td>
-                                                    <td style='text-align: left;'><input type='text' name='subject' style='text-align:center;' size='20' value='" . $r['classSubject'] . "'></td>
-                                                    <td style='text-align: left;'><input type='text' name='link' style='text-align:center;' size='30' value='" . $r['classLink'] . "'></td>
-                                                    <td><input type='text' name='day' style='text-align:center;' size='10' value='" . $r['classDay'] . "'></td>
-                                                    <td><input type='text' name='time' style='text-align:center;' size='10' value='" . $r['classTime'] . "'></td>
-                                                    <td style='text-align: center;'><input type='text' name='fee' style='text-align:center;' size='2' value='" . $r['classFee'] . "'></td>
-                                                    <td style='text-align: center;'><input type='text' name='totalStu' style='text-align:center; color: var(--red);' size='1' value='" . $r['totalStudent'] . "'readonly></td>
-                                                    <td style='text-align: center;'>
-                                                    <button style='padding: 0; border: none; background: none;' type='submit' name='saveClassButton'>
+                                                    <input type='hidden' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly>
+                                                    <!-- <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td> -->
+                                                    <td style='text-align: left;'><input type='text' name='userName' style='text-align:center;' size='20' value='" . $r['userName'] . "'></td>
+                                                    <td style='text-align: left;'>";
+
+                                        if ($r['userGender'] == 1) {
+                                            echo "
+                                                        <select name='userGender'>
+                                                            <option selected value='1'>Male</option>
+                                                            <option value='2'>Female</option>
+                                                        </select>";
+                                        }
+                                        if ($r['userGender'] == 2) {
+                                            echo "
+                                                            <select name='userGender'>
+                                                                <option value='1'>Male</option>
+                                                                <option selected value='2'>Female</option>
+                                                            </select>";
+                                        }
+                                        echo "
+                                                    </td>
+                                                    <td style='text-align: left;'><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
+                                                    <td style='text-align: left;'><input type='text' name='userEmail' style='text-align:center;' size='20' value='" . $r['userEmail'] . "'></td>
+                                                    
+                                                    <td style='text-align: left;'><input type='date' name='userBirthdate' style='text-align:center;' size='5' value='" . $r['userBirthdate'] . "'></td>
+                                                    <td style='text-align: left;'>
+                                                        <textarea type='text' name='userAddress' style='text-align:center;' rows='3' cols='35'>" . $r['userAddress'] . "</textarea>
+                                                    </td>
+                                                    <td style='text-align: end;'>
+                                                    <button style='padding: 0; border: none; background: none;' type='submit' name='saveUserButton'>
                                                         <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
                                                         <lord-icon
                                                             src='https://cdn.lordicon.com/hjeefwhm.json'
                                                             trigger='loop'
-                                                            delay='750'
                                                             colors='primary:#eac143'
+                                                            delay='750'
                                                             style='width:40px;height:40px'>
                                                         </lord-icon>
                                                     </button>

@@ -88,7 +88,9 @@
             <a href="login.php">Login Now</a>
         </span>
     </div>
+    <?php
 
+    ?>
     <script src="../js/script.js"></script>
 </body>
 

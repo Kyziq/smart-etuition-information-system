@@ -285,14 +285,14 @@
                                         <tr>
                                             <td style="text-align: left; height:60px;">Birthdate</td>
                                             <?php
-                                            echo "<td style='text-align: left;'><input type='text' name='userBirthdate' style='text-align:center;' size='50' value='" . $r['userBirthdate'] . "'></td>";
+                                            echo "<td style='text-align: left;'><input type='date' name='userBirthdate' style='text-align:center;' value='" . $r['userBirthdate'] . "'></td>";
                                             ?>
                                         </tr>
                                         <tr>
                                             <td style="text-align: left; height:60px;">Address</td>
                                             <?php
                                             echo " <td style='text-align: left;'>
-                                                <textarea type='text' name='userAddress' style='text-align:center;' rows='6' cols='54'>" . $r['userAddress'] . "</textarea>
+                                                <textarea type='text' name='userAddress' style='text-align:center;' rows='4' cols='54'>" . $r['userAddress'] . "</textarea>
                                             </td>";
                                             ?>
                                         </tr>

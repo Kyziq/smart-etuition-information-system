@@ -137,11 +137,20 @@
                     </li>
 
                     <li>
-                        <a href="manage_user.php">
+                        <a href="manage_student.php">
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">User Details</span>
+                            <span class="title">Student Details</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="manage_tutor.php">
+                            <span class="icon">
+                                <ion-icon name="document-text-outline"></ion-icon>
+                            </span>
+                            <span class="title">Tutor Details</span>
                         </a>
                     </li>
 
@@ -358,14 +367,10 @@
                 $res = mysqli_query($con, $q);
             ?>
                 <div class="details" style="display: inline-block;">
-                    <div class="cardHeader">
-                        <h2>Feedback System</h2>
-                    </div>
-                    <br>
                     <div class="recentOrders">
-                        <!-- 1 -->
-
-
+                        <div class="cardHeader">
+                            <h2>Feedback System</h2>
+                        </div>
                         <?php
                         // Construct and run query to check for existing class
                         $res = mysqli_query($con, $q);

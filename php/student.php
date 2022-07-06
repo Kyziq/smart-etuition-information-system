@@ -235,7 +235,7 @@
                             else if ($r != NULL and $r['registerApproval'] == 3)
                                 echo "Pending";
                             else
-                                echo "Absent";
+                                echo "Invalid";
                             ?>
                         </div>
                         <div class="cardName"><i>Verification Status</i></div>

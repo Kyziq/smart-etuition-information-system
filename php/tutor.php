@@ -254,8 +254,8 @@
                                         <td>Day</td>
                                         <td>Time</td>
                                         <td>Link</td>
-                                        <td>Total Student</td>
-                                        <td>Action (Save)</td>
+                                        <td style="text-align: center; width: 1%;">Total<br>Student</td>
+                                        <td style="text-align: center; width: 1%;">Action<br>(Save)</td>
                                     </tr>
                                 </thead>
                                 <tbody>

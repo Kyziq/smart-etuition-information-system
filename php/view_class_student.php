@@ -148,14 +148,6 @@
                 <!-- ================ Order Details List ================= -->
                 <div class="details" style="display: inline-block;">
                     <div class="recentOrders">
-                        <?php
-                            // Construct and run query to check for existing class
-                            $q =    " SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.classDay, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone
-                                    FROM register r, user u, user tutor, class c
-                                    WHERE c.classID=r.classID AND r.stuID=u.userID AND r.registerApproval='1' AND tutor.userLevel='2' AND tutor.userID=c.tutorID";
-                            $res = mysqli_query($con, $q);
-                            $num = mysqli_num_rows($res);
-                        ?>
                         <div class="cardHeader">
                             <h2>
                                 <?php
@@ -173,7 +165,12 @@
                         </div>
 
                         <?php
-
+                            // Construct and run query to check for existing class
+                            $q =    " SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.classDay, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone
+                                FROM register r, user u, user tutor, class c
+                                WHERE c.classID=r.classID AND r.stuID=u.userID AND r.registerApproval='1' AND tutor.userLevel='2' AND tutor.userID=c.tutorID";
+                            $res = mysqli_query($con, $q);
+                            $num = mysqli_num_rows($res);
                             if ($res) {
                                 if ($num > 0) {
                         ?>

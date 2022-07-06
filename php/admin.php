@@ -53,11 +53,20 @@
                     </li>
 
                     <li>
-                        <a href="manage_user.php">
+                        <a href="manage_student.php">
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">User Details</span>
+                            <span class="title">Student Details</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="manage_tutor.php">
+                            <span class="icon">
+                                <ion-icon name="document-text-outline"></ion-icon>
+                            </span>
+                            <span class="title">Tutor Details</span>
                         </a>
                     </li>
 
@@ -245,7 +254,7 @@
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <div>
-                                <canvas id="myChart" width="840;"></canvas>
+                                <canvas id="myChart" width="800;"></canvas>
                             </div>
                             <?php
                             // Mathematics

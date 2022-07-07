@@ -7,33 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
-
-    <!-- Image beside title -->
-    <link rel="icon" href="../images/icon.ico" />
-
-    <title>Admin Dashboard</title>
-
     <!-- ChartJS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Title -->
+    <link rel="icon" href="../images/icon.ico" />
+    <title>Admin Dashboard</title>
 </head>
 
 <body>
     <?php
-    // Admin Main Page
+    // Admin Dashboard
     session_start();
     if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         // Connect to database 
         include_once 'dbcon.php';
-
-        // Construct and run query to list admin details
-        //$q = "select userUname, userName, userPhone, userEmail, userGender, userBirthdate, userAddress from user where userID=" . $_SESSION['userID'];
-        //$res = mysqli_query($con, $q);
-        //$r = mysqli_fetch_assoc($res);
     ?>
-
-        <!-- =============== Navigation ================ -->
+        <!-- Admin Navigation -->
         <div class="container">
             <div class="navigation">
+                <!-- List -->
                 <ul>
                     <li>
                         <a href="admin.php">
@@ -50,7 +42,6 @@
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_student.php">
                             <span class="icon">
@@ -59,7 +50,6 @@
                             <span class="title">Student Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_tutor.php">
                             <span class="icon">
@@ -68,7 +58,6 @@
                             <span class="title">Tutor Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
@@ -77,7 +66,6 @@
                             <span class="title">Class Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
@@ -86,7 +74,6 @@
                             <span class="title">Class Verification</span>
                         </a>
                     </li>
-
                     <li>
                         <a href=feedback.php>
                             <span class="icon">
@@ -95,9 +82,7 @@
                             <span class="title">Feedback</span>
                         </a>
                     </li>
-
                     &nbsp;
-
                     <li>
                         <a href=logout.php>
                             <span class="icon" style="color:#ed2146;">
@@ -109,15 +94,15 @@
                 </ul>
             </div>
 
-            <!-- ========================= Main ==================== -->
+            <!-- Main -->
             <div class="main">
                 <div class="topbar">
+                    <!-- Menu toggle -->
                     <div class="toggle">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                         </lord-icon>
                     </div>
-
                     <!-- Time update (every 1s) on top -->
                     <span>
                         <div style="position: absolute; right: 500px; top: 5px;">
@@ -133,24 +118,10 @@
                         <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                     </span>
                 </div>
-                <!--
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here" />
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-                
 
-                <div class="user">
-                    <img src="../images/icons/user-solid.svg" alt="" />
-                </div>
-                <span style="color:#192e59">
-                    Student
-                </span>
-                -->
-                <!-- ======================= Cards ================== -->
+                <!-- Cards -->
                 <div class="cardBox">
+                    <!-- Name -->
                     <div class="card">
                         <div>
                             <div class="numbers">Admin</div>
@@ -170,6 +141,7 @@
                         </div>
                     </div>
 
+                    <!-- Total students -->
                     <div class="card">
                         <div>
                             <div class="numbers">
@@ -190,7 +162,6 @@
                                 ?>
                             </div>
                         </div>
-
                         <div class="iconBx">
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                             <lord-icon src="https://cdn.lordicon.com/stxtcyyo.json" trigger="loop" colors="primary:#192e59" state="loop" style="width:70px;height:70px">
@@ -198,6 +169,7 @@
                         </div>
                     </div>
 
+                    <!-- Total tutors -->
                     <div class="card">
                         <div>
                             <div class="numbers">
@@ -218,7 +190,6 @@
                                 ?>
                             </div>
                         </div>
-
                         <div class="iconBx">
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                             <lord-icon src="https://cdn.lordicon.com/pvbjsfif.json" trigger="loop" delay="750" colors="primary:#192e59" state="hover" style="width:75px;height:75px">
@@ -226,6 +197,7 @@
                         </div>
                     </div>
 
+                    <!-- Total pending class verification -->
                     <div class="card">
                         <div>
                             <div class="numbers">
@@ -239,7 +211,6 @@
                             </div>
                             <div class="cardName"><i>Pending class verification</i></div>
                         </div>
-
                         <div class="iconBx">
                             <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                             <lord-icon src="https://cdn.lordicon.com/ndydpcaq.json" trigger="loop" colors="primary:#192e59" state="loop" style="width:75px;height:75px">
@@ -248,7 +219,7 @@
                     </div>
                 </div>
 
-                <!-- ================ TimeTable  ================= -->
+                <!-- ChartJS (total number of students enrolled in each subject) -->
                 <div class="details">
                     <div class="recentOrders">
                         <div class="cardHeader">
@@ -411,11 +382,16 @@
                         </div>
                     </div>
 
-                    <!-- ================= Student's Details ================ -->
+                    <!-- Admin's Details -->
                     <div class="recentCustomers">
                         <div class="cardHeader">
                             <h2>My Details</h2>
                         </div>
+                        <?php
+                        $q = "SELECT * FROM user WHERE userID=" . $_SESSION['userID'];
+                        $res = mysqli_query($con, $q);
+                        $r = mysqli_fetch_assoc($res);
+                        ?>
                         <table>
                             <tr>
                                 <td>
@@ -423,9 +399,6 @@
                                         Name<br />
                                         <span>
                                             <?php
-                                            $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
-                                            $res = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($res);
                                             echo $r['userName'];
                                             ?>
                                         </span>
@@ -439,9 +412,6 @@
                                         Phone<br />
                                         <span>
                                             <?php
-                                            $q = "SELECT userPhone FROM user WHERE userID=" . $_SESSION['userID'];
-                                            $res = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($res);
                                             echo $r['userPhone'];
                                             ?>
                                         </span>
@@ -455,9 +425,6 @@
                                         Email<br />
                                         <span>
                                             <?php
-                                            $q = "SELECT userEmail FROM user WHERE userID=" . $_SESSION['userID'];
-                                            $res = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($res);
                                             echo $r['userEmail'];
                                             ?>
                                         </span>
@@ -471,9 +438,6 @@
                                         Birthdate<br />
                                         <span>
                                             <?php
-                                            $q = "SELECT userBirthdate FROM user WHERE userID=" . $_SESSION['userID'];
-                                            $res = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($res);
                                             echo $r['userBirthdate'];
                                             ?>
                                         </span>
@@ -487,9 +451,6 @@
                                         Gender<br />
                                         <span>
                                             <?php
-                                            $q = "SELECT userGender FROM user WHERE userID=" . $_SESSION['userID'];
-                                            $res = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($res);
                                             if ($r['userGender'] == 1) // 1 == Male, 2 == Female
                                                 $gender = "Male";
                                             else if ($r['userGender'] == 2)
@@ -507,9 +468,6 @@
                                         Address<br />
                                         <span>
                                             <?php
-                                            $q = "SELECT userAddress FROM user WHERE userID=" . $_SESSION['userID'];
-                                            $res = mysqli_query($con, $q);
-                                            $r = mysqli_fetch_assoc($res);
                                             echo $r['userAddress'];
                                             ?>
                                         </span>
@@ -522,10 +480,10 @@
             </div>
         </div>
 
-        <!-- =========== Scripts =========  -->
+        <!-- #Scripts -->
         <script src="../js/dash.js"></script>
 
-        <!-- ====== ionicons ======= -->
+        <!-- ionicons -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <?php

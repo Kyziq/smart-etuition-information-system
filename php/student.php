@@ -7,30 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
-
-    <!-- Image beside title -->
+    <!-- Title -->
     <link rel="icon" href="../images/icon.ico" />
-
-    <title>Student Dashboard</title>
+    <title>Admin Dashboard</title>
 </head>
 
 <body>
     <?php
-    // Student Main Page
+    // Student Dashboard
     session_start();
     if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
         // Connect to database 
         include_once 'dbcon.php';
-
-        /*while ($r = mysqli_fetch_assoc($res)) {
-            echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
-        }*/
     }
-
     ?>
-    <!-- =============== Navigation ================ -->
+    <!-- Student Navigation -->
     <div class="container">
         <div class="navigation">
+            <!-- List -->
             <ul>
                 <li>
                     <a href="student.php">
@@ -48,7 +42,6 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="edit_details.php">
                         <span class="icon">
@@ -57,7 +50,6 @@
                         <span class="title">Update Details</span>
                     </a>
                 </li>
-
                 <li>
                     <?php
                     // Construct and run query to check for existing subject registration
@@ -80,7 +72,6 @@
                         }
                         ?>
                 </li>
-
                 <li>
                     <a href="view_class_student.php">
                         <span class="icon">
@@ -89,7 +80,6 @@
                         <span class="title">Class Details</span>
                     </a>
                 </li>
-
                 <li>
                     <a href=feedback.php>
                         <span class="icon">
@@ -98,10 +88,7 @@
                         <span class="title">Feedback</span>
                     </a>
                 </li>
-
-
                 &nbsp;
-
                 <li>
                     <a href=logout.php>
                         <span class="icon" style="color:#ed2146;">
@@ -116,13 +103,12 @@
         <!-- Main -->
         <div class="main">
             <div class="topbar">
-                <!-- Options menu toggle -->
+                <!-- Menu toggle -->
                 <div class="toggle">
                     <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                     <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                     </lord-icon>
                 </div>
-
                 <!-- Time update (every 1s) on top -->
                 <span>
                     <div style="position: absolute; right: 500px; top: 5px;">
@@ -156,13 +142,15 @@
                 -->
             </div>
 
-            <!-- ======================= Cards ================== -->
+            <!-- Cards -->
             <div class="cardBox">
+                <!-- Student name -->
                 <div class="card">
                     <div>
                         <div class="numbers">Student</div>
                         <div class="cardName">
                             <?php
+                            // Construct and run query
                             $q = "SELECT userName, userGender FROM user WHERE userID=" . $_SESSION['userID'];
                             $res = mysqli_query($con, $q);
                             $r = mysqli_fetch_assoc($res);
@@ -190,6 +178,7 @@
                     </div>
                 </div>
 
+                <!-- Total class taken -->
                 <div class="card">
                     <div>
                         <div class="numbers">
@@ -218,6 +207,7 @@
                     </div>
                 </div>
 
+                <!-- Verification status -->
                 <div class="card">
                     <div>
                         <div class="numbers">
@@ -247,6 +237,7 @@
                     </div>
                 </div>
 
+                <!-- Contact information -->
                 <div class="card">
                     <div>
                         <div class="numbers">Contact</div>
@@ -271,21 +262,17 @@
                 </div>
             </div>
 
-            <!-- ================ TimeTable  ================= -->
+            <!-- Student Timetable -->
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <?php
-                        /*$q = "select userName from user where userID=" . $_SESSION['userID'];
-                        $res = mysqli_query($con, $q);
-                        $r = mysqli_fetch_assoc($res);
-                        echo $r['userName'];*/
-                        echo "<h2>My Tuition Timetable</h2>";
-                        ?>
+                        <h2>My Tuition Timetable</h2>";
                     </div>
                     <?php
                         // Construct and run query to display timetable
-                        $q = "SELECT userID, classSubject, classDay, classTime, registerApproval FROM user u, class c, register r WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
+                        $q =    "SELECT userID, classSubject, classDay, classTime, registerApproval 
+                                FROM user u, class c, register r 
+                                WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
                         $res = mysqli_query($con, $q);
                     ?>
                     <table>
@@ -519,12 +506,16 @@
                     ?>
                 </div>
 
-                <!-- ================= Student's Details ================ -->
+                <!-- Student details -->
                 <div class="recentCustomers">
                     <div class="cardHeader">
                         <h2>My Details</h2>
                     </div>
-
+                    <?php
+                        $q = "SELECT * FROM user WHERE userID=" . $_SESSION['userID'];
+                        $res = mysqli_query($con, $q);
+                        $r = mysqli_fetch_assoc($res);
+                    ?>
                     <table>
                         <tr>
                             <td>
@@ -532,73 +523,54 @@
                                     Name<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userName'];
                                         ?>
                                     </span>
                                 </h4>
                             </td>
                         </tr>
-
                         <tr>
                             <td>
                                 <h4>
                                     Phone<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userPhone FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userPhone'];
                                         ?>
                                     </span>
                                 </h4>
                             </td>
                         </tr>
-
                         <tr>
                             <td>
                                 <h4>
                                     Email<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userEmail FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userEmail'];
                                         ?>
                                     </span>
                                 </h4>
                             </td>
                         </tr>
-
                         <tr>
                             <td>
                                 <h4>
                                     Birthdate<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userBirthdate FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userBirthdate'];
                                         ?>
                                     </span>
                                 </h4>
                             </td>
                         </tr>
-
                         <tr>
                             <td>
                                 <h4>
                                     Gender<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userGender FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         if ($r['userGender'] == 1) // 1 == Male, 2 == Female
                                             $gender = "Male";
                                         else if ($r['userGender'] == 2)
@@ -609,16 +581,12 @@
                                 </h4>
                             </td>
                         </tr>
-
                         <tr>
                             <td>
                                 <h4>
                                     Address<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userAddress FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userAddress'];
                                         ?>
                                     </span>

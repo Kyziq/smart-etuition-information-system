@@ -160,8 +160,8 @@
                                         <td>Phone</td>
                                         <td>Email</td>
                                         <td>Birthdate</td>
-                                        <td style="text-align: center;">Address</td>
-                                        <td style="text-align: end;">Action (Save)</td>
+                                        <td>Address</td>
+                                        <td>Action (Save)</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -177,9 +177,9 @@
                                         echo    "<tr>
                                                     <input type='hidden' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly>
                                                     <input type='hidden' name='userLevel' style='text-align:center; color: var(--red);' size='1' value='" . $r['userLevel'] . "'readonly>
-                                                    <!-- <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td> -->
-                                                    <td style='text-align: left;'><input type='text' name='userName' style='text-align:center;' size='20' value='" . $r['userName'] . "'></td>
-                                                    <td style='text-align: left;'>";
+                                                    <!-- <td><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td> -->
+                                                    <td><input type='text' name='userName' style='text-align:center;' size='25' value='" . $r['userName'] . "'></td>
+                                                    <td>";
 
                                         if ($r['userGender'] == 1) {
                                             echo "
@@ -197,14 +197,13 @@
                                         }
                                         echo "
                                                     </td>
-                                                    <td style='text-align: left;'><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
-                                                    <td style='text-align: left;'><input type='text' name='userEmail' style='text-align:center;' size='20' value='" . $r['userEmail'] . "'></td>
-                                                    
-                                                    <td style='text-align: left;'><input type='date' name='userBirthdate' style='text-align:center;' size='5' value='" . $r['userBirthdate'] . "'></td>
-                                                    <td style='text-align: left;'>
-                                                        <textarea type='text' name='userAddress' style='text-align:center;' rows='3' cols='35'>" . $r['userAddress'] . "</textarea>
+                                                    <td><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
+                                                    <td><input type='text' name='userEmail' style='text-align:center;' size='25' value='" . $r['userEmail'] . "'></td>
+                                                    <td><input type='date' name='userBirthdate' style='text-align:center;' size='5' value='" . $r['userBirthdate'] . "'></td>
+                                                    <td>
+                                                        <textarea type='text' name='userAddress' style='text-align:center;' rows='3' cols='40'>" . $r['userAddress'] . "</textarea>
                                                     </td>
-                                                    <td style='text-align: end;'>
+                                                    <td>
                                                     <button style='padding: 0; border: none; background: none;' type='submit' name='saveUserButton'>
                                                         <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
                                                         <lord-icon

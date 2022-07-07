@@ -346,11 +346,11 @@
                                     <table style="width: 100%;">
                                         <thead>
                                             <tr>
-                                                <td style="width:100px; text-align: left;">ID</td>
-                                                <td style="width:200px; text-align: justify;">Title</td>
-                                                <td style="width:900px; text-align: justify;">Comment</td>
-                                                <td style="width:200px; text-align: end;">Date Submitted</td>
-                                                <td style="width:100px;">Action</td>
+                                                <td style="width:100px;">ID</td>
+                                                <td style="width:300px;">Title</td>
+                                                <td style="width:900px;">Comment</td>
+                                                <td style="width:200px;">Date Submitted</td>
+                                                <td style="width:50px;">Action</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -358,10 +358,10 @@
                                             while ($r = mysqli_fetch_assoc($res)) {
                                                 echo    "<tr>
                                                             <input type='hidden' name='fbID' value=" . $r['fbID'] . ">
-                                                            <td style='text-align: left;'>" . $r['fbID'] . "</td>
+                                                            <td>" . $r['fbID'] . "</td>
                                                             <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
                                                             <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
-                                                            <td style='text-align: end;'>" . $r['fbDate'] . "</td>
+                                                            <td>" . $r['fbDate'] . "</td>
                                                             <td>
                                                                 <button style='padding: 0; border: none; background: none;' type='submit' name='deleteFbButton'>
                                                                 <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>

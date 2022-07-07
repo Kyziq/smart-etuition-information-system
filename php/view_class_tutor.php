@@ -11,7 +11,7 @@
     <!-- Image beside title -->
     <link rel="icon" href="../images/icon.ico" />
 
-    <title>Class Details</title>
+    <title>Student Details</title>
 </head>
 
 <body>

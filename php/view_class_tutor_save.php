@@ -24,9 +24,8 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2) {
         // Clear results and close the connection
         //mysqli_free_result($res);
         mysqli_close($con);
-    } else {
+    } else
         header("Location: tutor.php");
-    }
 } else {
     header("Location: login.php");
 }

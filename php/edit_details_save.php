@@ -34,4 +34,5 @@ if (isset($_SESSION['userID']) && ($_SESSION['userLevel'] == 2 || $_SESSION['use
         mysqli_close($con);
     } else
         header("Location: edit_details.php");
-}
+} else
+    header("Location: login.php");

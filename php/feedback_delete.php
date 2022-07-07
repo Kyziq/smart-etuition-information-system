@@ -27,4 +27,5 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         mysqli_close($con);
     } else
         header("Location: feedback.php");
-}
+} else
+    header("Location: login.php");

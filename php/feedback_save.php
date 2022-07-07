@@ -34,9 +34,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
         // Clear results and close the connection
         mysqli_free_result($res);
         mysqli_close($con);
-    } else {
+    } else
         header("Location: feedback.php");
-    }
-} else {
+} else
     header("Location: login.php");
-}

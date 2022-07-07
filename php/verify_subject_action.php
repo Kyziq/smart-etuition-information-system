@@ -96,10 +96,10 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
             </script>
         ";*/
         header("Location: verify_subject.php");
-    }
-    // Clear results and close the connection
-    //mysqli_free_result($res);
-    mysqli_close($con);
-} else {
-    header("Location: verify_subject.php");
-}
+        // Clear results and close the connection
+        //mysqli_free_result($res);
+        mysqli_close($con);
+    } else
+        header("Location: verify_subject.php");
+} else
+    header("Location: login.php");

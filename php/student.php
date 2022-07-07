@@ -9,22 +9,23 @@
     <link rel="stylesheet" href="../css/style2.css">
     <!-- Title -->
     <link rel="icon" href="../images/icon.ico" />
-    <title>Admin Dashboard</title>
+    <title>Student Dashboard</title>
 </head>
 
 <body>
     <?php
     // Student Dashboard
     session_start();
-    if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
+    if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3)
         // Connect to database 
         include_once 'dbcon.php';
-    }
+    else
+        header("Location: login.php");
     ?>
     <!-- Student Navigation -->
     <div class="container">
         <div class="navigation">
-            <!-- List -->
+            <!-- Dashboard List -->
             <ul>
                 <li>
                     <a href="student.php">
@@ -67,10 +68,11 @@
                                 </span>
                                 <span class="title">Register Subject(s)</span>
                             </a>
-                        <?php
+                    <?php
                             //mysqli_free_result($res);
                         }
-                        ?>
+                    }
+                    ?>
                 </li>
                 <li>
                     <a href="view_class_student.php">
@@ -269,11 +271,11 @@
                         <h2>My Tuition Timetable</h2>";
                     </div>
                     <?php
-                        // Construct and run query to display timetable
-                        $q =    "SELECT userID, classSubject, classDay, classTime, registerApproval 
+                    // Construct and run query to display timetable
+                    $q =    "SELECT userID, classSubject, classDay, classTime, registerApproval 
                                 FROM user u, class c, register r 
                                 WHERE userID=" . $_SESSION['userID'] . " AND u.userID=r.stuID AND r.classID=c.classID AND r.registerApproval=1";
-                        $res = mysqli_query($con, $q);
+                    $res = mysqli_query($con, $q);
                     ?>
                     <table>
                         <thead>
@@ -512,9 +514,9 @@
                         <h2>My Details</h2>
                     </div>
                     <?php
-                        $q = "SELECT * FROM user WHERE userID=" . $_SESSION['userID'];
-                        $res = mysqli_query($con, $q);
-                        $r = mysqli_fetch_assoc($res);
+                    $q = "SELECT * FROM user WHERE userID=" . $_SESSION['userID'];
+                    $res = mysqli_query($con, $q);
+                    $r = mysqli_fetch_assoc($res);
                     ?>
                     <table>
                         <tr>
@@ -598,23 +600,17 @@
             </div>
         </div>
     </div>
-<?php
-                    } else {
-                        header("Location: login.php");
-                    }
-
-?>
-<!-- JS scripts -->
-<script src="../js/dash.js"></script>
-<script src="../js/script.js"></script>
-<!-- ionicons -->
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-<?php
-// Clear results and close the connection
-mysqli_free_result($res);
-mysqli_close($con);
-?>
+    <!-- JS scripts -->
+    <script src="../js/dash.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <?php
+    // Clear results and close the connection
+    mysqli_free_result($res);
+    mysqli_close($con);
+    ?>
 </body>
 
 </html>

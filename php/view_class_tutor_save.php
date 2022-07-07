@@ -2,12 +2,11 @@
 session_start();
 if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2) {
     if (isset($_POST['saveClassButton'])) {
+        // Connect to database 
+        include_once 'dbcon.php';
         // Get all the posted items
         $classID = $_POST['classID'];
         $classLink = $_POST['classLink'];
-
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
         // Construct and run query to update class database
         $q = "UPDATE class SET classLink='$classLink' WHERE classID='$classID'";

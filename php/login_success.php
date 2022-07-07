@@ -4,13 +4,11 @@
 session_start();
 // Submit button name below
 if (isset($_POST['loginButton'])) {
-
+    // Connect to database 
+    include_once 'dbcon.php';
     // Get all the posted items
     $userUname = $_POST['userUname'];
     $userPassw = $_POST['userPassw'];
-
-    // Connect to database
-    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
     // Construct and run query to check for correct credentials
     $query = "SELECT * FROM user WHERE userUname='$userUname' AND userPassw='$userPassw'";

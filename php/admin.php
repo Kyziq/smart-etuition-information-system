@@ -22,9 +22,8 @@
     // Admin Main Page
     session_start();
     if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
-
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+        // Connect to database 
+        include_once 'dbcon.php';
 
         // Construct and run query to list admin details
         //$q = "select userUname, userName, userPhone, userEmail, userGender, userBirthdate, userAddress from user where userID=" . $_SESSION['userID'];

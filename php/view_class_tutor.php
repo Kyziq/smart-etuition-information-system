@@ -19,9 +19,8 @@
     session_start();
     // Student's
     if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2) {
-
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+        // Connect to database 
+        include_once 'dbcon.php';
     ?>
         <!-- =============== Navigation ================ -->
         <div class="container">

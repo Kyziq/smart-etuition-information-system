@@ -57,12 +57,11 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
     }
     // For deletion
     else if (isset($_POST['deleteVerifyButton'])) {
+        // Connect to database 
+        include_once 'dbcon.php';
         // Get the posted item
         $classID = $_POST['classID'];
         $stuID = $_POST['stuID'];
-
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
         // Construct and run query delete payment file
         $q = "SELECT proofPayment FROM register WHERE classID='$classID' AND stuID='$stuID'";

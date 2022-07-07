@@ -20,9 +20,8 @@
 <body>
     <?php
     session_start();
-
-    // Connect to database
-    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+    // Connect to database 
+    include_once 'dbcon.php';
 
     /*while ($r = mysqli_fetch_assoc($res)) {
             echo "<tr><td>" . $r['userEmail'] . "</td><td>" . $r['userUname'] . "</td><td>" . $r['userPhone'] . "</td></tr>";

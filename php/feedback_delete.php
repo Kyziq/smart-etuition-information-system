@@ -4,11 +4,10 @@ session_start();
 if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
     // Check if save is clicked
     if (isset($_POST['deleteFbButton'])) {
+        // Connect to database 
+        include_once 'dbcon.php';
         // Get the posted item
         $fbID = $_POST['fbID'];
-
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
         // Construct and run query to update class database
         $q = "DELETE FROM feedback WHERE fbID='$fbID'";

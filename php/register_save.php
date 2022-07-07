@@ -1,7 +1,8 @@
 <?php
 
 if (isset($_POST['registerButton'])) {
-
+    // Connect to database 
+    include_once 'dbcon.php';
     // Get all the posted items
     $userUname = $_POST['userUname'];
     $userPassw = $_POST['userPassw'];
@@ -11,9 +12,6 @@ if (isset($_POST['registerButton'])) {
     $userGender = $_POST['userGender'];
     $userBirthdate = $_POST['userBirthdate'];
     $userAddress = $_POST['userAddress'];
-
-    // Connect to database
-    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
 
     // Construct and run query to check if username is taken
     $q = "SELECT * FROM user WHERE userUname='$userUname'";

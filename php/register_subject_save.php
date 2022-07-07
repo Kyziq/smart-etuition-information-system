@@ -6,8 +6,8 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
     if (isset($_POST['subjectButton'])) {
         // Must choose at least one subject
         if ((!empty($_POST["Mathematics"])) || (!empty($_POST["AddMaths"])) || (!empty($_POST["Physics"])) || (!empty($_POST["Chemistry"])) || (!empty($_POST["Biology"]))) {
-            // Connect to database
-            $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+            // Connect to database 
+            include_once 'dbcon.php';
 
             // Query
             $query = "SELECT * FROM user, class WHERE userID=" . $_SESSION['userID'];

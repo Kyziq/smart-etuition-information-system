@@ -159,11 +159,16 @@
                     <br>
                     <div class="search">
                         <label>
-                            <input type="text" placeholder="Search by user details" />
+                            <form method="post" action="manage_tutor.php" enctype="multipart/form-data">
+                                <input type="text" name="userName" placeholder="Search by name keyword" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="submit" class="btn" name="searchTutorButton" value="Submit" style="height: 35px;">
+                                    <span class="btnText">Search</span>
+                                </button>
+                                <br>
+                            </form>
                         </label>
                     </div>
-                    <br>
-
                     <?php
                     // Construct and run query to list all classes registration
                     $q = "SELECT * FROM user WHERE userLevel='2'";
@@ -190,6 +195,11 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                    if (isset($_POST['searchTutorButton'])) {
+                                        $userName = $_POST['userName'];
+                                        $q = "SELECT * FROM user WHERE userName LIKE '%" . $userName . "%' AND userLevel='2'";
+                                        $res = mysqli_query($con, $q);
+                                    }
                                     while ($r = mysqli_fetch_assoc($res)) {
                                         // Output all classes in a table
                                         echo    "<form method='POST' action='manage_user_save.php'>";
@@ -238,6 +248,7 @@
                                                 </tr>";
                                         echo "</form>";
                                     }
+
                                     ?>
                                 </tbody>
                             </table>
@@ -245,7 +256,6 @@
                         }
                     }
                     ?>
-
                 </div>
             </div>
 

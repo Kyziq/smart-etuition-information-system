@@ -195,6 +195,7 @@
                                         echo    "<form method='POST' action='manage_user_save.php'>";
                                         echo    "<tr>
                                                     <input type='hidden' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly>
+                                                    <input type='hidden' name='userLevel' style='text-align:center; color: var(--red);' size='1' value='" . $r['userLevel'] . "'readonly>
                                                     <!-- <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td> -->
                                                     <td style='text-align: left;'><input type='text' name='userName' style='text-align:center;' size='20' value='" . $r['userName'] . "'></td>
                                                     <td style='text-align: left;'>";

@@ -6,6 +6,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
     if (isset($_POST['saveUserButton'])) {
         // Get all the posted items
         $userID = $_POST['userID'];
+        $userLevel = $_POST['userLevel'];
         //$userUname = $_POST['userUname'];
         $userName = $_POST['userName'];
         $userPhone = $_POST['userPhone'];
@@ -21,14 +22,26 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         $q = "UPDATE user SET userName='$userName', userPhone='$userPhone', userEmail='$userEmail', userGender='$userGender', userBirthdate='$userBirthdate', userAddress='$userAddress' WHERE userID=$userID";
         $res = mysqli_query($con, $q);
 
-        // Success popup
-        echo
-        "
+        if ($userLevel == 2) // Tutor
+        {
+            // Success popup
+            echo
+            "
             <script>
                 alert('User saving successful!');
-                window.location.href='manage_user.php';
+                window.location.href='manage_tutor.php';
             </script>
         ";
+        } else if ($userLevel == 3) { // Student
+            // Success popup
+            echo
+            "
+            <script>
+                alert('User saving successful!');
+                window.location.href='manage_student.php';
+            </script>
+        ";
+        }
 
         // Clear results and close the connection
         mysqli_free_result($res);

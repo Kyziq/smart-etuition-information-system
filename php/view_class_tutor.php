@@ -49,7 +49,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">User Details</span>
+                            <span class="title">My Details</span>
                         </a>
                     </li>
 

@@ -57,7 +57,7 @@
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
-                        <span class="title">User Details</span>
+                        <span class="title">My Details</span>
                     </a>
                 </li>
 
@@ -211,11 +211,22 @@
                         <div class="numbers">Class Link</div>
                         <div class="cardName">
                             <i>
-                                <a href="mailto:smartetuition@gmail.com">
+                                <?php
+                                $q = "SELECT classLink FROM class WHERE classDay='Saturday' AND tutorID=" . $_SESSION['userID'];
+                                $res = mysqli_query($con, $q);
+                                $r = mysqli_fetch_assoc($res);
+                                ?>
+                                <a href="<?php echo $r['classLink'] ?>" target=_blank>
                                     <ion-icon name="link-outline"></ion-icon><b><u>Saturday</u></b>
                                 </a>&nbsp;&nbsp;
                                 <br>
-                                <a href="https://wa.link/cuxs3j" target=_blank">
+
+                                <?php
+                                $q = "SELECT classLink FROM class WHERE classDay='Sunday' AND tutorID=" . $_SESSION['userID'];
+                                $res = mysqli_query($con, $q);
+                                $r = mysqli_fetch_assoc($res);
+                                ?>
+                                <a href="<?php echo $r['classLink'] ?>" target=_blank>
                                     <ion-icon name="link-outline"></ion-icon><b><u>Sunday</u></b>
                                 </a>
                             </i>

@@ -83,7 +83,7 @@
                     <li>
                         <a href="view_class_student.php">
                             <span class="icon">
-                                <ion-icon name="create-outline"></ion-icon>
+                                <ion-icon name="document-text-outline"></ion-icon>
                             </span>
                             <span class="title">Class Details</span>
                         </a>

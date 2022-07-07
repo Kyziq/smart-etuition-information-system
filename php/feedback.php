@@ -17,10 +17,8 @@
 <body>
     <?php
     session_start();
-
-
-    // Connect to database
-    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+    // Connect to database 
+    include_once 'dbcon.php';
 
     /*while ($r = mysqli_fetch_assoc($res)) {
             echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
@@ -253,11 +251,25 @@
                         <form method="post" action="feedback_save.php">
                             <table>
                                 <?php
-                                $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
-                                $res = mysqli_query($con, $q);
-                                $r = mysqli_fetch_assoc($res);
+                                // ------- PREVENT SQL INJECTION ------- \\
+                                // Query for username
+                                $q = "SELECT userName FROM user WHERE userID=?";
+                                // Data
+                                $data = $_SESSION['userID'];
+                                // Created a prepared statement
+                                $stmt = mysqli_stmt_init($con);
+                                // Prepare the prepared statement
+                                if (!mysqli_stmt_prepare($stmt, $q))
+                                    echo "SQL statement failed";
+                                else {
+                                    // Bind parameters to the placeholder
+                                    mysqli_stmt_bind_param($stmt, "i", $data);
+                                    // Run parameters inside database
+                                    mysqli_stmt_execute($stmt);
+                                    $res = mysqli_stmt_get_result($stmt);
+                                    $r = mysqli_fetch_assoc($res);
+                                }
                                 ?>
-
                                 <tr>
                                     <td><b>Name:</b></td>
                                     <td style="text-align: left;">
@@ -365,9 +377,6 @@
             <?php
                 // Admin's
             } else if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
-                // Construct and run query to list all students' feedbacks
-                $q = "SELECT * FROM feedback";
-                $res = mysqli_query($con, $q);
             ?>
                 <div class="details" style="display: inline-block;">
                     <div class="recentOrders">
@@ -375,8 +384,10 @@
                             <h2>Feedback System</h2>
                         </div>
                         <?php
-                        // Construct and run query to check for existing class
+                        // Construct and run query to list all students' feedbacks
+                        $q = "SELECT * FROM feedback";
                         $res = mysqli_query($con, $q);
+                        // Construct and run query to check for existing class
                         $num = mysqli_num_rows($res);
                         if ($res) {
                             if ($num > 0) {

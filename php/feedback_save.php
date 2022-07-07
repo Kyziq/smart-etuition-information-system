@@ -2,24 +2,26 @@
 session_start();
 if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
     if (isset($_POST['submitFbButton'])) {
-        // Get all the posted items
-        $fbTitle = $_POST['fbTitle'];
-        $fbComment = $_POST['fbComment'];
-        $userID = $_SESSION['userID'];
-
         // Connect to database 
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+        include_once 'dbcon.php';
 
-        /* 
-        textarea -
-        Apostrophes have special meaning to SQL, so to get them into the data they need to be "escaped" PHP 
-        has a quick function for this that also does some security checks to help prevent your database from getting hacked.
-        */
-        $fbComment = mysqli_real_escape_string($con, $fbComment);
+        // Get all the posted items
+        $fbTitle = mysqli_real_escape_string($con, $_POST['fbTitle']);
+        $fbComment = mysqli_real_escape_string($con, $_POST['fbComment']);
+        $userID = mysqli_real_escape_string($con, $_SESSION['userID']);
+        $adminID = NULL;
 
-        // Construct and run query to store new feedback
-        $q = "INSERT INTO feedback(fbTitle, fbComment, adminID, stuID) VALUES ('$fbTitle', '$fbComment', NULL, '$userID')";
-        $res = mysqli_query($con, $q);
+        // Construct and run query to store new feedback using prepared statements
+        $q =    "INSERT INTO feedback(fbTitle, fbComment, adminID, stuID) 
+                VALUES (?, ?, ?, ?)";
+        $stmt = mysqli_stmt_init($con);
+        if (!mysqli_stmt_prepare($stmt, $q))
+            echo "SQL statement failed";
+        else {
+            mysqli_stmt_bind_param($stmt, "ssii", $fbTitle, $fbComment, $adminID, $userID);
+            mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_get_result($stmt);
+        }
 
         echo
         "

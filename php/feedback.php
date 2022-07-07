@@ -325,38 +325,41 @@
                         $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
                         $res = mysqli_query($con, $q);
                         $num = mysqli_num_rows($res);
-                        ?>
-                        <div class="cardHeader">
-                            <?php
-                            if ($num > 1)
-                                echo "<h2>My Feedbacks</h2>";
-                            else
-                                echo "<h2>My Feedback</h2>"
-                            ?>
 
-                        </div>
-                        <table style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <td style="width:10px;">ID</td>
-                                    <td style="width:200px; text-align: justify;">Title</td>
-                                    <td style="width:600px; text-align: justify;">Comment</td>
-                                    <td style="width:150px;">Date Submitted</td>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        if ($num > 0) {
+                        ?>
+                            <div class="cardHeader">
                                 <?php
-                                while ($r = mysqli_fetch_assoc($res)) {
-                                    echo    "<tr>
+                                if ($num > 1)
+                                    echo "<h2>My Feedbacks</h2>";
+                                else
+                                    echo "<h2>My Feedback</h2>"
+                                ?>
+
+                            </div>
+                            <table style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <td style="width:10px;">ID</td>
+                                        <td style="width:200px; text-align: justify;">Title</td>
+                                        <td style="width:600px; text-align: justify;">Comment</td>
+                                        <td style="width:150px;">Date Submitted</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($r = mysqli_fetch_assoc($res)) {
+                                        echo    "<tr>
                                                 <td>" . $r['fbID'] . "</td>
                                                 <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
                                                 <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
                                                 <td>" . $r['fbDate'] . "</td>
                                             </tr>";
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        <?php } ?>
                     </div>
                 </div>
             <?php

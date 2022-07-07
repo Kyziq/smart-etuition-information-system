@@ -4,14 +4,14 @@ if (isset($_POST['registerButton'])) {
     // Connect to database 
     include_once 'dbcon.php';
     // Get all the posted items
-    $userUname = $_POST['userUname'];
-    $userPassw = $_POST['userPassw'];
-    $userName = $_POST['userName'];
-    $userPhone = $_POST['userPhone'];
-    $userEmail = $_POST['userEmail'];
-    $userGender = $_POST['userGender'];
-    $userBirthdate = $_POST['userBirthdate'];
-    $userAddress = $_POST['userAddress'];
+    $userUname = mysqli_real_escape_string($con, $_POST['userUname']);
+    $userPassw = mysqli_real_escape_string($con, $_POST['userPassw']);
+    $userName = mysqli_real_escape_string($con, $_POST['userName']);
+    $userPhone = mysqli_real_escape_string($con, $_POST['userPhone']);
+    $userEmail = mysqli_real_escape_string($con, $_POST['userEmail']);
+    $userGender = mysqli_real_escape_string($con, $_POST['userGender']);
+    $userBirthdate = mysqli_real_escape_string($con, $_POST['userBirthdate']);
+    $userAddress = mysqli_real_escape_string($con, $_POST['userAddress']);
 
     // Construct and run query to check if username is taken
     $q = "SELECT * FROM user WHERE userUname='$userUname'";

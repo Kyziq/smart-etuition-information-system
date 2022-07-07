@@ -57,7 +57,6 @@
                     $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
                     $res = mysqli_query($con, $q);
                     $num = mysqli_num_rows($res);
-
                     if ($res) {
                         if ($num <= 0) {
                             // Will display subject registration option if student does not register yet
@@ -101,7 +100,6 @@
                 </li>
             </ul>
         </div>
-
         <!-- Main -->
         <div class="main">
             <div class="topbar">
@@ -125,23 +123,6 @@
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>
-
-                <!--
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here" />
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-                
-
-                <div class="user">
-                    <img src="../images/icons/user-solid.svg" alt="" />
-                </div>
-                <span style="color:#192e59">
-                    Student
-                </span>
-                -->
             </div>
 
             <!-- Cards -->

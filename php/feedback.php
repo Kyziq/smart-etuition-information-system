@@ -7,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
-
-    <!-- Image beside title -->
+    <!-- Title -->
     <link rel="icon" href="../images/icon.ico" />
-
     <title>Feedback System</title>
 </head>
 
@@ -19,16 +17,13 @@
     session_start();
     // Connect to database 
     include_once 'dbcon.php';
-
-    /*while ($r = mysqli_fetch_assoc($res)) {
-            echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
-        }*/
     ?>
-    <!-- =============== Navigation ================ -->
+    <!-- Navigation -->
     <div class="container">
         <?php
         // Student's navigation
         if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) { ?>
+            <!-- Student navigation -->
             <div class="navigation">
                 <ul>
                     <li>
@@ -47,7 +42,6 @@
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="edit_details.php">
                             <span class="icon">
@@ -56,14 +50,12 @@
                             <span class="title">Update Details</span>
                         </a>
                     </li>
-
                     <li>
                         <?php
                         // Construct and run query to check for existing subject registration
                         $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
                         $res = mysqli_query($con, $q);
                         $num = mysqli_num_rows($res);
-
                         if ($res) {
                             if ($num <= 0) {
                                 // Will display subject registration option if student does not register yet
@@ -78,10 +70,8 @@
                                 mysqli_free_result($res);
                             }
                         }
-
                         ?>
                     </li>
-
                     <li>
                         <a href="view_class_student.php">
                             <span class="icon">
@@ -90,7 +80,6 @@
                             <span class="title">Class Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href=feedback.php>
                             <span class="icon">
@@ -99,9 +88,7 @@
                             <span class="title">Feedback</span>
                         </a>
                     </li>
-
                     &nbsp;
-
                     <li>
                         <a href=logout.php>
                             <span class="icon" style="color:#ed2146;">
@@ -116,6 +103,7 @@
         }
         // Admin's navigation
         else if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) { ?>
+            <!-- Admin navigation -->
             <div class="navigation">
                 <ul>
                     <li>
@@ -133,7 +121,6 @@
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_student.php">
                             <span class="icon">
@@ -142,7 +129,6 @@
                             <span class="title">Student Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_tutor.php">
                             <span class="icon">
@@ -151,7 +137,6 @@
                             <span class="title">Tutor Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
@@ -160,8 +145,6 @@
                             <span class="title">Class Details</span>
                         </a>
                     </li>
-
-
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
@@ -170,7 +153,6 @@
                             <span class="title">Class Verification</span>
                         </a>
                     </li>
-
                     <li>
                         <a href=feedback.php>
                             <span class="icon">
@@ -179,9 +161,7 @@
                             <span class="title">Feedback</span>
                         </a>
                     </li>
-
                     &nbsp;
-
                     <li>
                         <a href=logout.php>
                             <span class="icon" style="color:#ed2146;">
@@ -195,7 +175,7 @@
         <?php
         }
         ?>
-        <!-- ========================= Main ==================== -->
+        <!-- Main -->
         <div class="main">
             <div class="topbar">
                 <div class="toggle">
@@ -203,38 +183,13 @@
                     <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                     </lord-icon>
                 </div>
-
-                <!-- Time update (every 1s) on top -->
-                <!-- 
-                <span>
-                    <script>
-                        setInterval(function() {
-                            document.getElementById('current-time').innerHTML = new Date().toString();
-                        }, 1);
-                    </script>
-                    <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
-                </span>
-                
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here" />
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-                
-                <div class="user">
-                    <img src="../images/icons/user-solid.svg" alt="" />
-                </div>
-                -->
             </div>
-            <!-- ================ Order Details List ================= -->
             <?php
-            // Student's
+            // Student's Page
             if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) { ?>
                 <div class="details" style="display: inline-block;">
-
                     <div class="recentOrders">
-                        <!-- 1 -->
+                        <!-- 1st function -->
                         <div class="cardHeader">
                             <h2>Feedback System</h2>
                         </div>
@@ -270,6 +225,7 @@
                                     $r = mysqli_fetch_assoc($res);
                                 }
                                 ?>
+                                <!-- Name -->
                                 <tr>
                                     <td><b>Name:</b></td>
                                     <td style="text-align: left;">
@@ -278,7 +234,7 @@
                                         ?>
                                     </td>
                                 </tr>
-
+                                <!-- Time -->
                                 <tr>
                                     <!-- Time update (every 1s) on top -->
                                     <span>
@@ -287,10 +243,8 @@
                                                 document.getElementById('current-time2').innerHTML = new Date().toLocaleString();
                                             }, 1);
                                         </script>
-
                                     </span>
                                     <?php
-
                                     date_default_timezone_set('Asia/Singapore');
                                     $date = date('d-m-y h:i:s A');
                                     ?>
@@ -301,14 +255,14 @@
                                         ?>
                                     </td>
                                 </tr>
-
+                                <!-- Title -->
                                 <tr>
                                     <td><b>Title:</b></td>
                                     <td style="text-align: left;">
                                         <input type="text" height="1000px" placeholder="Enter your title" name="fbTitle" size="96" required>
                                     </td>
                                 </tr>
-
+                                <!-- Comment -->
                                 <tr>
                                     <td><b>Comment:</b></td>
                                     <td>
@@ -317,27 +271,22 @@
                                 </tr>
                             </table>
                             <br>
+                            <!-- Submit button -->
                             <button type="submit" class="btn" name="submitFbButton" value="Submit">
                                 <span class="btnText"> Submit </span>
                             </button>
-
                             &nbsp;&nbsp;&nbsp;
-
                             <button type="reset" class="btn">
                                 <span class="btnText"> Reset </span>
                             </button>
                         </form>
-
-                        <br>
-                        <br>
-
-                        <!-- 2 -->
+                        <br> <br>
+                        <!-- 2nd function -->
                         <?php
                         // Construct and run query to list user's feedbacks
                         $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
                         $res = mysqli_query($con, $q);
                         $num = mysqli_num_rows($res);
-
                         if ($num > 0) {
                         ?>
                             <div class="cardHeader">
@@ -374,8 +323,9 @@
                         <?php } ?>
                     </div>
                 </div>
+
             <?php
-                // Admin's
+                // Admin's Page
             } else if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
             ?>
                 <div class="details" style="display: inline-block;">
@@ -437,23 +387,24 @@
                     </div>
                 </div>
             <?php
-
             } else {
                 header("Location: feedback.php");
             }
             ?>
-            <!-- JS scripts -->
-            <script src="../js/dash.js"></script>
-            <script src="../js/script.js"></script>
-            <!-- ionicons -->
-            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        </div>
+    </div>
+    <!-- *JS Scripts -->
+    <script src="../js/dash.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-            <?php
-            // Clear results and close the connection
-            mysqli_close($con);
-            mysqli_free_result($res);
-            ?>
+    <?php
+    // Clear results and close the connection
+    mysqli_close($con);
+    mysqli_free_result($res);
+    ?>
 </body>
 
 </html>

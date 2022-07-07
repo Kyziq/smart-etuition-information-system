@@ -44,6 +44,5 @@ if (isset($_POST['registerButton'])) {
     // Clear ress and close the connection
     mysqli_free_result($res);
     mysqli_close($con);
-} else {
+} else
     header("Location: register.php");
-}

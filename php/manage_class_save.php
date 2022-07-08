@@ -4,6 +4,8 @@ session_start();
 if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
     // Check if save is clicked
     if (isset($_POST['saveClassButton'])) {
+        // Connect to database 
+        include_once 'dbcon.php';
         // Get all the posted items
         $classID = $_POST['classID'];
         $subject = $_POST['subject'];
@@ -11,11 +13,10 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         $day = $_POST['day'];
         $time = $_POST['time'];
         $fee = $_POST['fee'];
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
+        $adminID = $_SESSION['userID']; // Admin ID who made the change will be recorded
 
         // Construct and run query to update class database
-        $q = "UPDATE class SET classSubject='$subject', classLink='$link', classDay='$day', classTime='$time', classFee='$fee' WHERE classID=$classID";
+        $q = "UPDATE class SET classSubject='$subject', classLink='$link', classDay='$day', classTime='$time', classFee='$fee', adminID='$adminID' WHERE classID=$classID";
         $res = mysqli_query($con, $q);
 
         // Success popup
@@ -32,4 +33,5 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         mysqli_close($con);
     } else
         header("Location: manage_class.php");
-}
+} else
+    header("Location: login.php");

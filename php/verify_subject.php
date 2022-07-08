@@ -7,14 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
-
-    <!-- Image beside title -->
-    <link rel="icon" href="../images/icon.ico" />
-
     <!-- Font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <!-- Title -->
+    <link rel="icon" href="../images/icon.ico" />
+    <title>Verification System</title>
+
     <style>
-        /* Style the Image Used to Trigger the Modal */
         /* Style the Image Used to Trigger the Modal */
         .img-thumbnail {
             border-radius: 5px;
@@ -112,26 +111,18 @@
             }
         }
     </style>
-
-    <title>Verification System</title>
 </head>
 
 <body>
     <?php
     session_start();
-
-
-    // Connect to database
-    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
-
-    /*while ($r = mysqli_fetch_assoc($res)) {
-            echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
-        }*/
+    // Connect to database 
+    include_once 'dbcon.php';
     ?>
-    <!-- =============== Navigation ================ -->
+    <!-- Navigation -->
     <div class="container">
         <?php
-        //Admin's navigation
+        // Admin
         if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) { ?>
             <div class="navigation">
                 <ul>
@@ -150,7 +141,6 @@
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_student.php">
                             <span class="icon">
@@ -159,7 +149,6 @@
                             <span class="title">Student Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_tutor.php">
                             <span class="icon">
@@ -168,7 +157,6 @@
                             <span class="title">Tutor Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
@@ -177,8 +165,6 @@
                             <span class="title">Class Details</span>
                         </a>
                     </li>
-
-
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
@@ -187,7 +173,6 @@
                             <span class="title">Class Verification</span>
                         </a>
                     </li>
-
                     <li>
                         <a href=feedback.php>
                             <span class="icon">
@@ -196,9 +181,7 @@
                             <span class="title">Feedback</span>
                         </a>
                     </li>
-
                     &nbsp;
-
                     <li>
                         <a href=logout.php>
                             <span class="icon" style="color:#ed2146;">
@@ -215,12 +198,12 @@
         <!-- ========================= Main ==================== -->
         <div class="main">
             <div class="topbar">
+                <!-- Menu toggle -->
                 <div class="toggle">
                     <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                     <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                     </lord-icon>
                 </div>
-
                 <!-- Time update (every 1s) on top -->
                 <span>
                     <div style="position: absolute; right: 500px; top: 5px;">
@@ -235,21 +218,7 @@
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>
-
-                <!--
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here" />
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-                
-                <div class="user">
-                    <img src="../images/icons/user-solid.svg" alt="" />
-                </div>
-                -->
             </div>
-            <!-- ================ Order Details List ================= -->
             <?php
             // Admin's
             if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) { ?>
@@ -266,9 +235,6 @@
                         $res = mysqli_query($con, $q);
                         // Construct and run query to check for existing class
                         $num = mysqli_num_rows($res);
-                        ?>
-
-                        <?php
                         if ($res) {
                             if ($num > 0) {
                         ?>
@@ -469,44 +435,46 @@
                 header("Location: verify_subject.php");
             }
             ?>
-            <!-- JS scripts -->
-            <script src="../js/dash.js"></script>
-            <script src="../js/script.js"></script>
+        </div>
+    </div>
+    <!-- *JS scripts -->
+    <script src="../js/dash.js"></script>
+    <script src="../js/script.js"></script>
 
-            <script>
-                // ------- Picture Popup
-                // Get the modal
-                var modal = document.getElementById('myModal');
+    <script>
+        // ------- Picture Popup
+        // Get the modal
+        var modal = document.getElementById('myModal');
 
-                // Get the images and bind an onclick event on each to insert it inside the modal
-                // use its "alt" text as a caption
-                var images = document.querySelectorAll(".img-thumbnail");
-                var modalImg = document.getElementById("img01");
-                var captionText = document.getElementById("caption");
-                for (let i = 0; i < images.length; i++) {
-                    images[i].onclick = function() {
-                        modal.style.display = "block";
-                        modalImg.src = this.src;
-                        captionText.innerHTML = this.alt;
-                    }
-                } // Get the <span> element that closes the modal
-                var span = document.getElementsByClassName("close")[0];
+        // Get the images and bind an onclick event on each to insert it inside the modal
+        // use its "alt" text as a caption
+        var images = document.querySelectorAll(".img-thumbnail");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        for (let i = 0; i < images.length; i++) {
+            images[i].onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                captionText.innerHTML = this.alt;
+            }
+        } // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-                // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
-                    modal.style.display = "none";
-                }
-            </script>
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    </script>
 
-            <!-- ionicons -->
-            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-            <?php
-            // Clear results and close the connection
-            mysqli_close($con);
-            mysqli_free_result($res);
-            ?>
+    <?php
+    // Clear results and close the connection
+    mysqli_close($con);
+    mysqli_free_result($res);
+    ?>
 </body>
 
 </html>

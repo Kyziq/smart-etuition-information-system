@@ -7,33 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
-
-    <!-- Image beside title -->
+    <!-- Title -->
     <link rel="icon" href="../images/icon.ico" />
-
     <title>Tutor Dashboard</title>
 </head>
 
 <body>
     <?php
-    // Student Main Page
+    // Tutor Dashboard
     session_start();
-    if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2) {
-
-        // Connect to database
-        $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
-
-        /*while ($r = mysqli_fetch_assoc($res)) {
-            echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
-        }*/
-    } else {
+    if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 2)
+        // Connect to database 
+        include_once 'dbcon.php';
+    else
         header("Location: login.php");
-    }
-
     ?>
-    <!-- =============== Navigation ================ -->
+    <!-- Tutor navigation -->
     <div class="container">
         <div class="navigation">
+            <!-- Dashboard List -->
             <ul>
                 <li>
                     <a href="tutor.php">
@@ -51,16 +43,14 @@
                         <span class="title">Dashboard</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="edit_details.php">
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
-                        <span class="title">User Details</span>
+                        <span class="title">My Details</span>
                     </a>
                 </li>
-
                 <li>
                     <a href="view_class_tutor.php">
                         <span class="icon">
@@ -69,9 +59,7 @@
                         <span class="title">Student Details</span>
                     </a>
                 </li>
-
                 &nbsp;
-
                 <li>
                     <a href=logout.php>
                         <span class="icon" style="color:#ed2146;">
@@ -86,13 +74,12 @@
         <!-- Main -->
         <div class="main">
             <div class="topbar">
-                <!-- Options menu toggle -->
+                <!-- Menu toggle -->
                 <div class="toggle">
                     <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                     <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                     </lord-icon>
                 </div>
-
                 <!-- Time update (every 1s) on top -->
                 <span>
                     <div style="position: absolute; right: 500px; top: 5px;">
@@ -107,27 +94,11 @@
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>
-
-                <!--
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here" />
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-                
-
-                <div class="user">
-                    <img src="../images/icons/user-solid.svg" alt="" />
-                </div>
-                <span style="color:#192e59">
-                    Student
-                </span>
-                -->
             </div>
 
-            <!-- ======================= Cards ================== -->
+            <!-- Cards -->
             <div class="cardBox">
+                <!-- Tutor Name -->
                 <div class="card">
                     <div>
                         <div class="numbers">Tutor</div>
@@ -158,7 +129,7 @@
                         ?>
                     </div>
                 </div>
-
+                <!-- Total of the tutor students -->
                 <div class="card">
                     <div>
                         <div class="numbers">
@@ -171,20 +142,16 @@
                             ?>
                         </div>
                         <div class="cardName">
-                            <i>My Students</i>
-                            <?php
-
-                            ?>
+                            <i>My student</i>
                         </div>
                     </div>
-
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/zpxybbhl.json" trigger="loop" delay="750" colors="primary:#192e59,secondary:#192e59" stroke="70" style="width:85px;height:85px">
                         </lord-icon>
                     </div>
                 </div>
-
+                <!-- Total of the tutor class -->
                 <div class="card">
                     <div>
                         <div class="numbers">
@@ -196,32 +163,43 @@
                             echo $r['total'];
                             ?>
                         </div>
-                        <div class="cardName"><i>My Class</i></div>
+                        <div class="cardName">
+                            <i>My class</i>
+                        </div>
                     </div>
-
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/osqwjgzg.json" trigger="loop" delay="750" colors="primary:#192e59" style="width:70px;height:70px">
                         </lord-icon>
                     </div>
                 </div>
-
+                <!-- Front class links -->
                 <div class="card">
                     <div>
-                        <div class="numbers">Class Link</div>
+                        <div class="numbers">Class Links</div>
                         <div class="cardName">
                             <i>
-                                <a href="mailto:smartetuition@gmail.com">
+                                <?php
+                                $q = "SELECT classLink FROM class WHERE classDay='Saturday' AND tutorID=" . $_SESSION['userID'];
+                                $res = mysqli_query($con, $q);
+                                $r = mysqli_fetch_assoc($res);
+                                ?>
+                                <a href="<?php echo $r['classLink'] ?>" target=_blank>
                                     <ion-icon name="link-outline"></ion-icon><b><u>Saturday</u></b>
                                 </a>&nbsp;&nbsp;
                                 <br>
-                                <a href="https://wa.link/cuxs3j" target=_blank">
+
+                                <?php
+                                $q = "SELECT classLink FROM class WHERE classDay='Sunday' AND tutorID=" . $_SESSION['userID'];
+                                $res = mysqli_query($con, $q);
+                                $r = mysqli_fetch_assoc($res);
+                                ?>
+                                <a href="<?php echo $r['classLink'] ?>" target=_blank>
                                     <ion-icon name="link-outline"></ion-icon><b><u>Sunday</u></b>
                                 </a>
                             </i>
                         </div>
                     </div>
-
                     <div class="iconBx">
                         <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                         <lord-icon src="https://cdn.lordicon.com/wjwuvtno.json" trigger="loop" delay="1200" colors="primary:#192e59,secondary:#192e59" stroke="70" style="width:85px;height:85px">
@@ -231,11 +209,11 @@
                 </div>
             </div>
 
-            <!-- ================ TimeTable  ================= -->
+            <!-- Tutor's class list -->
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>My Classes</h2>
+                        <h2>My Class Details</h2>
                     </div>
                     <?php
                     // Construct and run query to check for existing class
@@ -309,12 +287,16 @@
                     ?>
                 </div>
 
-                <!-- ================= Student's Details ================ -->
+                <!-- Tutor details -->
                 <div class="recentCustomers">
                     <div class="cardHeader">
                         <h2>My Details</h2>
                     </div>
-
+                    <?php
+                    $q = "SELECT * FROM user WHERE userID=" . $_SESSION['userID'];
+                    $res = mysqli_query($con, $q);
+                    $r = mysqli_fetch_assoc($res);
+                    ?>
                     <table>
                         <tr>
                             <td>
@@ -322,9 +304,6 @@
                                     Name<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userName'];
                                         ?>
                                     </span>
@@ -338,9 +317,6 @@
                                     Phone<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userPhone FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userPhone'];
                                         ?>
                                     </span>
@@ -354,9 +330,6 @@
                                     Email<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userEmail FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userEmail'];
                                         ?>
                                     </span>
@@ -370,9 +343,6 @@
                                     Birthdate<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userBirthdate FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userBirthdate'];
                                         ?>
                                     </span>
@@ -386,9 +356,6 @@
                                     Gender<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userGender FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         if ($r['userGender'] == 1) // 1 == Male, 2 == Female
                                             $gender = "Male";
                                         else if ($r['userGender'] == 2)
@@ -406,9 +373,6 @@
                                     Address<br />
                                     <span>
                                         <?php
-                                        $q = "SELECT userAddress FROM user WHERE userID=" . $_SESSION['userID'];
-                                        $res = mysqli_query($con, $q);
-                                        $r = mysqli_fetch_assoc($res);
                                         echo $r['userAddress'];
                                         ?>
                                     </span>

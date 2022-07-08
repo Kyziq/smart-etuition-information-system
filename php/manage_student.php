@@ -7,31 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
-
-    <!-- Image beside title -->
-    <link rel="icon" href="../images/icon.ico" />
-
     <!-- Font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
+    <!-- Title -->
     <title>User Details</title>
+    <link rel="icon" href="../images/icon.ico" />
 </head>
 
 <body>
     <?php
     session_start();
-
-    // Connect to database
-    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
-
-    /*while ($r = mysqli_fetch_assoc($res)) {
-            echo "<tr><td>" . $r['userEmail'] . "</td><td>" . $r['userUname'] . "</td><td>" . $r['userPhone'] . "</td></tr>";
-        }*/
+    // Connect to database 
+    include_once 'dbcon.php';
     ?>
-    <!-- =============== Navigation ================ -->
+    <!-- Navigation -->
     <div class="container">
         <?php
-        //Admin's
+        // Admin
         if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) { ?>
             <div class="navigation">
                 <ul>
@@ -50,7 +42,6 @@
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_student.php">
                             <span class="icon">
@@ -59,7 +50,6 @@
                             <span class="title">Student Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_tutor.php">
                             <span class="icon">
@@ -68,7 +58,6 @@
                             <span class="title">Tutor Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
@@ -77,8 +66,6 @@
                             <span class="title">Class Details</span>
                         </a>
                     </li>
-
-
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
@@ -87,7 +74,6 @@
                             <span class="title">Class Verification</span>
                         </a>
                     </li>
-
                     <li>
                         <a href=feedback.php>
                             <span class="icon">
@@ -96,9 +82,7 @@
                             <span class="title">Feedback</span>
                         </a>
                     </li>
-
                     &nbsp;
-
                     <li>
                         <a href=logout.php>
                             <span class="icon" style="color:#ed2146;">
@@ -112,16 +96,15 @@
         <?php
         }
         ?>
-        <!-- ========================= Main ==================== -->
+        <!-- Main -->
         <div class="main">
             <div class="topbar">
+                <!-- Menu toggle -->
                 <div class="toggle">
                     <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                     <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                     </lord-icon>
                 </div>
-
-
                 <!-- Time update (every 1s) on top -->
                 <span>
                     <div style="position: absolute; right: 500px; top: 5px;">
@@ -136,31 +119,27 @@
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>
-
-                <!--
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here" />
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-                
-                <div class="user">
-                    <img src="../images/icons/user-solid.svg" alt="" />
-                </div>
-                -->
             </div>
-
-            <!-- Student Part -->
             <div class="details" style="display: inline-block;">
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Student Details:</h2>
+                        <!-- Export to CSV -->
+                        <a href='./export/student_details.php?exportStudentDetails=true'>
+                            <button style="height: 30px;" class="btn"> Export Data to CSV </button>
+                        </a>
                     </div>
                     <br>
                     <div class="search">
                         <label>
-                            <input type="text" placeholder="Search by user details" />
+                            <form method="post" action="manage_student.php" enctype="multipart/form-data">
+                                <input type="text" name="userName" placeholder="Search by keyword name" />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="submit" class="btn" name="searchStudentButton" value="Submit" style="height: 35px;">
+                                    <span class="btnText">Search</span>
+                                </button>
+                                <br>
+                            </form>
                         </label>
                     </div>
                     <?php
@@ -183,20 +162,26 @@
                                         <td>Phone</td>
                                         <td>Email</td>
                                         <td>Birthdate</td>
-                                        <td style="text-align: center;">Address</td>
-                                        <td style="text-align: end;">Action (Save)</td>
+                                        <td>Address</td>
+                                        <td>Action (Save)</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
+                                    if (isset($_POST['searchStudentButton'])) {
+                                        $userName = $_POST['userName'];
+                                        $q = "SELECT * FROM user WHERE userName LIKE '%" . $userName . "%' AND userLevel='3'";
+                                        $res = mysqli_query($con, $q);
+                                    }
                                     while ($r = mysqli_fetch_assoc($res)) {
                                         // Output all classes in a table
                                         echo    "<form method='POST' action='manage_user_save.php'>";
                                         echo    "<tr>
                                                     <input type='hidden' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly>
-                                                    <!-- <td style='text-align: left;'><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td> -->
-                                                    <td style='text-align: left;'><input type='text' name='userName' style='text-align:center;' size='20' value='" . $r['userName'] . "'></td>
-                                                    <td style='text-align: left;'>";
+                                                    <input type='hidden' name='userLevel' style='text-align:center; color: var(--red);' size='1' value='" . $r['userLevel'] . "'readonly>
+                                                    <!-- <td><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td> -->
+                                                    <td><input type='text' name='userName' style='text-align:center;' size='25' value='" . $r['userName'] . "'></td>
+                                                    <td>";
 
                                         if ($r['userGender'] == 1) {
                                             echo "
@@ -214,14 +199,13 @@
                                         }
                                         echo "
                                                     </td>
-                                                    <td style='text-align: left;'><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
-                                                    <td style='text-align: left;'><input type='text' name='userEmail' style='text-align:center;' size='20' value='" . $r['userEmail'] . "'></td>
-                                                    
-                                                    <td style='text-align: left;'><input type='date' name='userBirthdate' style='text-align:center;' size='5' value='" . $r['userBirthdate'] . "'></td>
-                                                    <td style='text-align: left;'>
-                                                        <textarea type='text' name='userAddress' style='text-align:center;' rows='3' cols='35'>" . $r['userAddress'] . "</textarea>
+                                                    <td><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
+                                                    <td><input type='text' name='userEmail' style='text-align:center;' size='25' value='" . $r['userEmail'] . "'></td>
+                                                    <td><input type='date' name='userBirthdate' style='text-align:center;' size='5' value='" . $r['userBirthdate'] . "'></td>
+                                                    <td>
+                                                        <textarea type='text' name='userAddress' style='text-align:center;' rows='3' cols='40'>" . $r['userAddress'] . "</textarea>
                                                     </td>
-                                                    <td style='text-align: end;'>
+                                                    <td>
                                                     <button style='padding: 0; border: none; background: none;' type='submit' name='saveUserButton'>
                                                         <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
                                                         <lord-icon
@@ -236,6 +220,7 @@
                                                 </tr>";
                                         echo "</form>";
                                     }
+
                                     ?>
                                 </tbody>
                             </table>
@@ -245,20 +230,19 @@
                     ?>
                 </div>
             </div>
-
-            <!-- JS scripts -->
-            <script src="../js/dash.js"></script>
-            <script src="../js/script.js"></script>
-
-            <!-- ionicons -->
-            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-            <?php
-            // Clear results and close the connection
-            mysqli_close($con);
-            mysqli_free_result($res);
-            ?>
+        </div>
+    </div>
+    <!-- *JS scripts -->
+    <script src="../js/dash.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <?php
+    // Clear results and close the connection
+    mysqli_close($con);
+    mysqli_free_result($res);
+    ?>
 </body>
 
 </html>

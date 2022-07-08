@@ -7,31 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style2.css">
-
-    <!-- Image beside title -->
-    <link rel="icon" href="../images/icon.ico" />
-
     <!-- Font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-
+    <!-- Title -->
     <title>Class Details</title>
+    <link rel="icon" href="../images/icon.ico" />
 </head>
 
 <body>
     <?php
     session_start();
-
-    // Connect to database
-    $con = mysqli_connect('localhost', 'root', '', 'smartetuition') or die(mysqli_error($con));
-
-    /*while ($r = mysqli_fetch_assoc($res)) {
-            echo "<tr><td>" . $r['classTime'] . "</td><td>" . $r['classSubject'] . "</td><td>" . $r['classDay'] . "</td></tr>";
-        }*/
+    // Connect to database 
+    include_once 'dbcon.php';
     ?>
-    <!-- =============== Navigation ================ -->
+    <!-- Navigation -->
     <div class="container">
         <?php
-        //Admin's
+        // Admin
         if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) { ?>
             <div class="navigation">
                 <ul>
@@ -50,7 +42,6 @@
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_student.php">
                             <span class="icon">
@@ -59,7 +50,6 @@
                             <span class="title">Student Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_tutor.php">
                             <span class="icon">
@@ -68,7 +58,6 @@
                             <span class="title">Tutor Details</span>
                         </a>
                     </li>
-
                     <li>
                         <a href="manage_class.php">
                             <span class="icon">
@@ -77,8 +66,6 @@
                             <span class="title">Class Details</span>
                         </a>
                     </li>
-
-
                     <li>
                         <a href="verify_subject.php">
                             <span class="icon">
@@ -87,7 +74,6 @@
                             <span class="title">Class Verification</span>
                         </a>
                     </li>
-
                     <li>
                         <a href=feedback.php>
                             <span class="icon">
@@ -96,9 +82,7 @@
                             <span class="title">Feedback</span>
                         </a>
                     </li>
-
                     &nbsp;
-
                     <li>
                         <a href=logout.php>
                             <span class="icon" style="color:#ed2146;">
@@ -112,16 +96,15 @@
         <?php
         }
         ?>
-        <!-- ========================= Main ==================== -->
+        <!--Main -->
         <div class="main">
             <div class="topbar">
+                <!-- Menu toggle -->
                 <div class="toggle">
                     <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                     <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                     </lord-icon>
                 </div>
-
-
                 <!-- Time update (every 1s) on top -->
                 <span>
                     <div style="position: absolute; right: 500px; top: 5px;">
@@ -136,25 +119,15 @@
                     </script>
                     <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
                 </span>
-
-                <!--
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here" />
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-                
-                <div class="user">
-                    <img src="../images/icons/user-solid.svg" alt="" />
-                </div>
-                -->
             </div>
-            <!-- ================ Order Details List ================= -->
             <div class="details" style="display: inline-block;">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Classes Details:</h2>
+                        <h2>Class Details:</h2>
+                        <!-- Export to CSV -->
+                        <a href='./export/class_details.php?exportClassDetails=true'>
+                            <button style="height: 30px;" class="btn"> Export Data to CSV </button>
+                        </a>
                     </div>
                     <!-- 1st -->
                     <?php
@@ -217,20 +190,21 @@
                     ?>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- JS scripts -->
-            <script src="../js/dash.js"></script>
-            <script src="../js/script.js"></script>
+    <!-- *JS Script -->
+    <script src="../js/dash.js"></script>
+    <script src="../js/script.js"></script>
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-            <!-- ionicons -->
-            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-            <?php
-            // Clear results and close the connection
-            mysqli_close($con);
-            mysqli_free_result($res);
-            ?>
+    <?php
+    // Clear results and close the connection
+    mysqli_close($con);
+    mysqli_free_result($res);
+    ?>
 </body>
 
 </html>

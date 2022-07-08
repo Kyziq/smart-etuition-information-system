@@ -272,12 +272,12 @@
                             </table>
                             <br>
                             <!-- Submit button -->
-                            <button type="submit" class="btn" name="submitFbButton" value="Submit">
-                                <span class="btnText"> Submit </span>
-                            </button>
-                            &nbsp;&nbsp;&nbsp;
                             <button type="reset" class="btn">
                                 <span class="btnText"> Reset </span>
+                            </button>
+                            &nbsp;&nbsp;&nbsp;
+                            <button type="submit" class="btn" name="submitFbButton" value="Submit">
+                                <span class="btnText"> Submit </span>
                             </button>
                         </form>
                         <br> <br>

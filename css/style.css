@@ -179,7 +179,7 @@ section {
         transform: translateY(0rem);
     }
     50% {
-        transform: translateY(3rem);
+        transform: translateY(2rem);
     }
 }
 .home .content h3 {

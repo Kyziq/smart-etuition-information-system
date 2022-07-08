@@ -332,6 +332,10 @@
                     <div class="recentOrders">
                         <div class="cardHeader">
                             <h2>Feedback System</h2>
+                            <!-- Export to CSV -->
+                            <a href='./export/feedback_details.php?exportFeedbackDetails=true'>
+                                <button style="height: 30px;" class="btn"> Export Data to CSV </button>
+                            </a>
                         </div>
                         <?php
                         // Construct and run query to list all students' feedbacks

@@ -124,6 +124,10 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Class Details:</h2>
+                        <!-- Export to CSV -->
+                        <a href='./export/class_details.php?exportClassDetails=true'>
+                            <button style="height: 30px;" class="btn"> Export Data to CSV </button>
+                        </a>
                     </div>
                     <!-- 1st -->
                     <?php

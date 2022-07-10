@@ -5,27 +5,21 @@ session_start();
 // Include database connection settings
 include_once 'dbcon.php';
 
-/*if(isset($_POST['submit'])){
-    //get all the posted items
-    $userUname = $_POST['userUname'];
-    $userPassw = $_POST['userPassw'];
-}*/
-
 // capture values from HTML form
 $userUname = $_POST['userUname'];
 $userPassw = $_POST['userPassw'];
 
-$sql = "SELECT userUname, userPassw, userLevel FROM user WHERE userUname= '$userUname' AND userPassw= '$userPassw'";
+$sql = "SELECT * FROM user WHERE userUname= '$userUname' AND userPassw= '$userPassw'";
 $query = mysqli_query($con, $sql);
 $row = mysqli_num_rows($query);
 
 if ($row == 0) {
     // Jump to index wrong page
     echo "No data received";
-} else {
+} 
+else {
     $r = mysqli_fetch_assoc($query);
-    //$_SESSION['userID'] = $r['userID'];
-    
+    $userID = $r['userID'];
     $userUname = $r['userUname'];
     //$userPassw= $r['userPassw'];
     $userLevel = $r['userLevel'];
@@ -38,8 +32,5 @@ if ($row == 0) {
         echo "3";
 }
 
-//echo $userUname;
-//echo "<br>";
-//echo $userPassw;
-
 mysqli_close($con);
+?>

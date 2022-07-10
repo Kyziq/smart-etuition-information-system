@@ -21,12 +21,11 @@ Colours Hex Codes/Themes
 #000000 - Black
 */
 :root {
-    --blue: #192e59;
     --white: #fff;
     --gray: #f5f5f5;
     --black1: #222;
     --black2: #999;
-    --blue2: #183765;
+    --blue: #183765;
     --darkblue: #192e59;
     --yellow: #f9dc5e;
     --darkyellow: #eac143;
@@ -59,7 +58,7 @@ a:visited {
 /* mouse over link */
 a:hover {
     color: var(--darkblue);
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 /* selected link */
@@ -85,8 +84,8 @@ a:active {
     position: fixed;
     width: 300px;
     height: 100%;
-    background: var(--blue);
-    border-left: 10px solid var(--blue);
+    background: var(--darkblue);
+    border-left: 10px solid var(--darkblue);
     transition: 0.5s;
     overflow: hidden;
 }
@@ -129,7 +128,7 @@ a:active {
 }
 .navigation ul li:hover a,
 .navigation ul li.hovered a {
-    color: var(--blue);
+    color: var(--darkblue);
 }
 .navigation ul li a .icon #logoLUS {
     height: 160px;
@@ -276,7 +275,7 @@ a:active {
     position: relative;
     font-weight: 500;
     font-size: 2.5rem;
-    color: var(--blue);
+    color: var(--darkblue);
 }
 
 .cardBox .card .cardName {
@@ -356,12 +355,12 @@ form .btn:hover {
 
 .cardHeader h2 {
     font-weight: 600;
-    color: var(--blue);
+    color: var(--darkblue);
 }
 .cardHeader .btn {
     position: relative;
     padding: 5px 10px;
-    background: var(--blue);
+    background: var(--darkblue);
     text-decoration: none;
     color: var(--white);
     border-radius: 6px;
@@ -384,7 +383,7 @@ table {
     border-bottom: none;
 }
 .details .recentOrders table tbody tr:hover {
-    background: var(--blue);
+    background: var(--darkblue);
     color: var(--white);
 }
 .details .recentOrders table tr td {
@@ -472,7 +471,7 @@ table {
     color: var(--black2);
 }
 .recentCustomers table tr:hover {
-    background: var(--blue);
+    background: var(--darkblue);
     color: var(--white);
 }
 .recentCustomers table tr:hover td h4 span {
@@ -507,12 +506,12 @@ table {
 }
 .cardHeader h2 {
     font-weight: 600;
-    color: var(--blue);
+    color: var(--darkblue);
 }
 .cardHeader .btn {
     position: relative;
     padding: 5px 10px;
-    background: var(--blue);
+    background: var(--darkblue);
     text-decoration: none;
     color: var(--white);
     border-radius: 6px;
@@ -534,7 +533,7 @@ table {
     border-bottom: none;
 }
 .class-details .class table tbody tr:hover {
-    background: var(--blue);
+    background: var(--darkblue);
     color: var(--white);
 }
 .class-details .class table tr td {
@@ -582,7 +581,7 @@ table {
 .payment-forms .file-upload {
     position: relative;
     padding: 5px 10px;
-    background: var(--blue);
+    background: var(--darkblue);
     text-decoration: none;
     color: var(--white);
     border-radius: 6px;

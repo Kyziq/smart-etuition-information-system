@@ -23,30 +23,28 @@
         </div>
         <div class="container">
             <header>Login Page</header>
-            <br><br><br><br><br><br>
             <form name="loginForm" method="post" action="login_success.php">
                 <div class="fields">
                     <div class="input-field">
                         <label>Username</label>
-                        <input type="text" placeholder="Enter your username" name="userUname" required />
+                        <input type="text" placeholder="Username" name="userUname" required />
+                        <span class="text">
+                            <?php
+                            // Check for wrong password
+                            if (isset($_GET["msg"]) && $_GET["msg"] == 'failed')
+                                echo '<span style="color: #ed2146; font-size: 15px;"><b>Wrong username or password!</b></span>';
+                            ?>
+                        </span>
                     </div>
 
                     <div class="input-field">
                         <label>Password</label>
-                        <input type="password" placeholder="Enter your password" name="userPassw" required />
+                        <input type="password" placeholder="Password" name="userPassw" required />
+                        <span class="text">
+                            <a href="forgot_password.php">Forgot your password?</a>
+                        </span>
                     </div>
-
                 </div>
-                <?php
-                // Check for wrong password
-                if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
-                    echo
-                    '
-                            <span style="color: #ed2146; font-size: 15px; position: fixed;"><b>Wrong username or password!</b></span>
-                                ';
-                }
-                ?>
-                <br>
                 <div class="buttons">
                     <button type="submit" name="loginButton" value="Submit">
                         <span class="btnText"> Login ‎ ‎ ‎</span>
@@ -56,16 +54,10 @@
                     </button>
                 </div>
             </form>
-            <span class="text">Not a member?
+            <span class="text">Don't have an account?
                 <a href="register.php">Register Now</a>
             </span>
         </div>
-        <script>
-            function myFunction() {
-                var x = document.getElementById("fname");
-                x.value = x.value.toUpperCase();
-            }
-        </script>
         <script src="../js/script.js"></script>
     </span>
 </body>

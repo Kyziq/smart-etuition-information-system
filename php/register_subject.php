@@ -138,7 +138,7 @@
                     </div>
                     <div style="text-align: justify; line-height: 30px;">
                         <br>
-                        Select the course(s) from the list below for your SPM journey in Let Us Score. You may either take only one, some, or include them all. It would cost <b>RM50</b> for each individual class.
+                        Select the subject(s) from the list below for your SPM journey in Let Us Score. You may either take only one, some, or include them all. It would cost <b>RM50</b> for each individual class.
                         <br>
                         <br>
                         <p><b>Transfer to:</b>

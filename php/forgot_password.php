@@ -46,6 +46,9 @@
         </div>
         <script src="../js/script.js"></script>
     </span>
+    <?php
+
+    ?>
 </body>
 
 </html>

@@ -3,13 +3,10 @@
 include_once 'dbcon.php';
 
 $userID = $_POST['userID'];
-$userUname = $_POST['userUname'];
-$userPassw = $_POST['userPassw'];
-$userName = $_POST['userName'];
-$userPhone = $_POST['userPhone'];
-$userEmail = $_POST['userEmail'];
-$userAddress = $_POST['userAddress'];
-$userGender = $_POST['userGender'];
+$userID = $_POST['userID'];
+$userID = $_POST['userID'];
+$userID = $_POST['userID'];
+
 
 $q = "SELECT * FROM user WHERE userUname='userUname'";
 $result = mysqli_query($con, $q);
@@ -26,7 +23,6 @@ if ($rows > 0) {
         echo "Registration successful!\nPlease wait a few seconds.";
     }
 }
-
 /*
 $userBirthdate=$_POST['userBirthdate'];
 

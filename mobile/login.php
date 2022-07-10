@@ -5,6 +5,12 @@ session_start();
 // Include database connection settings
 include_once 'dbcon.php';
 
+/*if(isset($_POST['submit'])){
+    //get all the posted items
+    $userUname = $_POST['userUname'];
+    $userPassw = $_POST['userPassw'];
+}*/
+
 // capture values from HTML form
 $userUname = $_POST['userUname'];
 $userPassw = $_POST['userPassw'];
@@ -18,6 +24,8 @@ if ($row == 0) {
     echo "No data received";
 } else {
     $r = mysqli_fetch_assoc($query);
+    //$_SESSION['userID'] = $r['userID'];
+    
     $userUname = $r['userUname'];
     //$userPassw= $r['userPassw'];
     $userLevel = $r['userLevel'];

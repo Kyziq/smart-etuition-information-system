@@ -1,12 +1,14 @@
 <?php 
+
 include "dbcon.php";
 
-//$userID = @$_POST['userID']; 
-$userID = 23;
-$q = "SELECT * FROM user WHERE userID = '$userID'";
-$result = mysqli_query($con, $q) or die(mysqli_error($con));
+$userUname = $_POST['userUname']; 
+//$userID = 23;
+$q = "SELECT * FROM user WHERE userUname = '$userUname'";
+$query = mysqli_query($con, $q);
 
-while($rows = mysqli_fetch_array($result)) {
+
+while($rows = mysqli_fetch_array($query)) {
 	echo "User ID\t\t: ";
 	echo $rows["userID"];
 	echo "\n";
@@ -29,6 +31,5 @@ while($rows = mysqli_fetch_array($result)) {
 	echo "||";
 }
 
-mysqli_free_result($result);
 mysqli_close($con);
 ?>

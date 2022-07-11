@@ -47,7 +47,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">Student Details</span>
+                            <span class="title">Manage Student</span>
                         </a>
                     </li>
                     <li>
@@ -55,7 +55,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">Tutor Details</span>
+                            <span class="title">Manage Tutor</span>
                         </a>
                     </li>
                     <li>
@@ -63,7 +63,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">Class Details</span>
+                            <span class="title">Manage Class</span>
                         </a>
                     </li>
                     <li>
@@ -72,6 +72,14 @@
                                 <ion-icon name="checkmark-outline"></ion-icon>
                             </span>
                             <span class="title">Class Verification</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="view_class_admin.php">
+                            <span class="icon">
+                                <ion-icon name="search-outline"></ion-icon>
+                            </span>
+                            <span class="title">Class Details</span>
                         </a>
                     </li>
                     <li>
@@ -152,52 +160,53 @@
                     if ($res) {
                         if ($num > 0) {
                     ?>
-                            <table style="width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <!-- <td style="text-align: center;">ID</td> -->
-                                        <!-- <td style="text-align: left;">Username</td> -->
-                                        <td>Full Name</td>
-                                        <td>Gender</td>
-                                        <td>Phone</td>
-                                        <td>Email</td>
-                                        <td>Birthdate</td>
-                                        <td>Address</td>
-                                        <td>Action (Save)</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    if (isset($_POST['searchStudentButton'])) {
-                                        $userName = $_POST['userName'];
-                                        $q = "SELECT * FROM user WHERE userName LIKE '%" . $userName . "%' AND userLevel='3'";
-                                        $res = mysqli_query($con, $q);
-                                    }
-                                    while ($r = mysqli_fetch_assoc($res)) {
-                                        // Output all classes in a table
-                                        echo    "<form method='POST' action='manage_user_save.php'>";
-                                        echo    "<tr>
+                            <div style="max-height: 650px; overflow-y: scroll;">
+                                <table style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <!-- <td style="text-align: center;">ID</td> -->
+                                            <!-- <td style="text-align: left;">Username</td> -->
+                                            <td>Full Name</td>
+                                            <td>Gender</td>
+                                            <td>Phone</td>
+                                            <td>Email</td>
+                                            <td>Birthdate</td>
+                                            <td>Address</td>
+                                            <td>Action (Save)</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        if (isset($_POST['searchStudentButton'])) {
+                                            $userName = $_POST['userName'];
+                                            $q = "SELECT * FROM user WHERE userName LIKE '%" . $userName . "%' AND userLevel='3'";
+                                            $res = mysqli_query($con, $q);
+                                        }
+                                        while ($r = mysqli_fetch_assoc($res)) {
+                                            // Output all classes in a table
+                                            echo    "<form method='POST' action='manage_user_save.php'>";
+                                            echo    "<tr>
                                                     <input type='hidden' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly>
                                                     <input type='hidden' name='userLevel' style='text-align:center; color: var(--red);' size='1' value='" . $r['userLevel'] . "'readonly>
                                                     <!-- <td><input type='text' name='userUname' style='text-align:center;' size='10' value='" . $r['userUname'] . "'></td> -->
                                                     <td><input type='text' name='userName' style='text-align:center;' size='25' value='" . $r['userName'] . "'></td>
                                                     <td>";
 
-                                        if ($r['userGender'] == 1) {
-                                            echo "
+                                            if ($r['userGender'] == 1) {
+                                                echo "
                                                         <select name='userGender'>
                                                             <option selected value='1'>Male</option>
                                                             <option value='2'>Female</option>
                                                         </select>";
-                                        }
-                                        if ($r['userGender'] == 2) {
-                                            echo "
+                                            }
+                                            if ($r['userGender'] == 2) {
+                                                echo "
                                                             <select name='userGender'>
                                                                 <option value='1'>Male</option>
                                                                 <option selected value='2'>Female</option>
                                                             </select>";
-                                        }
-                                        echo "
+                                            }
+                                            echo "
                                                     </td>
                                                     <td><input type='text' name='userPhone' style='text-align:center;' size='10' value='" . $r['userPhone'] . "'></td>
                                                     <td><input type='text' name='userEmail' style='text-align:center;' size='25' value='" . $r['userEmail'] . "'></td>
@@ -218,12 +227,13 @@
                                                     </button>
                                                     </td>
                                                 </tr>";
-                                        echo "</form>";
-                                    }
+                                            echo "</form>";
+                                        }
 
-                                    ?>
-                                </tbody>
-                            </table>
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                     <?php
                         }
                     }

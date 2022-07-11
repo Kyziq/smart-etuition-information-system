@@ -9,9 +9,21 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 1) {
         // Get the posted item
         $fbID = $_POST['fbID'];
 
-        // Construct and run query to update class database
+        // Construct and run query to delete feedback using prepared statements
+        $q = "DELETE FROM feedback WHERE fbID=?";
+        $stmt = mysqli_stmt_init($con);
+        if (!mysqli_stmt_prepare($stmt, $q))
+            echo "SQL statement failed";
+        else {
+            mysqli_stmt_bind_param($stmt, "i", $fbID);
+            mysqli_stmt_execute($stmt);
+            $res = mysqli_stmt_get_result($stmt);
+        }
+
+        /* Old
         $q = "DELETE FROM feedback WHERE fbID='$fbID'";
         $res = mysqli_query($con, $q);
+        */
 
         // Success popup
         /*

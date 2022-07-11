@@ -52,10 +52,24 @@
                     </li>
                     <li>
                         <?php
+                        // Data
+
                         // Construct and run query to check for existing subject registration
-                        $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=" . $_SESSION['userID'];
-                        $res = mysqli_query($con, $q);
-                        $num = mysqli_num_rows($res);
+                        $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=?";
+                        // Created a prepared statement
+                        $stmt = mysqli_stmt_init($con);
+                        // Prepare the prepared statement
+                        if (!mysqli_stmt_prepare($stmt, $q))
+                            echo "SQL statement failed";
+                        else {
+                            // Bind parameters to the placeholder
+                            mysqli_stmt_bind_param($stmt, "i", $_SESSION['userID']);
+                            // Run parameters inside database
+                            mysqli_stmt_execute($stmt);
+                            $res = mysqli_stmt_get_result($stmt);
+                            $r = mysqli_fetch_assoc($res);
+                            $num = mysqli_num_rows($res);
+                        }
                         if ($res) {
                             if ($num <= 0) {
                                 // Will display subject registration option if student does not register yet
@@ -67,7 +81,7 @@
                                     <span class="title">Register Subject(s)</span>
                                 </a>
                         <?php
-                                mysqli_free_result($res);
+                                //mysqli_free_result($res);
                             }
                         }
                         ?>
@@ -126,7 +140,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">Student Details</span>
+                            <span class="title">Manage Student</span>
                         </a>
                     </li>
                     <li>
@@ -134,7 +148,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">Tutor Details</span>
+                            <span class="title">Manage Tutor</span>
                         </a>
                     </li>
                     <li>
@@ -142,7 +156,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">Class Details</span>
+                            <span class="title">Manage Class</span>
                         </a>
                     </li>
                     <li>
@@ -151,6 +165,14 @@
                                 <ion-icon name="checkmark-outline"></ion-icon>
                             </span>
                             <span class="title">Class Verification</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="view_class_admin.php">
+                            <span class="icon">
+                                <ion-icon name="search-outline"></ion-icon>
+                            </span>
+                            <span class="title">Class Details</span>
                         </a>
                     </li>
                     <li>
@@ -206,11 +228,10 @@
                         <form method="post" action="feedback_save.php">
                             <table>
                                 <?php
-                                // ------- PREVENT SQL INJECTION ------- \\
-                                // Query for username
+                                // Query 
                                 $q = "SELECT userName FROM user WHERE userID=?";
                                 // Data
-                                $data = $_SESSION['userID'];
+                                $userID = $_SESSION['userID'];
                                 // Created a prepared statement
                                 $stmt = mysqli_stmt_init($con);
                                 // Prepare the prepared statement
@@ -218,7 +239,7 @@
                                     echo "SQL statement failed";
                                 else {
                                     // Bind parameters to the placeholder
-                                    mysqli_stmt_bind_param($stmt, "i", $data);
+                                    mysqli_stmt_bind_param($stmt, "i", $userID);
                                     // Run parameters inside database
                                     mysqli_stmt_execute($stmt);
                                     $res = mysqli_stmt_get_result($stmt);
@@ -227,7 +248,7 @@
                                 ?>
                                 <!-- Name -->
                                 <tr>
-                                    <td><b>Name:</b></td>
+                                    <td><b>Name</b></td>
                                     <td style="text-align: left;">
                                         <?php
                                         echo $r['userName'];
@@ -248,7 +269,7 @@
                                     date_default_timezone_set('Asia/Singapore');
                                     $date = date('d-m-y h:i:s A');
                                     ?>
-                                    <td><b>Date:</b></td>
+                                    <td><b>Date</b></td>
                                     <td style="text-align: left;">
                                         <?php
                                         echo "<div style='font-family: 'Helvetica', sans-serif; font-size: 20px; font-weight: 500;' id='current-time2'></div>";
@@ -257,14 +278,14 @@
                                 </tr>
                                 <!-- Title -->
                                 <tr>
-                                    <td><b>Title:</b></td>
+                                    <td><b>Title<span style="color: red;"> *</span></b></td>
                                     <td style="text-align: left;">
                                         <input type="text" height="1000px" placeholder="Enter your title" name="fbTitle" size="96" required>
                                     </td>
                                 </tr>
                                 <!-- Comment -->
                                 <tr>
-                                    <td><b>Comment:</b></td>
+                                    <td><b>Comment<span style="color: red;"> *</span></b></td>
                                     <td>
                                         <textarea placeholder="Enter your comment" rows="8" cols="100" name="fbComment" required></textarea>
                                     </td>
@@ -284,9 +305,30 @@
                         <!-- 2nd function -->
                         <?php
                         // Construct and run query to list user's feedbacks
+                        // Query 
+                        $q = "SELECT * FROM feedback WHERE stuID=?";
+                        // Data
+
+                        // Created a prepared statement
+                        $stmt = mysqli_stmt_init($con);
+                        // Prepare the prepared statement
+                        if (!mysqli_stmt_prepare($stmt, $q))
+                            echo "SQL statement failed";
+                        else {
+                            // Bind parameters to the placeholder
+                            mysqli_stmt_bind_param($stmt, "i", $_SESSION['userID']);
+                            // Run parameters inside database
+                            mysqli_stmt_execute($stmt);
+                            $res = mysqli_stmt_get_result($stmt);
+                            //$r = mysqli_fetch_assoc($res);
+                            $num = mysqli_num_rows($res);
+                        }
+
+                        /* Old
                         $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
                         $res = mysqli_query($con, $q);
                         $num = mysqli_num_rows($res);
+                        */
                         if ($num > 0) {
                         ?>
                             <div class="cardHeader">
@@ -341,26 +383,27 @@
                         // Construct and run query to list all students' feedbacks
                         $q = "SELECT * FROM feedback";
                         $res = mysqli_query($con, $q);
-                        // Construct and run query to check for existing class
                         $num = mysqli_num_rows($res);
+
                         if ($res) {
                             if ($num > 0) {
                         ?>
                                 <form method="post" action="feedback_delete.php">
-                                    <table style="width: 100%;">
-                                        <thead>
-                                            <tr>
-                                                <td style="width:100px;">ID</td>
-                                                <td style="width:300px;">Title</td>
-                                                <td style="width:900px;">Comment</td>
-                                                <td style="width:200px;">Date Submitted</td>
-                                                <td style="width:50px;">Action</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            while ($r = mysqli_fetch_assoc($res)) {
-                                                echo    "<tr>
+                                    <div style="max-height: 650px; overflow-y: scroll;">
+                                        <table style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <td style="width:100px;">ID</td>
+                                                    <td style="width:300px;">Title</td>
+                                                    <td style="width:900px;">Comment</td>
+                                                    <td style="width:200px;">Date Submitted</td>
+                                                    <td style="width:50px;">Action</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                while ($r = mysqli_fetch_assoc($res)) {
+                                                    echo    "<tr>
                                                             <input type='hidden' name='fbID' value=" . $r['fbID'] . ">
                                                             <td>" . $r['fbID'] . "</td>
                                                             <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
@@ -379,10 +422,11 @@
                                                             </button>
                                                             </td>
                                                         </tr>";
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </form>
                         <?php
                             }

@@ -25,19 +25,19 @@
         <header>Registration Page</header>
         <form name="registerForm" method="post" action="register_save.php">
             <div class="details personal">
-                <br /><br />
+                <br /><br /><br /><br />
                 <span class="title">Account Details</span>
                 <div class="fields">
                     <div class="input-field">
-                        <label>Username</label>
+                        <label>Username<span style="color: red;"> *</span></label>
                         <input type="text" placeholder="Enter your username" name="userUname" id="userUname" required />
                     </div>
                     <div class="input-field">
-                        <label>Password</label>
+                        <label>Password<span style="color: red;"> *</span></label>
                         <input type="password" placeholder="Enter your password" name="userPassw" required />
                     </div>
                     <div class="input-field">
-                        <label>Email</label>
+                        <label>Email<span style="color: red;"> *</span></label>
                         <input type="text" placeholder="name@domainname" name="userEmail" required />
                     </div>
                 </div>
@@ -46,11 +46,11 @@
 
                     <div class="fields">
                         <div class="input-field">
-                            <label>Full name</label>
+                            <label>Full Name<span style="color: red;"> *</span></label>
                             <input type="text" placeholder="Enter your full name" name="userName" required />
                         </div>
                         <div class="input-field">
-                            <label>Gender</label>
+                            <label>Gender<span style="color: red;"> *</span></label>
                             <select name="userGender" required>
                                 <option disabled selected>
                                     Select gender
@@ -60,16 +60,16 @@
                             </select>
                         </div>
                         <div class="input-field">
-                            <label>Phone Number</label>
+                            <label>Phone Number<span style="color: red;"> *</span></label>
                             <input type="text" placeholder="0123456789" name="userPhone" required />
                         </div>
                         <div class="input-field">
-                            <label>Birthdate</label>
+                            <label>Birthdate<span style="color: red;"> *</span></label>
                             <input type="date" name="userBirthdate" required />
                         </div>
 
                         <div class="input-fieldLong">
-                            <label>Address</label>
+                            <label>Address<span style="color: red;"> *</span></label>
                             <input type="text" placeholder="Enter your address" name="userAddress" required />
                         </div>
                     </div>

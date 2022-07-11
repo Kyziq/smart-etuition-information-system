@@ -6,6 +6,7 @@ session_start();
 if (isset($_POST['loginButton'])) {
     // Connect to database 
     include_once 'dbcon.php';
+
     // Get all the posted items
     $userUname = $_POST['userUname'];
     $userPassw = $_POST['userPassw'];
@@ -30,6 +31,7 @@ if (isset($_POST['loginButton'])) {
         // Check if user is student - send to student page
         else if ($r['userLevel'] == 3)
             header("Location: student.php");
+        // Check for wrong password
         else {
             header("Location:login.php?msg=failed");
         }

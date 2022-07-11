@@ -49,7 +49,7 @@
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
-                        <span class="title">Student Details</span>
+                        <span class="title">Manage Student</span>
                     </a>
                 </li>
                 <li>
@@ -57,7 +57,7 @@
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
-                        <span class="title">Tutor Details</span>
+                        <span class="title">Manage Tutor</span>
                     </a>
                 </li>
                 <li>
@@ -65,7 +65,7 @@
                         <span class="icon">
                             <ion-icon name="document-text-outline"></ion-icon>
                         </span>
-                        <span class="title">Class Details</span>
+                        <span class="title">Manage Class</span>
                     </a>
                 </li>
                 <li>
@@ -74,6 +74,14 @@
                             <ion-icon name="checkmark-outline"></ion-icon>
                         </span>
                         <span class="title">Class Verification</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="view_class_admin.php">
+                        <span class="icon">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </span>
+                        <span class="title">Class Details</span>
                     </a>
                 </li>
                 <li>
@@ -129,9 +137,23 @@
                         <div class="numbers">Admin</div>
                         <div class="cardName">
                             <?php
-                            $q = "SELECT userName FROM user WHERE userID=" . $_SESSION['userID'];
-                            $res = mysqli_query($con, $q);
-                            $r = mysqli_fetch_assoc($res);
+                            // Data
+                            $userID = $_SESSION['userID'];
+                            // Query 
+                            $q = "SELECT userName FROM user WHERE userID=?";
+                            // Created a prepared statement
+                            $stmt = mysqli_stmt_init($con);
+                            // Prepare the prepared statement
+                            if (!mysqli_stmt_prepare($stmt, $q))
+                                echo "SQL statement failed";
+                            else {
+                                // Bind parameters to the placeholder
+                                mysqli_stmt_bind_param($stmt, "i", $userID);
+                                // Run parameters inside database
+                                mysqli_stmt_execute($stmt);
+                                $res = mysqli_stmt_get_result($stmt);
+                                $r = mysqli_fetch_assoc($res);
+                            }
                             echo "<i>" . $r['userName'] . "</i>";
                             ?>
                         </div>
@@ -148,10 +170,23 @@
                     <div>
                         <div class="numbers">
                             <?php
-                            // Construct and run query to check for total classes
-                            $q = "SELECT count(u.userID) AS total FROM user u WHERE userLevel=3";
-                            $res = mysqli_query($con, $q);
-                            $r = mysqli_fetch_assoc($res);
+                            // Data (Student)
+                            $userLevel = 3;
+                            // Construct and run query to check for total students
+                            $q = "SELECT count(userID) AS total FROM user WHERE userLevel=?";
+                            // Created a prepared statement
+                            $stmt = mysqli_stmt_init($con);
+                            // Prepare the prepared statement
+                            if (!mysqli_stmt_prepare($stmt, $q))
+                                echo "SQL statement failed";
+                            else {
+                                // Bind parameters to the placeholder
+                                mysqli_stmt_bind_param($stmt, "i", $userLevel);
+                                // Run parameters inside database
+                                mysqli_stmt_execute($stmt);
+                                $res = mysqli_stmt_get_result($stmt);
+                                $r = mysqli_fetch_assoc($res);
+                            }
                             echo $r['total'];
                             ?>
                         </div>
@@ -176,10 +211,23 @@
                     <div>
                         <div class="numbers">
                             <?php
-                            // Construct and run query to check for total classes
-                            $q = "SELECT count(u.userID) AS total FROM user u WHERE userLevel=2";
-                            $res = mysqli_query($con, $q);
-                            $r = mysqli_fetch_assoc($res);
+                            // Data (Tutor)
+                            $userLevel = 2;
+                            // Construct and run query to check for total tutors
+                            $q = "SELECT count(userID) AS total FROM user WHERE userLevel=?";
+                            // Created a prepared statement
+                            $stmt = mysqli_stmt_init($con);
+                            // Prepare the prepared statement
+                            if (!mysqli_stmt_prepare($stmt, $q))
+                                echo "SQL statement failed";
+                            else {
+                                // Bind parameters to the placeholder
+                                mysqli_stmt_bind_param($stmt, "i", $userLevel);
+                                // Run parameters inside database
+                                mysqli_stmt_execute($stmt);
+                                $res = mysqli_stmt_get_result($stmt);
+                                $r = mysqli_fetch_assoc($res);
+                            }
                             echo $r['total'];
                             ?>
                         </div>
@@ -204,10 +252,23 @@
                     <div>
                         <div class="numbers">
                             <?php
-                            // Construct and run query to check for total classes
-                            $q = "SELECT count(r.classID) AS total FROM register r WHERE registerApproval=3";
-                            $res = mysqli_query($con, $q);
-                            $r = mysqli_fetch_assoc($res);
+                            // Data (Pending)
+                            $registerApproval = 3;
+                            // Construct and run query to check for total pending class verification
+                            $q = "SELECT count(classID) AS total FROM register WHERE registerApproval=?";
+                            // Created a prepared statement
+                            $stmt = mysqli_stmt_init($con);
+                            // Prepare the prepared statement
+                            if (!mysqli_stmt_prepare($stmt, $q))
+                                echo "SQL statement failed";
+                            else {
+                                // Bind parameters to the placeholder
+                                mysqli_stmt_bind_param($stmt, "i", $registerApproval);
+                                // Run parameters inside database
+                                mysqli_stmt_execute($stmt);
+                                $res = mysqli_stmt_get_result($stmt);
+                                $r = mysqli_fetch_assoc($res);
+                            }
                             echo $r['total'];
                             ?>
                         </div>
@@ -229,8 +290,8 @@
                             <canvas id="myChart" width="800;"></canvas>
                         </div>
                         <?php
+                        // Construct and run query to check for verification status (1 - Accepted, 2 - Declined, 3 - Pending)
                         // Mathematics
-                        // Construct and run query to check if username is taken
                         $q = "SELECT * FROM register WHERE (classID=1 OR classID=2) AND registerApproval=1";
                         $result = mysqli_query($con, $q);
                         $m1 = mysqli_num_rows($result);
@@ -390,9 +451,23 @@
                         <h2>My Details</h2>
                     </div>
                     <?php
-                    $q = "SELECT * FROM user WHERE userID=" . $_SESSION['userID'];
-                    $res = mysqli_query($con, $q);
-                    $r = mysqli_fetch_assoc($res);
+                    // Data
+
+                    // Construct and run query to check for user details
+                    $q = "SELECT * FROM user WHERE userID=?";
+                    // Created a prepared statement
+                    $stmt = mysqli_stmt_init($con);
+                    // Prepare the prepared statement
+                    if (!mysqli_stmt_prepare($stmt, $q))
+                        echo "SQL statement failed";
+                    else {
+                        // Bind parameters to the placeholder
+                        mysqli_stmt_bind_param($stmt, "i", $_SESSION['userID']);
+                        // Run parameters inside database
+                        mysqli_stmt_execute($stmt);
+                        $res = mysqli_stmt_get_result($stmt);
+                        $r = mysqli_fetch_assoc($res);
+                    }
                     ?>
                     <table>
                         <tr>

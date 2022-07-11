@@ -145,7 +145,7 @@
                 <?php
                     $q = "SELECT u.userID, u.userLevel, u.userName, u.userPhone, u.userEmail, u.userGender, u.userBirthdate, u.userAddress, r.registerDate
                         FROM user tutor, user u, class c, register r 
-                        WHERE u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID AND c.classID='1' AND tutor.userID=c.tutorID AND tutor.userID=" . $_SESSION['userID'];
+                        WHERE u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID AND c.classDay='Saturday' AND tutor.userID=c.tutorID AND tutor.userID=" . $_SESSION['userID'];
                     $res = mysqli_query($con, $q);
                     $num = mysqli_num_rows($res);
                     $display = true;
@@ -158,9 +158,9 @@
                     </div>
 
                     <?php
-                    $q = "SELECT u.userID, u.userLevel, u.userName, u.userPhone, u.userEmail, u.userGender, u.userBirthdate, u.userAddress, r.registerDate 
+                    $q = "SELECT u.userID, u.userLevel, u.userName, u.userPhone, u.userEmail, u.userGender, u.userBirthdate, u.userAddress, r.registerDate, c.classDay
                         FROM user tutor, user u, class c, register r 
-                        WHERE u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID AND c.classID='2' AND tutor.userID=c.tutorID AND tutor.userID=" . $_SESSION['userID'];
+                        WHERE u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID AND c.classDay='Sunday' AND tutor.userID=c.tutorID AND tutor.userID=" . $_SESSION['userID'];
                     $res = mysqli_query($con, $q);
                     $num = mysqli_num_rows($res);
                     $display = true;
@@ -169,46 +169,48 @@
                     if ($res) {
                         if ((mysqli_num_rows($res)) > 0) {
                     ?>
-                            <table style="width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <td>Name</td>
-                                        <td>Phone</td>
-                                        <td>E-mail</td>
-                                        <td>Gender</td>
-                                        <td>Birthdate</td>
-                                        <td>Registered Date</td>
-                                        <td>Address</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <?php
-                                        // Construct and run query to list user's classes
-                                        while ($r = mysqli_fetch_assoc($res)) {
-                                        ?>
-                                    <tr>
-                                        <td> <?php echo $r["userName"] ?></td>
-                                        <td> <?php echo $r["userPhone"] ?></td>
-                                        <td> <?php echo $r["userEmail"] ?></td>
-                                        <td>
+                            <div style="max-height: 600px; overflow-y: scroll;">
+                                <table style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Phone</td>
+                                            <td>E-mail</td>
+                                            <td>Gender</td>
+                                            <td>Birthdate</td>
+                                            <td>Registered Date</td>
+                                            <td>Address</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
                                             <?php
-                                            if ($r["userGender"] == 1)
-                                                echo "Male";
-                                            else if ($r["userGender"] == 2)
-                                                echo "Female";
+                                            // Construct and run query to list user's classes
+                                            while ($r = mysqli_fetch_assoc($res)) {
                                             ?>
-                                        </td>
-                                        <td> <?php echo $r["userBirthdate"] ?></td>
-                                        <td> <?php echo $r["registerDate"] ?></td>
-                                        <td> <?php echo $r["userAddress"] ?></td>
+                                        <tr>
+                                            <td> <?php echo $r["userName"] ?></td>
+                                            <td> <?php echo $r["userPhone"] ?></td>
+                                            <td> <?php echo $r["userEmail"] ?></td>
+                                            <td>
+                                                <?php
+                                                if ($r["userGender"] == 1)
+                                                    echo "Male";
+                                                else if ($r["userGender"] == 2)
+                                                    echo "Female";
+                                                ?>
+                                            </td>
+                                            <td> <?php echo $r["userBirthdate"] ?></td>
+                                            <td> <?php echo $r["registerDate"] ?></td>
+                                            <td> <?php echo $r["userAddress"] ?></td>
+                                        </tr>
+                                    <?php
+                                            }
+                                    ?>
                                     </tr>
-                                <?php
-                                        }
-                                ?>
-                                </tr>
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                 <?php
                         }
                     }

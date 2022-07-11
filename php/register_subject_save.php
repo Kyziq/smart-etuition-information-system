@@ -112,7 +112,7 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
             }
 
             // Clear results and close the connection
-            mysqli_free_result($res);
+            // mysqli_free_result($res);
             mysqli_close($con);
         } else
             header("Location: register_subject.php");

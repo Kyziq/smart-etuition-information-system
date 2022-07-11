@@ -26,6 +26,7 @@ if ($rows > 0) {
         echo "Registration successful!\nPlease wait a few seconds.";
     }
 }
+
 /*
 $userBirthdate=$_POST['userBirthdate'];
 

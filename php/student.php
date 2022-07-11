@@ -249,7 +249,7 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>My Tuition Timetable</h2>";
+                        <h2>My Tuition Timetable</h2>
                     </div>
                     <?php
                     // Construct and run query to display timetable

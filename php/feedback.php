@@ -235,7 +235,7 @@
                                 ?>
                                 <!-- Name -->
                                 <tr>
-                                    <td><b>Name:</b></td>
+                                    <td><b>Name</b></td>
                                     <td style="text-align: left;">
                                         <?php
                                         echo $r['userName'];
@@ -256,7 +256,7 @@
                                     date_default_timezone_set('Asia/Singapore');
                                     $date = date('d-m-y h:i:s A');
                                     ?>
-                                    <td><b>Date:</b></td>
+                                    <td><b>Date</b></td>
                                     <td style="text-align: left;">
                                         <?php
                                         echo "<div style='font-family: 'Helvetica', sans-serif; font-size: 20px; font-weight: 500;' id='current-time2'></div>";
@@ -265,14 +265,14 @@
                                 </tr>
                                 <!-- Title -->
                                 <tr>
-                                    <td><b>Title:</b></td>
+                                    <td><b>Title<span style="color: red;"> *</span></b></td>
                                     <td style="text-align: left;">
                                         <input type="text" height="1000px" placeholder="Enter your title" name="fbTitle" size="96" required>
                                     </td>
                                 </tr>
                                 <!-- Comment -->
                                 <tr>
-                                    <td><b>Comment:</b></td>
+                                    <td><b>Comment<span style="color: red;"> *</span></b></td>
                                     <td>
                                         <textarea placeholder="Enter your comment" rows="8" cols="100" name="fbComment" required></textarea>
                                     </td>

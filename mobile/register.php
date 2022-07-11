@@ -1,6 +1,6 @@
 <?php
 // Include database connection settings
-include_once 'dbcon.php';
+include 'dbcon.php';
 
 $userID = $_POST['userID'];
 $userUname = $_POST['userUname'];
@@ -11,7 +11,7 @@ $userEmail = $_POST['userEmail'];
 $userAddress = $_POST['userAddress'];
 $userGender = $_POST['userGender'];
 
-$q = "SELECT * FROM user WHERE userUname='userUname'";
+$q = "SELECT * FROM user WHERE userUname='$userUname'";
 $result = mysqli_query($con, $q);
 $rows = mysqli_num_rows($result);
 

@@ -249,6 +249,10 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
+                        <?php
+                        $q = "SELECT userName FROM user WHERE userID = " . $_SESSION['userID'];
+                        $res = mysqli_query($con, $q);
+                        ?>
                         <h2>My Tuition Timetable</h2>
                     </div>
                     <?php

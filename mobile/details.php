@@ -1,9 +1,7 @@
 <?php 
 
 include "dbcon.php";
-
 $userUname = $_POST['userUname']; 
-//$userID = 23;
 $q = "SELECT * FROM user WHERE userUname = '$userUname'";
 $query = mysqli_query($con, $q);
 
@@ -27,7 +25,6 @@ while($rows = mysqli_fetch_array($query)) {
     echo "Address\t\t: ";
     echo $rows["userAddress"];
 	echo "\n";
-	echo "______________________________________________________________________________________";
 	echo "||";
 }
 

@@ -305,9 +305,30 @@
                         <!-- 2nd function -->
                         <?php
                         // Construct and run query to list user's feedbacks
+                        // Query 
+                        $q = "SELECT * FROM feedback WHERE stuID=?";
+                        // Data
+
+                        // Created a prepared statement
+                        $stmt = mysqli_stmt_init($con);
+                        // Prepare the prepared statement
+                        if (!mysqli_stmt_prepare($stmt, $q))
+                            echo "SQL statement failed";
+                        else {
+                            // Bind parameters to the placeholder
+                            mysqli_stmt_bind_param($stmt, "i", $_SESSION['userID']);
+                            // Run parameters inside database
+                            mysqli_stmt_execute($stmt);
+                            $res = mysqli_stmt_get_result($stmt);
+                            //$r = mysqli_fetch_assoc($res);
+                            $num = mysqli_num_rows($res);
+                        }
+
+                        /* Old
                         $q = "SELECT * FROM feedback WHERE stuID=" . $_SESSION['userID'];
                         $res = mysqli_query($con, $q);
                         $num = mysqli_num_rows($res);
+                        */
                         if ($num > 0) {
                         ?>
                             <div class="cardHeader">
@@ -362,8 +383,8 @@
                         // Construct and run query to list all students' feedbacks
                         $q = "SELECT * FROM feedback";
                         $res = mysqli_query($con, $q);
-                        // Construct and run query to check for existing class
                         $num = mysqli_num_rows($res);
+
                         if ($res) {
                             if ($num > 0) {
                         ?>

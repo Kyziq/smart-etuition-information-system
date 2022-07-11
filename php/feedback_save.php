@@ -6,9 +6,9 @@ if (isset($_SESSION['userID']) && $_SESSION['userLevel'] == 3) {
         include_once 'dbcon.php';
 
         // Get all the posted items
-        $fbTitle = mysqli_real_escape_string($con, $_POST['fbTitle']);
-        $fbComment = mysqli_real_escape_string($con, $_POST['fbComment']);
-        $userID = mysqli_real_escape_string($con, $_SESSION['userID']);
+        $fbTitle = $_POST['fbTitle'];
+        $fbComment = $_POST['fbComment'];
+        $userID = $_SESSION['userID'];
         $adminID = NULL;
 
         // Construct and run query to store new feedback using prepared statements

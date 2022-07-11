@@ -214,11 +214,10 @@
                         <form method="post" action="feedback_save.php">
                             <table>
                                 <?php
-                                // ------- PREVENT SQL INJECTION ------- \\
-                                // Query for username
+                                // Query 
                                 $q = "SELECT userName FROM user WHERE userID=?";
                                 // Data
-                                $data = $_SESSION['userID'];
+                                $userID = $_SESSION['userID'];
                                 // Created a prepared statement
                                 $stmt = mysqli_stmt_init($con);
                                 // Prepare the prepared statement
@@ -226,7 +225,7 @@
                                     echo "SQL statement failed";
                                 else {
                                     // Bind parameters to the placeholder
-                                    mysqli_stmt_bind_param($stmt, "i", $data);
+                                    mysqli_stmt_bind_param($stmt, "i", $userID);
                                     // Run parameters inside database
                                     mysqli_stmt_execute($stmt);
                                     $res = mysqli_stmt_get_result($stmt);

@@ -293,9 +293,23 @@
                         <h2>My Details</h2>
                     </div>
                     <?php
-                    $q = "SELECT * FROM user WHERE userID=" . $_SESSION['userID'];
-                    $res = mysqli_query($con, $q);
-                    $r = mysqli_fetch_assoc($res);
+                    // Data (Pending)
+
+                    // Construct and run query to check for user details
+                    $q = "SELECT * FROM user WHERE userID=?";
+                    // Created a prepared statement
+                    $stmt = mysqli_stmt_init($con);
+                    // Prepare the prepared statement
+                    if (!mysqli_stmt_prepare($stmt, $q))
+                        echo "SQL statement failed";
+                    else {
+                        // Bind parameters to the placeholder
+                        mysqli_stmt_bind_param($stmt, "i", $_SESSION['userID']);
+                        // Run parameters inside database
+                        mysqli_stmt_execute($stmt);
+                        $res = mysqli_stmt_get_result($stmt);
+                        $r = mysqli_fetch_assoc($res);
+                    }
                     ?>
                     <table>
                         <tr>

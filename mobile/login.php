@@ -24,12 +24,15 @@ else {
     //$userPassw= $r['userPassw'];
     $userLevel = $r['userLevel'];
 
-    if ($userLevel == 1)
+    if ($userLevel == 1) {
         echo "1";
-    else if ($userLevel == 2)
+    }
+    else if ($userLevel == 2) {
         echo "2";
-    else if ($userLevel == 3)
+    }
+    else if ($userLevel == 3) {
         echo "3";
+    }
 }
 
 mysqli_close($con);

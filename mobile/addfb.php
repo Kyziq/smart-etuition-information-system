@@ -2,25 +2,31 @@
 // Include database connection settings
 include_once 'dbcon.php';
 
-$userID = $_POST['userID'];
-$userID = $_POST['userID'];
-$userID = $_POST['userID'];
-$userID = $_POST['userID'];
+/*
+$userUname = $_POST['userUname'];
+//test
+$q = "SELECT userID FROM user WHERE userUname= '$userUname'";
+$query = mysqli_query($con, $q);
+$stuID = mysqli_fetch_array($query);
+*/
 
+$stuID = $_POST['stuID'];
+$fbID = $_POST['fbID'];
+$fbTitle = $_POST['fbTitle'];
+$fbComment = $_POST['fbComment'];
 
-$q = "SELECT * FROM user WHERE userUname='userUname'";
+$q = "SELECT * FROM feedback WHERE stuID = 'stuID'";
 $result = mysqli_query($con, $q);
 $rows = mysqli_num_rows($result);
 
 if ($rows > 0) {
     echo "Data is already saved";
 } else {
-    $q = "INSERT INTO user(userID, userUname, userPassw, userName, userPhone, userEmail, userAddress, userGender) VALUES 
-	('$userID', '$userUname', '$userPassw', '$userName', '$userPhone', '$userEmail', '$userAddress', '$userGender')";
+    $q = "INSERT INTO feedback(fbID, fbTitle, fbComment, stuID) VALUES ('$fbID', '$fbTitle', '$fbComment', '$stuID')";
     $input = mysqli_query($con, $q);
 
     if ($input) {
-        echo "Registration successful!\nPlease wait a few seconds.";
+        echo "Feedback saved successfully!\nPlease wait a few seconds.";
     }
 }
 /*

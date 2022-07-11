@@ -169,46 +169,48 @@
                     if ($res) {
                         if ((mysqli_num_rows($res)) > 0) {
                     ?>
-                            <table style="width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <td>Name</td>
-                                        <td>Phone</td>
-                                        <td>E-mail</td>
-                                        <td>Gender</td>
-                                        <td>Birthdate</td>
-                                        <td>Registered Date</td>
-                                        <td>Address</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <?php
-                                        // Construct and run query to list user's classes
-                                        while ($r = mysqli_fetch_assoc($res)) {
-                                        ?>
-                                    <tr>
-                                        <td> <?php echo $r["userName"] ?></td>
-                                        <td> <?php echo $r["userPhone"] ?></td>
-                                        <td> <?php echo $r["userEmail"] ?></td>
-                                        <td>
+                            <div style="max-height: 600px; overflow-y: scroll;">
+                                <table style="width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Phone</td>
+                                            <td>E-mail</td>
+                                            <td>Gender</td>
+                                            <td>Birthdate</td>
+                                            <td>Registered Date</td>
+                                            <td>Address</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
                                             <?php
-                                            if ($r["userGender"] == 1)
-                                                echo "Male";
-                                            else if ($r["userGender"] == 2)
-                                                echo "Female";
+                                            // Construct and run query to list user's classes
+                                            while ($r = mysqli_fetch_assoc($res)) {
                                             ?>
-                                        </td>
-                                        <td> <?php echo $r["userBirthdate"] ?></td>
-                                        <td> <?php echo $r["registerDate"] ?></td>
-                                        <td> <?php echo $r["userAddress"] ?></td>
+                                        <tr>
+                                            <td> <?php echo $r["userName"] ?></td>
+                                            <td> <?php echo $r["userPhone"] ?></td>
+                                            <td> <?php echo $r["userEmail"] ?></td>
+                                            <td>
+                                                <?php
+                                                if ($r["userGender"] == 1)
+                                                    echo "Male";
+                                                else if ($r["userGender"] == 2)
+                                                    echo "Female";
+                                                ?>
+                                            </td>
+                                            <td> <?php echo $r["userBirthdate"] ?></td>
+                                            <td> <?php echo $r["registerDate"] ?></td>
+                                            <td> <?php echo $r["userAddress"] ?></td>
+                                        </tr>
+                                    <?php
+                                            }
+                                    ?>
                                     </tr>
-                                <?php
-                                        }
-                                ?>
-                                </tr>
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                 <?php
                         }
                     }

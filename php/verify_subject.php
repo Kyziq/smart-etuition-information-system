@@ -246,36 +246,36 @@
                         if ($res) {
                             if ($num > 0) {
                         ?>
-                                <br><br>
                                 <h3> Students' Registration Table (Pending): </h3>
                                 <br>
-                                <table style="width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <td style="text-align: left;">Subject</td>
-                                            <td style="text-align: left;">Student Name</td>
-                                            <td style="text-align: left;">Registration Date</td>
-                                            <td style="text-align: left;">Proof of Payment</td>
-                                            <td style="text-align: left;">Registration Status</td>
-                                            <td style="text-align: right;">Action</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        while ($r = mysqli_fetch_assoc($res)) {
-                                            // Register text for 1-3 (from database)
-                                            if ($r['registerApproval'] == 1)
-                                                $registerText = "Approved";
-                                            else if ($r['registerApproval'] == 2)
-                                                $registerText = "Declined";
-                                            else if ($r['registerApproval'] == 3)
-                                                $registerText = "Pending";
+                                <div style="max-height: 650px; overflow-y: scroll;">
+                                    <table style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <td style="text-align: left;">Subject</td>
+                                                <td style="text-align: left;">Student Name</td>
+                                                <td style="text-align: left;">Registration Date</td>
+                                                <td style="text-align: left;">Proof of Payment</td>
+                                                <td style="text-align: left;">Registration Status</td>
+                                                <td style="text-align: right;">Action</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while ($r = mysqli_fetch_assoc($res)) {
+                                                // Register text for 1-3 (from database)
+                                                if ($r['registerApproval'] == 1)
+                                                    $registerText = "Approved";
+                                                else if ($r['registerApproval'] == 2)
+                                                    $registerText = "Declined";
+                                                else if ($r['registerApproval'] == 3)
+                                                    $registerText = "Pending";
 
-                                            $image = $r['proofPayment'];
+                                                $image = $r['proofPayment'];
 
-                                            // Output all registration in a table
-                                            echo    "<form method='post' action='verify_subject_action.php'>";
-                                            echo    "<tr>
+                                                // Output all registration in a table
+                                                echo    "<form method='post' action='verify_subject_action.php'>";
+                                                echo    "<tr>
                                                             <input type='hidden' name='classID' value=" . $r['classID'] . ">
                                                             <input type='hidden' name='stuID' value=" . $r['stuID'] . ">
                                                             <td style='text-align: left;'>" . $r['classSubject'] . "</td>
@@ -307,11 +307,12 @@
                                                             </td>
 
                                                         </tr>";
-                                            echo "</form>";
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                                echo "</form>";
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                         <?php
                             }
                         }
@@ -342,34 +343,35 @@
                                 <br><br>
                                 <h3> Students' Registration Table (Approved and Declined): </h3>
                                 <br>
-                                <table style="width: 100%;">
-                                    <thead>
-                                        <tr>
-                                            <td style="text-align: left;">Subject</td>
-                                            <td style="text-align: left;">Student Name</td>
-                                            <td style="text-align: left;">Registration Date</td>
-                                            <td style="text-align: left;">Proof of Payment</td>
-                                            <td style="text-align: left;">Registration Status</td>
-                                            <td style="text-align: left;">Action</td>
-                                            <td style="text-align: right;">Deletion</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        while ($r = mysqli_fetch_assoc($res)) {
-                                            // Register text for 1-3 (from database)
-                                            if ($r['registerApproval'] == 1)
-                                                $registerText = "Approved";
-                                            else if ($r['registerApproval'] == 2)
-                                                $registerText = "Declined";
-                                            else if ($r['registerApproval'] == 3)
-                                                $registerText = "Pending";
+                                <div style="max-height: 650px; overflow-y: scroll;">
+                                    <table style="width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <td style="text-align: left;">Subject</td>
+                                                <td style="text-align: left;">Student Name</td>
+                                                <td style="text-align: left;">Registration Date</td>
+                                                <td style="text-align: left;">Proof of Payment</td>
+                                                <td style="text-align: left;">Registration Status</td>
+                                                <td style="text-align: left;">Action</td>
+                                                <td style="text-align: right;">Deletion</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while ($r = mysqli_fetch_assoc($res)) {
+                                                // Register text for 1-3 (from database)
+                                                if ($r['registerApproval'] == 1)
+                                                    $registerText = "Approved";
+                                                else if ($r['registerApproval'] == 2)
+                                                    $registerText = "Declined";
+                                                else if ($r['registerApproval'] == 3)
+                                                    $registerText = "Pending";
 
-                                            $image = $r['proofPayment'];
+                                                $image = $r['proofPayment'];
 
-                                            // Output all registration in a table
-                                            echo    "<form method='post' action='verify_subject_action.php'>";
-                                            echo    "<tr>
+                                                // Output all registration in a table
+                                                echo    "<form method='post' action='verify_subject_action.php'>";
+                                                echo    "<tr>
                                                             <input type='hidden' name='classID' value=" . $r['classID'] . ">
                                                             <input type='hidden' name='stuID' value=" . $r['stuID'] . ">
                                                             <td style='text-align: left;'>" . $r['classSubject'] . "</td>
@@ -394,20 +396,20 @@
                                                             <td>" . $registerText . " </td>
                                                             <td>
                                                                 ";
-                                            if ($r['registerApproval'] == 1) {
-                                                echo "<select id='action' name='action'>
+                                                if ($r['registerApproval'] == 1) {
+                                                    echo "<select id='action' name='action'>
                                                                     <option value='0' hidden disabled selected>‎</option>
                                                                     <option value='2'>Decline</option>
                                                                     <option value='3'>Pending</option>
                                                                     </select>";
-                                            } else if ($r['registerApproval'] == 2) {
-                                                echo "<select id='action' name='action'>
+                                                } else if ($r['registerApproval'] == 2) {
+                                                    echo "<select id='action' name='action'>
                                                                     <option value='0' hidden disabled selected>‎</option>
                                                                     <option value='1'>Approve</option>
                                                                     <option value='3'>Pending</option>
                                                                     </select>";
-                                            }
-                                            echo "
+                                                }
+                                                echo "
                                                                 <button type='submit' name='updateButton'>Update</button>
                                                             </td>
                                                             <td>
@@ -423,14 +425,15 @@
                                                                 </button>
                                                             </td>
                                                         </tr>";
-                                            echo "</form>"
-                                        ?>
-                                        <?php
+                                                echo "</form>"
+                                            ?>
+                                            <?php
 
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                         <?php
                             }
                         }

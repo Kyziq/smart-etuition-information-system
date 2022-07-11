@@ -389,20 +389,21 @@
                             if ($num > 0) {
                         ?>
                                 <form method="post" action="feedback_delete.php">
-                                    <table style="width: 100%;">
-                                        <thead>
-                                            <tr>
-                                                <td style="width:100px;">ID</td>
-                                                <td style="width:300px;">Title</td>
-                                                <td style="width:900px;">Comment</td>
-                                                <td style="width:200px;">Date Submitted</td>
-                                                <td style="width:50px;">Action</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            while ($r = mysqli_fetch_assoc($res)) {
-                                                echo    "<tr>
+                                    <div style="max-height: 650px; overflow-y: scroll;">
+                                        <table style="width: 100%;">
+                                            <thead>
+                                                <tr>
+                                                    <td style="width:100px;">ID</td>
+                                                    <td style="width:300px;">Title</td>
+                                                    <td style="width:900px;">Comment</td>
+                                                    <td style="width:200px;">Date Submitted</td>
+                                                    <td style="width:50px;">Action</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                while ($r = mysqli_fetch_assoc($res)) {
+                                                    echo    "<tr>
                                                             <input type='hidden' name='fbID' value=" . $r['fbID'] . ">
                                                             <td>" . $r['fbID'] . "</td>
                                                             <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
@@ -421,10 +422,11 @@
                                                             </button>
                                                             </td>
                                                         </tr>";
-                                            }
-                                            ?>
-                                        </tbody>
-                                    </table>
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </form>
                         <?php
                             }

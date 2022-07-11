@@ -146,7 +146,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">Student Details</span>
+                            <span class="title">Manage Student</span>
                         </a>
                     </li>
                     <li>
@@ -154,7 +154,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">Tutor Details</span>
+                            <span class="title">Manage Tutor</span>
                         </a>
                     </li>
                     <li>
@@ -162,7 +162,7 @@
                             <span class="icon">
                                 <ion-icon name="document-text-outline"></ion-icon>
                             </span>
-                            <span class="title">Class Details</span>
+                            <span class="title">Manage Class</span>
                         </a>
                     </li>
                     <li>
@@ -171,6 +171,14 @@
                                 <ion-icon name="checkmark-outline"></ion-icon>
                             </span>
                             <span class="title">Class Verification</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="view_class_admin.php">
+                            <span class="icon">
+                                <ion-icon name="search-outline"></ion-icon>
+                            </span>
+                            <span class="title">Class Details</span>
                         </a>
                     </li>
                     <li>

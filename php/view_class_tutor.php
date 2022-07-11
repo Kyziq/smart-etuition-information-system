@@ -145,7 +145,7 @@
                 <?php
                     $q = "SELECT u.userID, u.userLevel, u.userName, u.userPhone, u.userEmail, u.userGender, u.userBirthdate, u.userAddress, r.registerDate
                         FROM user tutor, user u, class c, register r 
-                        WHERE u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID AND c.classID='1' AND tutor.userID=c.tutorID AND tutor.userID=" . $_SESSION['userID'];
+                        WHERE u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID AND c.classDay='Saturday' AND tutor.userID=c.tutorID AND tutor.userID=" . $_SESSION['userID'];
                     $res = mysqli_query($con, $q);
                     $num = mysqli_num_rows($res);
                     $display = true;
@@ -158,9 +158,9 @@
                     </div>
 
                     <?php
-                    $q = "SELECT u.userID, u.userLevel, u.userName, u.userPhone, u.userEmail, u.userGender, u.userBirthdate, u.userAddress, r.registerDate 
+                    $q = "SELECT u.userID, u.userLevel, u.userName, u.userPhone, u.userEmail, u.userGender, u.userBirthdate, u.userAddress, r.registerDate, c.classDay
                         FROM user tutor, user u, class c, register r 
-                        WHERE u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID AND c.classID='2' AND tutor.userID=c.tutorID AND tutor.userID=" . $_SESSION['userID'];
+                        WHERE u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID AND c.classDay='Sunday' AND tutor.userID=c.tutorID AND tutor.userID=" . $_SESSION['userID'];
                     $res = mysqli_query($con, $q);
                     $num = mysqli_num_rows($res);
                     $display = true;

@@ -18,13 +18,11 @@ while($rows = mysqli_fetch_array($query)) {
 	echo "\n";
 	echo "Email\t\t\t: ";
 	echo $rows["userEmail"];
-	echo "\n";
 	echo "Birthdate\t: ";
 	echo $rows["userBirthdate"];
 	echo "\n";
     echo "Address\t\t: ";
     echo $rows["userAddress"];
-	echo "\n";
 	echo "||";
 }
 

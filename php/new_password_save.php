@@ -48,7 +48,7 @@
         // Success popup
         Swal.fire({
             icon: 'success',
-            title: 'New password saved.',
+            title: 'A new password has been saved.',
             text: '(Auto close in 5 seconds)',
             showConfirmButton: true,
             confirmButtonText: 'Confirm',

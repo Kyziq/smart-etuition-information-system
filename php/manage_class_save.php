@@ -67,7 +67,7 @@
         // Success popup
         Swal.fire({
             icon: 'success',
-            title: 'Class details saving succesful.',
+            title: 'Class details was successfully saved.',
             text: '(Auto close in 5 seconds)',
             showConfirmButton: true,
             confirmButtonText: 'Confirm',

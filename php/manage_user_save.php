@@ -75,7 +75,7 @@
         ?>
             Swal.fire({
                 icon: 'success',
-                title: 'Tutor details saving succesful.',
+                title: 'Tutor details were successfully saved.',
                 text: '(Auto close in 5 seconds)',
                 showConfirmButton: true,
                 confirmButtonText: 'Confirm',
@@ -92,7 +92,7 @@
         ?>
             Swal.fire({
                 icon: 'success',
-                title: 'Student details saving succesful.',
+                title: 'Student details were successfully saved.',
                 text: '(Auto close in 5 seconds)',
                 showConfirmButton: true,
                 confirmButtonText: 'Confirm',

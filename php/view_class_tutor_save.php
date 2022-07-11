@@ -56,7 +56,7 @@
         // Success popup
         Swal.fire({
             icon: 'success',
-            title: 'New class link has been saved.',
+            title: 'A new class link has been saved.',
             text: '(Auto close in 5 seconds)',
             showConfirmButton: true,
             confirmButtonText: 'Confirm',

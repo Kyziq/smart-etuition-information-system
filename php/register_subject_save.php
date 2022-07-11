@@ -129,7 +129,7 @@
         // Success popup
         Swal.fire({
             icon: 'success',
-            title: 'Subject registration succesful.',
+            title: 'Subject registration is successful.',
             text: '(Auto close in 5 seconds)',
             showConfirmButton: true,
             confirmButtonText: 'Confirm',

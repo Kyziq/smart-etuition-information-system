@@ -293,7 +293,7 @@
                         <h2>My Details</h2>
                     </div>
                     <?php
-                    // Data (Pending)
+                    // Data
 
                     // Construct and run query to check for user details
                     $q = "SELECT * FROM user WHERE userID=?";

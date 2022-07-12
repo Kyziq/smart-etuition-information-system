@@ -200,11 +200,26 @@
         <!-- Main -->
         <div class="main">
             <div class="topbar">
+                <!-- Menu toggle -->
                 <div class="toggle">
                     <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
                     <lord-icon src="https://cdn.lordicon.com/xhebrhsj.json" trigger="loop-on-hover" colors="primary:#121331" state="hover" style="width:45px;height:45px">
                     </lord-icon>
                 </div>
+                <!-- Time update (every 1s) on top -->
+                <span>
+                    <div style="position: absolute; right: 500px; top: 5px;">
+                        <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com/drtetngs.json" trigger="loop-on-hover" colors="primary:#192e59" style="width:50px;height:50px">
+                        </lord-icon>
+                    </div>
+                    <script>
+                        setInterval(function() {
+                            document.getElementById('current-time').innerHTML = new Date().toString();
+                        }, 1);
+                    </script>
+                    <div style='font-family: "Helvetica", sans-serif; font-size: 20px; font-weight: 500;' id='current-time'></div>
+                </span>
             </div>
             <?php
             // Student's Page

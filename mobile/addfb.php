@@ -1,17 +1,9 @@
 <?php
 // Include database connection settings
-include_once 'dbcon.php';
+include 'dbcon.php';
 
-/*
-$userUname = $_POST['userUname'];
-//test
-$q = "SELECT userID FROM user WHERE userUname= '$userUname'";
-$query = mysqli_query($con, $q);
-$stuID = mysqli_fetch_array($query);
-*/
-
-$stuID = $_POST['stuID'];
 $fbID = $_POST['fbID'];
+$stuID = $_POST['stuID'];
 $fbTitle = $_POST['fbTitle'];
 $fbComment = $_POST['fbComment'];
 
@@ -29,9 +21,3 @@ if ($rows > 0) {
         echo "Feedback saved successfully!\nPlease wait a few seconds.";
     }
 }
-/*
-$userBirthdate=$_POST['userBirthdate'];
-
-, userBirthdate
-, '$userBirthdate'
-*/

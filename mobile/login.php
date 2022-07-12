@@ -19,21 +19,12 @@ if ($rows == 0) {
 } 
 else {
     $r = mysqli_fetch_assoc($query);
-    $userID = $r['userID'];
+    
     $userUname = $r['userUname'];
-    //$userPassw= $r['userPassw'];
     $userLevel = $r['userLevel'];
-
-    if ($userLevel == 1) {
-        echo "1";
-    }
-    else if ($userLevel == 2) {
-        echo "2";
-    }
-    else if ($userLevel == 3) {
-        echo "3";
-    }
+    echo $userLevel;
 }
 
 mysqli_close($con);
 ?>
+

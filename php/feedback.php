@@ -355,28 +355,30 @@
                                 ?>
 
                             </div>
-                            <table style="width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <td style="width:10px;">ID</td>
-                                        <td style="width:200px; text-align: justify;">Title</td>
-                                        <td style="width:600px; text-align: justify;">Comment</td>
-                                        <td style="width:150px;">Date Submitted</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    while ($r = mysqli_fetch_assoc($res)) {
-                                        echo    "<tr>
+                            <div style="max-height: 700px; overflow-y: scroll;">
+                                <table style="width: 100%;">
+                                    <thead style="position: sticky; top: 0px; background-color: #fff;">
+                                        <tr>
+                                            <td style="width:10px;">ID</td>
+                                            <td style="width:200px; text-align: justify;">Title</td>
+                                            <td style="width:600px; text-align: justify;">Comment</td>
+                                            <td style="width:150px;">Date Submitted</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($r = mysqli_fetch_assoc($res)) {
+                                            echo    "<tr>
                                                 <td>" . $r['fbID'] . "</td>
                                                 <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
                                                 <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
                                                 <td>" . $r['fbDate'] . "</td>
                                             </tr>";
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         <?php } ?>
                     </div>
                 </div>
@@ -403,46 +405,48 @@
                         if ($res) {
                             if ($num > 0) {
                         ?>
-                                <form method="post" action="feedback_delete.php">
-                                    <div style="max-height: 650px; overflow-y: scroll;">
-                                        <table style="width: 100%;">
-                                            <thead>
-                                                <tr>
-                                                    <td style="width:100px;">ID</td>
-                                                    <td style="width:300px;">Title</td>
-                                                    <td style="width:900px;">Comment</td>
-                                                    <td style="width:200px;">Date Submitted</td>
-                                                    <td style="width:50px;">Action</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                while ($r = mysqli_fetch_assoc($res)) {
-                                                    echo    "<tr>
-                                                            <input type='hidden' name='fbID' value=" . $r['fbID'] . ">
-                                                            <td>" . $r['fbID'] . "</td>
-                                                            <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
-                                                            <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
-                                                            <td>" . $r['fbDate'] . "</td>
-                                                            <td>
-                                                                <button style='padding: 0; border: none; background: none;' type='submit' name='deleteFbButton'>
-                                                                <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
-                                                                <lord-icon
-                                                                    src='https://cdn.lordicon.com/dovoajyj.json'
-                                                                    trigger='loop'
-                                                                    colors='primary:#eac143'
-                                                                    delay='750'
-                                                                    style='width:40px;height:40px'>
-                                                                </lord-icon>
-                                                            </button>
-                                                            </td>
-                                                        </tr>";
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </form>
+                                <div style="max-height: 700px; overflow-y: scroll;">
+                                    <table style="width: 100%;">
+                                        <thead style="position: sticky; top: 0px; background-color: #fff;">
+                                            <tr>
+                                                <td style="width:100px;">ID</td>
+                                                <td style="width:300px;">Title</td>
+                                                <td style="width:900px;">Comment</td>
+                                                <td style="width:200px;">Date Submitted</td>
+                                                <td style="width:50px;">Action</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while ($r = mysqli_fetch_assoc($res)) {
+                                                echo    "
+                                                        <form method='post' action='feedback_delete.php'>
+                                                            <tr>
+                                                                <input type='hidden' name='fbID' value=" . $r['fbID'] . ">
+                                                                <td>" . $r['fbID'] . "</td>
+                                                                <td style='text-align: justify;'>" . $r['fbTitle'] . "</td>
+                                                                <td style='text-align: justify;'>" . $r['fbComment'] . "</td>
+                                                                <td>" . $r['fbDate'] . "</td>
+                                                                <td>
+                                                                    <button style='padding: 0; border: none; background: none;' type='submit' name='deleteFbButton'>
+                                                                    <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>
+                                                                    <lord-icon
+                                                                        src='https://cdn.lordicon.com/dovoajyj.json'
+                                                                        trigger='loop'
+                                                                        colors='primary:#eac143'
+                                                                        delay='750'
+                                                                        style='width:40px;height:40px'>
+                                                                    </lord-icon>
+                                                                </button>
+                                                                </td>
+                                                            </tr>
+                                                        </form>
+                                                        ";
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                         <?php
                             }
                         }

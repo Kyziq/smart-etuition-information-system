@@ -160,9 +160,9 @@
                     if ($res) {
                         if ($num > 0) {
                     ?>
-                            <div style="max-height: 650px; overflow-y: scroll;">
+                            <div style="max-height: 600px; overflow-y: scroll;">
                                 <table style="width: 100%;">
-                                    <thead>
+                                    <thead style="position: sticky; top: 0px; background-color: #fff;">
                                         <tr>
                                             <!-- <td style="text-align: center;">ID</td> -->
                                             <!-- <td style="text-align: left;">Username</td> -->

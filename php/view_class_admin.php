@@ -163,7 +163,8 @@
 
                         $q = "SELECT u.userID, u.userLevel, u.userName, u.userPhone, u.userEmail, u.userGender, u.userBirthdate, u.userAddress, r.registerDate
                         FROM user u, class c, register r 
-                        WHERE c.classDay='$classDay' AND c.classSubject='$classSubject' AND u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID";
+                        WHERE c.classDay='$classDay' AND c.classSubject='$classSubject' AND u.userLevel='3' AND r.registerApproval='1' AND u.userID=r.stuID AND r.classID=c.classID
+                        ORDER BY u.userName";
                         $res = mysqli_query($con, $q);
                         $num = mysqli_num_rows($res);
                     ?>

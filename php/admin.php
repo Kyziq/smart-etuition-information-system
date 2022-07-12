@@ -193,9 +193,9 @@
                         <div class="cardName">
                             <?php
                             if ($r['total'] <= 1)
-                                echo "<i>Total student</i>";
+                                echo "<i>Total student registered</i>";
                             else if ($r['total'] > 1)
-                                echo "<i>Total students</i>";
+                                echo "<i>Total students registered</i>";
                             ?>
                         </div>
                     </div>
@@ -234,9 +234,9 @@
                         <div class="cardName">
                             <?php
                             if ($r['total'] <= 1)
-                                echo "<i>Total tutor</i>";
+                                echo "<i>Total tutor registered</i>";
                             else if ($r['total'] > 1)
-                                echo "<i>Total tutors</i>";
+                                echo "<i>Total tutors registered</i>";
                             ?>
                         </div>
                     </div>

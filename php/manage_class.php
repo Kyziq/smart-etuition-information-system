@@ -148,25 +148,26 @@
                     if ($res) {
                         if ($num > 0) {
                     ?>
-                            <table style="width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>Subject</td>
-                                        <td>Link</td>
-                                        <td>Day</td>
-                                        <td>Start Time</td>
-                                        <td>Fee</td>
-                                        <td style="text-align: center;">Total Student</td>
-                                        <td style="text-align: center;">Action (Save)</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    while ($r = mysqli_fetch_assoc($res)) {
-                                        // Output all classes in a table
-                                        echo    "<form method='POST' action='manage_class_save.php'>";
-                                        echo    "<tr>
+                            <div style="max-height: 700px; overflow-y: scroll;">
+                                <table style="width: 100%;">
+                                    <thead style="position: sticky; top: 0px; background-color: #fff;">
+                                        <tr>
+                                            <td>ID</td>
+                                            <td>Subject</td>
+                                            <td>Link</td>
+                                            <td>Day</td>
+                                            <td>Start Time</td>
+                                            <td>Fee</td>
+                                            <td style="text-align: center;">Total Student</td>
+                                            <td style="text-align: center;">Action (Save)</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        while ($r = mysqli_fetch_assoc($res)) {
+                                            // Output all classes in a table
+                                            echo    "<form method='POST' action='manage_class_save.php'>";
+                                            echo    "<tr>
                                                     <td><input type='text' name='classID' style='text-align:center;  color: var(--red);' size='1' value='" . $r['classID'] . "'readonly></td>
                                                     <td style='text-align: left;'><input type='text' name='subject' style='text-align:center;' size='20' value='" . $r['classSubject'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='link' style='text-align:center;' size='30' value='" . $r['classLink'] . "'></td>
@@ -187,11 +188,12 @@
                                                     </button>
                                                     </td>
                                                 </tr>";
-                                        echo "</form>";
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
+                                            echo "</form>";
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                     <?php
                         }
                     }

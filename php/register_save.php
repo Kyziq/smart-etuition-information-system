@@ -58,14 +58,25 @@
             // Success popup
             echo
             "
-        <script>
-            alert('Registration successful.');
-            window.location.href='login.php';
-        </script>
-        ";
+            <script>
+                // Error popup
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Registration successful.',
+                    text: '(Auto close in 5 seconds)',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Confirm',
+                    backdrop: `#192e59`,
+                    timer: 5000,
+                    willClose: () => {
+                        window.location.href = 'login.php';
+                    }
+                })
+            </script>
+            ";
         }
-        // Clear ress and close the connection
-        mysqli_free_result($res);
+        // Clear result and close the connection
+        // mysqli_free_result($res);
         mysqli_close($con);
     } else
         header("Location: register.php");

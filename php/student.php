@@ -53,10 +53,11 @@
                 </li>
                 <li>
                     <?php
+                    // A student can only register for the current year, he/she has to wait for next year to register for another tuition registration
                     // Data
-
+                    $currentYear = date('Y');
                     // Construct and run query to check for existing subject registration
-                    $q = "SELECT * FROM user u, register r WHERE u.userID=r.stuID AND userID=?";
+                    $q = "SELECT * FROM user u, register r WHERE r.registerDate LIKE '$currentYear-%'AND u.userID=r.stuID AND userID=?";
                     // Created a prepared statement
                     $stmt = mysqli_stmt_init($con);
                     // Prepare the prepared statement

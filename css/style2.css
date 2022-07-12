@@ -38,6 +38,19 @@ body {
     overflow-x: hidden;
 }
 
+/* Styling input */
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    padding: 3px 1px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid var(--darkblue);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
 .container {
     position: relative;
     width: 100%;

@@ -239,7 +239,7 @@
                         <!-- 1st -->
                         <?php
                         // Construct and run query to list all pending subjects registration
-                        $q = "SELECT * FROM user u, register r, class c WHERE u.userID=r.stuID AND r.classID=c.classID AND registerApproval=3 ORDER BY r.stuID ASC";
+                        $q = "SELECT * FROM user u, register r, class c WHERE u.userID=r.stuID AND r.classID=c.classID AND registerApproval=3 ORDER BY r.registerDate DESC";
                         $res = mysqli_query($con, $q);
                         // Construct and run query to check for existing class
                         $num = mysqli_num_rows($res);
@@ -326,7 +326,7 @@
                     <div class="recentOrders">
                         <?php
                         // Construct and run query to list all pending subjects registration
-                        $q = "SELECT * FROM user u, register r, class c WHERE u.userID=r.stuID AND r.classID=c.classID AND (registerApproval=1 OR registerApproval=2) ORDER BY r.stuID ASC";
+                        $q = "SELECT * FROM user u, register r, class c WHERE u.userID=r.stuID AND r.classID=c.classID AND (registerApproval=1 OR registerApproval=2) ORDER BY r.registerDate DESC";
                         $res = mysqli_query($con, $q);
                         // Construct and run query to check for existing class
                         $num = mysqli_num_rows($res);

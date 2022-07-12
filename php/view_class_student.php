@@ -172,9 +172,9 @@
 
                     <?php
                     // Construct and run query to check for existing class
-                    $q =    " SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.classDay, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone
-                                FROM register r, user u, user tutor, class c
-                                WHERE c.classID=r.classID AND r.stuID=u.userID AND r.registerApproval='1' AND tutor.userLevel='2' AND tutor.userID=c.tutorID";
+                    $q =        " SELECT c.classID, c.classSubject, c.classTime, c.classLink, c.classDay, c.totalStudent, tutor.userName, tutor.userEmail, tutor.userPhone
+                                FROM user u, user tutor, class c, register r
+                                WHERE u.userID = " . $_SESSION['userID'] . " AND u.userID=r.stuID AND tutor.userID=c.tutorID AND tutor.userLevel='2' AND u.userLevel='3' AND c.classID=r.classID AND r.registerApproval='1'";
                     $res = mysqli_query($con, $q);
                     $num = mysqli_num_rows($res);
                     if ($res) {
@@ -251,7 +251,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <?php
     // Clear results and close the connection
-    mysqli_free_result($res);
+    //mysqli_free_result($res);
     mysqli_close($con);
     ?>
 </body>

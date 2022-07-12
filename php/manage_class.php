@@ -168,13 +168,13 @@
                                             // Output all classes in a table
                                             echo    "<form method='POST' action='manage_class_save.php'>";
                                             echo    "<tr>
-                                                    <td><input type='text' name='classID' style='text-align:center;  color: var(--red);' size='1' value='" . $r['classID'] . "'readonly></td>
+                                                    <td><input type='text' name='classID' style='text-align:center;  background-color: var(--gray);' size='1' value='" . $r['classID'] . "'readonly></td>
                                                     <td style='text-align: left;'><input type='text' name='subject' style='text-align:center;' size='20' value='" . $r['classSubject'] . "'></td>
                                                     <td style='text-align: left;'><input type='text' name='link' style='text-align:center;' size='30' value='" . $r['classLink'] . "'></td>
                                                     <td><input type='text' name='day' style='text-align:center;' size='10' value='" . $r['classDay'] . "'></td>
                                                     <td><input type='text' name='time' style='text-align:center;' size='10' value='" . $r['classTime'] . "'></td>
                                                     <td style='text-align: center;'><input type='text' name='fee' style='text-align:center;' size='2' value='" . $r['classFee'] . "'></td>
-                                                    <td style='text-align: center;'><input type='text' name='totalStu' style='text-align:center; color: var(--red);' size='1' value='" . $r['totalStudent'] . "'readonly></td>
+                                                    <td style='text-align: center;'><input type='text' name='totalStu' style='text-align:center; background-color: var(--gray);' size='1' value='" . $r['totalStudent'] . "'readonly></td>
                                                     <td style='text-align: center;'>
                                                     <button style='padding: 0; border: none; background: none;' type='submit' name='saveClassButton'>
                                                         <script src='https://cdn.lordicon.com/xdjxvujz.js'></script>

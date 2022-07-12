@@ -226,13 +226,13 @@
                                 <tr>
                                     <td style="text-align: left; width: 200px; height:60px;">ID</td>
                                     <?php
-                                    echo "<td style='text-align: left;'><input type='text' name='userID' style='text-align:center; color: var(--red);' size='1' value='" . $r['userID'] . "'readonly></td>";
+                                    echo "<td style='text-align: left;'><input type='text' name='userID' style='text-align:center; background-color: var(--gray);' size='1' value='" . $r['userID'] . "'readonly></td>";
                                     ?>
                                 </tr>
                                 <tr>
                                     <td style="text-align: left; height:60px;">Username</td>
                                     <?php
-                                    echo "<td style='text-align: left;'><input type='text' readonly name='userUname' style='text-align:center; color: red;' size='50' value='" . $r['userUname'] . "'></td>";
+                                    echo "<td style='text-align: left;'><input type='text' readonly name='userUname' style='text-align:center; background-color: var(--gray);' size='50' value='" . $r['userUname'] . "'></td>";
                                     ?>
                                 </tr>
                                 <tr>

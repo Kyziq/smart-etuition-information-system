@@ -1,21 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2022 at 04:59 AM
+-- Generation Time: Jul 13, 2022 at 06:27 AM
 -- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- PHP Version: 8.1.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `smartetuition`
@@ -46,10 +40,10 @@ CREATE TABLE `class` (
 INSERT INTO `class` (`classID`, `classSubject`, `classLink`, `classDay`, `classTime`, `classFee`, `totalStudent`, `adminID`, `tutorID`) VALUES
 (1, 'Mathematics', 'https://meet.google.com/ian-sozw-mac', 'Saturday', '08:00:00', 50, 3, 4, 7),
 (2, 'Mathematics', 'https://meet.google.com/joa-wioj-xow', 'Sunday', '08:00:00', 50, 3, 1, 7),
-(3, 'Additional Mathematics', 'https://meet.google.com/aoz-soak-hoa', 'Saturday', '09:00:00', 50, 9, 1, 9),
+(3, 'Additional Mathematics', 'https://meet.google.com/aoz-soak-hoa', 'Saturday', '09:00:00', 50, 10, 1, 9),
 (4, 'Additional Mathematics', 'https://meet.google.com/fiw-opao-zxs', 'Sunday', '09:00:00', 50, 3, 1, 9),
 (5, 'Physics', 'https://meet.google.com/lqp-aowf-xzb', 'Saturday', '13:00:00', 50, 3, 1, 8),
-(6, 'Physics', 'https://meet.google.com/sap-wapq-zmx', 'Sunday', '13:00:00', 50, 4, 1, 8),
+(6, 'Physics', 'https://meet.google.com/sap-wapq-zmx', 'Sunday', '13:00:00', 50, 5, 1, 8),
 (7, 'Chemistry', 'https://meet.google.com/lzm-paqz-mxs', 'Saturday', '14:00:00', 50, 3, 1, 5),
 (8, 'Chemistry', 'https://meet.google.com/maq-dfga-qza', 'Sunday', '14:00:00', 50, 8, 1, 5),
 (9, 'Biology', 'https://meet.google.com/plm-vxmc-aqp', 'Saturday', '15:00:00', 50, 0, 1, 6),
@@ -126,6 +120,7 @@ INSERT INTO `register` (`classID`, `stuID`, `adminID`, `registerDate`, `proofPay
 (3, 18, 4, '2022-07-12 11:20:30', '../user/paymentProof/rafizal-12-07-22.jpeg', 1),
 (3, 19, 4, '2022-07-12 11:15:20', '../user/paymentProof/nursofiya-12-07-22.jpeg', 1),
 (3, 20, 4, '2022-07-12 11:17:46', '../user/paymentProof/nurhafieza-12-07-22.jpg', 1),
+(3, 25, 4, '2022-07-13 04:20:23', '../user/paymentProof/hakimidaniel-13-07-22.jpeg', 1),
 (4, 10, 4, '2022-07-12 11:08:18', '../user/paymentProof/kamarulrafiq-12-07-22.jpeg', 1),
 (4, 11, 4, '2022-07-12 11:08:44', '../user/paymentProof/nuraleya-12-07-22.jpg', 1),
 (4, 17, 1, '2022-07-12 11:12:11', '../user/paymentProof/gopinathan-12-07-22.jpeg', 3),
@@ -143,6 +138,7 @@ INSERT INTO `register` (`classID`, `stuID`, `adminID`, `registerDate`, `proofPay
 (6, 14, 4, '2022-07-12 11:22:43', '../user/paymentProof/nurafifah-12-07-22.jpg', 1),
 (6, 18, 4, '2022-07-12 11:20:30', '../user/paymentProof/rafizal-12-07-22.jpeg', 1),
 (6, 19, 4, '2022-07-12 11:15:20', '../user/paymentProof/nursofiya-12-07-22.jpeg', 1),
+(6, 25, 4, '2022-07-13 04:20:23', '../user/paymentProof/hakimidaniel-13-07-22.jpeg', 1),
 (6, 28, 1, '2022-07-12 18:41:30', '../user/paymentProof/bansiawxi-13-07-22.jpg', 3),
 (7, 12, 4, '2022-07-12 11:09:33', '../user/paymentProof/imrantaufek-12-07-22.png', 1),
 (7, 13, 4, '2022-07-12 11:10:03', '../user/paymentProof/dianazikri-12-07-22.jpeg', 1),
@@ -193,14 +189,14 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `userLevel`, `userUname`, `userPassw`, `userName`, `userPhone`, `userEmail`, `userGender`, `userBirthdate`, `userAddress`, `userCode`) VALUES
-(1, 3, 'haziq', 'haziq', 'Khairul Haziq bin Khairi', '0164005754', 'ihaziqkhairi@gmail.com', 1, '2002-04-13', 'No. 14, Lorong Hang Tuah 7, Apartment Utama, 31490 Chenderiang, Perak', 358194),
+(1, 3, 'haziq', 'haziq', 'Khairul Haziq bin Khairi', '0164005754', 'ihaziqkhairi@gmail.com', 1, '2002-04-13', 'No. 14, Lorong Hang Tuah 7, Apartment Utama, 31490 Chenderiang, Perak', 375901),
 (2, 3, 'zikriaysar', 'zikriaysar', 'Mohamad Zikri bin Aysar', '0169328422', 'zikriaysar@gmail.com', 1, '2005-04-14', 'No. 4, Jln 6/9E, Kondominium Angkasa, 62573 Precinct 4, Putrajaya', NULL),
 (3, 3, 'salim', 'salim', 'Muhammad Salim bin Rusman', '0154673944', 'salimirusman@hotmail.com', 1, '2005-12-05', 'No. 34, Jalan Anson 7/55, PJU73, 62393 Precinct 8, Putrajaya', NULL),
-(4, 1, 'admin', 'admin', 'Harith Adib bin Mikail', '0142539621', 'rithdib@gmail.com', 1, '1996-11-08', '52, Jalan Petaling, Bandar Flora, 01524 Simpang Empat, Perlis Indera Kayangan', NULL),
+(4, 1, 'admin', 'admin', 'Harith Adib bin Mikail', '0142539622', 'rithdib@gmail.com', 1, '1996-11-08', '52, Jalan Petaling, Bandar Flora, 01524 Simpang Empat, Perlis Indera Kayangan', NULL),
 (5, 2, 'shazwan321', 'shazwan321', 'Shazwan bin Faizal', '0193024231', 'shazwan@yahoo.com', 1, '1988-12-05', '869, Lorong Yap Ah Shak, USJ 39M, 30005 Sitiawan, Perak Darul Ridzuan', NULL),
 (6, 2, 'afiffudin', 'pudin123', 'Afiffuddin Anas bin Kilau', '0199874040', 'fudin12@yahoo.com', 1, '1992-07-02', '1, Lorong 4/8E, Lembah Sungai Long, 47669 Klang, Selangor Darul Ehsan', NULL),
 (7, 2, 'siti', 'siti', 'Siti Bayani binti Amzar', '0179611828', 'sitibayani93@yahoo.com', 2, '1993-03-17', 'No. 40, Jln 9/9Z, PJU44, 05120 Merbok, Kedah Darul Aman', NULL),
-(8, 2, 'jasmin', 'jasmin', 'Jasmin Ilyas binti Haziq', '0143538115', 'jasmin_96@hotmail.com', 2, '1996-12-16', 'No. 69, Jalan Sempadan 9/4N, Taman Rahman, 15646 Gua Musang, Kelantan', NULL),
+(8, 2, 'jasmin', 'jasmin', 'Jasmin Ilyas binti Haziq', '01435381156', 'jasmin_96@hotmail.com', 2, '1996-12-16', 'No. 69, Jalan Sempadan 9/4N, Taman Rahman, 15646 Gua Musang, Kelantan', NULL),
 (9, 2, 'taniza', 'taniza', 'Nur Taniza binti Suhardy', '0194234854', 'taniza94@gmail.com', 2, '1994-06-17', '3, Jalan 15U, Desa Petaling, 62898 Precinct 5, Putrajaya', NULL),
 (10, 3, 'kamarulrafiq', 'kamarulrafiq', 'Kamarul Rafiq bin Shapiein', '0197581723', 'kamarulrafiq@gmail.com', 1, '2005-06-07', 'No. 6, Lorong 3/4, Damansara Melawati, 16449 Tok Bali, Kelantan Darul Naim', NULL),
 (11, 3, 'nuraleya', 'nuraleya', 'Nur Aleya binti Dazila', '0198677267', 'aleya72@gmail.com', 2, '2005-02-27', '53, Lorong 2D, Bukit Pahlawan, 30004 Behrang, Perak Darul Ridzuan', NULL),
@@ -312,7 +308,3 @@ ALTER TABLE `register`
   ADD CONSTRAINT `classID.reg` FOREIGN KEY (`classID`) REFERENCES `class` (`classID`),
   ADD CONSTRAINT `stuID.reg` FOREIGN KEY (`stuID`) REFERENCES `user` (`userID`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

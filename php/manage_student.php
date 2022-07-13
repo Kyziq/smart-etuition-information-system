@@ -141,7 +141,7 @@
                     <div class="search">
                         <label>
                             <form method="post" action="manage_student.php" enctype="multipart/form-data">
-                                <input type="text" name="userName" placeholder="Search by keyword name" />
+                                <input type="text" style="border: 1px solid var(--darkblue);" name="userName" placeholder="Search by keyword name" />
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button type="submit" class="btn" name="searchStudentButton" value="Submit" style="height: 35px;">
                                     <span class="btnText">Search</span>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2022 at 01:58 PM
+-- Generation Time: Jul 13, 2022 at 04:59 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -70,6 +70,21 @@ CREATE TABLE `feedback` (
   `stuID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`fbID`, `fbTitle`, `fbComment`, `fbDate`, `adminID`, `stuID`) VALUES
+(1, 'Great website!', 'I\'m amazed that this is free, the tutor teaches Math really well, you can even use it to grasp the basics of your upcoming grade. For example if you are in form 4 you can go do some prep for form 5 so when you actually do form 5 it\'ll probably be a lot easier for you haha. This app also teaches other kinds of topics like prep for several exams, prep for college, history, I think a little bit about socialise too? There wasn\'t ads too O.O overall, pretty good system', '2022-07-12 18:31:51', NULL, 15),
+(2, 'the app and sytem works!', 'Woah. The app is functional 100%. This probably differs between each courses but the video tutor has a very soothing way of explaining the matter of the subjects. Managed to keep my hyperactive attention span focused on the study subject. Thank you so much! A few suggestions is leaderboard function. This will motivate students to study more and move up the leaderboard. And maybe add badge/awards in the app to remind students of their achievements in the app.', '2022-07-12 18:33:51', NULL, 3),
+(3, 'sometimes crash', 'There\'s no doubt this app is the best. I love all the content I can learn for free. The only thing for which I am holding out  is because this app crashes on my Android 12 phone. It\'s basically unusable. I\'ve tried all troubleshooting methods but couldn\'t get it to work. The content is 100% amazing. The system is cool, with just finishing touches missing.', '2022-07-12 18:35:00', NULL, 10),
+(4, 'Learning Tools', 'One of the best learning tool for any students out there,Its super effective but of course it isn\'t perfect,There is a bug where some sentences in the Hint button or on the multiple choices doesn\'t appear at all,Some of the page will just go blank with no reason, It can be fixed by reloading the app but the progress will be removed leaving me frustrated. Need to be fixed but good app overall', '2022-07-12 18:36:35', NULL, 11),
+(5, 'awesome!!', 'Best online learning platform which is completely free and has a great quality resources. The visuals and the diagrams are so good that it makes the topic crystal clear in one go. Really satisfied with the content in the app. I appreciate the efforts put in by all the faculties and the background team. Thank you very much for creating this fantabulous app.', '2022-07-12 18:37:19', NULL, 13),
+(6, 'clean app', 'It is a nice and clean app for learning. I can watch videos or download and watch them later. There are courses on different interests. I can add courses of my interest to my library and organize them. Everything is free, there are no Ads, app interface is so smooth.', '2022-07-12 18:37:36', NULL, 13),
+(7, 'Bad quiz!!', 'The quizzes are horrendously done. They will mark a correct answer as wrong. My answer is checked via an online graphing calculator, calculus equations solvers, and/or other such computer programs. These agree with and confirm my answer, yet somehow Kahns answer is completely different. Further, there is no way to report an error in a question/solution/video. Not to mention the frustration of the way the unit tests and quizzes work, which other reviews have covered.', '2022-07-12 18:38:20', NULL, 18),
+(8, 'i need the points!', 'The system is horrendous. After you\'ve reached \'proficient\' on all topics you have to take the unit test to level up. But the unit test is usually 20 questions long and if you\'re not doing well in one topic and you keep missing 1 question you have to take the 40 minute test all over again. Also, if you get one wrong towards the beginning there is not option to restart, you just have to do the whole thing knowing there is no point. (Also i am required to get all the mastery points for school)', '2022-07-12 18:39:18', NULL, 19),
+(9, 'unique', 'The least I can say that this app is unique and fascinating. They ask unique questions which are not just from any other book or commonly used reference books. Concepts are strengthened. There are many courses we can choose from. Definitely one of the best. Keep it up!👍👍', '2022-07-12 18:41:44', NULL, 28);
+
 -- --------------------------------------------------------
 
 --
@@ -94,6 +109,7 @@ INSERT INTO `register` (`classID`, `stuID`, `adminID`, `registerDate`, `proofPay
 (1, 10, 4, '2022-07-12 11:08:18', '../user/paymentProof/kamarulrafiq-12-07-22.jpeg', 1),
 (1, 17, 1, '2022-07-12 11:12:11', '../user/paymentProof/gopinathan-12-07-22.jpeg', 3),
 (1, 19, 4, '2022-07-12 11:15:20', '../user/paymentProof/nursofiya-12-07-22.jpeg', 1),
+(1, 28, 1, '2022-07-12 18:41:30', '../user/paymentProof/bansiawxi-13-07-22.jpg', 3),
 (2, 11, 4, '2022-07-12 11:08:44', '../user/paymentProof/nuraleya-12-07-22.jpg', 1),
 (2, 12, 4, '2022-07-12 11:09:33', '../user/paymentProof/imrantaufek-12-07-22.png', 1),
 (2, 13, 4, '2022-07-12 11:10:03', '../user/paymentProof/dianazikri-12-07-22.jpeg', 1),
@@ -118,6 +134,7 @@ INSERT INTO `register` (`classID`, `stuID`, `adminID`, `registerDate`, `proofPay
 (4, 23, 4, '2022-07-12 11:27:17', '../user/paymentProof/nursufiya-12-07-22.jpeg', 1),
 (4, 27, 4, '2022-07-12 11:34:14', '../user/paymentProof/norerina-12-07-22.jpg', 2),
 (4, 30, 4, '2022-07-12 11:36:03', '../user/paymentProof/nikafiq-12-07-22.jpg', 2),
+(4, 36, 1, '2022-07-13 02:49:13', '../user/paymentProof/natashaaliah-13-07-22.jpg', 3),
 (5, 3, 4, '2022-07-12 11:19:00', '../user/paymentProof/salim-12-07-22.jpg', 1),
 (5, 10, 4, '2022-07-12 11:08:18', '../user/paymentProof/kamarulrafiq-12-07-22.jpeg', 1),
 (5, 12, 4, '2022-07-12 11:09:33', '../user/paymentProof/imrantaufek-12-07-22.png', 1),
@@ -126,6 +143,7 @@ INSERT INTO `register` (`classID`, `stuID`, `adminID`, `registerDate`, `proofPay
 (6, 14, 4, '2022-07-12 11:22:43', '../user/paymentProof/nurafifah-12-07-22.jpg', 1),
 (6, 18, 4, '2022-07-12 11:20:30', '../user/paymentProof/rafizal-12-07-22.jpeg', 1),
 (6, 19, 4, '2022-07-12 11:15:20', '../user/paymentProof/nursofiya-12-07-22.jpeg', 1),
+(6, 28, 1, '2022-07-12 18:41:30', '../user/paymentProof/bansiawxi-13-07-22.jpg', 3),
 (7, 12, 4, '2022-07-12 11:09:33', '../user/paymentProof/imrantaufek-12-07-22.png', 1),
 (7, 13, 4, '2022-07-12 11:10:03', '../user/paymentProof/dianazikri-12-07-22.jpeg', 1),
 (7, 20, 4, '2022-07-12 11:17:46', '../user/paymentProof/nurhafieza-12-07-22.jpg', 1),
@@ -140,6 +158,8 @@ INSERT INTO `register` (`classID`, `stuID`, `adminID`, `registerDate`, `proofPay
 (8, 17, 1, '2022-07-12 11:12:11', '../user/paymentProof/gopinathan-12-07-22.jpeg', 3),
 (8, 21, 4, '2022-07-12 11:24:24', '../user/paymentProof/yapmunkhee-12-07-22.png', 1),
 (8, 22, 4, '2022-07-12 11:25:03', '../user/paymentProof/raihanazlan-12-07-22.jpg', 1),
+(8, 28, 1, '2022-07-12 18:41:30', '../user/paymentProof/bansiawxi-13-07-22.jpg', 3),
+(9, 36, 1, '2022-07-13 02:49:13', '../user/paymentProof/natashaaliah-13-07-22.jpg', 3),
 (10, 11, 4, '2022-07-12 11:08:44', '../user/paymentProof/nuraleya-12-07-22.jpg', 1),
 (10, 12, 4, '2022-07-12 11:09:33', '../user/paymentProof/imrantaufek-12-07-22.png', 1),
 (10, 13, 4, '2022-07-12 11:10:03', '../user/paymentProof/dianazikri-12-07-22.jpeg', 1),
@@ -173,7 +193,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `userLevel`, `userUname`, `userPassw`, `userName`, `userPhone`, `userEmail`, `userGender`, `userBirthdate`, `userAddress`, `userCode`) VALUES
-(1, 1, 'kyziq', 'qazwsx123', 'Khairul Haziq bin Khairi', '0164005754', 'ihaziqkhairi@gmail.com', 1, '2002-04-13', 'No. 14, Lorong Hang Tuah 7, Apartment Utama, 31490 Chenderiang, Perak', 581583),
+(1, 3, 'haziq', 'haziq', 'Khairul Haziq bin Khairi', '0164005754', 'ihaziqkhairi@gmail.com', 1, '2002-04-13', 'No. 14, Lorong Hang Tuah 7, Apartment Utama, 31490 Chenderiang, Perak', 358194),
 (2, 3, 'zikriaysar', 'zikriaysar', 'Mohamad Zikri bin Aysar', '0169328422', 'zikriaysar@gmail.com', 1, '2005-04-14', 'No. 4, Jln 6/9E, Kondominium Angkasa, 62573 Precinct 4, Putrajaya', NULL),
 (3, 3, 'salim', 'salim', 'Muhammad Salim bin Rusman', '0154673944', 'salimirusman@hotmail.com', 1, '2005-12-05', 'No. 34, Jalan Anson 7/55, PJU73, 62393 Precinct 8, Putrajaya', NULL),
 (4, 1, 'admin', 'admin', 'Harith Adib bin Mikail', '0142539621', 'rithdib@gmail.com', 1, '1996-11-08', '52, Jalan Petaling, Bandar Flora, 01524 Simpang Empat, Perlis Indera Kayangan', NULL),

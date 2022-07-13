@@ -12,6 +12,8 @@
     <!-- Title -->
     <link rel="icon" href="../images/icon.ico" />
     <title>New Password</title>
+
+    <script src='../js/sweetalert2/sweetalert2.all.min.js'></script>
 </head>
 
 <body>
@@ -30,16 +32,31 @@
 
         // User code is not the same
         if (!$num) {
+            /*
             echo
             "
                 <script>
-                    alert('Wrong code entered.');
-                    window.location.href='reset_code.php';
+                // Error popup
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Wrong code entered.',
+                    text: '(Auto close in 5 seconds)',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Confirm',
+                    backdrop: `#192e59`,
+                    timer: 5000,
+                    willClose: () => {
+                        window.location.href = 'reset_code.php';
+                    }
+                })
                 </script>
-                ";
+            ";
+            */
+            header("Location: reset_code.php");
         }
     }
     ?>
+
 
     <span id="register">
         <div class="logoImage">

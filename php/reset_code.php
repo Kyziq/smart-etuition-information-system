@@ -12,6 +12,8 @@
     <!-- Title -->
     <link rel="icon" href="../images/icon.ico" />
     <title>Code Verification</title>
+
+    <script src='../js/sweetalert2/sweetalert2.all.min.js'></script>
 </head>
 
 <body>
@@ -30,16 +32,30 @@
         $res = mysqli_query($con, $q);
         $num = mysqli_num_rows($res);
 
+        /*
         // No email found
         if (!$num) {
             echo
             "
+                <div class='popup'>
                 <script>
-                    alert('No email found!');
-                    window.location.href='forgot_password.php';
+                // Error popup
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No email found.',
+                    text: '(Auto close in 5 seconds)',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Confirm',
+                    backdrop: `#192e59`,
+                    timer: 5000,
+                    willClose: () => {
+                        window.location.href = 'forgot_password.php';
+                    }
+                })
                 </script>
-                ";
-        }
+                </div>
+            ";
+        }*/
     }
     function sendmail()
     {
@@ -89,6 +105,7 @@
         if ($mail->send()) {
             echo "<mark>Your email <b>(" . $_SESSION['userEmail'] . " )</b> has been sent a code. Enter the code in the box above.</mark>";
         } else {
+            header("Location: forgot_password.php");
             echo "<mark><b>Something is wrong: </b></mark>" . $mail->ErrorInfo;
         }
     }

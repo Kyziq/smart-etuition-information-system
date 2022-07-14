@@ -1,4 +1,4 @@
-# Smart E-Tuition Information System
+# Smart E-Tuition Information System for Youth Innovation 2022
 <b> Project requirements: </b> <br>
 
 The Smart E-Tuition Information System, which was created for online class registration, has three users: student, tutor, and administrator. 

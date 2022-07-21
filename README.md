@@ -44,3 +44,22 @@ ISP250 - Information System Development
 * [Harith Iqbal](https://github.com/mishumiyamizu)
 * [Adib Asyraaf](https://github.com/lildibbb)
 * [Syahril Rumizam](https://github.com/reason61)
+
+## Usage
+.sql (database) and .aia (AI2 MIT App Inventor) can be obtained in the system folder.<br>
+In phpMyAdmin, database name must be smartetuition.<br>
+Put the smartetuition folder in htdocs folder and browse the url with localhost/smartetuition or localhost/smartetuition/index.html<br>
+
+There are three users:<br>
+
+<b>Admin (userLevel 1)<br></b>
+username: admin<br>
+password: admin<br>
+
+<b>Tutor (userLevel 2)</b><br>
+username: siti<br>
+password: siti<br>
+
+<b>Student (userLevel 3 - Default)</b><br>
+username: haziq<br>
+password: 123123<br>

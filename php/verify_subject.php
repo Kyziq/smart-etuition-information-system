@@ -272,19 +272,28 @@
                                                     $registerText = "Pending";
 
                                                 $image = $r['proofPayment'];
+                                                $extension = pathinfo($image, PATHINFO_EXTENSION);
 
                                                 // Output all registration in a table
-                                                echo    "<form method='post' action='verify_subject_action.php'>";
-                                                echo    "<tr>
+                                                echo    "<form method='post' action='verify_subject_action.php'
+                                                            <tr>
                                                             <input type='hidden' name='classID' value=" . $r['classID'] . ">
                                                             <input type='hidden' name='stuID' value=" . $r['stuID'] . ">
                                                             <td style='text-align: left;'>" . $r['classSubject'] . "</td>
                                                             <td>" . $r['userName'] . "</td>
                                                             <td>" . $r['registerDate'] . "</td>
-                                                            <td> 
-                                                                <!-- Trigger the Modal -->
-                                                                <img id='myImg' src='$image' class='img-thumbnail' alt='Proof of Payment' style='width:100%;max-width:100px; max-height:100px;'>
-                                                
+                                                            <td>";
+
+                                                if ($extension == 'pdf')
+                                                    echo "<embed src='$image' frameborder='0' width='60%' height='200px'>";
+                                                else
+                                                    echo
+                                                    "
+                                                        <!-- Trigger the Modal -->
+                                                        <img id='myImg' src='$image' class='img-thumbnail' alt='Proof of Payment' style='width:100%;max-width:100px; max-height:100px;'>
+                                                        ";
+
+                                                echo "
                                                                 <!-- The Modal -->
                                                                 <div id='myModal' class='modal'>
                                                                     <!-- The Close Button -->
@@ -305,7 +314,6 @@
                                                                 </select>
                                                                 <button type='submit' name='updateButton'>Update</button>
                                                             </td>
-
                                                         </tr>";
                                                 echo "</form>";
                                             }
@@ -368,19 +376,29 @@
                                                     $registerText = "Pending";
 
                                                 $image = $r['proofPayment'];
+                                                $extension = pathinfo($image, PATHINFO_EXTENSION);
 
                                                 // Output all registration in a table
-                                                echo    "<form method='post' action='verify_subject_action.php'>";
-                                                echo    "<tr>
+                                                echo    "<form method='post' action='verify_subject_action.php'
+                                                        <tr>
                                                             <input type='hidden' name='classID' value=" . $r['classID'] . ">
                                                             <input type='hidden' name='stuID' value=" . $r['stuID'] . ">
                                                             <td style='text-align: left;'>" . $r['classSubject'] . "</td>
                                                             <td>" . $r['userName'] . "</td>
                                                             <td>" . $r['registerDate'] . "</td>
-                                                            <td> 
-                                                                <!-- Trigger the Modal -->
-                                                                <img id='myImg' src='$image' class='img-thumbnail' alt='Proof of Payment' style='width:100%;max-width:100px; max-height:100px;'>
-                                                
+                                                            <td>
+                                                        ";
+
+                                                if ($extension == 'pdf')
+                                                    echo "<embed src='$image' frameborder='0' width='60%' height='200px'>";
+                                                else
+                                                    echo
+                                                    "
+                                                            <!-- Trigger the Modal -->
+                                                            <img id='myImg' src='$image' class='img-thumbnail' alt='Proof of Payment' style='width:100%;max-width:100px; max-height:100px;'>
+                                                            ";
+
+                                                echo "
                                                                 <!-- The Modal -->
                                                                 <div id='myModal' class='modal'>
                                                                     <!-- The Close Button -->

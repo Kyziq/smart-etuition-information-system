@@ -40,8 +40,8 @@ The Smart E-Tuition Information System is designed for students to register for 
 
 
 ## Usage
-.sql (database) and .aia (AI2 MIT App Inventor) can be obtained in the system folder.<br>
-In MySQL, the database name should be <u>smartetuition</u>.<br>
+.sql (for database) and .aia (AI2 MIT App Inventor) can be obtained in the system folder.<br>
+In MySQL, the database name should be `smartetuition`.<br>
 Put the database folder in your /htdocs and browse the URL with localhost/smartetuition!
 
 Below are three users type which can be used for demo:<br>

@@ -48,8 +48,8 @@ Below are three users type which can be used for demo:<br>
 | Type (userLevel)          | Username      | Password |
 | :-------------: |:-------------:| :--------:|
 | Administrator (1) | admin         | admin    |
-| Tutor (2)        | siti          | siti     |
-| Student (3)      | haziq         | 123123   |
+| Tutor (2)        | tutor          | tutor     |
+| Student (3)      | student        | student   |
 
 ## Made for 
 UiTM Kedah Youth Innovation 2022 <br>

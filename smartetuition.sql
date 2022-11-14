@@ -196,13 +196,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userID`, `userLevel`, `userUname`, `userPassw`, `userName`, `userPhone`, `userEmail`, `userGender`, `userBirthdate`, `userAddress`, `userCode`) VALUES
-(1, 3, 'haziq', '123123', 'Khairul Haziq bin Khairy', '0164005753', 'ihaziqkhairy@gmail.com', 1, '2002-04-13', 'No. 14, Lorong Hang Tuah 7, Apartment Utama, 31490 Chenderiang, Perak', 631142),
+(1, 3, 'student', 'student', 'Khairul Haziq bin Khairy', '0164005753', 'ihaziqkhairy@gmail.com', 1, '2002-04-13', 'No. 14, Lorong Hang Tuah 7, Apartment Utama, 31490 Chenderiang, Perak', 631142),
 (2, 3, 'zikriaysar', 'zikriaysar', 'Mohamad Zikri bin Aysar', '0169328422', 'zikriaysar@gmail.com', 1, '2005-04-14', 'No. 4, Jln 6/9E, Kondominium Angkasa, 62573 Precinct 4, Putrajaya', NULL),
 (3, 3, 'salim', 'salim', 'Muhammad Salim bin Rusman', '0154673944', 'salimirusman@hotmail.com', 1, '2005-12-05', 'No. 34, Jalan Anson 7/55, PJU73, 62393 Precinct 8, Putrajaya', NULL),
 (4, 1, 'admin', 'admin', 'Harith Adib bin Mikail', '0142539622', 'rithdib@gmail.com', 1, '1996-11-08', '52, Jalan Petaling, Bandar Flora, 01524 Simpang Empat, Perlis Indera Kayangan', NULL),
 (5, 2, 'shazwan321', 'shazwan321', 'Shazwan bin Faizal', '0193024231', 'shazwan@yahoo.com', 1, '1988-12-05', '869, Lorong Yap Ah Shak, USJ 39M, 30005 Sitiawan, Perak Darul Ridzuan', NULL),
 (6, 2, 'afiffudin', 'pudin123', 'Afiffuddin Anas bin Kilau', '0199874040', 'fudin12@yahoo.com', 1, '1992-07-02', '1, Lorong 4/8E, Lembah Sungai Long, 47669 Klang, Selangor Darul Ehsan', NULL),
-(7, 2, 'siti', 'siti', 'Siti Bayani binti Amzar', '0179611828', 'sitibayani93@yahoo.com', 2, '1993-03-17', 'No. 40, Jln 9/9Z, PJU44, 05120 Merbok, Kedah Darul Aman', NULL),
+(7, 2, 'tutor', 'tutor', 'Siti Bayani binti Amzar', '0179611828', 'sitibayani93@yahoo.com', 2, '1993-03-17', 'No. 40, Jln 9/9Z, PJU44, 05120 Merbok, Kedah Darul Aman', NULL),
 (8, 2, 'jasmin', 'jasmin', 'Jasmin Ilyas binti Haziq', '01435381156', 'jasmin_96@hotmail.com', 2, '1996-12-16', 'No. 69, Jalan Sempadan 9/4N, Taman Rahman, 15646 Gua Musang, Kelantan', NULL),
 (9, 2, 'taniza', 'taniza', 'Nur Taniza binti Suhardy', '0194234854', 'taniza94@gmail.com', 2, '1994-06-17', '3, Jalan 15U, Desa Petaling, 62898 Precinct 5, Putrajaya', NULL),
 (10, 3, 'kamarulrafiq', 'kamarulrafiq', 'Kamarul Rafiq bin Shapiein', '0197581723', 'kamarulrafiq@gmail.com', 1, '2005-06-07', 'No. 6, Lorong 3/4, Damansara Melawati, 16449 Tok Bali, Kelantan Darul Naim', NULL),
